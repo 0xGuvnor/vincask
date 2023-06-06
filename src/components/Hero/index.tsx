@@ -9,7 +9,7 @@ const Hero = () => {
           src="/hero.jpeg"
           alt="Hero image of whiskey barrels"
           fill
-          className="object-cover brightness-[0.25]"
+          className="object-cover brightness-[0.5]"
         />
       </div>
 
