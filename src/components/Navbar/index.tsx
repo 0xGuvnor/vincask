@@ -2,9 +2,11 @@ import Socials from "./Socials";
 import Link from "next/link";
 import HamburgerMenu from "./HamburgerMenu";
 import useScroll from "@/hooks/useScroll";
+import { useMediaQuery } from "react-responsive";
 
 const Navbar = () => {
-  const isScrolled = useScroll(150);
+  const isMobileOrTablet = useMediaQuery({ maxWidth: 768 });
+  const isScrolled = isMobileOrTablet ? useScroll(50) : useScroll(150);
 
   return (
     <nav
