@@ -1,10 +1,5 @@
-import { useEffect, useState } from "react";
-import ImageCard from "./ImageCard";
-import { useInView } from "react-intersection-observer";
-
-interface Props {
-  interval: number;
-}
+import Carousel from "react-material-ui-carousel";
+import { useMediaQuery } from "react-responsive";
 
 const images = [
   "/carousel/promo0.jpeg",
@@ -14,34 +9,29 @@ const images = [
   "/carousel/promo4.jpg",
 ];
 
-const ImageCarousel = ({ interval }: Props) => {
-  const { ref, inView } = useInView({ threshold: 1 });
-
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % images.length);
-    }, interval);
-
-    return () => clearInterval(timer);
-  }, [images.length, interval]);
+const ImageCarousel = () => {
+  const isMobileOrTablet = useMediaQuery({ maxWidth: 768 });
 
   return (
-    <div
-      ref={ref}
-      className="h-[85vh] mt-10 md:mt-0 max-w-xs md:max-w-2xl md:ml-4 p-4 space-x-4 bg-base-100 carousel carousel-center rounded-md md:rounded-lg"
+    <Carousel
+      autoPlay
+      swipe
+      fullHeightHover
+      interval={3000}
+      animation="slide"
+      indicatorIconButtonProps={{
+        style: { padding: isMobileOrTablet ? "1px" : "4px" },
+      }}
+      className="w-80 md:w-[500px] drop-shadow-2xl"
     >
       {images.map((image, id) => (
-        <ImageCard
+        <img
           key={id}
-          id={id}
           src={image}
-          currentImageIndex={currentImageIndex}
-          inView={inView}
+          className="object-cover w-full h-full rounded-lg md:rounded-xl"
         />
       ))}
-    </div>
+    </Carousel>
   );
 };
 export default ImageCarousel;
