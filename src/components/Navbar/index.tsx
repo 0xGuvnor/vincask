@@ -6,7 +6,7 @@ import { useMediaQuery } from "react-responsive";
 
 const Navbar = () => {
   const isMobileOrTablet = useMediaQuery({ maxWidth: 768 });
-  const isScrolled = isMobileOrTablet ? useScroll(50) : useScroll(150);
+  const isScrolled = isMobileOrTablet ? useScroll(10) : useScroll(150);
 
   return (
     <nav
