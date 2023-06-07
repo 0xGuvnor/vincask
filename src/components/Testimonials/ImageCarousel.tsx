@@ -30,7 +30,7 @@ const ImageCarousel = ({ interval }: Props) => {
   return (
     <div
       ref={ref}
-      className="h-[90dvh] mt-10 md:mt-0 md:h-[85dvh] max-w-xs md:max-w-2xl md:ml-4 p-4 space-x-4 bg-base-100 carousel carousel-center rounded-md md:rounded-lg"
+      className="h-[85vh] mt-10 md:mt-0 max-w-xs md:max-w-2xl md:ml-4 p-4 space-x-4 bg-base-100 carousel carousel-center rounded-md md:rounded-lg"
     >
       {images.map((image, id) => (
         <ImageCard
