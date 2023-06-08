@@ -18,7 +18,7 @@ const Hero = () => {
           Crafted with Passion and Precision
         </h1>
         <h2 className="max-w-xs mx-auto text-center md:max-w-xl text-md md:text-3xl">
-          Our Whiskey Embodies the Essence of Dedication and Distinction.
+          Our Whisky Embodies the Essence of Dedication and Distinction.
         </h2>
       </div>
 

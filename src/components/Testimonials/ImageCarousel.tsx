@@ -18,11 +18,11 @@ const ImageCarousel = () => {
       swipe
       fullHeightHover
       interval={3000}
-      animation="slide"
+      animation="fade"
       indicatorIconButtonProps={{
         style: { padding: isMobileOrTablet ? "1px" : "4px" },
       }}
-      className="w-80 md:w-[500px] drop-shadow-2xl"
+      className="w-80 md:w-[500px] 2xl:w-[600px] drop-shadow-2xl rounded-lg md:rounded-xl"
     >
       {images.map((image, id) => (
         <img
