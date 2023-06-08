@@ -30,8 +30,9 @@ const Team = () => {
       </div>
 
       <div className="flex flex-col gap-4 md:justify-between md:flex-row">
-        {team.map((teamMember) => (
+        {team.map((teamMember, id) => (
           <TeamProfile
+            key={id}
             name={teamMember.name}
             title={teamMember.title}
             src={teamMember.src}
