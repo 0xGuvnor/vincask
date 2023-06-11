@@ -27,9 +27,10 @@ const MenuDropdown = () => {
       >
         {menuItems.map((menuItem) => (
           <Menu.Item as="div" key={menuItem.link}>
-            {({ active }) => (
+            {({ active, close }) => (
               <Link
                 href={menuItem.link}
+                onClick={close}
                 className={`${active && "brightness-200"}`}
               >
                 {menuItem.title}

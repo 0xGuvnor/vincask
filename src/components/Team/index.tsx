@@ -21,7 +21,7 @@ const Team = () => {
   return (
     <div
       id="team"
-      className="flex flex-col gap-4 px-4 py-6 md:gap-8 md:px-12 md:py-20 2xl:px-24 bg-[#582B11]"
+      className="flex flex-col gap-4 px-4 py-14 md:gap-8 md:px-12 md:py-20 2xl:px-24 bg-[#582B11]"
     >
       <div className="space-y-2 md:space-y-4">
         <h1 className="text-3xl md:text-6xl">Our Team</h1>
