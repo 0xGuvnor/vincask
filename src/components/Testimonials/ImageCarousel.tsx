@@ -1,3 +1,4 @@
+import useIsMounted from "@/hooks/useIsMounted";
 import Carousel from "react-material-ui-carousel";
 import { useMediaQuery } from "react-responsive";
 
@@ -11,8 +12,9 @@ const images = [
 
 const ImageCarousel = () => {
   const isMobileOrTablet = useMediaQuery({ maxWidth: 768 });
+  const isMounted = useIsMounted();
 
-  return (
+  return isMounted ? (
     <Carousel
       autoPlay
       swipe
@@ -32,6 +34,6 @@ const ImageCarousel = () => {
         />
       ))}
     </Carousel>
-  );
+  ) : null;
 };
 export default ImageCarousel;

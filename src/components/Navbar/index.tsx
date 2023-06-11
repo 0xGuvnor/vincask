@@ -1,8 +1,9 @@
-import Socials from "./Socials";
 import Link from "next/link";
-import HamburgerMenu from "./HamburgerMenu";
 import useScroll from "@/hooks/useScroll";
 import { useMediaQuery } from "react-responsive";
+import MobileMenu from "./MobileMenu";
+import DesktopMenu from "./DesktopMenu";
+import ConnectWallet from "./ConnectWallet";
 
 const Navbar = () => {
   const isMobileOrTablet = useMediaQuery({ maxWidth: 768 });
@@ -16,13 +17,11 @@ const Navbar = () => {
           ? isMobileOrTabletScrolled &&
             "bg-base-100/90 backdrop-blur-md shadow-xl"
           : isDesktopScrolled && "bg-base-100/90 backdrop-blur-md shadow-xl"
-      } fixed inset-x-0 top-0 flex items-center justify-between h-12 px-2 md:px-8 transition duration-700 ease-in-out md:h-16 text-neutral-content z-50`}
+      } fixed inset-x-0 top-0 flex items-center justify-between h-12 px-2 md:px-12 transition duration-700 ease-in-out md:h-16 text-neutral-content z-50`}
     >
-      <div className="flex justify-start w-1/4">
-        <Socials />
-      </div>
+      <MobileMenu />
 
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center w-full md:justify-center md:w-auto">
         <Link href="/">
           <h1 className="flex-1 text-xl font-extrabold cursor-pointer md:text-3xl">
             Vincask
@@ -30,8 +29,9 @@ const Navbar = () => {
         </Link>
       </div>
 
-      <div className="flex justify-end w-1/4">
-        <HamburgerMenu />
+      <div className="flex w-1/3 md:w-auto">
+        <DesktopMenu />
+        <ConnectWallet />
       </div>
     </nav>
   );
