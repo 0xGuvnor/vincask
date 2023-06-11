@@ -7,14 +7,15 @@ const FAQ = () => {
         FAQs
       </h1>
       <h3 className="text-xs md:text-base md:max-w-3xl">
-        Have a different question and can't find the answer you're looking for?{" "}
+        Have a different question and can&apos;t find the answer you&apos;re
+        looking for?{" "}
         <a
           href=""
           className="underline transition-colors duration-200 ease-in-out cursor-pointer underline-offset-2 decoration-1 hover:text-blue-500"
         >
           Reach out to our support team
         </a>{" "}
-        by sending us an email and we'll get back to you as soon as we can.
+        by sending us an email and we&apos;ll get back to you as soon as we can.
       </h3>
       <Accordian />
     </div>
