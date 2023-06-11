@@ -31,7 +31,7 @@ const ConnectWallet = () => {
                 userSelect: "none",
               },
             })}
-            className={`${openSans.className} w-full text-xs mr-2 leading-3 md:leading-normal transition-colors duration-300 ease-in-out rounded select-none md:px-2 md:py-1 p-1 hover:bg-primary-focus hover:text-gray-300 md:ml-6 md:w-auto md:text-sm bg-primary`}
+            className={`${openSans.className} w-full text-xs mr-2 leading-3 md:leading-normal transition-colors duration-300 ease-in-out rounded select-none md:px-3 md:py-2 p-1 hover:bg-primary-focus hover:text-gray-300 md:ml-6 md:w-auto md:text-sm bg-primary`}
           >
             {(() => {
               if (!connected) {
@@ -55,7 +55,7 @@ const ConnectWallet = () => {
                   <button
                     onClick={openChainModal}
                     type="button"
-                    className="border-r-[0.5px] flex items-center hover:brightness-125 transition duration-300 ease-in-out"
+                    className="hidden border-r-[0.5px] md:flex items-center hover:brightness-125 transition duration-300 ease-in-out"
                   >
                     {chain.hasIcon && (
                       <div

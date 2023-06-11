@@ -2,7 +2,12 @@ import { Menu } from "@headlessui/react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-export const menuItems = ["About", "Our Team", "FAQs", "Contact Us"];
+export const menuItems = [
+  { title: "About", link: "/about" },
+  { title: "Our Team", link: "/#team" },
+  { title: "FAQs", link: "/#faqs" },
+  { title: "Contact Us", link: "/contact" },
+];
 
 const MenuDropdown = () => {
   return (
@@ -21,10 +26,13 @@ const MenuDropdown = () => {
         className="flex flex-col items-center justify-center space-y-2 backdrop-blur-md"
       >
         {menuItems.map((menuItem) => (
-          <Menu.Item as="div" key={menuItem}>
+          <Menu.Item as="div" key={menuItem.link}>
             {({ active }) => (
-              <Link href="/" className={`${active && "brightness-200"}`}>
-                {menuItem}
+              <Link
+                href={menuItem.link}
+                className={`${active && "brightness-200"}`}
+              >
+                {menuItem.title}
               </Link>
             )}
           </Menu.Item>

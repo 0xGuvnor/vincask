@@ -2,10 +2,11 @@ import Accordian from "./Accordian";
 
 const FAQ = () => {
   return (
-    <div className="flex flex-col px-4 space-y-4 md:space-y-8 md:p-12 2xl:px-24">
-      <h1 id="faq" className="text-3xl md:text-6xl">
-        FAQs
-      </h1>
+    <div
+      id="faqs"
+      className="flex flex-col px-4 space-y-4 md:space-y-8 md:px-12 md:py-20 2xl:px-24"
+    >
+      <h1 className="text-3xl md:text-6xl">FAQs</h1>
       <h3 className="text-sm md:text-base md:max-w-3xl">
         Have a different question and can&apos;t find the answer you&apos;re
         looking for?{" "}

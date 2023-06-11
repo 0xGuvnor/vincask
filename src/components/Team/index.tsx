@@ -19,11 +19,12 @@ const team = [
 
 const Team = () => {
   return (
-    <div className="flex flex-col gap-4 px-4 py-6 md:gap-8 md:p-12 2xl:px-24 bg-[#582B11]">
+    <div
+      id="team"
+      className="flex flex-col gap-4 px-4 py-6 md:gap-8 md:px-12 md:py-20 2xl:px-24 bg-[#582B11]"
+    >
       <div className="space-y-2 md:space-y-4">
-        <h1 id="team" className="text-3xl md:text-6xl">
-          Our Team
-        </h1>
+        <h1 className="text-3xl md:text-6xl">Our Team</h1>
         <h3 className="text-sm md:text-base md:max-w-3xl">
           Vincask was founded by a group of whisky enthusiasts with a passion
           for Irish whisky and a vision to bring the finest and rarest bottles
