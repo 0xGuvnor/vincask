@@ -1,4 +1,4 @@
-import About from "@/components/About";
+import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
@@ -7,13 +7,12 @@ import Testimonials from "@/components/Testimonials";
 
 export default function Home() {
   return (
-    <main className="">
-      <Navbar />
+    <div className="flex flex-col space-y-8">
       <Hero />
       <Testimonials />
       <Team />
-      <About />
+      <FAQ />
       <Footer />
-    </main>
+    </div>
   );
 }
