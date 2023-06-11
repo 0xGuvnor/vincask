@@ -23,7 +23,7 @@ const Navbar = () => {
 
       <div className="flex items-center justify-center w-full md:justify-center md:w-auto">
         <Link href="/">
-          <h1 className="flex-1 text-xl font-extrabold cursor-pointer md:text-3xl">
+          <h1 className="flex-1 text-2xl font-extrabold cursor-pointer md:text-3xl">
             Vincask
           </h1>
         </Link>
