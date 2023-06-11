@@ -10,11 +10,11 @@ const AccordianItem = ({ header, content }: Props) => {
   return (
     <Disclosure
       as="div"
-      className="last:border-b-[0.5px] border-base-content/50 border-t-[0.5px]"
+      className="last:border-b-[0.5px] border-base-content/50 border-t-[0.5px] first:mt-6 md:first:mt-8"
     >
       {({ open }) => (
         <>
-          <Disclosure.Button className="flex items-center justify-between w-full py-2 text-base text-left md:py-3 md:text-lg hover:text-[#FBD1A2] focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
+          <Disclosure.Button className="flex items-center justify-between w-full py-2 text-base text-left md:py-3 md:text-lg hover:text-[#FBD1A2] focus:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-opacity-75">
             <span>{header}</span>
             <HiChevronUp
               className={`${

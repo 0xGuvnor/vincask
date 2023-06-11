@@ -22,7 +22,7 @@ const faqs = [
 
 const Accordian = () => {
   return (
-    <div className="self-start w-full">
+    <div className="flex flex-col w-full">
       {faqs.map((faq, id) => (
         <AccordianItem key={id} header={faq.header} content={faq.content} />
       ))}

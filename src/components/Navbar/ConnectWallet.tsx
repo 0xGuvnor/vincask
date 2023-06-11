@@ -18,9 +18,7 @@ const ConnectWallet = () => {
         // Note: If your app doesn't use authentication, you
         // can remove all 'authenticationStatus' checks
         const ready = mounted; /*&& authenticationStatus !== "loading";*/
-        const connected =
-          // ready &&
-          account && chain;
+        const connected = ready && account && chain;
         // (!authenticationStatus || authenticationStatus === "authenticated");
 
         return (
@@ -33,7 +31,7 @@ const ConnectWallet = () => {
                 userSelect: "none",
               },
             })}
-            className={`${openSans.className} w-full text-[10px] mr-2 leading-3 md:leading-normal transition-colors duration-300 ease-in-out rounded select-none md:px-2 py-[2px] md:py-1 hover:bg-primary-focus hover:text-gray-300 md:ml-6 md:w-auto md:text-sm bg-primary`}
+            className={`${openSans.className} w-full text-[10px] mr-2 leading-3 md:leading-normal transition-colors duration-300 ease-in-out rounded select-none md:px-2 py-[2px] md:py-1 px-1 hover:bg-primary-focus hover:text-gray-300 md:ml-6 md:w-auto md:text-sm bg-primary`}
           >
             {(() => {
               if (!connected) {
