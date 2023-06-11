@@ -6,7 +6,7 @@ const FAQ = () => {
       <h1 id="faq" className="text-3xl md:text-6xl">
         FAQs
       </h1>
-      <h3 className="text-xs md:text-base md:max-w-3xl">
+      <h3 className="text-sm md:text-base md:max-w-3xl">
         Have a different question and can&apos;t find the answer you&apos;re
         looking for?{" "}
         <a
