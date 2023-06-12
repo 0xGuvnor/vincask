@@ -20,7 +20,7 @@ const Contact = () => {
           subtitle="Reach Out to Us for Inquiries, Feedback, and Collaborations"
         />
 
-        <div className="flex flex-col justify-between flex-1">
+        <div className="flex flex-col justify-between flex-1 gap-12 md:gap-16">
           <ContactForm />
           <ContactCards />
         </div>

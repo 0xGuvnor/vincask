@@ -8,7 +8,7 @@ import ConnectWallet from "./ConnectWallet";
 const Navbar = () => {
   const isMobileOrTablet = useMediaQuery({ maxWidth: 768 });
   const isMobileOrTabletScrolled = useScroll(10);
-  const isDesktopScrolled = useScroll(200);
+  const isDesktopScrolled = useScroll(30);
 
   return (
     <nav
