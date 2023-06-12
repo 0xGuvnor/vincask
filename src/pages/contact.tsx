@@ -2,7 +2,7 @@ import Container from "@/components/Container";
 import Heading from "@/components/Heading";
 import Head from "next/head";
 
-const contact = () => {
+const Contact = () => {
   return (
     <>
       <Head>
@@ -21,4 +21,4 @@ const contact = () => {
     </>
   );
 };
-export default contact;
+export default Contact;
