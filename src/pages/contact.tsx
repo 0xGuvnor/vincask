@@ -1,3 +1,4 @@
+import ContactForm from "@/components/ContactForm";
 import Container from "@/components/Container";
 import Heading from "@/components/Heading";
 import Head from "next/head";
@@ -17,6 +18,8 @@ const Contact = () => {
           title="Get in Touch"
           subtitle="Reach Out to Us for Inquiries, Feedback, and Collaborations"
         />
+
+        <ContactForm />
       </Container>
     </>
   );
