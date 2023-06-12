@@ -22,8 +22,8 @@ const contacts = [
 const ContactCards = () => {
   return (
     <div className="flex justify-between">
-      {contacts.map(({ type, email, phone }) => (
-        <ContactCard type={type} email={email} phone={phone} />
+      {contacts.map(({ type, email, phone }, id) => (
+        <ContactCard key={id} type={type} email={email} phone={phone} />
       ))}
     </div>
   );
