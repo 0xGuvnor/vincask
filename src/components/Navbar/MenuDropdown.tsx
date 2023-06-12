@@ -5,7 +5,7 @@ import Link from "next/link";
 export const menuItems = [
   { title: "About", link: "/about" },
   { title: "Our Team", link: "/#team" },
-  { title: "FAQs", link: "/#faqs" },
+  { title: "FAQs", link: "/#faq" },
   { title: "Contact Us", link: "/contact" },
 ];
 

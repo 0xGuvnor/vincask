@@ -8,6 +8,7 @@ import Navbar from "@/components/Navbar";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Antic_Didone, Open_Sans } from "next/font/google";
+import Footer from "@/components/Footer";
 
 const anticDidone = Antic_Didone({
   weight: ["400"],
@@ -36,9 +37,14 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider chains={chains} coolMode>
-        <main className={anticDidone.className}>
-          <Navbar />
-          <Component {...pageProps} />
+        <main
+          className={`${anticDidone.className} flex flex-col justify-between min-h-screen`}
+        >
+          <>
+            <Navbar />
+            <Component {...pageProps} />
+          </>
+          <Footer />
         </main>
       </RainbowKitProvider>
     </WagmiConfig>

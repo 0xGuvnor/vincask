@@ -10,7 +10,7 @@ const AccordianItem = ({ header, content }: Props) => {
   return (
     <Disclosure
       as="div"
-      className="last:border-b-[0.5px] border-base-content/50 border-t-[0.5px] first:mt-6 md:first:mt-8"
+      className="last:border-b-[0.5px] border-base-content/50 border-t-[0.5px]"
     >
       {({ open }) => (
         <>

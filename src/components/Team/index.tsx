@@ -1,3 +1,5 @@
+import Container from "../Container";
+import Heading from "../Heading";
 import TeamProfile from "./TeamProfile";
 
 const team = [
@@ -19,20 +21,13 @@ const team = [
 
 const Team = () => {
   return (
-    <div
-      id="team"
-      className="flex flex-col gap-4 px-4 py-14 md:gap-8 md:px-12 md:py-20 2xl:px-24 bg-[#582B11]"
-    >
-      <div className="space-y-2 md:space-y-4">
-        <h1 className="text-3xl md:text-6xl">Our Team</h1>
-        <h3 className="text-sm md:text-base md:max-w-3xl">
-          Vincask was founded by a group of whisky enthusiasts with a passion
-          for Irish whisky and a vision to bring the finest and rarest bottles
-          to customers worldwide.
-        </h3>
-      </div>
+    <Container id="team" classNames="bg-[#582B11]">
+      <Heading
+        title="Our Team"
+        subtitle="Vincask was founded by a group of whisky enthusiasts with a passion for Irish whisky and a vision to bring the finest and rarest bottles to customers worldwide."
+      />
 
-      <div className="flex flex-col gap-4 md:justify-between md:flex-row">
+      <div className="flex flex-col gap-10 md:justify-between md:flex-row">
         {team.map((teamMember, id) => (
           <TeamProfile
             key={id}
@@ -43,7 +38,7 @@ const Team = () => {
           />
         ))}
       </div>
-    </div>
+    </Container>
   );
 };
 export default Team;

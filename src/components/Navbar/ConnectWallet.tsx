@@ -31,7 +31,7 @@ const ConnectWallet = () => {
                 userSelect: "none",
               },
             })}
-            className={`${openSans.className} w-full text-xs mr-2 leading-3 md:leading-normal transition-colors duration-300 ease-in-out rounded select-none md:px-3 md:py-2 p-1 hover:bg-primary-focus hover:text-gray-300 md:ml-6 md:w-auto md:text-sm bg-primary`}
+            className={`${openSans.className} w-full text-xs leading-3 md:leading-normal transition-colors duration-300 ease-in-out rounded select-none md:px-3 md:py-2 p-1 hover:bg-primary-focus hover:text-gray-300 md:ml-6 md:w-auto md:text-base bg-primary`}
           >
             {(() => {
               if (!connected) {
@@ -55,22 +55,22 @@ const ConnectWallet = () => {
               }
 
               return (
-                <div className="flex space-x-2">
+                <div className="flex md:gap-2">
                   <button
                     onClick={openChainModal}
                     type="button"
-                    className="hidden border-r-[0.5px] md:flex items-center hover:brightness-125 transition duration-300 ease-in-out"
+                    className="flex items-center transition duration-300 ease-in-out md:border-0 hover:brightness-125"
                   >
                     {chain.hasIcon && (
                       <div
                         style={{ background: chain.iconBackground }}
-                        className="w-5 h-5 mr-2 overflow-hidden rounded-full"
+                        className="w-4 h-4 overflow-hidden rounded-full md:w-6 md:h-6"
                       >
                         {chain.iconUrl && (
                           <img
                             alt={chain.name ?? "Chain icon"}
                             src={chain.iconUrl}
-                            className="w-5 h-5"
+                            className="w-4 h-4 md:w-6 md:h-6"
                           />
                         )}
                       </div>
@@ -81,7 +81,7 @@ const ConnectWallet = () => {
                   <button
                     onClick={openAccountModal}
                     type="button"
-                    className="transition duration-300 ease-in-out hover:brightness-200"
+                    className="w-full text-center transition duration-300 ease-in-out hover:brightness-200"
                   >
                     {account.displayName}
                     {/* {account.displayBalance
