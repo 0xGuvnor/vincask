@@ -1,3 +1,4 @@
+import ContactCards from "@/components/ContactCards";
 import ContactForm from "@/components/ContactForm";
 import Container from "@/components/Container";
 import Heading from "@/components/Heading";
@@ -13,13 +14,16 @@ const Contact = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Container>
+      <Container classNames="flex-1">
         <Heading
           title="Get in Touch"
           subtitle="Reach Out to Us for Inquiries, Feedback, and Collaborations"
         />
 
-        <ContactForm />
+        <div className="flex flex-col justify-between flex-1">
+          <ContactForm />
+          <ContactCards />
+        </div>
       </Container>
     </>
   );
