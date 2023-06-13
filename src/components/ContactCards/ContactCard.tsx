@@ -1,8 +1,8 @@
-type Props = {
+interface Props {
   type: string;
   email: string;
   phone: string;
-};
+}
 
 const ContactCard = ({ type, email, phone }: Props) => {
   return (
