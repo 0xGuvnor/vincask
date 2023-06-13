@@ -1,5 +1,6 @@
 import FAQ from "@/components/FAQ";
 import Hero from "@/components/Hero";
+import Newsletter from "@/components/Newsletter";
 import Team from "@/components/Team";
 import Testimonials from "@/components/Testimonials";
 import Head from "next/head";
@@ -19,6 +20,7 @@ export default function Home() {
         <Testimonials />
         <Team />
         <FAQ />
+        <Newsletter />
       </div>
     </>
   );
