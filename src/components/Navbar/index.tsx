@@ -17,7 +17,7 @@ const Navbar = () => {
           ? isMobileOrTabletScrolled &&
             "bg-base-100/90 backdrop-blur-md shadow-xl"
           : isDesktopScrolled && "bg-base-100/90 backdrop-blur-md shadow-xl"
-      } fixed inset-x-0 top-0 flex items-center justify-between h-12 px-2 md:px-12 transition duration-700 ease-in-out md:h-16 text-neutral-content z-50`}
+      } fixed inset-x-0 top-0 flex items-center justify-between h-12 px-2 md:px-12 transition duration-500 ease-in-out md:h-16 text-neutral-content z-50`}
     >
       <MobileMenu />
 
