@@ -10,7 +10,7 @@ const Container = ({ children, id, classNames }: Props) => {
   return (
     <div
       id={id}
-      className={`flex flex-col gap-12 px-4 py-14 md:px-12 md:py-20 2xl:px-24 md:gap-16 ${classNames}`}
+      className={`flex flex-col gap-12 px-4 py-14 md:px-12 md:py-20 md:gap-16 2xl:px-0 max-w-[1500px] mx-auto ${classNames}`}
     >
       {children}
     </div>
