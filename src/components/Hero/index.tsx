@@ -3,7 +3,7 @@ import CtaButtons from "./CtaButtons";
 
 const Hero = () => {
   return (
-    <main className="flex flex-col relative items-center justify-center h-screen md:h-[90vh]">
+    <main className="relative flex flex-col items-center justify-center h-screen">
       <div className="absolute top-0 left-0 w-full h-full -z-10">
         <Image
           src="/hero.jpeg"
