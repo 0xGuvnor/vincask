@@ -16,7 +16,7 @@ const Newsletter = () => {
   } = useForm<INewsletterInput>();
 
   return (
-    <Container classNames="md:flex-row justify-between items-center w-full !gap-6">
+    <Container classNames="md:flex-row justify-between items-center w-full !gap-10">
       <div className="w-full text-3xl md:text-5xl sm:w-auto">
         <h3>
           Want product news and updates? {!isMobile && <br />}Sign up for our
