@@ -4,7 +4,7 @@ import useScroll from "@/hooks/useScroll";
 import { AnimatePresence, motion } from "framer-motion";
 
 const Hero = () => {
-  const isScrolled = useScroll(50);
+  const isScrolled = useScroll(25);
 
   return (
     <main className="relative flex flex-col items-center justify-center h-screen">
