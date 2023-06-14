@@ -1,7 +1,11 @@
 import Image from "next/image";
 import CtaButtons from "./CtaButtons";
+import useScroll from "@/hooks/useScroll";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Hero = () => {
+  const isScrolled = useScroll(50);
+
   return (
     <main className="relative flex flex-col items-center justify-center h-screen">
       <div className="absolute top-0 left-0 w-full h-full -z-10">
@@ -23,6 +27,20 @@ const Hero = () => {
       </div>
 
       <CtaButtons />
+
+      <AnimatePresence initial={false}>
+        {!isScrolled && (
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -100 }}
+            className="absolute inset-x-0 flex flex-col items-center self-center justify-center w-full h-10 bottom-2 md:bottom-4"
+          >
+            <p className="text-xs md:text-sm">Scroll to learn more</p>
+            <div className="w-[1px] h-5 bg-whitex bg-gradient-to-b from-white"></div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 };
