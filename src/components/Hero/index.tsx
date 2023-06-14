@@ -3,11 +3,11 @@ import CtaButtons from "./CtaButtons";
 
 const Hero = () => {
   return (
-    <main className="flex flex-col items-center justify-center h-screen">
-      <div className="absolute top-0 left-0 w-full h-screen -z-10">
+    <main className="flex flex-col relative items-center justify-center h-screen md:h-[90vh]">
+      <div className="absolute top-0 left-0 w-full h-full -z-10">
         <Image
           src="/hero.jpeg"
-          alt="Hero image of whiskey barrels"
+          alt="Hero image of whisky barrels"
           fill
           className="object-cover brightness-[0.65]"
         />

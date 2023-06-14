@@ -1,3 +1,5 @@
+import Container from "@/components/Container";
+import Heading from "@/components/Heading";
 import Head from "next/head";
 
 const About = () => {
@@ -10,7 +12,16 @@ const About = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="mt-14 md:mt-20">about</div>
+      <Container classNames="flex-1">
+        <Heading title="About" />
+
+        <div>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab cum
+          perferendis, molestiae enim reprehenderit repellat neque ea ipsum
+          ducimus eligendi expedita nobis doloribus. Quisquam distinctio iusto
+          recusandae sed sunt consequuntur.
+        </div>
+      </Container>
     </>
   );
 };

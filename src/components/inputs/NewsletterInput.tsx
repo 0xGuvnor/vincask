@@ -36,7 +36,7 @@ const NewsletterInput = ({
       />
       <label
         htmlFor={id}
-        className="absolute transition duration-300 md:text-base text-sm ease-in-out origin-bottom-left scale-75 peer-placeholder-shown:text-slate-700 peer-focus:!text-base-content -translate-y-8 peer-focus:-translate-y-8 md:-translate-y-9 left-4 top-2 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:md:-translate-y-9"
+        className="absolute transition duration-300 md:text-base text-sm ease-in-out origin-bottom-left scale-75 peer-placeholder-shown:text-slate-700 peer-focus:!text-base-content -translate-y-8 peer-focus:-translate-y-8 md:-translate-y-9 left-4 top-2 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:md:-translate-y-9 cursor-text"
       >
         {label}
       </label>

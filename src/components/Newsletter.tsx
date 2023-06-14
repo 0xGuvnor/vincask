@@ -1,8 +1,9 @@
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import Container from "./Container";
 import Link from "next/link";
 import NewsletterInput from "./inputs/NewsletterInput";
 import { useMediaQuery } from "react-responsive";
+import useIsMounted from "@/hooks/useIsMounted";
 
 export interface INewsletterInput {
   email: string;
@@ -10,12 +11,20 @@ export interface INewsletterInput {
 
 const Newsletter = () => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
+  const isMounted = useIsMounted();
   const {
     register,
+    handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<INewsletterInput>();
 
-  return (
+  const onSubmit: SubmitHandler<INewsletterInput> = (data) => {
+    console.log(data);
+    reset();
+  };
+
+  return isMounted ? (
     <Container classNames="md:flex-row justify-between items-center w-full !gap-10">
       <div className="w-full text-3xl md:text-5xl sm:w-auto">
         <h3>
@@ -25,7 +34,7 @@ const Newsletter = () => {
       </div>
 
       <div className="relative flex-1 w-full">
-        <form className="flex gap-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex gap-4">
           <NewsletterInput
             label="Enter your email address"
             register={register}
@@ -48,11 +57,12 @@ const Newsletter = () => {
             href="/"
             className="underline transition-colors duration-300 ease-in-out cursor-pointer hover:text-blue-500 decoration-primary underline-offset-[3px]"
           >
-            privacy policy.
+            privacy policy
           </Link>
+          .
         </p>
       </div>
     </Container>
-  );
+  ) : null;
 };
 export default Newsletter;
