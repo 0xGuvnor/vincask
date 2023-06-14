@@ -2,25 +2,29 @@ import { useForm } from "react-hook-form";
 import Container from "./Container";
 import Link from "next/link";
 import NewsletterInput from "./inputs/NewsletterInput";
+import { useMediaQuery } from "react-responsive";
 
 export interface INewsletterInput {
   email: string;
 }
 
 const Newsletter = () => {
+  const isMobile = useMediaQuery({ maxWidth: 768 });
   const {
     register,
     formState: { errors },
   } = useForm<INewsletterInput>();
 
   return (
-    <Container classNames="md:flex-row justify-between items-center w-full">
-      <div className="md:text-4xl">
-        <h3>Want product news and updates?</h3>
-        <h3>Sign up for our newsletter.</h3>
+    <Container classNames="md:flex-row justify-between items-center w-full !gap-6">
+      <div className="w-full text-3xl md:text-5xl sm:w-auto">
+        <h3>
+          Want product news and updates? {!isMobile && <br />}Sign up for our
+          newsletter.
+        </h3>
       </div>
 
-      <div className="relative flex-1">
+      <div className="relative flex-1 w-full">
         <form className="flex gap-4">
           <NewsletterInput
             label="Enter your email address"
@@ -32,7 +36,7 @@ const Newsletter = () => {
 
           <button
             type="submit"
-            className="px-4 py-2 transition-colors duration-300 ease-in-out rounded bg-primary hover:bg-primary-focus"
+            className="px-4 h-[38px] md:text-base text-sm md:!h-[42px] py-2 normal-case transition-colors duration-300 ease-in-out rounded btn btn-sm bg-primary hover:bg-primary-focus"
           >
             Subscribe
           </button>
