@@ -34,7 +34,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -100 }}
-            className="absolute inset-x-0 flex flex-col items-center self-center justify-center w-full h-10 bottom-2 md:bottom-4"
+            className="absolute inset-x-0 flex flex-col items-center self-center justify-center w-full h-10 bottom-12 md:bottom-4"
           >
             <p className="text-xs md:text-sm">Scroll to learn more</p>
             <div className="w-[1px] h-5 bg-whitex bg-gradient-to-b from-white"></div>
