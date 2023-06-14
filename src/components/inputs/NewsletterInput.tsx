@@ -1,19 +1,19 @@
 import { FieldErrors, UseFormRegister } from "react-hook-form";
-import { IFormInput } from "./ContactForm";
+import { INewsletterInput } from "../Newsletter";
 
 interface Props {
-  id: keyof IFormInput;
+  id: keyof INewsletterInput;
   label: string;
   type?: string;
-  register: UseFormRegister<IFormInput>;
+  register: UseFormRegister<INewsletterInput>;
   required?: boolean;
   minLength?: number;
   maxLength?: number;
-  errors: FieldErrors<IFormInput>;
+  errors: FieldErrors<INewsletterInput>;
   errorMessage?: string;
 }
 
-const Input = ({
+const NewsletterInput = ({
   id,
   label,
   type,
@@ -44,4 +44,4 @@ const Input = ({
     </div>
   );
 };
-export default Input;
+export default NewsletterInput;

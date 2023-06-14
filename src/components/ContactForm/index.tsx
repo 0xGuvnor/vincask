@@ -1,5 +1,5 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import Input from "../Input";
+import ContactFormInput from "../inputs/ContactFormInput";
 import TextArea from "../TextArea";
 
 export interface IFormInput {
@@ -30,7 +30,7 @@ const ContactForm = () => {
       className="flex flex-col gap-8 md:gap-10"
     >
       <div className="flex gap-8 md:gap-16">
-        <Input
+        <ContactFormInput
           id="firstName"
           label="First Name*"
           register={register}
@@ -38,7 +38,7 @@ const ContactForm = () => {
           errors={errors}
         />
 
-        <Input
+        <ContactFormInput
           id="lastName"
           label="Last Name*"
           register={register}
@@ -47,7 +47,7 @@ const ContactForm = () => {
         />
       </div>
       <div className="flex gap-8 md:gap-16">
-        <Input
+        <ContactFormInput
           id="email"
           label="Email*"
           register={register}
@@ -56,14 +56,14 @@ const ContactForm = () => {
           errors={errors}
         />
 
-        <Input
+        <ContactFormInput
           id="company"
           label="Company"
           register={register}
           errors={errors}
         />
       </div>
-      <Input
+      <ContactFormInput
         id="phoneNumber"
         label="Phone Number"
         register={register}

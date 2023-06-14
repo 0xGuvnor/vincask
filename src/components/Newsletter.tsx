@@ -1,13 +1,17 @@
 import { useForm } from "react-hook-form";
 import Container from "./Container";
-import Input from "./Input";
 import Link from "next/link";
+import NewsletterInput from "./inputs/NewsletterInput";
+
+export interface INewsletterInput {
+  email: string;
+}
 
 const Newsletter = () => {
   const {
     register,
     formState: { errors },
-  } = useForm();
+  } = useForm<INewsletterInput>();
 
   return (
     <Container classNames="md:flex-row justify-between items-center w-full">
@@ -18,27 +22,27 @@ const Newsletter = () => {
 
       <div className="relative flex-1">
         <form className="flex gap-4">
-          <Input
-            label="Enter your email"
+          <NewsletterInput
+            label="Enter your email address"
             register={register}
             errors={errors}
             type="email"
-            id="subscribe"
+            id="email"
           />
-          {/* <input
-            placeholder=" "
-            className="peer bg-white/5 focus:outline-none"
-          />
-          <label>Enter your email</label> */}
-          <button type="submit" className="px-4 py-2 rounded bg-secondary">
+
+          <button
+            type="submit"
+            className="px-4 py-2 transition-colors duration-300 ease-in-out rounded bg-primary hover:bg-primary-focus"
+          >
             Subscribe
           </button>
         </form>
+
         <p className="absolute left-0 text-xs md:text-sm -bottom-7">
           We care about your data. Read our{" "}
           <Link
             href="/"
-            className="underline transition-colors duration-300 ease-in-out cursor-pointer hover:text-primary decoration-primary underline-offset-2"
+            className="underline transition-colors duration-300 ease-in-out cursor-pointer hover:text-blue-500 decoration-primary underline-offset-[3px]"
           >
             privacy policy.
           </Link>
