@@ -9,6 +9,7 @@ import { publicProvider } from "wagmi/providers/public";
 import Navbar from "@/components/Navbar";
 import type { AppProps } from "next/app";
 import Footer from "@/components/Footer";
+import { MobileMenuProvider } from "@/context/MobileMenuContext";
 
 const anticDidone = Antic_Didone({
   weight: ["400"],
@@ -37,15 +38,15 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider chains={chains} coolMode>
-        <main
-          className={`${anticDidone.className} flex flex-col justify-between min-h-screen`}
-        >
-          <>
+        <MobileMenuProvider>
+          <main
+            className={`${anticDidone.className} flex flex-col justify-between min-h-screen`}
+          >
             <Navbar />
             <Component {...pageProps} />
-          </>
-          <Footer />
-        </main>
+            <Footer />
+          </main>
+        </MobileMenuProvider>
       </RainbowKitProvider>
     </WagmiConfig>
   );

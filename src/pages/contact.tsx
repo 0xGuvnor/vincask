@@ -2,9 +2,13 @@ import ContactCards from "@/components/ContactCards";
 import ContactForm from "@/components/ContactForm";
 import Container from "@/components/Container";
 import Heading from "@/components/Heading";
+import Overlay from "@/components/Overlay";
+import { useMobileMenuContext } from "@/context/MobileMenuContext";
 import Head from "next/head";
 
 const Contact = () => {
+  const { show } = useMobileMenuContext();
+
   return (
     <>
       <Head>
@@ -13,6 +17,8 @@ const Contact = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      {show && <Overlay />}
 
       <Container classNames="flex-1">
         <Heading

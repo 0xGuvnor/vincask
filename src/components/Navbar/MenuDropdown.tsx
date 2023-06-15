@@ -22,11 +22,11 @@ const MenuDropdown = () => {
         transition: { type: "tween", duration: 0.2 },
       }}
       exit={{ y: -200, opacity: 0, zIndex: -10 }}
-      className="absolute inset-x-0 top-0 w-full py-3 mt-[47px] bg-[#3C0000] shadow-2xl"
+      className="fixed inset-x-0 top-0 w-full py-3 mt-[47px] bg-[#3C0000] shadow-2xl z-50"
     >
       <Menu.Items
         static
-        className="flex flex-col items-center justify-center space-y-2 backdrop-blur-md"
+        className="flex flex-col items-center justify-center space-y-2"
       >
         {menuItems.map((menuItem) => (
           <Menu.Item as="div" key={menuItem.link}>

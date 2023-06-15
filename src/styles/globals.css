@@ -7,7 +7,3 @@
     @apply cursor-pointer rounded-xl hover:bg-black/30 p-2 transition duration-300 ease-in-out h-8 w-8 md:h-10 md:w-10;
   }
 }
-
-html {
-  overflow-x: hidden;
-}
