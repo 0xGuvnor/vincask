@@ -1,7 +1,7 @@
 import Overlay from "@/components/Overlay";
 import { useMobileMenuContext } from "@/context/MobileMenuContext";
 
-const redeem = () => {
+const Redeem = () => {
   const { show } = useMobileMenuContext();
 
   return (
@@ -11,4 +11,4 @@ const redeem = () => {
     </div>
   );
 };
-export default redeem;
+export default Redeem;

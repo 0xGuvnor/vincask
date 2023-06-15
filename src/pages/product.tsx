@@ -1,7 +1,7 @@
 import Overlay from "@/components/Overlay";
 import { useMobileMenuContext } from "@/context/MobileMenuContext";
 
-const product = () => {
+const Product = () => {
   const { show } = useMobileMenuContext();
 
   return (
@@ -11,4 +11,4 @@ const product = () => {
     </div>
   );
 };
-export default product;
+export default Product;

@@ -1,7 +1,7 @@
 import Overlay from "@/components/Overlay";
 import { useMobileMenuContext } from "@/context/MobileMenuContext";
 
-const nft = () => {
+const NFT = () => {
   const { show } = useMobileMenuContext();
 
   return (
@@ -11,4 +11,4 @@ const nft = () => {
     </div>
   );
 };
-export default nft;
+export default NFT;

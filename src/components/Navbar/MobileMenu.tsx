@@ -6,25 +6,25 @@ import { useEffect } from "react";
 import { useMobileMenuContext } from "@/context/MobileMenuContext";
 
 const MobileMenu = () => {
-  const { setShow } = useMobileMenuContext();
+  const { setShow, show } = useMobileMenuContext();
+
+  useEffect(() => {
+    if (show) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [show]);
 
   return (
     <div className="flex items-center justify-start w-1/3 md:hidden">
       <Menu>
         {({ open }) => {
-          useEffect(() => {
-            setShow(open);
-
-            if (open) {
-              document.body.style.overflow = "hidden";
-            } else {
-              document.body.style.overflow = "";
-            }
-
-            return () => {
-              document.body.style.overflow = "";
-            };
-          }, [open, setShow]);
+          setShow(open);
 
           return (
             <>
