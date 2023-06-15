@@ -1,7 +1,9 @@
+import { ReactNode } from "react";
+
 interface Props {
   title: string;
   subtitle?: string;
-  subtitleElement?: JSX.Element;
+  subtitleElement?: ReactNode;
 }
 
 const Heading = ({ title, subtitle, subtitleElement }: Props) => {
