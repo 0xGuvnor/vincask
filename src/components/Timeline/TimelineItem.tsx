@@ -15,7 +15,7 @@ const TimelineItem = ({ date, title, description }: Props) => {
         </div>
         <GoPrimitiveDot className="mr-2" />
         <p className="text-xs md:text-sm">{date}</p>
-        <div className="h-[0.1px] ml-6 bg-white flex-1 hidden md:block"></div>
+        <div className="h-[0.5px] ml-6 bg-white flex-1 hidden md:block"></div>
       </div>
 
       <div className="md:max-w-[275px] space-y-2 md:space-y-3">
