@@ -30,7 +30,12 @@ const Timeline = () => {
   return (
     <div className="flex flex-col items-center justify-between md:flex-row">
       {timelineItems.map(({ date, title, description }) => (
-        <TimelineItem date={date} title={title} description={description} />
+        <TimelineItem
+          key={title}
+          date={date}
+          title={title}
+          description={description}
+        />
       ))}
     </div>
   );
