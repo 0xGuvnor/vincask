@@ -11,7 +11,7 @@ const aboutImages = [
 
 const Collage = () => {
   return (
-    <div className="relative flex-1x h-[550px] md:h-[75vh] w-full bg-whitex">
+    <div className="relative h-[550px] md:h-[75vh] w-full">
       <div className="absolute grid h-full grid-flow-col grid-rows-5 gap-4 -top-9 md:top-0 -left-20 md:left-0 md:grid-rows-6">
         {aboutImages.map((image, id) => (
           <div
