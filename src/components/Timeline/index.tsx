@@ -2,7 +2,7 @@ import TimelineItem from "./TimelineItem";
 
 const timelineItems = [
   {
-    date: "Aug 2020",
+    date: "Aug 1979",
     title: "Whisky batch started aging",
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga est tempora ut! Aliquam et enim non reprehenderit dicta fugiat id.",
@@ -15,7 +15,7 @@ const timelineItems = [
   },
   {
     date: "Jun 2026",
-    title: "Whisky available for redemption",
+    title: "Whisky is bottled and available for redemption",
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga est tempora ut! Aliquam et enim non reprehenderit dicta fugiat id.",
   },
@@ -28,7 +28,7 @@ const timelineItems = [
 ];
 const Timeline = () => {
   return (
-    <div className="flex flex-col items-center justify-between md:flex-row">
+    <div className="flex flex-col items-start justify-between space-y-8 md:space-y-0 md:flex-row">
       {timelineItems.map(({ date, title, description }) => (
         <TimelineItem
           key={title}
