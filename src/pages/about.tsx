@@ -1,6 +1,7 @@
+import Collage from "@/components/Collage";
 import Container from "@/components/Container";
-import Heading from "@/components/Heading";
 import Overlay from "@/components/Overlay";
+import Timeline from "@/components/Timeline";
 import { useMobileMenuContext } from "@/context/MobileMenuContext";
 import Head from "next/head";
 
@@ -19,8 +20,8 @@ const About = () => {
       {show && <Overlay />}
 
       <Container classNames="flex-1">
-        <div className="flex flex-col justify-start items-center md:justify-center h-[90vh] md:flex-row space-y-8 md:space-y-0">
-          <div className="flex flex-col max-w-xl mt-6 space-y-2 text-center md:space-y-4 md:text-left md:mt-0">
+        <div className="flex flex-col justify-start items-center md:justify-center min-h-[75vh] md:flex-row space-y-8 md:space-y-0">
+          <div className="flex flex-col mt-6 space-y-2 text-center md:max-w-xl md:space-y-4 md:text-left md:mt-0">
             <h1 className="text-2xl font-black md:text-5xl">
               Our mission is to redefine the world of whisky and art.
             </h1>
@@ -28,17 +29,14 @@ const About = () => {
               We believe in pushing boundaries, intertwining the realms of
               craftsmanship, innovation, and collectibles. Our passion for
               creating exceptional experiences is at the heart of everything we
-              do
+              do.
             </h3>
           </div>
 
-          <div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab cum
-            perferendis, molestiae enim reprehenderit repellat neque ea ipsum
-            ducimus eligendi expedita nobis doloribus. Quisquam distinctio iusto
-            recusandae sed sunt consequuntur.
-          </div>
+          <Collage />
         </div>
+
+        <Timeline />
       </Container>
     </>
   );
