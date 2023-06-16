@@ -11,7 +11,7 @@ const TimelineItem = ({ date, title, description }: Props) => {
     <div className="flex flex-col space-y-4 md:space-y-6 max-w-[285px]">
       <div className="relative flex items-center">
         <div className="absolute inset-y-0 flex items-center justify-center w-4 -left-5 md:hidden">
-          <div className="bg-white w-full h-[0.1px]"></div>
+          <div className="bg-white w-full h-[0.5px]"></div>
         </div>
         <GoPrimitiveDot className="mr-2" />
         <p className="text-xs md:text-sm">{date}</p>
