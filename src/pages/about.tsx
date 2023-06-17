@@ -19,7 +19,9 @@ const About = () => {
 
       {show && <Overlay />}
 
-      <Container classNames="flex-1 overflow-x-hidden">
+      <Container classNames="flex-1 overflow-x-hidden relative">
+        <div className="absolute inset-0 w-full h-full bg-white/75 sm:bg-transparent sm:bg-gradient-to-br sm:from-black/40 sm:from-0% -z-10 "></div>
+
         <div className="flex flex-col justify-start items-center md:justify-center min-h-[75vh] md:flex-row space-y-8 md:space-y-0">
           <div className="flex flex-col mt-6 space-y-2 text-center md:max-w-xl md:space-y-4 md:text-left md:mt-0">
             <h1 className="text-2xl font-black text-white md:text-5xl">
