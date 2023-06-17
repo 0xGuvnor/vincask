@@ -15,7 +15,7 @@ const AccordianItem = ({ header, content }: Props) => {
       {({ open }) => (
         <>
           <Disclosure.Button className="flex items-center justify-between w-full py-2 text-base text-left md:py-3 md:text-lg hover:text-[#FBD1A2] focus:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-opacity-75">
-            <span>{header}</span>
+            <span className="text-white">{header}</span>
             <HiChevronUp
               className={`${
                 open && "rotate-180"
@@ -30,7 +30,7 @@ const AccordianItem = ({ header, content }: Props) => {
             leaveFrom="transform translate-y-0 opacity-100"
             leaveTo="transform -translate-y-6 opacity-0"
           >
-            <Disclosure.Panel className="pb-4 text-base md:text-lg text-base-content/50">
+            <Disclosure.Panel className="pb-4 text-base md:text-lg text-base-content/80">
               {content}
             </Disclosure.Panel>
           </Transition>

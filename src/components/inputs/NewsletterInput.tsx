@@ -32,7 +32,7 @@ const NewsletterInput = ({
         type={type}
         placeholder=" "
         autoComplete="off"
-        className="w-full px-4 py-2 md:text-base text-sm text-black border-b-2 rounded peer bg-[#B2B09B] focus:outline-none focus-within:ring-1 focus-within:ring-primary disabled:cursor-not-allowed border-primary"
+        className="w-full sm:min-w-[250px] px-4 py-2 md:text-base text-sm text-black border-b-2 rounded peer bg-[#B2B09B] focus:outline-none focus-within:ring-1 focus-within:ring-primary disabled:cursor-not-allowed border-primary"
       />
       <label
         htmlFor={id}

@@ -3,7 +3,7 @@ import TimelineItem from "./TimelineItem";
 const timelineItems = [
   {
     date: "Aug 1979",
-    title: "Whisky batch started aging",
+    title: "Whisky batch starts aging",
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga est tempora ut! Aliquam et enim non reprehenderit dicta fugiat id.",
   },

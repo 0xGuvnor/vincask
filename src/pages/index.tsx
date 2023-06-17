@@ -1,6 +1,5 @@
 import FAQ from "@/components/FAQ";
 import Hero from "@/components/Hero";
-import Newsletter from "@/components/Newsletter";
 import Overlay from "@/components/Overlay";
 import Team from "@/components/Team";
 import Testimonials from "@/components/Testimonials";
@@ -26,7 +25,6 @@ export default function Home() {
         <Testimonials />
         <Team />
         <FAQ />
-        <Newsletter />
       </div>
     </>
   );
