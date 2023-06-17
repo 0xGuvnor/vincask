@@ -40,7 +40,7 @@ const Collage = () => {
               src={image.path}
               alt={image.description}
               fill
-              className="object-cover rounded-lg shadow-2xl shadow-rose-900"
+              className="object-cover rounded-lg shadow-2xl shadow-rose-800"
             />
           </div>
         ))}
