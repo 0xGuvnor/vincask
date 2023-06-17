@@ -28,7 +28,7 @@ const Newsletter = () => {
     <div className="border-y-[0.5px] border-white/30">
       <Container classNames="md:flex-row justify-between items-center w-full !gap-10">
         <div className="w-full text-2xl md:text-4xl sm:w-auto">
-          <h3>
+          <h3 className="text-white">
             Want the latest product news and updates? {!isMobile && <br />}Sign
             up for our newsletter.
           </h3>
