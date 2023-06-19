@@ -5,7 +5,7 @@ import Accordian from "./Accordian";
 
 const FAQ = () => {
   return (
-    <Container id="faq">
+    <Container>
       <Heading
         title="FAQs"
         subtitleElement={
