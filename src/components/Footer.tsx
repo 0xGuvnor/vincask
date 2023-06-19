@@ -146,12 +146,6 @@ const Footer = () => {
                 <ul className="mt-6 space-y-4 text-sm">
                   <li>
                     <a href="#" className="transition hover:opacity-75">
-                      1on1 Coaching
-                    </a>
-                  </li>
-
-                  <li>
-                    <a href="#" className="transition hover:opacity-75">
                       Company Review
                     </a>
                   </li>

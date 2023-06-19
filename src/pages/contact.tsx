@@ -1,6 +1,7 @@
 import ContactCards from "@/components/ContactCards";
 import ContactForm from "@/components/ContactForm";
 import Container from "@/components/Container";
+import FAQ from "@/components/FAQ";
 import Heading from "@/components/Heading";
 import Overlay from "@/components/Overlay";
 import { useMobileMenuContext } from "@/context/MobileMenuContext";
@@ -26,11 +27,14 @@ const Contact = () => {
           subtitle="Reach Out to Us for Inquiries, Feedback, and Collaborations"
         />
 
-        <div className="flex flex-col justify-between flex-1 gap-12 md:gap-16">
-          <ContactForm />
-          <ContactCards />
-        </div>
+        <ContactForm />
       </Container>
+
+      <Container classNames="bg-[#3D0814]">
+        <ContactCards />
+      </Container>
+
+      <FAQ />
     </>
   );
 };

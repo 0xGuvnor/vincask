@@ -11,7 +11,7 @@ const aboutImages = [
 
 const Collage = () => {
   return (
-    <div className="relative h-[550px] md:h-[75vh] w-full">
+    <div className="relative h-[550px] md:h-[75vh]x md:h-[800px] w-full">
       <div className="absolute grid h-full grid-flow-col grid-rows-5 gap-4 -top-9 md:top-0 -left-20 md:left-0 md:grid-rows-6">
         {aboutImages.map((image, id) => (
           <div
@@ -24,7 +24,8 @@ const Collage = () => {
               "row-span-2 md:row-span-3 self-start -translate-y-7 md:translate-y-0"
             }
             ${
-              id === 3 && "row-span-2 md:row-span-2 self-end md:translate-y-10"
+              id === 3 &&
+              "row-span-2 md:row-span-2 self-end md:translate-y-[1.5px]"
             } 
             ${
               id === 4 &&
@@ -32,9 +33,9 @@ const Collage = () => {
             }
             ${
               id === 5 &&
-              "row-span-2 md:row-span-2 self-start md:-translate-y-10 translate-y-[74px]"
+              "row-span-2 md:row-span-2 self-start md:-translate-y-[1.5px] translate-y-[74px]"
             } 
-            relative top-0 left-0 w-44 h-44 md:w-60 md:h-60 2xl:h-[300px] 2xl:w-[300px]`}
+            relative top-0 left-0 w-44 h-44 md:w-64 md:h-64 2xl:h-[300px] 2xl:w-[300px]`}
           >
             <Image
               src={image.path}
