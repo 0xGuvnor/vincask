@@ -1,6 +1,6 @@
 import Newsletter from "./Newsletter";
 import {
-  FaFacebookSquare,
+  FaFacebookF,
   FaInstagram,
   FaTelegramPlane,
   FaTiktok,
@@ -81,7 +81,7 @@ const Footer = () => {
                   >
                     <span className="sr-only">Facebook</span>
 
-                    <FaFacebookSquare className="w-6 h-6" />
+                    <FaFacebookF className="w-6 h-6" />
                   </a>
                 </li>
 
