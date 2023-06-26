@@ -24,13 +24,13 @@ const ImageCarousel = () => {
       indicatorIconButtonProps={{
         style: { padding: isMobileOrTablet ? "1px" : "4px" },
       }}
-      className="w-80 md:w-[500px] 2xl:w-[600px] rounded-lg md:rounded-xl"
+      className="w-80 md:w-[500px] 2xl:w-[600px] rounded"
     >
       {images.map((image, id) => (
         <img
           key={id}
           src={image}
-          className="object-cover w-full h-full rounded-lg md:rounded-xl"
+          className="object-cover w-full h-full rounded"
         />
       ))}
     </Carousel>

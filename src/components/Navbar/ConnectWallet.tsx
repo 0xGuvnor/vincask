@@ -31,7 +31,7 @@ const ConnectWallet = () => {
                 userSelect: "none",
               },
             })}
-            className={`${openSans.className} w-full text-xs md:hover:shadow-2xl leading-3 md:leading-normal transition-colors duration-300 ease-in-out rounded select-none md:p-2 p-1 -translate-x-2 md:translate-x-0 hover:bg-primary-focus hover:text-gray-300 md:ml-6 md:w-auto md:text-sm bg-primary`}
+            className={`${openSans.className} flex items-center justify-center sm:w-20 sm:h-8 text-xs md:hover:shadow-2xl leading-3 md:leading-normal transition-colors duration-300 ease-in-out rounded select-none md:p-2 p-1 text-center text-white -translate-x-2 md:translate-x-0 hover:bg-primary-focus hover:text-gray-300 md:ml-6 md:w-auto md:h-auto md:text-sm bg-primary`}
           >
             {(() => {
               if (!connected) {

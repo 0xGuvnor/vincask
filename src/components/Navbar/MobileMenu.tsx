@@ -21,7 +21,7 @@ const MobileMenu = () => {
   }, [show]);
 
   return (
-    <div className="flex items-center justify-start w-1/3 md:hidden">
+    <div className="flex items-center justify-start w-1/3 -translate-x-1.5 md:hidden">
       <Menu>
         {({ open }) => {
           setShow(open);

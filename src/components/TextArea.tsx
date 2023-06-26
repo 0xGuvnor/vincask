@@ -35,7 +35,11 @@ const TextArea = ({
       >
         {label}
       </label>
-      {errors[id] && <span className="ml-4 text-red-500">{errorMessage}</span>}
+      {errors[id] && (
+        <span className="absolute left-0 ml-4 text-sm text-red-500 md:-bottom-[26px] -bottom-[22px] md:text-base">
+          {errorMessage}
+        </span>
+      )}
     </div>
   );
 };

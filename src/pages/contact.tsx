@@ -24,7 +24,7 @@ const Contact = () => {
       <Container classNames="flex-1">
         <Heading
           title="Get in Touch"
-          subtitle="Reach Out to Us for Inquiries, Feedback, and Collaborations"
+          subtitle="Reach out to us for inquiries, feedback, and collaborations."
         />
 
         <ContactForm />

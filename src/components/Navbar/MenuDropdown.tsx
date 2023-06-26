@@ -3,13 +3,14 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 export const menuItems = [
+  { title: "Home", link: "/" },
   { title: "About", link: "/about" },
-  { title: "Product", link: "/product" },
+  { title: "Whisky", link: "/whisky" },
   { title: "NFT", link: "/nft" },
   { title: "Redeem", link: "/redeem" },
   // { title: "Our Team", link: "/#team" },
   // { title: "FAQs", link: "/#faq" },
-  { title: "Contact Us", link: "/contact" },
+  { title: "Contact", link: "/contact" },
 ];
 
 const MenuDropdown = () => {

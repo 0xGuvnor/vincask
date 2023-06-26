@@ -29,7 +29,7 @@ const Navbar = () => {
         </Link>
       </div>
 
-      <div className="flex w-1/3 md:w-auto">
+      <div className="flex justify-end w-1/3 md:w-auto">
         <DesktopMenu />
         <ConnectWallet />
       </div>

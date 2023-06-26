@@ -12,7 +12,8 @@ const DesktopMenu = () => {
           <Link href={menuItem.link}>
             <span
               className={`${
-                router.pathname === menuItem.link && "text-white font-black"
+                router.pathname === menuItem.link &&
+                "text-primary font-black group-hover:text-base-content transition-colors ease-in-out"
               }`}
             >
               {menuItem.title}

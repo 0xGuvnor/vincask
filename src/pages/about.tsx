@@ -40,8 +40,9 @@ const About = () => {
         </div>
 
         <Timeline />
-        <AffiliatedCompanies />
       </Container>
+
+      <AffiliatedCompanies />
     </div>
   );
 };
