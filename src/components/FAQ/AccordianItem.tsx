@@ -24,6 +24,7 @@ const AccordianItem = ({ header, content }: Props) => {
               } h-5 md:h-7 w-5 md:w-7 transition duration-300 ease-in-out transform shrink-0 mx-4`}
             />
           </Disclosure.Button>
+
           <Transition
             enter="transition duration-300 ease-in-out"
             enterFrom="transform -translate-y-6 opacity-0"
