@@ -14,7 +14,7 @@ const AccordianItem = ({ header, content }: Props) => {
     >
       {({ open }) => (
         <>
-          <Disclosure.Button className="flex group items-center justify-between w-full py-2 text-base text-left md:py-3 md:text-xl hover:text-[#FBD1A2] focus:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-opacity-75">
+          <Disclosure.Button className="flex group items-center justify-between w-full py-2 text-left md:py-3 md:text-xl hover:text-[#FBD1A2] focus:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-opacity-75">
             <span className="text-white group-hover:text-[#FBD1A2]">
               {header}
             </span>
@@ -33,7 +33,7 @@ const AccordianItem = ({ header, content }: Props) => {
             leaveFrom="transform translate-y-0 opacity-100"
             leaveTo="transform -translate-y-6 opacity-0"
           >
-            <Disclosure.Panel className="pb-4 text-base md:text-lg">
+            <Disclosure.Panel className="pb-4 md:text-lg">
               {content}
             </Disclosure.Panel>
           </Transition>

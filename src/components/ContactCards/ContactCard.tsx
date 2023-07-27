@@ -12,10 +12,10 @@ const ContactCard = ({ type, email, phone }: Props) => {
       </h3>
       <span className="absolute -top-4 -left-[1px] w-[1px] h-12 bg-primary z-30"></span>
 
-      <div className="space-y-1 text-sm md:text-base">
+      <div className="space-y-1 md:text-lg">
         <a
           href={`mailto:${email}`}
-          className="text-secondary brightness-150 hover:brightness-100"
+          className="text-[#FFC43D] hover:brightness-75"
         >
           {email}
         </a>
