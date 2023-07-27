@@ -19,9 +19,9 @@ const TeamProfile = ({ name, title, src, description }: Props) => {
       />
       <div className="flex flex-col max-w-lg">
         <h2 className="text-lg md:text-2xl">{name}</h2>
-        <h3 className="text-sm italic md:text-base">{title}</h3>
+        <h3 className="italic md:text-lg">{title}</h3>
 
-        <span className="mt-4 text-sm md:text-base">{description}</span>
+        <span className="mt-4 md:text-lg">{description}</span>
       </div>
     </div>
   );

@@ -14,13 +14,13 @@ const TimelineItem = ({ date, title, description }: Props) => {
           <div className="bg-gray-500 w-full h-[0.5px]"></div>
         </div>
         <GoPrimitiveDot className="mr-2 text-[#F48668]" />
-        <p className="text-sm md:text-base text-[#F48668]">{date}</p>
+        <p className="md:text-lg text-[#F48668]">{date}</p>
         <div className="h-[0.5px] ml-6 bg-gray-500 flex-1 hidden md:block"></div>
       </div>
 
       <div className="md:max-w-[275px] space-y-2 md:space-y-3">
         <h3 className="text-lg font-black text-white md:text-2xl">{title}</h3>
-        <p className="text-sm md:text-base">{description}</p>
+        <p className="md:text-lg">{description}</p>
       </div>
     </div>
   );

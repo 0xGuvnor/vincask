@@ -26,7 +26,7 @@ const CtaButtons = () => {
       >
         <Link href="/" className="flex items-center gap-2">
           <span className="text-base md:text-xl">Learn more</span>
-          <FaArrowRight className="absolute inset-y-0 h-full transition-all duration-300 ease-in-out -right-6 group-hover:-right-7" />
+          <FaArrowRight className="inset-y-0 h-full transition-all duration-300 ease-in-out md:absolute -right-6 group-hover:-right-7" />
 
           <span className="absolute inset-x-0 bottom-0 w-full h-0.5 transition duration-300 ease-in-out origin-left scale-0 bg-red-500 group-hover:scale-100"></span>
         </Link>
