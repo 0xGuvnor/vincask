@@ -1,3 +1,5 @@
+import { HiOutlineMail } from "react-icons/hi";
+
 interface Props {
   type: string;
   email: string;
@@ -15,10 +17,12 @@ const ContactCard = ({ type, email, phone }: Props) => {
       <div className="space-y-1 md:text-lg">
         <a
           href={`mailto:${email}`}
-          className="text-[#FFC43D] hover:brightness-75"
+          className="text-[#FFC43D] hover:brightness-75 flex items-center space-x-1"
         >
-          {email}
+          <HiOutlineMail />
+          <p>{email}</p>
         </a>
+
         <p>{phone}</p>
       </div>
     </div>
