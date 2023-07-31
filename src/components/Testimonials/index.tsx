@@ -4,7 +4,7 @@ import Testimony from "./Testimony";
 
 const Testimonials = () => {
   return (
-    <Container classNames="md:flex-row items-center justify-center">
+    <Container classNames="md:flex-row items-center justify-center font-body">
       <ImageCarousel />
       <Testimony />
     </Container>

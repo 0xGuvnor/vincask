@@ -20,7 +20,7 @@ const TimelineItem = ({ date, title, description }: Props) => {
 
       <div className="md:max-w-[275px] space-y-2 md:space-y-3">
         <h3 className="text-lg font-black text-white md:text-2xl">{title}</h3>
-        <p className="md:text-lg">{description}</p>
+        <p className="md:text-lg font-body">{description}</p>
       </div>
     </div>
   );

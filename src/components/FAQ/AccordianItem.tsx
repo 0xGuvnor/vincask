@@ -33,7 +33,7 @@ const AccordianItem = ({ header, content }: Props) => {
             leaveFrom="transform translate-y-0 opacity-100"
             leaveTo="transform -translate-y-6 opacity-0"
           >
-            <Disclosure.Panel className="pb-4 md:text-lg">
+            <Disclosure.Panel className="pb-4 md:text-lg font-body">
               {content}
             </Disclosure.Panel>
           </Transition>

@@ -5,7 +5,13 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  theme: {},
+  theme: {
+    extend: {
+      fontFamily: {
+        body: ["var(--font-body)"],
+      },
+    },
+  },
   plugins: [require("daisyui")],
   daisyui: {
     themes: [

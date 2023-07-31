@@ -33,7 +33,7 @@ const CompanyCard = ({ name, website, image, description }: Props) => {
           </a>
         </div>
 
-        <p className="text-justify md:text-lg">{description}</p>
+        <p className="text-justify md:text-lg font-body">{description}</p>
       </div>
     </div>
   );

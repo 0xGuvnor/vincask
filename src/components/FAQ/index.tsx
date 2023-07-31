@@ -9,7 +9,7 @@ const FAQ = () => {
       <Heading
         title="FAQs"
         subtitleElement={
-          <h3 className="space-y-1.5 md:text-lg md:max-w-2xl">
+          <h3 className="space-y-1.5 md:text-lg md:max-w-2xl font-body">
             <p>
               Have a different question and can&apos;t find the answer
               you&apos;re looking for? <br />

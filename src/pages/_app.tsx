@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import "@rainbow-me/rainbowkit/styles.css";
-import { Antic_Didone, Open_Sans } from "next/font/google";
+import { Marcellus, Outfit } from "next/font/google";
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { arbitrumGoerli } from "wagmi/chains";
@@ -11,11 +11,12 @@ import type { AppProps } from "next/app";
 import Footer from "@/components/Footer";
 import { MobileMenuProvider } from "@/context/MobileMenuContext";
 
-const anticDidone = Antic_Didone({
-  weight: ["400"],
+const marcellus = Marcellus({ weight: "400", subsets: ["latin"] });
+const outfit = Outfit({
+  weight: ["300"],
   subsets: ["latin"],
+  variable: "--font-body",
 });
-const openSans = Open_Sans({ subsets: ["latin"] });
 
 const { chains, publicClient } = configureChains(
   [arbitrumGoerli],
@@ -40,7 +41,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <RainbowKitProvider chains={chains} coolMode>
         <MobileMenuProvider>
           <main
-            className={`${anticDidone.className} flex flex-col justify-between min-h-screen`}
+            className={`${marcellus.className} ${outfit.variable} flex flex-col justify-between min-h-screen`}
           >
             <Navbar />
             <Component {...pageProps} />
