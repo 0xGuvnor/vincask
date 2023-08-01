@@ -11,7 +11,7 @@ const Testimony = () => {
         </span>
       </h1>
 
-      <div className="relative flex flex-col px-12 mt-10 md:px-0 md:mt-16 2xl:mt-24">
+      <div className="relative flex flex-col px-12 mt-10 md:px-0 md:mt-16 2xl:mt-24 font-body">
         <VscQuote className="absolute left-1.5 -top-4 md:-left-[69px] md:-top-11 w-10 h-10 md:h-[69px] md:w-[69px]" />
         <span className="leading-relaxed text-justify 2xl:leading-loose md:text-left 2xl:text-lg">
           Our premium whisky stands apart from the rest, setting a new standard
