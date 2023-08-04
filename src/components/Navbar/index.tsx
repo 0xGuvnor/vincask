@@ -4,6 +4,7 @@ import { useMediaQuery } from "react-responsive";
 import MobileMenu from "./MobileMenu";
 import DesktopMenu from "./DesktopMenu";
 import ConnectWallet from "./ConnectWallet";
+import Image from "next/image";
 
 const Navbar = () => {
   const isMobileOrTablet = useMediaQuery({ maxWidth: 768 });
@@ -21,11 +22,19 @@ const Navbar = () => {
     >
       <MobileMenu />
 
-      <div className="flex items-center justify-center w-full md:justify-center md:w-auto">
+      <div className="flex items-center justify-center w-full transition-all duration-300 ease-in-out md:justify-center md:w-auto md:hover:scale-110">
         <Link href="/">
-          <h1 className="flex-1 text-2xl font-extrabold cursor-pointer md:text-3xl">
+          {/* <h1 className="flex-1 text-2xl font-extrabold cursor-pointer md:text-3xl">
             Vincask
-          </h1>
+          </h1> */}
+          <div className="relative w-14 h-14 md:w-16 md:h-16">
+            <Image
+              src="/logo1.png"
+              alt="Vincask logo"
+              fill
+              className="object-contain"
+            />
+          </div>
         </Link>
       </div>
 
