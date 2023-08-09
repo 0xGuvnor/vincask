@@ -30,7 +30,7 @@ const Contact = () => {
         <ContactForm />
       </Container>
 
-      <Container classNames="bg-[#3D0814]">
+      <Container classNames="bg-[#343434]">
         <ContactCards />
       </Container>
 

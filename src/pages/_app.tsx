@@ -11,12 +11,12 @@ import type { AppProps } from "next/app";
 import Footer from "@/components/Footer";
 import { MobileMenuProvider } from "@/context/MobileMenuContext";
 
-const marcellus = Marcellus({ weight: "400", subsets: ["latin"] });
+const marcellus = Marcellus({ weight: "400", subsets: ["latin"] }); // Header font
 const outfit = Outfit({
-  weight: ["300"],
+  weight: ["300", "700", "800", "900"],
   subsets: ["latin"],
   variable: "--font-body",
-});
+}); // Body font
 
 const { chains, publicClient } = configureChains(
   [arbitrumGoerli],

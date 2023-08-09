@@ -6,14 +6,17 @@ const DesktopMenu = () => {
   const router = useRouter();
 
   return (
-    <div className="items-center hidden space-x-6 md:flex">
+    <div className="items-center hidden space-x-3 lg:space-x-6 md:flex">
       {menuItems.map((menuItem) => (
-        <div key={menuItem.link} className="relative cursor-pointer group">
+        <div
+          key={menuItem.link}
+          className="relative cursor-pointer group hover:text-primary-content hover:delay-100"
+        >
           <Link href={menuItem.link}>
             <span
               className={`${
                 router.pathname === menuItem.link &&
-                "text-primary font-black group-hover:text-base-content transition-colors ease-in-out"
+                "text-primary font-black group-hover:text-primary-content transition-colors ease-in-out"
               }`}
             >
               {menuItem.title}
@@ -22,7 +25,6 @@ const DesktopMenu = () => {
           <span className="absolute inset-x-0 bottom-0 -z-10 w-full h-full transition duration-300 ease-in-out origin-bottom scale-y-[0.05] group-hover:scale-y-110 bg-primary"></span>
         </div>
       ))}
-      <hr className="h-8 border-l-[0.5px] border-slate-600" />
     </div>
   );
 };

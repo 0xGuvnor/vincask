@@ -82,7 +82,7 @@ const ContactForm = () => {
 
       <button
         type="submit"
-        className="self-end text-white normal-case rounded btn bg-primary md:rounded-md md:text-lg hover:bg-primary-focus"
+        className="self-end normal-case rounded text-primary-content btn bg-primary md:rounded-md md:text-lg hover:bg-primary-focus"
       >
         Submit
       </button>

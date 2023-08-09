@@ -17,7 +17,7 @@ const ContactCard = ({ type, email, phone }: Props) => {
       <div className="space-y-1 md:text-lg">
         <a
           href={`mailto:${email}`}
-          className="text-[#FFC43D] hover:brightness-75 flex items-center space-x-1"
+          className="flex items-center space-x-1 text-primary hover:brightness-75"
         >
           <HiOutlineMail className="shrink-0" />
           <p>{email}</p>

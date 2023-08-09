@@ -21,7 +21,7 @@ const team = [
 
 const Team = () => {
   return (
-    <div className="bg-[#582B11]">
+    <div className="bg-base-200">
       <Container id="team">
         <Heading
           title="Our Team"

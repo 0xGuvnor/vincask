@@ -18,11 +18,11 @@ const Navbar = () => {
           ? isMobileOrTabletScrolled &&
             "bg-base-100/90 backdrop-blur-sm shadow-xl"
           : isDesktopScrolled && "bg-base-100/90 backdrop-blur-sm shadow-xl"
-      } fixed inset-x-0 top-0 flex items-center justify-between h-12 px-2 md:px-12 transition duration-500 ease-in-out md:h-16 text-neutral-content z-50`}
+      } fixed inset-x-0 top-0 flex items-center justify-between h-12 px-2 md:px-12 transition duration-300 ease-in-out md:h-16 text-neutral-content z-50`}
     >
       <MobileMenu />
 
-      <div className="flex items-center justify-center w-full transition-all duration-300 ease-in-out md:justify-center md:w-auto md:hover:scale-110">
+      <div className="flex items-center justify-center w-full md:justify-center md:w-auto">
         <Link href="/">
           {/* <h1 className="flex-1 text-2xl font-extrabold cursor-pointer md:text-3xl">
             Vincask
@@ -38,8 +38,9 @@ const Navbar = () => {
         </Link>
       </div>
 
-      <div className="flex justify-end w-1/3 md:w-auto">
+      <div className="flex items-center justify-end w-[89.825px] md:w-auto">
         <DesktopMenu />
+        <hr className="h-8 border-l-[0.5px] border-slate-600 hidden md:flex lg:mx-6 mx-3" />
         <ConnectWallet />
       </div>
     </nav>

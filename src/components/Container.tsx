@@ -8,12 +8,12 @@ interface Props {
 
 const Container = ({ children, id, classNames }: Props) => {
   return (
-    <div
+    <section
       id={id}
       className={`flex flex-col gap-12 px-4 py-14 md:px-12 md:py-20 md:gap-16 2xl:px-0 max-w-[1500px] mx-auto w-full ${classNames}`}
     >
       {children}
-    </div>
+    </section>
   );
 };
 export default Container;

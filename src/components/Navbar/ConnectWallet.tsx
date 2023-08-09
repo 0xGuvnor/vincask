@@ -1,7 +1,5 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { Open_Sans } from "next/font/google";
-
-const openSans = Open_Sans({ subsets: ["latin"] });
+import { BiWallet } from "react-icons/bi";
 
 const ConnectWallet = () => {
   return (
@@ -31,7 +29,7 @@ const ConnectWallet = () => {
                 userSelect: "none",
               },
             })}
-            className={`${openSans.className} flex items-center justify-center sm:w-20 sm:h-8 text-xs md:hover:shadow-2xl leading-3 md:leading-normal transition-colors duration-300 ease-in-out rounded select-none md:p-2 p-1 text-center text-white -translate-x-2 md:translate-x-0 hover:bg-primary-focus hover:text-gray-300 md:ml-6 md:w-auto md:h-auto md:text-sm bg-primary`}
+            // className="flex items-center justify-center p-1 text-xs leading-3 text-center text-white transition-colors duration-300 ease-in-out -translate-x-2 rounded select-none sm:w-20 sm:h-8 md:hover:shadow-2xl md:leading-normal md:p-2 md:translate-x-0 hover:bg-primary-focus hover:text-gray-300 md:ml-6 md:w-auto md:h-auto md:text-sm bg-primary"
           >
             {(() => {
               if (!connected) {
@@ -39,23 +37,26 @@ const ConnectWallet = () => {
                   <button
                     onClick={openConnectModal}
                     type="button"
-                    className="text-white"
+                    className="flex items-center justify-center gap-1 p-1.5 text-primary-content transition duration-300 ease-in-out rounded md:p-2 bg-primary md:hover:bg-primary-focus md:hover:shadow-2xl focus:outline-none"
                   >
-                    Connect Wallet
+                    <BiWallet className="w-5 h-5 md:h-6 md:w-6" />
+                    <p className="text-sm md:text-base">
+                      Connect <span className="hidden md:inline">Wallet</span>
+                    </p>
                   </button>
                 );
               }
 
               if (chain.unsupported) {
                 return (
-                  <button onClick={openChainModal} type="button">
+                  <button onClick={openChainModal} type="button" className="">
                     Wrong network
                   </button>
                 );
               }
 
               return (
-                <div className="flex md:gap-2">
+                <div className="flex items-center justify-center md:gap-2">
                   <button
                     onClick={openChainModal}
                     type="button"
