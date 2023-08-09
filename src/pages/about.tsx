@@ -21,7 +21,7 @@ const About = () => {
       {show && <Overlay />}
 
       {/* Background gradient */}
-      <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-black/40 from-0% -z-10"></div>
+      <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-[#2A3439]/40 from-0% -z-10"></div>
 
       <Container classNames="flex-1 overflow-x-hidden xl:overflow-x-visible relative">
         <div className="flex flex-col justify-start items-center md:justify-center min-h-[75vh] md:flex-row space-y-8 md:space-y-0 md:space-x-4x">
@@ -29,7 +29,7 @@ const About = () => {
             <h1 className="text-3xl font-black text-white md:text-5xl">
               Our mission is to redefine the world of whisky and art.
             </h1>
-            <h3 className="md:text-lg md:max-w-xl font-body">
+            <h3 className="md:text-xl md:max-w-xl font-body">
               We believe in pushing boundaries, intertwining the realms of
               craftsmanship, innovation, and collectibles. Our passion for
               creating exceptional experiences is at the heart of everything we

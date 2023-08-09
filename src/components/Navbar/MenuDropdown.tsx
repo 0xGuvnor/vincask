@@ -28,7 +28,7 @@ const MenuDropdown = () => {
         zIndex: -10,
         transition: { type: "tween", duration: 0.1 },
       }}
-      className="fixed inset-x-0 top-0 w-full py-3 mt-[47px] bg-[#3C0000] shadow-2xl z-50"
+      className="fixed inset-x-0 top-0 w-full py-3 mt-[47px] bg-base-100 shadow-2xl z-50"
     >
       <Menu.Items
         static

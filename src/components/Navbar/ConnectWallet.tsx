@@ -1,5 +1,6 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { BiWallet } from "react-icons/bi";
+import { IoWarningOutline } from "react-icons/io5";
 
 const ConnectWallet = () => {
   return (
@@ -29,7 +30,7 @@ const ConnectWallet = () => {
                 userSelect: "none",
               },
             })}
-            // className="flex items-center justify-center p-1 text-xs leading-3 text-center text-white transition-colors duration-300 ease-in-out -translate-x-2 rounded select-none sm:w-20 sm:h-8 md:hover:shadow-2xl md:leading-normal md:p-2 md:translate-x-0 hover:bg-primary-focus hover:text-gray-300 md:ml-6 md:w-auto md:h-auto md:text-sm bg-primary"
+            className="z-50"
           >
             {(() => {
               if (!connected) {
@@ -40,23 +41,28 @@ const ConnectWallet = () => {
                     className="flex items-center justify-center gap-1 p-1.5 text-primary-content transition duration-300 ease-in-out rounded md:p-2 bg-primary md:hover:bg-primary-focus md:hover:shadow-2xl focus:outline-none"
                   >
                     <BiWallet className="w-5 h-5 md:h-6 md:w-6" />
-                    <p className="text-sm md:text-base">
+                    <span className="text-sm md:text-base">
                       Connect <span className="hidden md:inline">Wallet</span>
-                    </p>
+                    </span>
                   </button>
                 );
               }
 
               if (chain.unsupported) {
                 return (
-                  <button onClick={openChainModal} type="button" className="">
-                    Wrong network
+                  <button
+                    onClick={openChainModal}
+                    type="button"
+                    className="bg-error text-error-content p-1.5 md:p-2 gap-1 rounded hover:brightness-75 transition duration-300 ease-in-out flex items-center justify-center"
+                  >
+                    <IoWarningOutline className="w-4 h-4 md:w-5 md:h-5" />
+                    <span className="text-xs md:text-base">Wrong network</span>
                   </button>
                 );
               }
 
               return (
-                <div className="flex items-center justify-center md:gap-2">
+                <div className="flex items-center justify-center gap-1 md:gap-2 font-body bg-slate-500/20 p-1.5 rounded md:py-2 md:px-3">
                   <button
                     onClick={openChainModal}
                     type="button"
@@ -65,13 +71,13 @@ const ConnectWallet = () => {
                     {chain.hasIcon && (
                       <div
                         style={{ background: chain.iconBackground }}
-                        className="w-4 h-4 overflow-hidden rounded-full md:w-6 md:h-6"
+                        className="w-5 h-5 overflow-hidden rounded-full md:w-6 md:h-6"
                       >
                         {chain.iconUrl && (
                           <img
                             alt={chain.name ?? "Chain icon"}
                             src={chain.iconUrl}
-                            className="w-4 h-4 md:w-6 md:h-6"
+                            className="w-5 h-5 md:w-6 md:h-6"
                           />
                         )}
                       </div>
@@ -82,12 +88,12 @@ const ConnectWallet = () => {
                   <button
                     onClick={openAccountModal}
                     type="button"
-                    className="w-full text-center transition duration-300 ease-in-out hover:brightness-200"
+                    className="text-center transition duration-300 ease-in-out hover:brightness-200"
                   >
                     {account.displayName}
-                    {/* {account.displayBalance
+                    {account.displayBalance
                       ? ` (${account.displayBalance})`
-                      : ""} */}
+                      : ""}
                   </button>
                 </div>
               );

@@ -21,9 +21,12 @@ const NFT = () => {
       {show && <Overlay />}
 
       <Container classNames="md:!flex-row flex-col-reverse">
-        <div className="h-screenx md:basis-2/3">
-          <Heading title="X" />
-          <p>
+        <div className="flex flex-col gap-12 h-screenx md:gap-16 md:basis-2/3">
+          <Heading
+            title="Crafting Masterpieces, Unlocking Experiences"
+            subtitle="Mint a Vincask NFT to secure your claim to a bottle of premium whisky."
+          />
+          <p className="md:text-lg">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias
             dolor libero aliquid dolorem sequi, ab veritatis dolores placeat
             consequatur quo quod quaerat, tempore repellat magnam cupiditate
@@ -43,7 +46,8 @@ const NFT = () => {
             <NftCollectionButton name="Blur" url="https://blur.io/" />
           </div>
         </div>
-        <div className="flex items-center justify-center md:mt-16">
+
+        <div className="flex items-center justify-center mt-4 md:mt-16">
           <MintCard />
         </div>
       </Container>

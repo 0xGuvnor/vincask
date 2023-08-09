@@ -27,7 +27,7 @@ const MintCard = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center self-center rounded-md md:rounded-xl w-72 md:w-96 md:self-start px-8 pb-10 md:pb-12 bg-base-200 shadow-2xl md:sticky md:top-[72px]">
+    <div className="flex flex-col items-center justify-center self-center rounded-md md:rounded-xl w-72 md:w-96 md:self-start px-8 pb-10 md:pb-12 bg-[#1B1B1B] shadow-2xl shadow-slate-800 md:sticky md:top-[72px]">
       <div className="relative w-40 h-40 md:w-60 md:h-60">
         <Image
           alt="Vincask logo"
@@ -42,15 +42,15 @@ const MintCard = () => {
           <span>0</span> / <span>124</span> <span>minted</span>
         </div>
 
-        <div className="flex items-center justify-between w-24 md:w-32 font-body text-primary">
+        <div className="flex items-center justify-between w-28 md:w-36 font-body text-primary">
           <AmountButton onClick={decrement} icon={HiMinus} />
-          <span className="text-xl md:text-3xl">{amount}</span>
+          <span className="text-2xl md:text-4xl">{amount}</span>
           <AmountButton onClick={increment} icon={HiPlus} />
         </div>
 
         <button
           type="button"
-          className="w-40 normal-case border-none rounded text-primary-content md:text-lg md:w-60 md:btn-md btn-sm hover:bg-primary-focus btn bg-primary"
+          className="w-40 h-10 normal-case border-none rounded text-primary-content md:text-lg md:w-60 md:btn-md btn-sm hover:bg-primary-focus btn bg-primary"
         >
           Mint
         </button>
