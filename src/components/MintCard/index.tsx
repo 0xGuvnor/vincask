@@ -44,7 +44,7 @@ const MintCard = () => {
 
         <div className="flex items-center justify-between w-24 md:w-32 font-body text-primary">
           <AmountButton onClick={decrement} icon={HiMinus} />
-          <span className="md:text-xl">{amount}</span>
+          <span className="text-xl md:text-3xl">{amount}</span>
           <AmountButton onClick={increment} icon={HiPlus} />
         </div>
 
