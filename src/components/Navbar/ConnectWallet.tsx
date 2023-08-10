@@ -30,7 +30,7 @@ const ConnectWallet = () => {
                 userSelect: "none",
               },
             })}
-            className="z-50"
+            className="z-50 select-none"
           >
             {(() => {
               if (!connected) {
@@ -38,7 +38,7 @@ const ConnectWallet = () => {
                   <button
                     onClick={openConnectModal}
                     type="button"
-                    className="flex items-center justify-center gap-1 p-1.5 text-primary-content transition duration-300 ease-in-out rounded md:p-2 bg-primary md:hover:bg-primary-focus md:hover:shadow-2xl focus:outline-none"
+                    className="flex items-center justify-center gap-1 p-1.5 text-primary-content transition duration-300 ease-in-out rounded md:p-2 bg-primary md:hover:bg-primary-focus md:hover:shadow-2xl focus:outline-none font-semibold"
                   >
                     <BiWallet className="w-5 h-5 md:h-6 md:w-6" />
                     <span className="text-sm md:text-base">
