@@ -16,13 +16,13 @@ const Navbar = () => {
       className={`${
         isMobileOrTablet
           ? isMobileOrTabletScrolled &&
-            "bg-base-200/90 backdrop-blur-sm shadow-xl"
-          : isDesktopScrolled && "bg-base-200/90 backdrop-blur-sm shadow-xl"
-      } fixed inset-x-0 top-0 flex items-center justify-between h-12 px-2 md:px-12 transition duration-300 ease-in-out md:h-16 text-neutral-content z-50`}
+            "bg-base-100/95 backdrop-blur-sm shadow-xl"
+          : isDesktopScrolled && "bg-base-100/95 backdrop-blur-sm shadow-xl"
+      } fixed inset-x-0 top-0 flex items-center justify-between h-14 px-2 md:px-12 transition duration-300 ease-in-out md:h-20 text-neutral-content z-50`}
     >
       <MobileMenu />
 
-      <div className="fixed inset-x-0 flex items-center justify-center md:top-0 -top-2 md:relative">
+      <div className="fixed inset-x-0 flex items-center justify-center md:top-0 -top-1 md:relative">
         <Link href="/">
           <div className="relative w-16 h-16 md:w-20 md:h-20">
             <Image

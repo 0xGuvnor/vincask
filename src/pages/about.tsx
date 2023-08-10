@@ -29,7 +29,7 @@ const About = () => {
             <h1 className="text-3xl font-black text-white md:text-5xl">
               Our mission is to redefine the world of whisky and art.
             </h1>
-            <h3 className="md:text-xl md:max-w-xl font-body">
+            <h3 className="text-lg md:text-xl md:max-w-xl font-body">
               We believe in pushing boundaries, intertwining the realms of
               craftsmanship, innovation, and collectibles. Our passion for
               creating exceptional experiences is at the heart of everything we

@@ -30,9 +30,11 @@ const Contact = () => {
         <ContactForm />
       </Container>
 
-      <Container classNames="bg-[#343434]">
-        <ContactCards />
-      </Container>
+      <div className="bg-[#343434]">
+        <Container>
+          <ContactCards />
+        </Container>
+      </div>
 
       <FAQ />
     </>
