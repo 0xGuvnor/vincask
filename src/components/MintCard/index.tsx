@@ -39,7 +39,7 @@ const MintCard = () => {
 
       <div className="flex flex-col items-center justify-center gap-4 md:gap-6">
         <div className="text-lg font-bold text-white font-body md:text-2xl">
-          <span>0</span> / <span>124</span> <span>minted</span>
+          <span>0</span> / <span>124</span>
         </div>
 
         <div className="flex items-center justify-between w-28 md:w-36 font-body text-primary">
