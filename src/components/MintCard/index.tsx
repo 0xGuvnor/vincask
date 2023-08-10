@@ -27,7 +27,7 @@ const MintCard = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center self-center rounded-md md:rounded-xl w-72 md:w-96 md:self-start px-8 pb-10 md:pb-12 bg-[#1B1B1B] shadow-2xl shadow-zinc-800 md:sticky md:top-[72px]">
+    <div className="flex flex-col items-center justify-center rounded-md md:rounded-xl w-72 md:w-96 md:self-start self-center px-8 pb-10 md:pb-12 bg-[#1B1B1B] shadow-2xl shadow-zinc-800 md:sticky md:top-24">
       <div className="relative w-40 h-40 md:w-60 md:h-60">
         <Image
           alt="Vincask logo"
