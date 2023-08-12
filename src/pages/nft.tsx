@@ -5,12 +5,13 @@ import Overlay from "@/components/Overlay";
 import NftCollectionButton from "@/components/buttons/NftCollectionButton";
 import { useMobileMenuContext } from "@/context/MobileMenuContext";
 import Head from "next/head";
+import { LayoutGroup, motion } from "framer-motion";
 
 const NFT = () => {
   const { show } = useMobileMenuContext();
 
   return (
-    <div className="">
+    <div>
       <Head>
         <title>Vincask - NFT</title>
         <meta name="description" content="Vincask Pte Ltd" />
@@ -20,37 +21,56 @@ const NFT = () => {
 
       {show && <Overlay />}
 
-      <Container classNames="md:!flex-row flex-col-reverse">
-        <div className="flex flex-col gap-12 h-screenx md:gap-16 md:basis-2/3">
-          <Heading
-            title="Crafting Masterpieces, Unlocking Experiences"
-            subtitle="Mint a Vincask NFT to secure your claim to a bottle of premium whisky."
-          />
-          <p className="md:text-lg">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias
-            dolor libero aliquid dolorem sequi, ab veritatis dolores placeat
-            consequatur quo quod quaerat, tempore repellat magnam cupiditate
-            suscipit tenetur qui assumenda obcaecati temporibus veniam iusto.
-            Incidunt id, quidem, omnis consectetur illo natus sed fuga maiores
-            quaerat iste tempore ea exercitationem, non voluptatum. Mollitia
-            possimus esse natus, dolor ad dicta praesentium sapiente atque eum
-            quisquam nihil quis vero, nisi necessitatibus iusto fugiat.
-            Veritatis libero, temporibus impedit culpa sed commodi dolorum
-            doloribus similique, voluptatem sapiente aspernatur vitae id
-            incidunt eligendi quasi consequatur! Cumque, dicta maxime voluptas
-            amet provident molestias ex minima atque quidem!
-          </p>
+      <LayoutGroup>
+        <Container classNames="md:!flex-row flex-col-reverse">
+          <motion.div
+            layout="position"
+            transition={{ duration: 0.25 }}
+            className="flex flex-col gap-12 h-screenx md:gap-16 md:basis-2/3"
+          >
+            <div className="md:max-w-3xl">
+              <Heading
+                title="Crafting Masterpieces, Unlocking Experiences"
+                subtitle="Mint a Vincask NFT to secure your claim to a bottle of our premium whisky."
+              />
+            </div>
 
-          <div className="flex flex-col gap-4 md:flex-row">
-            <NftCollectionButton name="OpenSea" url="https://opensea.io/" />
-            <NftCollectionButton name="Blur" url="https://blur.io/" />
-          </div>
-        </div>
+            <p className="md:text-lg">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+              Molestias dolor libero aliquid dolorem sequi, ab veritatis dolores
+              placeat consequatur quo quod quaerat, tempore repellat magnam
+              cupiditate suscipit tenetur qui assumenda obcaecati temporibus
+              veniam iusto. Incidunt id, quidem, omnis consectetur illo natus
+              sed fuga maiores quaerat iste tempore ea exercitationem, non
+              voluptatum. Mollitia possimus esse natus, dolor ad dicta
+              praesentium sapiente atque eum quisquam nihil quis vero, nisi
+              necessitatibus iusto fugiat. Veritatis libero, temporibus impedit
+              culpa sed commodi dolorum doloribus similique, voluptatem sapiente
+              aspernatur vitae id incidunt eligendi quasi consequatur! Cumque,
+              dicta maxime voluptas amet provident molestias ex minima atque
+              quidem!
+            </p>
 
-        <div className="flex items-center justify-center mt-4 md:mt-16">
-          <MintCard />
-        </div>
-      </Container>
+            <div className="flex flex-col gap-4 md:flex-row">
+              <NftCollectionButton
+                name="OpenSea"
+                url="https://testnets.opensea.io/collection/vincask"
+              />
+              <NftCollectionButton
+                name="LooksRare"
+                url="https://looksrare.org/"
+              />
+            </div>
+          </motion.div>
+
+          <motion.div
+            layout="position"
+            className="flex items-center justify-center"
+          >
+            <MintCard />
+          </motion.div>
+        </Container>
+      </LayoutGroup>
     </div>
   );
 };

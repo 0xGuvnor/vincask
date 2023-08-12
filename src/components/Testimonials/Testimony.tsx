@@ -7,7 +7,7 @@ const Testimony = () => {
         Craftsmanship You Can{" "}
         <span className="relative">
           Taste
-          <span className="absolute bottom-0 md:bottom-0.5 left-0 w-full h-1 bg-gradient-to-r from-black from-40% to-white"></span>
+          <span className="absolute bottom-0 md:bottom-0.5 left-0 w-full h-1 bg-gradient-to-r from-zinc-800 from-25% to-white"></span>
         </span>
       </h1>
 

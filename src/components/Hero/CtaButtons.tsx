@@ -14,7 +14,7 @@ const CtaButtons = () => {
         >
           <span className="absolute w-0 h-0 transition-all duration-500 ease-out rounded-full bg-primary-focus group-hover:w-56 group-hover:h-56"></span>
           <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-[#ED9121]"></span>
-          <span className="relative text-base md:text-xl text-primary-content">
+          <span className="relative text-base font-semibold md:text-xl text-primary-content">
             Reserve now
           </span>
         </a>

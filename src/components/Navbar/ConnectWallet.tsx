@@ -1,8 +1,11 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { BiWallet } from "react-icons/bi";
 import { IoWarningOutline } from "react-icons/io5";
+import { useMediaQuery } from "react-responsive";
 
 const ConnectWallet = () => {
+  const isMobileOrTablet = useMediaQuery({ maxWidth: 768 });
+
   return (
     <ConnectButton.Custom>
       {({
@@ -62,7 +65,7 @@ const ConnectWallet = () => {
               }
 
               return (
-                <div className="flex items-center justify-center gap-1 md:gap-2 font-body bg-slate-500/20 p-1.5 rounded md:py-2 md:px-3">
+                <div className="flex items-center justify-center gap-1 md:gap-2 font-body bg-slate-600/25 p-1.5 rounded md:py-2 md:px-3">
                   <button
                     onClick={openChainModal}
                     type="button"
@@ -91,9 +94,13 @@ const ConnectWallet = () => {
                     className="text-center transition duration-300 ease-in-out hover:brightness-200"
                   >
                     {account.displayName}
-                    {account.displayBalance
-                      ? ` (${account.displayBalance})`
-                      : ""}
+                    {!isMobileOrTablet && (
+                      <span>
+                        {account.displayBalance
+                          ? ` (${account.displayBalance})`
+                          : ""}
+                      </span>
+                    )}
                   </button>
                 </div>
               );

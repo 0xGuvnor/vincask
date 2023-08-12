@@ -17,7 +17,9 @@ const Redeem = () => {
 
       {show && <Overlay />}
 
-      <Container classNames="italic">redeem placeholder</Container>
+      <Container classNames="italic">
+        <div className="">redeem placeholder</div>
+      </Container>
     </div>
   );
 };

@@ -16,22 +16,20 @@ const Navbar = () => {
       className={`${
         isMobileOrTablet
           ? isMobileOrTabletScrolled &&
-            "bg-base-100/95 backdrop-blur-sm shadow-xl"
-          : isDesktopScrolled && "bg-base-100/95 backdrop-blur-sm shadow-xl"
+            "bg-base-100/25  backdrop-blur-sm shadow-xl"
+          : isDesktopScrolled && "bg-base-100/25  backdrop-blur-sm shadow-xl"
       } fixed inset-x-0 top-0 flex items-center justify-between h-14 px-2 md:px-12 transition duration-300 ease-in-out md:h-20 text-neutral-content z-50`}
     >
       <MobileMenu />
 
       <div className="fixed inset-x-0 flex items-center justify-center md:top-0 -top-1 md:relative">
-        <Link href="/">
-          <div className="relative w-16 h-16 md:w-20 md:h-20">
-            <Image
-              src="/logo1.png"
-              alt="Vincask logo"
-              fill
-              className="object-contain"
-            />
-          </div>
+        <Link href="/" className="relative w-16 h-16 md:w-20 md:h-20">
+          <Image
+            src="/logo1.png"
+            alt="Vincask logo"
+            fill
+            className="object-contain"
+          />
         </Link>
       </div>
 
