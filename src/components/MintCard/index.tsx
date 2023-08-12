@@ -21,7 +21,7 @@ const MintCard = () => {
   const [quantity, setQuantity] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [tab, setTab] = useState<"crypto" | "cc">("crypto");
-  const { address } = useAccount();
+  const { address, isConnected } = useAccount();
   const vincaskContract = {
     address: vincask.address.sepolia,
     abi: vincask.abi,
@@ -198,60 +198,85 @@ const MintCard = () => {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="flex flex-col items-center justify-center bg-whitex px-8x"
           >
-            <div className="relative w-40 h-40 ml-[2.49995555px] md:w-60 md:h-60 md:ml-0">
+            <motion.div
+              layout
+              className="relative w-40 h-40 ml-[2.49995555px] md:w-60 md:h-60 md:ml-0"
+            >
               <Image
                 alt="Vincask logo"
                 src="/logo2.png"
                 fill
                 className="object-contain"
               />
-            </div>
+            </motion.div>
 
-            <div className="flex flex-col items-center justify-center gap-4 md:gap-6">
-              <div className="text-lg font-bold text-white font-body md:text-2xl">
-                <span>{readData ? readData[0].result?.toString() : "..."}</span>{" "}
-                /{" "}
-                <span>{readData ? readData[1].result?.toString() : "..."}</span>{" "}
-                <span>minted</span>
-              </div>
-
-              <span className="text-sm font-body md:text-base">
-                Price:{" "}
-                {readData ? (
-                  <span>
-                    {(
-                      Number(formatEther(readData[2].result as bigint)) *
-                      quantity
-                    ).toLocaleString()}{" "}
-                    {readData[3].result?.toString()}
-                  </span>
-                ) : (
-                  "..."
-                )}
-              </span>
-
-              <div className="flex items-center justify-between w-28 md:w-36 font-body text-primary">
-                <AmountButton onClick={decrement} icon={HiMinus} />
-                <span className="text-2xl md:text-4xl">{quantity}</span>
-                <AmountButton onClick={increment} icon={HiPlus} />
-              </div>
-
-              <button
-                type="button"
-                disabled={isLoading}
-                onClick={mintNft}
-                className="w-40 h-10 normal-case transition duration-300 ease-in-out border-none rounded disabled:ring-primary/25 disabled:ring-1 text-primary-content md:text-lg md:w-60 md:btn-md btn-sm hover:bg-primary-focus btn bg-primary"
+            {isConnected ? (
+              <motion.div
+                layout="size"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+                className="flex flex-col items-center justify-center gap-4 md:gap-6"
               >
-                {isLoading ? (
-                  <div className="flex items-end">
-                    <span>Minting</span>
-                    <span className="loading loading-dots loading-xs"></span>
-                  </div>
-                ) : (
-                  <span>Mint</span>
-                )}
-              </button>
-            </div>
+                <div className="text-lg font-bold text-white font-body md:text-2xl">
+                  <span>
+                    {readData ? readData[0].result?.toString() : "..."}
+                  </span>{" "}
+                  /{" "}
+                  <span>
+                    {readData ? readData[1].result?.toString() : "..."}
+                  </span>{" "}
+                  <span>minted</span>
+                </div>
+
+                <span className="text-sm font-body md:text-base">
+                  Price:{" "}
+                  {readData ? (
+                    <span>
+                      {(
+                        Number(formatEther(readData[2].result as bigint)) *
+                        quantity
+                      ).toLocaleString()}{" "}
+                      {readData[3].result?.toString()}
+                    </span>
+                  ) : (
+                    "..."
+                  )}
+                </span>
+
+                <div className="flex items-center justify-between w-28 md:w-36 font-body text-primary">
+                  <AmountButton onClick={decrement} icon={HiMinus} />
+                  <span className="text-2xl md:text-4xl">{quantity}</span>
+                  <AmountButton onClick={increment} icon={HiPlus} />
+                </div>
+
+                <button
+                  type="button"
+                  disabled={isLoading}
+                  onClick={mintNft}
+                  className="w-40 h-10 normal-case transition duration-300 ease-in-out border-none rounded disabled:ring-primary/25 disabled:ring-1 text-primary-content md:text-lg md:w-60 md:btn-md btn-sm hover:bg-primary-focus btn bg-primary"
+                >
+                  {isLoading ? (
+                    <div className="flex items-end">
+                      <span>Minting</span>
+                      <span className="loading loading-dots loading-xs"></span>
+                    </div>
+                  ) : (
+                    <span>Mint</span>
+                  )}
+                </button>
+              </motion.div>
+            ) : (
+              <motion.p
+                layout="size"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+                className="text-sm md:text-base font-body"
+              >
+                Please connect your wallet to mint
+              </motion.p>
+            )}
           </motion.div>
         )}
 
