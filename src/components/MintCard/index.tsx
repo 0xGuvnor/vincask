@@ -57,8 +57,7 @@ const MintCard = () => {
   });
 
   const { config: paymentTokenConfig } = usePrepareContractWrite({
-    address: paymentToken.address.sepolia,
-    abi: paymentToken.abi,
+    ...paymentTokenContract,
     functionName: "approve",
     args: [
       vincask.address.sepolia,
