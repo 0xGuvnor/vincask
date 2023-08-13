@@ -54,7 +54,37 @@ export default function App({ Component, pageProps }: AppProps) {
           <main
             className={`${marcellus.className} ${outfit.variable} flex flex-col justify-between min-h-screen`}
           >
-            <Toaster />
+            <Toaster
+              toastOptions={{
+                success: {
+                  duration: 8000,
+                  style: {
+                    background: "#004225",
+                    color: "#fff",
+                    borderRadius: "10px",
+                  },
+                  iconTheme: { primary: "#00FF7F", secondary: "#000000" },
+                },
+                error: {
+                  duration: 8000,
+                  style: {
+                    background: "#58111A",
+                    color: "#fff",
+                    borderRadius: "10px",
+                  },
+                },
+                loading: {
+                  style: {
+                    background: "#F4C431",
+                    color: "#000000",
+                    borderRadius: "10px",
+                  },
+                  icon: (
+                    <span className="loading loading-spinner loading-md"></span>
+                  ),
+                },
+              }}
+            />
             <Navbar />
             <Component {...pageProps} />
             <Footer />

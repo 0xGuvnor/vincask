@@ -21,13 +21,14 @@ const Faucet = () => {
     <div
       className={`${
         isConnected ? "flex" : "hidden"
-      } absolute inset-x-0 items-center justify-center -bottom-12`}
+      } fixed right-10 items-center justify-center bottom-10 z-[100]`}
     >
       <button
         type="button"
         onClick={() => write?.()}
-        className="self-center px-4 py-2 font-semibold text-black transition duration-300 ease-in-out rounded-full bg-emerald-500 hover:bg-emerald-600"
+        className="flex items-center self-center justify-center gap-1 px-4 py-2 font-semibold text-black transition duration-300 ease-in-out rounded-full bg-emerald-500 hover:bg-emerald-600"
       >
+        <span className="text-xl">🤑</span>
         Mint 1 million ERC20Mock
       </button>
     </div>

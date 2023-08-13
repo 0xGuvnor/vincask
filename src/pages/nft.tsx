@@ -66,13 +66,14 @@ const NFT = () => {
 
           <motion.div
             layout="position"
-            className="relative flex items-center justify-center"
+            className="flex items-center justify-center"
           >
             <MintCard />
-            <Faucet />
           </motion.div>
         </Container>
       </LayoutGroup>
+
+      <Faucet />
     </div>
   );
 };

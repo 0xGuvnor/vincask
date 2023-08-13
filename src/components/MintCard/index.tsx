@@ -8,14 +8,17 @@ import {
   useContractReads,
   useContractWrite,
   usePrepareContractWrite,
+  useWaitForTransaction,
 } from "wagmi";
 import { paymentToken, vincask } from "@/constants/contracts";
 import { formatEther, parseEther, parseUnits } from "viem";
 import useIsMounted from "@/hooks/useIsMounted";
-import { toastError, toastSuccess } from "@/utils/toasts";
 import { motion } from "framer-motion";
 import TabButton from "./TabButton";
 import { toast } from "react-hot-toast";
+import ToastSuccess from "../toasts/ToastSuccess";
+import ToastError from "../toasts/ToastError";
+import ToastLoading from "../toasts/ToastLoading";
 
 const MintCard = () => {
   const isMounted = useIsMounted();
@@ -72,11 +75,16 @@ const MintCard = () => {
   });
 
   const {
-    writeAsync: approveAsync,
-    // write: approve,
+    data: approveData,
+    write: approve,
     error: approveError,
     isError: isApproveError,
   } = useContractWrite(paymentTokenConfig);
+
+  const { data: approveTxReceipt, isLoading: approveIsLoading } =
+    useWaitForTransaction({
+      hash: approveData?.hash,
+    });
 
   const { config: mintConfig } = usePrepareContractWrite({
     ...vincaskContract,
@@ -85,8 +93,7 @@ const MintCard = () => {
   });
 
   const {
-    writeAsync: mintAsync,
-    // write: mint,
+    write: mint,
     error: mintError,
     isError: isMintError,
   } = useContractWrite(mintConfig);
@@ -99,18 +106,22 @@ const MintCard = () => {
     listener(log) {
       setIsLoading(false);
       setQuantity(1);
-      toastSuccess(log[0].transactionHash!);
+      toast.success((t) => (
+        <ToastSuccess t={t} txHash={log[0].transactionHash} />
+      ));
     },
   });
 
   const decrement = () => {
-    setQuantity((prev) => {
-      if (prev === 1) {
-        return prev;
-      } else {
-        return prev - 1;
-      }
-    });
+    if (!isLoading) {
+      setQuantity((prev) => {
+        if (prev === 1) {
+          return prev;
+        } else {
+          return prev - 1;
+        }
+      });
+    }
   };
 
   const increment = () => {
@@ -122,13 +133,15 @@ const MintCard = () => {
       currentValue = Number(readData[0].result?.toString());
     }
 
-    setQuantity((prev) => {
-      if (prev === maxValue - currentValue) {
-        return prev;
-      } else {
-        return prev + 1;
-      }
-    });
+    if (!isLoading) {
+      setQuantity((prev) => {
+        if (prev === maxValue - currentValue) {
+          return prev;
+        } else {
+          return prev + 1;
+        }
+      });
+    }
   };
 
   const mintNft = async () => {
@@ -140,31 +153,43 @@ const MintCard = () => {
         Number(formatEther(readData[4].result as bigint)) < // paymentToken's spending allowance
         Number(formatEther(readData[2].result! as bigint)) * quantity // Total price
       ) {
-        try {
-          await approveAsync?.();
-        } catch (error) {
-          // End this function early if user cancels the token approval transaction
-          // Does not trigger mintAsync()
-          return;
-        }
+        approve?.();
+      } else {
+        mint?.();
       }
     }
-    try {
-      await mintAsync?.();
-    } catch (error) {}
   };
 
   useEffect(() => {
     if (isMintError) {
       setIsLoading(false);
-      toastError(mintError?.name!);
+      toast.error((t) => <ToastError t={t} errorMessage={mintError?.name} />);
     }
 
     if (isApproveError) {
       setIsLoading(false);
-      toastError(approveError?.name!);
+      toast.error((t) => (
+        <ToastError t={t} errorMessage={approveError?.name} />
+      ));
     }
-  }, [mintError, isMintError, isApproveError, approveError]);
+
+    let approveToast;
+    if (approveIsLoading) {
+      approveToast = toast.loading((t) => <ToastLoading t={t} />);
+    }
+
+    if (approveTxReceipt?.status === "success") {
+      toast.dismiss(approveToast);
+      mint?.();
+    }
+  }, [
+    mintError,
+    isMintError,
+    isApproveError,
+    approveError,
+    approveIsLoading,
+    approveTxReceipt,
+  ]);
 
   if (!isMounted) return null;
   return (
@@ -250,10 +275,22 @@ const MintCard = () => {
                   )}
                 </span>
 
-                <div className="flex items-center justify-between w-28 md:w-36 font-body text-primary">
-                  <AmountButton onClick={decrement} icon={HiMinus} />
+                <div
+                  className={`${
+                    isLoading ? "text-primary/25" : "text-primary"
+                  } flex items-center justify-between w-28 md:w-36 font-body`}
+                >
+                  <AmountButton
+                    onClick={decrement}
+                    icon={HiMinus}
+                    isLoading={isLoading}
+                  />
                   <span className="text-2xl md:text-4xl">{quantity}</span>
-                  <AmountButton onClick={increment} icon={HiPlus} />
+                  <AmountButton
+                    onClick={increment}
+                    icon={HiPlus}
+                    isLoading={isLoading}
+                  />
                 </div>
 
                 <button

@@ -847,6 +847,7 @@ export const vincaskX = {
 };
 
 export const paymentToken = {
+  name: "ERC20Mock",
   address: {
     sepolia: "0xe0f8792e4521706ddEfdBFad1a4785257e83d17E" as `0x${string}`,
   },
