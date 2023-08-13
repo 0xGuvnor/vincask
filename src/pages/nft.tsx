@@ -6,6 +6,7 @@ import NftCollectionButton from "@/components/buttons/NftCollectionButton";
 import { useMobileMenuContext } from "@/context/MobileMenuContext";
 import Head from "next/head";
 import { LayoutGroup, motion } from "framer-motion";
+import Faucet from "@/components/Faucet";
 
 const NFT = () => {
   const { show } = useMobileMenuContext();
@@ -65,9 +66,10 @@ const NFT = () => {
 
           <motion.div
             layout="position"
-            className="flex items-center justify-center"
+            className="relative flex items-center justify-center"
           >
             <MintCard />
+            <Faucet />
           </motion.div>
         </Container>
       </LayoutGroup>

@@ -15,6 +15,7 @@ import useIsMounted from "@/hooks/useIsMounted";
 import { toastError, toastSuccess } from "@/utils/toasts";
 import { motion } from "framer-motion";
 import TabButton from "./TabButton";
+import { toast } from "react-hot-toast";
 
 const MintCard = () => {
   const isMounted = useIsMounted();
@@ -72,8 +73,8 @@ const MintCard = () => {
   });
 
   const {
-    // writeAsync: approveAsync,
-    write: approve,
+    writeAsync: approveAsync,
+    // write: approve,
     error: approveError,
     isError: isApproveError,
   } = useContractWrite(paymentTokenConfig);
@@ -85,8 +86,8 @@ const MintCard = () => {
   });
 
   const {
-    // writeAsync: mintAsync,
-    write: mint,
+    writeAsync: mintAsync,
+    // write: mint,
     error: mintError,
     isError: isMintError,
   } = useContractWrite(mintConfig);
@@ -131,21 +132,27 @@ const MintCard = () => {
     });
   };
 
-  const mintNft = () => {
-    if (mint && approve) {
-      setIsLoading(true);
+  const mintNft = async () => {
+    setIsLoading(true);
 
-      if (readData) {
-        if (
-          // Checking if paymentToken's spending allowance is less than the total price to mint
-          Number(formatEther(readData[4].result as bigint)) < // paymentToken's spending allowance
-          Number(formatEther(readData[2].result! as bigint)) * quantity // Total price
-        ) {
-          approve();
+    if (readData) {
+      if (
+        // Checking if paymentToken's spending allowance is less than the total price to mint
+        Number(formatEther(readData[4].result as bigint)) < // paymentToken's spending allowance
+        Number(formatEther(readData[2].result! as bigint)) * quantity // Total price
+      ) {
+        try {
+          await approveAsync?.();
+        } catch (error) {
+          // End this function early if user cancels the token approval transaction
+          // Does not trigger mintAsync()
+          return;
         }
       }
-      mint();
     }
+    try {
+      await mintAsync?.();
+    } catch (error) {}
   };
 
   useEffect(() => {
