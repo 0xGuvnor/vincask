@@ -55,7 +55,7 @@ const NFT = () => {
             <div className="flex flex-col gap-4 md:flex-row">
               <NftCollectionButton
                 name="OpenSea"
-                url="https://testnets.opensea.io/collection/vincask"
+                url="https://testnets.opensea.io/collection/vincask-1"
               />
               <NftCollectionButton
                 name="LooksRare"
