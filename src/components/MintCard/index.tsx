@@ -175,7 +175,9 @@ const MintCard = () => {
 
     let approveToast;
     if (approveIsLoading) {
-      approveToast = toast.loading((t) => <ToastLoading t={t} />);
+      approveToast = toast.loading((t) => (
+        <ToastLoading t={t} txHash={approveData?.hash} />
+      ));
     }
 
     if (approveTxReceipt?.status === "success") {

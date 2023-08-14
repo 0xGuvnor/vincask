@@ -14,7 +14,7 @@ const ToastSuccess = ({ t, txHash }: Props) => {
           href={`https://sepolia.etherscan.io/tx/${txHash}`}
           rel="noreferrer"
           target="_blank"
-          className="text-blue-500 underline underline-offset-2"
+          className="text-blue-500 underline transition duration-300 ease-in-out underline-offset-2 hover:opacity-80"
         >
           <span className="text-sm">View your tx on Etherscan</span>
         </a>
