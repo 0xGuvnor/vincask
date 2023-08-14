@@ -314,7 +314,7 @@ const MintCard = () => {
                 />
                 <TotalPrice
                   dataLoaded={!!readData}
-                  price={"25,000"}
+                  price={`${(25000 * quantity).toLocaleString()}`}
                   currency={"SGD"}
                 />
                 <QuantitySelection
