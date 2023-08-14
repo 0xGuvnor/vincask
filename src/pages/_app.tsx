@@ -1,7 +1,11 @@
 import "@/styles/globals.css";
 import "@rainbow-me/rainbowkit/styles.css";
 import { Marcellus, Outfit } from "next/font/google";
-import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import {
+  darkTheme,
+  getDefaultWallets,
+  RainbowKitProvider,
+} from "@rainbow-me/rainbowkit";
 import { configureChains, createConfig, mainnet, WagmiConfig } from "wagmi";
 import { sepolia } from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
@@ -50,7 +54,17 @@ const wagmiConfig = createConfig({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains} coolMode>
+      <RainbowKitProvider
+        chains={chains}
+        coolMode
+        theme={darkTheme({
+          accentColor: "#FACA16",
+          accentColorForeground: "black",
+          borderRadius: "small",
+          fontStack: "system",
+          overlayBlur: "small",
+        })}
+      >
         <MobileMenuProvider>
           <LayoutGroup>
             <main

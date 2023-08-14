@@ -21,7 +21,7 @@ const Faucet = () => {
     <div
       className={`${
         isConnected ? "flex" : "hidden"
-      } fixed right-10 items-center justify-center bottom-10 md:bottom-20 z-[100]`}
+      } fixed right-5 md:right-10 items-center justify-center bottom-10 md:bottom-20 z-[100]`}
     >
       <button
         type="button"
