@@ -91,7 +91,7 @@ const ConnectWallet = () => {
                   <button
                     onClick={openAccountModal}
                     type="button"
-                    className="text-center transition duration-300 ease-in-out hover:brightness-200"
+                    className="text-sm text-center transition duration-300 ease-in-out hover:brightness-200 md:text-base"
                   >
                     {account.displayName}
                     {!isMobileOrTablet && (
