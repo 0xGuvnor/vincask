@@ -22,7 +22,7 @@ const DesktopMenu = () => {
               {menuItem.title}
             </span>
           </Link>
-          <span className="absolute inset-x-0 bottom-0 -z-10 w-full h-full transition duration-300 ease-in-out origin-bottom scale-y-[0.05] group-hover:scale-y-110 bg-primary"></span>
+          <span className="absolute inset-x-0 bottom-0 rounded-sm -z-10 w-full h-full transition duration-300 ease-in-out origin-bottom scale-y-[0.05] group-hover:scale-y-110 group-hover:scale-x-125 bg-primary"></span>
         </div>
       ))}
     </div>
