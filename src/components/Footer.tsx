@@ -6,10 +6,16 @@ import {
   FaTiktok,
   FaTwitter,
 } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const Footer = () => {
   return (
-    <div>
+    <motion.div
+      layout
+      transition={{
+        duration: 0.25,
+      }}
+    >
       <Newsletter />
 
       <footer className="bg-base-100">
@@ -255,7 +261,7 @@ const Footer = () => {
           </p>
         </div>
       </footer>
-    </div>
+    </motion.div>
   );
 };
 export default Footer;
