@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@crossmint/client-sdk-react-ui": "^1.0.1-alpha.4",
     "@headlessui/react": "^1.7.15",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.4",

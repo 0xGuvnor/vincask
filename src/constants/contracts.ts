@@ -1,6 +1,7 @@
 export const vincask = {
   address: {
     sepolia: "0xD6B21Ad151b86fED2C83A80877cf5CEBBea21A72" as `0x${string}`,
+    goerli: "0x8e1CdF038adCcaC943844282534bfCE4805c775A" as `0x${string}`,
   },
   abi: [
     {
@@ -607,6 +608,7 @@ export const vincask = {
 export const vincaskX = {
   address: {
     sepolia: "0x3FFc81E5863B0F843168E850C6f1f50928e87E5e" as `0x${string}`,
+    goerli: "0x52507255e11b23e8d311cF4839a8a6d17eD4F3Af" as `0x${string}`,
   },
   abi: [
     { inputs: [], stateMutability: "nonpayable", type: "constructor" },
@@ -850,6 +852,7 @@ export const paymentToken = {
   name: "ERC20Mock",
   address: {
     sepolia: "0xe0f8792e4521706ddEfdBFad1a4785257e83d17E" as `0x${string}`,
+    goerli: "0x13Fb0f5445E75425dE69d974f5614a2EFc332eC3" as `0x${string}`,
   },
   abi: [
     {
