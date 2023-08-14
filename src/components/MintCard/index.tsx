@@ -233,7 +233,7 @@ const MintCard = () => {
           >
             <motion.div
               layout
-              className="relative w-40 h-40 ml-[2.49995555px] md:w-60 md:h-60 md:ml-0"
+              className="relative w-44 h-44 ml-[2.51995555px] md:w-60 md:h-60 md:ml-0"
             >
               <Image
                 alt="Vincask logo"
@@ -299,7 +299,7 @@ const MintCard = () => {
                   type="button"
                   disabled={isLoading}
                   onClick={mintNft}
-                  className="w-40 h-10 normal-case transition duration-300 ease-in-out border-none rounded disabled:ring-primary/25 disabled:ring-1 text-primary-content md:text-lg md:w-60 md:btn-md btn-sm hover:bg-primary-focus btn bg-primary"
+                  className="h-10 normal-case transition duration-300 ease-in-out border-none rounded w-44 disabled:ring-primary/25 disabled:ring-1 text-primary-content md:text-lg md:w-60 md:btn-md btn-sm hover:bg-primary-focus btn bg-primary"
                 >
                   {isLoading ? (
                     <div className="flex items-end">
