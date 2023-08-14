@@ -220,7 +220,7 @@ const MintCard = () => {
         style={{
           boxShadow: "0 25px 50px -12px #27272a",
         }}
-        className="flex flex-col items-center justify-center rounded-b-xl w-72 md:w-96 pb-10 md:pb-12 bg-[#1B1B1B] z-0"
+        className="flex flex-col items-center justify-center rounded-b-xl w-[300px] md:w-96 pb-10 md:pb-12 bg-[#1B1B1B] z-0"
       >
         {tab === "crypto" && (
           <motion.div
@@ -229,7 +229,7 @@ const MintCard = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="flex flex-col items-center justify-center bg-whitex px-8x"
+            className="flex flex-col items-center justify-center"
           >
             <motion.div
               layout
@@ -249,7 +249,7 @@ const MintCard = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
-                className="flex flex-col items-center justify-center gap-4 md:gap-6"
+                className="flex flex-col items-center justify-center gap-4 md:w-auto w-60 md:gap-6"
               >
                 <div className="text-lg font-bold text-white font-body md:text-2xl">
                   <span>
