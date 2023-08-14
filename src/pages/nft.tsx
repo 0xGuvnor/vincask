@@ -57,10 +57,10 @@ const NFT = () => {
                 name="OpenSea"
                 url="https://testnets.opensea.io/collection/vincask-1"
               />
-              <NftCollectionButton
+              {/* <NftCollectionButton
                 name="LooksRare"
                 url="https://looksrare.org/"
-              />
+              /> */}
             </div>
           </motion.div>
 
