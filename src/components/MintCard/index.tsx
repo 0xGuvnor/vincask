@@ -241,11 +241,15 @@ const MintCard = () => {
                 />
                 <TotalPrice
                   dataLoaded={!!readData}
-                  price={(
-                    Number(formatEther(readData![2].result as bigint)) *
-                    quantity
-                  ).toLocaleString()}
-                  currency={readData![3].result?.toString()}
+                  price={
+                    readData
+                      ? (
+                          Number(formatEther(readData[2].result as bigint)) *
+                          quantity
+                        ).toLocaleString()
+                      : ""
+                  }
+                  currency={readData ? readData[3].result?.toString() : ""}
                 />
               </div>
 
