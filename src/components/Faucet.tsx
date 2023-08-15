@@ -21,12 +21,12 @@ const Faucet = () => {
     <div
       className={`${
         isConnected ? "flex" : "hidden"
-      } fixed right-5 md:right-10 items-center justify-center bottom-10 md:bottom-20 z-[100]`}
+      } fixed right-5 md:right-10 items-center justify-center bottom-10 md:bottom-20 z-50`}
     >
       <button
         type="button"
         onClick={() => write?.()}
-        className="flex items-center self-center justify-center gap-1 px-4 py-2 font-semibold text-black transition duration-300 ease-in-out rounded-full bg-emerald-500 hover:bg-emerald-600"
+        className="flex items-center self-center justify-center gap-1 px-4 py-2 font-semibold text-black transition duration-300 ease-in-out rounded-full shadow-2xl shadow-white/10 bg-emerald-500 hover:bg-emerald-600"
       >
         <span className="text-xl">🤑</span>
         Mint 1 million ERC20Mock
