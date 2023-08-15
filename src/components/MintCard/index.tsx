@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import {
   useAccount,
-  useContractEvent,
   useContractReads,
   useContractWrite,
   usePrepareContractWrite,
@@ -106,20 +105,6 @@ const MintCard = () => {
       hash: mintData?.hash,
     });
 
-  // Listen for the ERC721 Transfer event to be emitted
-  // which indicates a successful mint
-  useContractEvent({
-    ...vincaskContract,
-    eventName: "Transfer",
-    listener(log) {
-      setIsLoading(false);
-      setQuantity(1);
-      // toast.success((t) => (
-      //   <ToastSuccess t={t} txHash={log[0].transactionHash} />
-      // ));
-    },
-  });
-
   const decrement = () => {
     if (!isLoading) {
       setQuantity((prev) => {
@@ -220,6 +205,8 @@ const MintCard = () => {
     }
 
     if (mintTxReceipt?.status === "success") {
+      setIsLoading(false);
+      setQuantity(1);
       toast.dismiss(mintToast);
       toast.success((t) => (
         <ToastSuccess t={t} txHash={mintTxReceipt.transactionHash} />
