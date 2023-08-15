@@ -18,7 +18,7 @@ const Hero = () => {
       </div>
 
       <div className="flex flex-col items-center justify-center max-w-sm mx-auto -mt-32 space-y-1 md:space-y-2 md:max-w-5xl md:-mt-48">
-        <h1 className="text-xl font-black text-center text-white md:text-6xl">
+        <h1 className="text-xl font-black text-center text-white md:text-6xl font-header">
           Crafted with Passion and Precision
         </h1>
         <h2 className="max-w-xs mx-auto text-center md:max-w-xl text-md md:text-3xl">
