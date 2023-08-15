@@ -18,7 +18,11 @@ import { Toaster } from "react-hot-toast";
 import { AnimatePresence, LayoutGroup } from "framer-motion";
 
 // Header font
-const marcellus = Marcellus({ weight: "400", subsets: ["latin"] });
+const marcellus = Marcellus({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-header",
+});
 // Body font
 const outfit = Outfit({
   weight: ["300", "700", "800", "900"],
@@ -69,7 +73,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <MobileMenuProvider>
             <LayoutGroup>
               <main
-                className={`${marcellus.className} ${outfit.variable} flex flex-col justify-between min-h-screen`}
+                className={`${outfit.className} ${marcellus.variable} flex flex-col justify-between min-h-screen`}
               >
                 <Toaster
                   toastOptions={{
