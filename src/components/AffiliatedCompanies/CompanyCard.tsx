@@ -22,7 +22,7 @@ const CompanyCard = ({ name, website, image, description }: Props) => {
 
       <div className="flex-1 p-4 space-y-4 rounded-b bg-gray-300/30">
         <div className="flex items-center justify-between text-white">
-          <h3 className="text-lg md:text-2xl">{name}</h3>
+          <h3 className="text-lg md:text-2xl font-header">{name}</h3>
           <a
             href={website}
             rel="noreferrer"
@@ -33,7 +33,7 @@ const CompanyCard = ({ name, website, image, description }: Props) => {
           </a>
         </div>
 
-        <p className="text-justify md:text-lg font-body">{description}</p>
+        <p className="text-justify md:text-lg">{description}</p>
       </div>
     </div>
   );

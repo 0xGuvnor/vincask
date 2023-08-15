@@ -27,7 +27,6 @@ const marcellus = Marcellus({
 const outfit = Outfit({
   weight: ["300", "700", "800", "900"],
   subsets: ["latin"],
-  variable: "--font-body",
 });
 
 const { chains, publicClient } = configureChains(

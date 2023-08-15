@@ -18,10 +18,10 @@ const TeamProfile = ({ name, title, src, description }: Props) => {
         className="object-cover w-[300px] h-[375px] rounded-xl"
       />
       <div className="flex flex-col max-w-lg">
-        <h2 className="text-lg md:text-2xl">{name}</h2>
-        <h3 className="italic md:text-lg">{title}</h3>
+        <h2 className="text-lg md:text-2xl font-header">{name}</h2>
+        <h3 className="italic md:text-lg font-header">{title}</h3>
 
-        <span className="mt-4 md:text-lg font-body">{description}</span>
+        <span className="mt-4 md:text-lg">{description}</span>
       </div>
     </div>
   );

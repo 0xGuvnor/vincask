@@ -12,7 +12,7 @@ const TotalPrice = ({ dataLoaded, price, currency }: Props) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 0.2, duration: 0.5 }}
-      className="text-sm font-body md:text-base"
+      className="text-sm md:text-base"
     >
       Price:{" "}
       {dataLoaded ? (

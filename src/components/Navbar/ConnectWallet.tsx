@@ -65,7 +65,7 @@ const ConnectWallet = () => {
               }
 
               return (
-                <div className="flex items-center justify-center gap-1 md:gap-2 font-body bg-slate-600/25 p-1.5 rounded md:py-2 md:px-3">
+                <div className="flex items-center justify-center gap-1 md:gap-2 bg-slate-600/25 p-1.5 rounded md:py-2 md:px-3">
                   <button
                     onClick={openChainModal}
                     type="button"

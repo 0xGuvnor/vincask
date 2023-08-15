@@ -312,7 +312,7 @@ const MintCard = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2, duration: 0.5 }}
-                  className="text-sm md:text-base font-body text-primary"
+                  className="text-sm md:text-base text-primary"
                 >
                   Please connect your wallet to mint
                 </motion.p>
