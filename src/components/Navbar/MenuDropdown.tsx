@@ -32,7 +32,7 @@ const MenuDropdown = () => {
     >
       <Menu.Items
         static
-        className="flex flex-col items-center justify-center space-y-2"
+        className="flex flex-col items-center justify-center space-y-4"
       >
         {menuItems.map((menuItem) => (
           <Menu.Item as="div" key={menuItem.link}>
