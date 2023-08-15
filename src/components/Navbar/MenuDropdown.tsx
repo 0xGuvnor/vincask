@@ -37,7 +37,7 @@ const MenuDropdown = () => {
           delay: 0.4,
         },
       }}
-      className="fixed inset-x-0 w-full py-3 shadow-2xl -z-10 top-14 bg-base-100/90"
+      className="fixed inset-x-0 w-full py-4 shadow-2xl -z-10 top-14 bg-base-100/90"
     >
       <Menu.Items
         static
