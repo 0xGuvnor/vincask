@@ -4,6 +4,7 @@ import Container from "@/components/Container";
 import Overlay from "@/components/Overlay";
 import Timeline from "@/components/Timeline";
 import { useMobileMenuContext } from "@/context/MobileMenuContext";
+import { AnimatePresence } from "framer-motion";
 import Head from "next/head";
 
 const About = () => {
@@ -18,7 +19,7 @@ const About = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {show && <Overlay />}
+      <AnimatePresence>{show && <Overlay />}</AnimatePresence>
 
       {/* Background gradient */}
       <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-[#2A3439]/40 from-0% -z-10"></div>

@@ -5,7 +5,7 @@ import Overlay from "@/components/Overlay";
 import NftCollectionButton from "@/components/buttons/NftCollectionButton";
 import { useMobileMenuContext } from "@/context/MobileMenuContext";
 import Head from "next/head";
-import { LayoutGroup, motion } from "framer-motion";
+import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import Faucet from "@/components/Faucet";
 
 const NFT = () => {
@@ -20,7 +20,7 @@ const NFT = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {show && <Overlay />}
+      <AnimatePresence>{show && <Overlay />}</AnimatePresence>
 
       <LayoutGroup>
         <Container classNames="md:!flex-row flex-col-reverse">

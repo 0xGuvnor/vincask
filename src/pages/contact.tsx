@@ -5,6 +5,7 @@ import FAQ from "@/components/FAQ";
 import Heading from "@/components/Heading";
 import Overlay from "@/components/Overlay";
 import { useMobileMenuContext } from "@/context/MobileMenuContext";
+import { AnimatePresence } from "framer-motion";
 import Head from "next/head";
 
 const Contact = () => {
@@ -19,7 +20,7 @@ const Contact = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {show && <Overlay />}
+      <AnimatePresence>{show && <Overlay />}</AnimatePresence>
 
       <Container classNames="flex-1">
         <Heading

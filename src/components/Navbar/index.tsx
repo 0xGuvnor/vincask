@@ -23,7 +23,7 @@ const Navbar = () => {
       <MobileMenu />
 
       <div className="fixed inset-x-0 flex items-center justify-center md:top-0 -top-1 md:relative">
-        <Link href="/" className="relative w-16 h-16 md:w-20 md:h-20">
+        <Link href="/" className="relative z-50 w-16 h-16 md:w-20 md:h-20">
           <Image
             src="/logo1.png"
             alt="Vincask logo"

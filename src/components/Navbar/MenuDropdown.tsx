@@ -1,3 +1,8 @@
+import { useMobileMenuContext } from "@/context/MobileMenuContext";
+import {
+  mobileMenuItemVariants,
+  mobileMenuItemsVariants,
+} from "@/utils/motionVariants";
 import { Menu } from "@headlessui/react";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -14,39 +19,52 @@ export const menuItems = [
 ];
 
 const MenuDropdown = () => {
+  const { show } = useMobileMenuContext();
+
   return (
     <motion.div
-      initial={{ y: -50, opacity: 0 }}
+      initial={{ scale: 0 }}
       animate={{
-        y: 0,
-        opacity: 1,
+        scale: 1,
+        originY: "top",
         transition: { type: "tween", duration: 0.2 },
       }}
       exit={{
-        y: -100,
-        opacity: 0,
-        zIndex: -10,
-        transition: { type: "tween", duration: 0.1 },
+        scale: 0,
+        transition: {
+          type: "tween",
+          duration: 0.2,
+          delay: 0.4,
+        },
       }}
-      className="fixed inset-x-0 z-50 w-full py-3 shadow-2xl top-14 bg-base-100/90"
+      className="fixed inset-x-0 w-full py-3 shadow-2xl -z-10 top-14 bg-base-100/90"
     >
       <Menu.Items
         static
-        className="flex flex-col items-center justify-center space-y-4"
+        // className="flex flex-col items-center justify-center space-y-4"
       >
-        {menuItems.map((menuItem) => (
-          <Menu.Item as="div" key={menuItem.link}>
-            {({ active, close }) => (
-              <Link
-                href={menuItem.link}
-                onClick={close}
-                className={`${active && "brightness-200"}`}
-              >
-                {menuItem.title}
-              </Link>
-            )}
-          </Menu.Item>
-        ))}
+        <motion.ul
+          initial={false}
+          animate={show ? "open" : "closed"}
+          variants={mobileMenuItemsVariants}
+          className="flex flex-col items-center justify-center space-y-4"
+        >
+          {menuItems.map((menuItem) => (
+            <motion.li key={menuItem.link} variants={mobileMenuItemVariants}>
+              <Menu.Item as="div" key={menuItem.link}>
+                {({ active, close }) => (
+                  <Link
+                    href={menuItem.link}
+                    onClick={close}
+                    className={`${active && "brightness-200"}`}
+                  >
+                    {menuItem.title}
+                  </Link>
+                )}
+              </Menu.Item>
+            </motion.li>
+          ))}
+        </motion.ul>
       </Menu.Items>
     </motion.div>
   );

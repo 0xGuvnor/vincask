@@ -3,6 +3,7 @@ import Overlay from "@/components/Overlay";
 import Team from "@/components/Team";
 import Testimonials from "@/components/Testimonials";
 import { useMobileMenuContext } from "@/context/MobileMenuContext";
+import { AnimatePresence } from "framer-motion";
 import Head from "next/head";
 
 export default function Home() {
@@ -17,7 +18,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {show && <Overlay />}
+      <AnimatePresence>{show && <Overlay />}</AnimatePresence>
 
       <div className="flex flex-col">
         <Hero />
