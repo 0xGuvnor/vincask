@@ -22,7 +22,7 @@ const ToastSuccess = ({ t, txHash }: Props) => {
 
       <button
         onClick={() => toast.dismiss(t.id)}
-        className="p-2 font-semibold text-xs rounded-md bg-[#50C878]/10 hover:bg-[#50C878]/40 transition duration-300 ease-in-out translate-x-[10px]"
+        className="p-2 text-xs rounded-md bg-[#50C878]/10 hover:bg-[#50C878]/40 transition duration-300 ease-in-out translate-x-[10px]"
       >
         Dismiss
       </button>

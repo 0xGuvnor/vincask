@@ -24,7 +24,7 @@ const ToastLoading = ({ t, message, txHash }: Props) => {
 
       <button
         onClick={() => toast.dismiss(t.id)}
-        className="p-2 text-xs font-semibold rounded-md bg-[#B8860B]/20 hover:bg-[#B8860B]/40 transition duration-300 ease-in-out translate-x-[10px]"
+        className="p-2 text-xs rounded-md bg-[#B8860B]/20 hover:bg-[#B8860B]/40 transition duration-300 ease-in-out translate-x-[10px]"
       >
         Dismiss
       </button>

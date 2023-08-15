@@ -11,7 +11,7 @@ const ToastError = ({ t, errorMessage }: Props) => {
       <span>{errorMessage}</span>
       <button
         onClick={() => toast.dismiss(t.id)}
-        className="p-2 font-semibold text-xs rounded-md bg-[#EE204E]/10 hover:bg-[#EE204E]/40 transition duration-300 ease-in-out translate-x-[10px]"
+        className="p-2 text-xs rounded-md bg-[#EE204E]/10 hover:bg-[#EE204E]/40 transition duration-300 ease-in-out translate-x-[10px]"
       >
         Dismiss
       </button>
