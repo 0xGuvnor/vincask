@@ -1,16 +1,13 @@
 import Container from "@/components/Container";
 import Heading from "@/components/Heading";
 import MintCard from "@/components/MintCard";
-import Overlay from "@/components/Overlay";
 import NftCollectionButton from "@/components/buttons/NftCollectionButton";
-import { useMobileMenuContext } from "@/context/MobileMenuContext";
 import Head from "next/head";
-import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
+import { LayoutGroup, motion } from "framer-motion";
 import Faucet from "@/components/Faucet";
+import Overlay from "@/components/Overlay";
 
 const NFT = () => {
-  const { show } = useMobileMenuContext();
-
   return (
     <div>
       <Head>
@@ -20,7 +17,7 @@ const NFT = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <AnimatePresence>{show && <Overlay />}</AnimatePresence>
+      <Overlay />
 
       <LayoutGroup>
         <Container classNames="md:!flex-row flex-col-reverse">

@@ -2,13 +2,9 @@ import Hero from "@/components/Hero";
 import Overlay from "@/components/Overlay";
 import Team from "@/components/Team";
 import Testimonials from "@/components/Testimonials";
-import { useMobileMenuContext } from "@/context/MobileMenuContext";
-import { AnimatePresence } from "framer-motion";
 import Head from "next/head";
 
 export default function Home() {
-  const { show } = useMobileMenuContext();
-
   return (
     <>
       <Head>
@@ -18,7 +14,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <AnimatePresence>{show && <Overlay />}</AnimatePresence>
+      <Overlay />
 
       <div className="flex flex-col">
         <Hero />

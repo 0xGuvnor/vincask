@@ -6,6 +6,7 @@ import {
 import { Menu } from "@headlessui/react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export const menuItems = [
   { title: "Home", link: "/" },
@@ -20,6 +21,7 @@ export const menuItems = [
 
 const MenuDropdown = () => {
   const { show } = useMobileMenuContext();
+  const router = useRouter();
 
   return (
     <motion.div
@@ -39,10 +41,7 @@ const MenuDropdown = () => {
       }}
       className="fixed inset-x-0 w-full py-4 shadow-2xl -z-10 top-14 bg-base-100/90"
     >
-      <Menu.Items
-        static
-        // className="flex flex-col items-center justify-center space-y-4"
-      >
+      <Menu.Items static>
         <motion.ul
           initial={false}
           animate={show ? "open" : "closed"}
@@ -51,12 +50,21 @@ const MenuDropdown = () => {
         >
           {menuItems.map((menuItem) => (
             <motion.li key={menuItem.link} variants={mobileMenuItemVariants}>
-              <Menu.Item as="div" key={menuItem.link}>
+              <Menu.Item as="div">
                 {({ active, close }) => (
                   <Link
                     href={menuItem.link}
-                    onClick={close}
-                    className={`${active && "brightness-200"}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      close();
+                      setTimeout(() => {
+                        // We set a delay of 0.6s to allow the Overlay animation to complete before routing
+                        router.push(menuItem.link);
+                      }, 600);
+                    }}
+                    className={`${active && "brightness-200"} ${
+                      router.pathname === menuItem.link && "text-primary"
+                    }`}
                   >
                     {menuItem.title}
                   </Link>

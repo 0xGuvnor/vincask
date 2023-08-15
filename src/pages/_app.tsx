@@ -15,7 +15,7 @@ import type { AppProps } from "next/app";
 import Footer from "@/components/Footer";
 import { MobileMenuProvider } from "@/context/MobileMenuContext";
 import { Toaster } from "react-hot-toast";
-import { LayoutGroup } from "framer-motion";
+import { AnimatePresence, LayoutGroup } from "framer-motion";
 
 // Header font
 const marcellus = Marcellus({ weight: "400", subsets: ["latin"] });
@@ -53,61 +53,63 @@ const wagmiConfig = createConfig({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider
-        chains={chains}
-        coolMode
-        theme={darkTheme({
-          accentColor: "#FACA16",
-          accentColorForeground: "black",
-          borderRadius: "small",
-          fontStack: "system",
-          overlayBlur: "small",
-        })}
-      >
-        <MobileMenuProvider>
-          <LayoutGroup>
-            <main
-              className={`${marcellus.className} ${outfit.variable} flex flex-col justify-between min-h-screen`}
-            >
-              <Toaster
-                toastOptions={{
-                  success: {
-                    duration: 8000,
-                    style: {
-                      background: "#004225",
-                      color: "#fff",
-                      borderRadius: "10px",
+    <AnimatePresence mode="wait">
+      <WagmiConfig config={wagmiConfig}>
+        <RainbowKitProvider
+          chains={chains}
+          coolMode
+          theme={darkTheme({
+            accentColor: "#FACA16",
+            accentColorForeground: "black",
+            borderRadius: "small",
+            fontStack: "system",
+            overlayBlur: "small",
+          })}
+        >
+          <MobileMenuProvider>
+            <LayoutGroup>
+              <main
+                className={`${marcellus.className} ${outfit.variable} flex flex-col justify-between min-h-screen`}
+              >
+                <Toaster
+                  toastOptions={{
+                    success: {
+                      duration: 8000,
+                      style: {
+                        background: "#004225",
+                        color: "#fff",
+                        borderRadius: "10px",
+                      },
+                      iconTheme: { primary: "#00FF7F", secondary: "#000000" },
                     },
-                    iconTheme: { primary: "#00FF7F", secondary: "#000000" },
-                  },
-                  error: {
-                    duration: 8000,
-                    style: {
-                      background: "#58111A",
-                      color: "#fff",
-                      borderRadius: "10px",
+                    error: {
+                      duration: 8000,
+                      style: {
+                        background: "#58111A",
+                        color: "#fff",
+                        borderRadius: "10px",
+                      },
                     },
-                  },
-                  loading: {
-                    style: {
-                      background: "#F4C431",
-                      color: "#000000",
-                      borderRadius: "10px",
+                    loading: {
+                      style: {
+                        background: "#F4C431",
+                        color: "#000000",
+                        borderRadius: "10px",
+                      },
+                      icon: (
+                        <span className="loading loading-spinner loading-md"></span>
+                      ),
                     },
-                    icon: (
-                      <span className="loading loading-spinner loading-md"></span>
-                    ),
-                  },
-                }}
-              />
-              <Navbar />
-              <Component {...pageProps} />
-              <Footer />
-            </main>
-          </LayoutGroup>
-        </MobileMenuProvider>
-      </RainbowKitProvider>
-    </WagmiConfig>
+                  }}
+                />
+                <Navbar />
+                <Component {...pageProps} />
+                <Footer />
+              </main>
+            </LayoutGroup>
+          </MobileMenuProvider>
+        </RainbowKitProvider>
+      </WagmiConfig>
+    </AnimatePresence>
   );
 }

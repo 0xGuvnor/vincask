@@ -3,13 +3,9 @@ import Collage from "@/components/Collage";
 import Container from "@/components/Container";
 import Overlay from "@/components/Overlay";
 import Timeline from "@/components/Timeline";
-import { useMobileMenuContext } from "@/context/MobileMenuContext";
-import { AnimatePresence } from "framer-motion";
 import Head from "next/head";
 
 const About = () => {
-  const { show } = useMobileMenuContext();
-
   return (
     <div className="relative">
       <Head>
@@ -19,7 +15,7 @@ const About = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <AnimatePresence>{show && <Overlay />}</AnimatePresence>
+      <Overlay />
 
       {/* Background gradient */}
       <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-[#2A3439]/40 from-0% -z-10"></div>

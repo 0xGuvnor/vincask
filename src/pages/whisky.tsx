@@ -1,12 +1,8 @@
 import Container from "@/components/Container";
 import Overlay from "@/components/Overlay";
-import { useMobileMenuContext } from "@/context/MobileMenuContext";
-import { AnimatePresence } from "framer-motion";
 import Head from "next/head";
 
 const Whisky = () => {
-  const { show } = useMobileMenuContext();
-
   return (
     <div>
       <Head>
@@ -16,7 +12,7 @@ const Whisky = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <AnimatePresence>{show && <Overlay />}</AnimatePresence>
+      <Overlay />
 
       <Container classNames="italic">product placeholder</Container>
     </div>
