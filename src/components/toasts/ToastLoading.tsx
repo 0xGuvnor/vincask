@@ -3,14 +3,15 @@ import { Toast, toast } from "react-hot-toast";
 
 interface Props {
   t: Toast;
+  message: string;
   txHash: `0x${string}` | undefined;
 }
 
-const ToastLoading = ({ t, txHash }: Props) => {
+const ToastLoading = ({ t, message, txHash }: Props) => {
   return (
     <div className="flex items-center justify-center">
       <div>
-        <p>Approving Vincask to spend your {paymentToken.name}...</p>{" "}
+        <p>{message}</p>
         <a
           href={`https://sepolia.etherscan.io/tx/${txHash}`}
           rel="noreferrer"

@@ -95,10 +95,16 @@ const MintCard = () => {
   });
 
   const {
+    data: mintData,
     write: mint,
     error: mintError,
     isError: isMintError,
   } = useContractWrite(mintConfig);
+
+  const { data: mintTxReceipt, isLoading: mintIsLoading } =
+    useWaitForTransaction({
+      hash: mintData?.hash,
+    });
 
   // Listen for the ERC721 Transfer event to be emitted
   // which indicates a successful mint
@@ -108,9 +114,9 @@ const MintCard = () => {
     listener(log) {
       setIsLoading(false);
       setQuantity(1);
-      toast.success((t) => (
-        <ToastSuccess t={t} txHash={log[0].transactionHash} />
-      ));
+      // toast.success((t) => (
+      //   <ToastSuccess t={t} txHash={log[0].transactionHash} />
+      // ));
     },
   });
 
@@ -178,7 +184,11 @@ const MintCard = () => {
     let approveToast;
     if (approveIsLoading) {
       approveToast = toast.loading((t) => (
-        <ToastLoading t={t} txHash={approveData?.hash} />
+        <ToastLoading
+          t={t}
+          message={`Approving Vincask to spend your ${paymentToken.name}...`}
+          txHash={approveData?.hash}
+        />
       ));
     }
 
@@ -187,18 +197,40 @@ const MintCard = () => {
       mint?.();
     }
   }, [
-    mintError,
     isMintError,
+    mintError,
     isApproveError,
     approveError,
     approveIsLoading,
     approveTxReceipt,
   ]);
 
+  useEffect(() => {
+    // We use a new useEffect so that approveIsLoading and approveTxReceipt will not keep retriggering
+    // when mintIsLoading and mintTxReceipt are updated
+    let mintToast;
+    if (mintIsLoading) {
+      mintToast = toast.loading((t) => (
+        <ToastLoading
+          t={t}
+          message={`Minting ${quantity} NFT${quantity > 1 ? "s" : ""}...`}
+          txHash={mintData?.hash}
+        />
+      ));
+    }
+
+    if (mintTxReceipt?.status === "success") {
+      toast.dismiss(mintToast);
+      toast.success((t) => (
+        <ToastSuccess t={t} txHash={mintTxReceipt.transactionHash} />
+      ));
+    }
+  }, [mintIsLoading, mintTxReceipt]);
+
   if (!isMounted) return null;
   return (
     <AnimatePresence initial={false} mode="wait">
-      <div className="flex flex-col items-center self-center justify-center md:self-start md:sticky md:top-20">
+      <div className="flex flex-col items-center self-center justify-center mt-4 md:mt-0 md:self-start md:sticky md:top-20">
         <ul className="flex items-center justify-center w-full pb-2 bg-[#1B1B1B] rounded-t-xl z-10 translate-y-1 md:translate-y-4">
           <TabButton
             tab={tab}
