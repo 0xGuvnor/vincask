@@ -5,7 +5,7 @@ const Logo = () => {
   return (
     <motion.div
       layout
-      className="relative w-44 h-44 ml-[2.51995555px] md:w-60 md:h-60 md:ml-0"
+      className="relative w-44 h-[108px] ml-[2.51995555px] md:w-60 md:h-[148px] md:ml-0"
     >
       <Image
         alt="Vincask logo"

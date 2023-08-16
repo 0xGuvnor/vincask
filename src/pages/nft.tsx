@@ -24,7 +24,7 @@ const NFT = () => {
           <motion.div
             layout="position"
             transition={{ duration: 0.25 }}
-            className="flex flex-col gap-12 h-screenx md:gap-16 md:basis-2/3"
+            className="flex flex-col gap-12 md:gap-16 md:basis-2/3"
           >
             <div className="md:max-w-3xl">
               <Heading

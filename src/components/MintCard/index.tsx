@@ -216,9 +216,21 @@ const MintCard = () => {
 
   if (!isMounted) return null;
   return (
-    <AnimatePresence initial={false} mode="wait">
-      <div className="flex flex-col items-center self-center justify-center mt-4 md:mt-0 md:self-start md:sticky md:top-20">
-        <ul className="flex items-center justify-center w-full pb-2 bg-[#1B1B1B] rounded-t-xl z-10 translate-y-1 md:translate-y-4">
+    <AnimatePresence initial={false}>
+      <motion.div
+        layout="size"
+        transition={{
+          duration: 0.25,
+        }}
+        style={{
+          boxShadow: "0px 25px 50px -12px rgba(250, 200, 21, 0.26)",
+        }}
+        className="flex flex-col items-center justify-center self-center md:self-start rounded-xl w-[320px] mt-4 md:mt-0 md:w-96 bg-[#1B1B1B] md:sticky md:top-24"
+      >
+        <motion.ul
+          layout
+          className="flex items-center justify-center w-full bg-[#1B1B1B] rounded-t-xl z-10"
+        >
           <TabButton
             tab={tab}
             setTab={setTab}
@@ -231,55 +243,35 @@ const MintCard = () => {
             tabValue="cc"
             title="Buy with credit card"
           />
-        </ul>
+        </motion.ul>
 
         <motion.div
-          key="mintCard"
-          layout
-          transition={{
-            duration: 0.25,
-          }}
-          style={{
-            boxShadow: "0 25px 50px -12px #27272a",
-          }}
-          className="flex flex-col items-center justify-center rounded-b-xl w-[300px] md:w-96 pb-10 md:pb-12 bg-[#1B1B1B] z-0"
+          layout="position"
+          className="flex flex-col items-center justify-center gap-6 py-9 md:py-10 md:gap-7 w-[250px]"
         >
+          <Logo />
+          <MintedStatus
+            numMinted={readData ? readData[0].result?.toString() : "..."}
+            totalMinted={readData ? readData[1].result?.toString() : "..."}
+          />
+
           {tab === "crypto" && (
-            <motion.div
-              key="crypto"
-              layout="position"
-              className="flex flex-col items-center justify-center"
-            >
-              <Logo />
-              <div className="flex flex-col items-center justify-center gap-4 mb-4 md:mb-6 md:gap-6">
-                <MintedStatus
-                  numMinted={readData ? readData[0].result?.toString() : "..."}
-                  totalMinted={
-                    readData ? readData[1].result?.toString() : "..."
-                  }
-                />
-                <TotalPrice
-                  dataLoaded={!!readData}
-                  price={
-                    readData
-                      ? (
-                          Number(formatEther(readData[2].result as bigint)) *
-                          quantity
-                        ).toLocaleString()
-                      : ""
-                  }
-                  currency={readData ? readData[3].result?.toString() : ""}
-                />
-              </div>
+            <motion.div layout="size" className="contents">
+              <TotalPrice
+                dataLoaded={!!readData}
+                price={
+                  readData
+                    ? (
+                        Number(formatEther(readData[2].result as bigint)) *
+                        quantity
+                      ).toLocaleString()
+                    : ""
+                }
+                currency={readData ? readData[3].result?.toString() : ""}
+              />
 
               {isConnected ? (
-                <motion.div
-                  layout
-                  initial={{ opacity: isConnecting ? 0 : 1 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.2, duration: 0.5 }}
-                  className="flex flex-col items-center justify-center gap-4 md:w-auto w-60 md:gap-6"
-                >
+                <div className="contents">
                   <QuantitySelection
                     isLoading={isLoading}
                     decrement={decrement}
@@ -294,7 +286,7 @@ const MintCard = () => {
                     transition={{ delay: 0.2, duration: 0.5 }}
                     disabled={isLoading}
                     onClick={mintNft}
-                    className="h-10 normal-case transition duration-300 ease-in-out border-none rounded shadow-lg shadow-primary/20 w-44 disabled:ring-primary/25 disabled:ring-1 text-primary-content md:text-lg md:w-60 md:btn-md btn-sm hover:bg-primary-focus btn bg-primary"
+                    className="normal-case transition duration-300 ease-in-out border-none rounded shadow-lg !h-[52px] shadow-primary/20 w-44 disabled:ring-primary/25 disabled:ring-1 text-primary-content !text-lg md:w-60 md:btn-md btn-sm hover:bg-primary-focus btn bg-primary"
                   >
                     {isLoading ? (
                       <div className="flex items-end">
@@ -305,55 +297,43 @@ const MintCard = () => {
                       <span>Mint</span>
                     )}
                   </motion.button>
-                </motion.div>
+                </div>
               ) : (
-                <motion.p
-                  layout="size"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.2, duration: 0.5 }}
-                  className="text-sm md:text-base text-primary"
-                >
-                  Please connect your wallet to mint
-                </motion.p>
+                <>
+                  <motion.p
+                    layout="size"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.2, duration: 0.5 }}
+                    className="text-sm font-semibold text-center md:text-lg text-primary"
+                  >
+                    Please connect your wallet <br />
+                    to mint
+                  </motion.p>
+                </>
               )}
             </motion.div>
           )}
 
           {tab === "cc" && (
-            <motion.div
-              key="cc"
-              layout
-              className="flex flex-col items-center justify-center"
-            >
-              <Logo />
-
-              <div className="flex flex-col items-center justify-center gap-4 md:w-auto w-60 md:gap-6">
-                <MintedStatus
-                  numMinted={readData ? readData[0].result?.toString() : "..."}
-                  totalMinted={
-                    readData ? readData[1].result?.toString() : "..."
-                  }
-                />
-                <TotalPrice
-                  dataLoaded={!!readData}
-                  price={`${(25000 * quantity).toLocaleString()}`}
-                  currency={"SGD"}
-                />
-                <QuantitySelection
-                  isLoading={isLoading}
-                  decrement={decrement}
-                  increment={increment}
-                  quantity={quantity}
-                />
-              </div>
+            <motion.div layout="size" className="contents">
+              <TotalPrice
+                dataLoaded={!!readData}
+                price={`${(25000 * quantity).toLocaleString()}`}
+                currency={"SGD"}
+              />
+              <QuantitySelection
+                isLoading={isLoading}
+                decrement={decrement}
+                increment={increment}
+                quantity={quantity}
+              />
 
               <motion.div
-                layout="size"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
-                className="mt-4 md:mt-6 w-[222.32px] h-[52px] relative"
+                className="w-[222.32px] h-[52px] relative"
               >
                 <CrossmintPayButton
                   collectionId="c3069566-2655-4ed1-96da-130f12345082"
@@ -364,13 +344,13 @@ const MintCard = () => {
                     quantity: { quantity },
                   }}
                   environment="staging"
-                  className="absolute inset-x-0 top-0"
+                  className="absolute inset-0"
                 />
               </motion.div>
             </motion.div>
           )}
         </motion.div>
-      </div>
+      </motion.div>
     </AnimatePresence>
   );
 };

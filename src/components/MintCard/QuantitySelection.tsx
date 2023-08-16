@@ -1,5 +1,7 @@
 import { HiMinus, HiPlus } from "react-icons/hi";
 import AmountButton from "./AmountButton";
+import { motion } from "framer-motion";
+import { useAccount } from "wagmi";
 
 interface Props {
   isLoading: boolean;
@@ -14,8 +16,13 @@ const QuantitySelection = ({
   increment,
   quantity,
 }: Props) => {
+  const { isConnected } = useAccount();
+
   return (
-    <div
+    <motion.div
+      initial={{ opacity: isConnected ? 1 : 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.2, duration: 0.5 }}
       className={`${
         isLoading ? "text-primary/25" : "text-primary"
       } flex items-center justify-between w-28 md:w-36`}
@@ -23,7 +30,7 @@ const QuantitySelection = ({
       <AmountButton onClick={decrement} icon={HiMinus} isLoading={isLoading} />
       <span className="text-2xl md:text-4xl">{quantity}</span>
       <AmountButton onClick={increment} icon={HiPlus} isLoading={isLoading} />
-    </div>
+    </motion.div>
   );
 };
 export default QuantitySelection;
