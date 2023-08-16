@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       fontFamily: {
         header: ["var(--font-header)"],
+        mono: ["var(--font-mono)"],
       },
     },
   },

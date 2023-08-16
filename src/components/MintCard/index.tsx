@@ -26,7 +26,7 @@ const MintCard = () => {
   const [quantity, setQuantity] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [tab, setTab] = useState<"crypto" | "cc">("crypto");
-  const { address, isConnected, isConnecting } = useAccount();
+  const { address, isConnected } = useAccount();
   const vincaskContract = {
     address: vincask.address.sepolia,
     abi: vincask.abi,
@@ -225,7 +225,7 @@ const MintCard = () => {
         style={{
           boxShadow: "0px 25px 50px -12px rgba(250, 200, 21, 0.26)",
         }}
-        className="flex flex-col items-center justify-center self-center md:self-start rounded-xl w-[320px] mt-4 md:mt-0 md:w-96 bg-[#1B1B1B] md:sticky md:top-24"
+        className="flex flex-col items-center justify-center self-center md:self-start rounded-xl w-[320px] md:w-96 bg-[#1B1B1B] md:sticky md:top-24"
       >
         <motion.ul
           layout

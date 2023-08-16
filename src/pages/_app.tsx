@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import "@rainbow-me/rainbowkit/styles.css";
-import { Marcellus, Outfit } from "next/font/google";
+import { Marcellus, Outfit, Space_Mono } from "next/font/google";
 import {
   darkTheme,
   getDefaultWallets,
@@ -27,6 +27,12 @@ const marcellus = Marcellus({
 const outfit = Outfit({
   weight: ["300", "700", "800", "900"],
   subsets: ["latin"],
+});
+// Mono font
+const spaceMono = Space_Mono({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-mono",
 });
 
 const { chains, publicClient } = configureChains(
@@ -72,7 +78,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <MobileMenuProvider>
             <LayoutGroup>
               <main
-                className={`${outfit.className} ${marcellus.variable} flex flex-col justify-between min-h-screen`}
+                className={`${outfit.className} ${marcellus.variable} ${spaceMono.variable} flex flex-col justify-between min-h-screen`}
               >
                 <Toaster
                   toastOptions={{
