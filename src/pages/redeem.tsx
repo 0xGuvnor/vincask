@@ -76,9 +76,13 @@ const Redeem = ({
           className={`sticky inset-x-0 top-14 md:top-20 flex items-center justify-center self-center transition duration-300 ease-in-out z-40`}
         >
           <span className="text-2xl">
-            Selected {`[ `}
-            <span className="text-primary">{count}</span>
-            {` ]`} NFT{count > 1 || count === 0 ? "s" : ""}
+            Selected{" "}
+            <span className="font-mono">
+              {`[`}
+              <span className="text-primary">{count}</span>
+              {`]`}
+            </span>{" "}
+            NFT{count > 1 || count === 0 ? "s" : ""}
           </span>
         </motion.div>
 
