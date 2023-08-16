@@ -78,7 +78,7 @@ const Redeem = ({
           <span className="text-2xl">
             Selected {`[ `}
             <span className="text-primary">{count}</span>
-            {` ]`} NFT{count > 1 ? "s" : ""}
+            {` ]`} NFT{count > 1 || count === 0 ? "s" : ""}
           </span>
         </motion.div>
 
