@@ -34,7 +34,7 @@ const Redeem = ({
 
     const element = ref.current.getBoundingClientRect();
 
-    return element.top === 56 || element.top === 80;
+    return element.top === 80 || element.top === 56;
   }
 
   useEffect(() => {
@@ -71,11 +71,19 @@ const Redeem = ({
           ref={expandRef}
           initial={false}
           animate={expand ? "big" : "small"}
-          variants={{ big: { width: "100%" }, small: { width: "auto" } }}
+          variants={{
+            big: { width: "100%" },
+            small: { width: "auto" },
+          }}
           transition={{ duration: 1 }}
-          className={`sticky inset-x-0 top-14 md:top-20 flex items-center justify-center self-center transition duration-300 ease-in-out z-40`}
+          className={`sticky inset-x-0 top-14 md:top-20 flex flex-col md:flex-row items-center justify-between self-center gap-4 transition duration-300 ease-in-out z-40 max-w-xl`}
         >
-          <span className="text-2xl">
+          <span
+            className={`${
+              expand &&
+              "bg-base-100/75 h-12 backdrop-blur-sm shadow-xl rounded-b-lg"
+            } text-2xl px-4 py-2`}
+          >
             Selected{" "}
             <span className="font-mono">
               {`[`}
@@ -84,6 +92,8 @@ const Redeem = ({
             </span>{" "}
             NFT{count > 1 || count === 0 ? "s" : ""}
           </span>
+
+          <button className="btn btn-primary">Burn & Redeem</button>
         </motion.div>
 
         <ul className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
