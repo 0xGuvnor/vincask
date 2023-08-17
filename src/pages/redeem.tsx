@@ -48,15 +48,15 @@ const Redeem = ({
     setToggleStates(newToggleStates);
   };
 
-  function isComponentOnTop(ref: RefObject<HTMLDivElement>) {
-    if (!ref.current) return false;
-
-    const element = ref.current.getBoundingClientRect();
-
-    return element.top === 80 || element.top === 56;
-  }
-
   useEffect(() => {
+    const isComponentOnTop = (ref: RefObject<HTMLDivElement>) => {
+      if (!ref.current) return false;
+
+      const element = ref.current.getBoundingClientRect();
+
+      return element.top === 80 || element.top === 56;
+    };
+
     const checkPosition = () => {
       const result = isComponentOnTop(expandRef);
       setExpand(result);
@@ -83,7 +83,7 @@ const Redeem = ({
       <Container>
         <Heading
           title="Unlock the Legacy"
-          subtitle="Swap your NFT to redeem our exclusive whisky."
+          subtitle="Swap your NFT to redeem our exclusive whisky on a one-to-one basis."
         />
 
         {isConnected ? (
@@ -131,6 +131,7 @@ const Redeem = ({
 
               <button className="normal-case btn btn-primary">Redeem</button>
             </motion.div>
+
             <motion.ul
               initial="hidden"
               animate="visible"
