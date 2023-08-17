@@ -63,7 +63,7 @@ const Redeem = ({
 
       <Container classNames="">
         <Heading
-          title="Unlock the Flavour"
+          title="Unlock the Legacy"
           subtitle="Burn your NFT to redeem our exclusive whisky."
         />
 
