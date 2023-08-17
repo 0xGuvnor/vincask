@@ -27,7 +27,7 @@ const RedeemCard = ({ defaultImg, id, setCount }: Props) => {
         console.error(error);
       }
     })();
-  }, []);
+  }, [id]);
 
   return (
     <article className="p-2 group bg-gradient-to-b from-[#ff930f] from-30% to-[#fff95b] to-90% rounded-lg w-[250px]">
