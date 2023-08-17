@@ -81,7 +81,7 @@ const Redeem = ({
           <span
             className={`${
               expand && ""
-            } bg-base-100 md:bg-base-100/75 backdrop-blur-sm shadow-xl rounded-b-lg text-lg md:text-2xl h-12 px-4 py-2`}
+            } bg-base-100/75 backdrop-blur-sm shadow-xl rounded-b-lg text-lg md:text-2xl h-12 px-4 py-2`}
           >
             Selected{" "}
             <span className="font-mono">
@@ -92,7 +92,7 @@ const Redeem = ({
             NFT{count > 1 || count === 0 ? "s" : ""}
           </span>
 
-          <button className="btn btn-primary">Burn & Redeem</button>
+          <button className="normal-case btn btn-primary">Burn & Redeem</button>
         </motion.div>
 
         <ul className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
