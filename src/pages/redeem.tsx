@@ -94,7 +94,7 @@ const Redeem = ({
             NFT{count > 1 || count === 0 ? "s" : ""}
           </span>
 
-          <button className="normal-case btn btn-primary">Burn & Redeem</button>
+          <button className="normal-case btn btn-primary">Redeem</button>
         </motion.div>
 
         <ul className="flex flex-wrap items-center justify-center gap-6 md:gap-8">

@@ -61,7 +61,7 @@ const RedeemCard = ({ defaultImg, id, setCount }: Props) => {
                 selected && "text-red-400"
               } w-6 h-6 p-1 rounded-md bg-black transition duration-300 ease-in-out`}
             />
-            <p className="text-black">Burn & Redeem</p>
+            <p className="text-black">Redeem</p>
           </div>
           <input
             type="checkbox"
