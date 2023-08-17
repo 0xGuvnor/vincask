@@ -80,8 +80,9 @@ const Redeem = ({
         >
           <span
             className={`${
-              expand &&
-              "bg-base-100/75 backdrop-blur-sm shadow-2xl rounded-b-lg"
+              expand
+                ? "bg-base-100/75 backdrop-blur-sm shadow-2xl rounded-b-lg"
+                : ""
             } text-lg md:text-2xl h-12 px-4 py-2`}
           >
             Selected{" "}
