@@ -97,7 +97,7 @@ const Redeem = ({
                 small: { width: "auto" },
               }}
               transition={{ duration: 0.75 }}
-              className={`sticky inset-x-0 top-14 md:top-20 flex flex-col md:flex-row items-center md:items-start justify-between self-center gap-4 transition duration-300 ease-in-out z-40 max-w-xl md:min-w-[350px]`}
+              className={`sticky inset-x-0 top-14 md:top-20 flex flex-col md:flex-row items-center md:items-start justify-between self-center gap-4 transition duration-300 ease-in-out z-30 max-w-xl md:min-w-[350px]`}
             >
               <motion.div
                 className={`${
