@@ -81,9 +81,9 @@ const Redeem = ({
           <span
             className={`${
               expand
-                ? "bg-base-100/75 backdrop-blur-sm shadow-2xl rounded-b-lg"
-                : "bg-base-100 rounded-b-lg"
-            } text-lg md:text-2xl h-12 px-4 py-2`}
+                ? "bg-base-100/75 backdrop-blur-sm shadow-2xl"
+                : "bg-base-100"
+            } text-lg md:text-2xl h-12 px-4 py-2 rounded-b-lg`}
           >
             Selected{" "}
             <span className="font-mono">
