@@ -1,4 +1,4 @@
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { RefObject, useEffect, useRef, useState } from "react";
 import { useAccount, useContractRead } from "wagmi";
 import { motion } from "framer-motion";
@@ -13,7 +13,7 @@ import useIsMounted from "@/hooks/useIsMounted";
 
 const Redeem = ({
   defaultImg,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const isMounted = useIsMounted();
   const { address } = useAccount();
   const [count, setCount] = useState(0);
@@ -80,8 +80,9 @@ const Redeem = ({
         >
           <span
             className={`${
-              expand && ""
-            } bg-base-100/75 backdrop-blur-sm shadow-xl rounded-b-lg text-lg md:text-2xl h-12 px-4 py-2`}
+              expand &&
+              "bg-base-100/75 backdrop-blur-sm shadow-2xl rounded-b-lg"
+            } text-lg md:text-2xl h-12 px-4 py-2`}
           >
             Selected{" "}
             <span className="font-mono">
@@ -109,7 +110,7 @@ const Redeem = ({
 };
 export default Redeem;
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/25`);
 
   return {
