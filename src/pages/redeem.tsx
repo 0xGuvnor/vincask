@@ -82,7 +82,7 @@ const Redeem = ({
             className={`${
               expand
                 ? "bg-base-100/75 backdrop-blur-sm shadow-2xl rounded-b-lg"
-                : "bg-base-100"
+                : "bg-base-100 rounded-b-lg"
             } text-lg md:text-2xl h-12 px-4 py-2`}
           >
             Selected{" "}
