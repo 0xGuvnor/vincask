@@ -1,26 +1,30 @@
 import axios from "axios";
 import Image from "next/image";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { SiOpensea } from "react-icons/si";
 import { ImFire } from "react-icons/im";
 import Trait from "./Trait";
+import { motion } from "framer-motion";
+import { redeemNftCardVariant } from "@/utils/motionVariants";
 
 interface Props {
-  defaultImg: string;
   id: number;
-  setCount: Dispatch<SetStateAction<number>>;
+  defaultImg: string;
+  checked: boolean;
+  onChange: (id: number, checked: boolean) => void;
 }
 
-const RedeemCard = ({ defaultImg, id, setCount }: Props) => {
+const RedeemCard = ({ id, defaultImg, checked, onChange }: Props) => {
   const [name, setName] = useState("");
   const [pic, setPic] = useState("");
-  const [selected, setSelected] = useState(false);
 
   useEffect(() => {
     // Loads name and pic data on mount
     (async () => {
       try {
-        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
+        const res = await axios.get(
+          `https://pokeapi.co/api/v2/pokemon/${id + 1}`
+        );
         setName(res.data.name);
         setPic(res.data.sprites.other["official-artwork"].front_default);
       } catch (error) {
@@ -30,7 +34,10 @@ const RedeemCard = ({ defaultImg, id, setCount }: Props) => {
   }, [id]);
 
   return (
-    <article className="p-2 group bg-gradient-to-b from-[#ff930f] from-30% to-[#fff95b] to-90% rounded-lg w-[250px]">
+    <motion.article
+      variants={redeemNftCardVariant}
+      className="p-2 group bg-gradient-to-b from-[#ff930f] from-30% to-[#fff95b] to-90% rounded-lg w-[250px]"
+    >
       <div className="flex flex-col gap-3">
         <figure className="flex items-center justify-center overflow-hidden rounded-md shadow-2xl bg-black/70">
           <Image
@@ -58,35 +65,46 @@ const RedeemCard = ({ defaultImg, id, setCount }: Props) => {
           <div className="flex items-center justify-center gap-1">
             <ImFire
               className={`${
-                selected && "text-red-400"
+                checked && "text-red-400"
               } w-6 h-6 p-1 rounded-md bg-black transition duration-300 ease-in-out`}
             />
-            <p className="text-black">Redeem</p>
+            <label htmlFor={`redeemToggle-${id}`} className="text-black">
+              Redeem
+            </label>
           </div>
           <input
+            id={`redeemToggle-${id}`}
             type="checkbox"
-            checked={selected}
-            onClick={() => {
-              if (selected) {
-                setCount((prev) => prev - 1);
-              } else {
-                setCount((prev) => prev + 1);
-              }
-              setSelected((prev) => !prev);
-            }}
-            className={`${selected && "toggle-success"} toggle`}
+            checked={checked}
+            onChange={(e) => onChange(id, e.target.checked)}
+            className={`${checked && "toggle-success"} toggle`}
           />
         </div>
 
         <section className="flex flex-wrap justify-between gap-1">
-          <Trait attribute="Taste" level={100} />
-          <Trait attribute="Colour" level={100} />
-          <Trait attribute="Smoothness" level={100} />
-          <Trait attribute="Aroma" level={100} />
-          <Trait attribute="Balance" level={100} />
+          <Trait
+            attribute="Taste"
+            level={Math.floor(Math.random() * 30 + 70)}
+          />
+          <Trait
+            attribute="Colour"
+            level={Math.floor(Math.random() * 30 + 70)}
+          />
+          <Trait
+            attribute="Smoothness"
+            level={Math.floor(Math.random() * 30 + 70)}
+          />
+          <Trait
+            attribute="Aroma"
+            level={Math.floor(Math.random() * 30 + 70)}
+          />
+          <Trait
+            attribute="Balance"
+            level={Math.floor(Math.random() * 30 + 70)}
+          />
         </section>
       </div>
-    </article>
+    </motion.article>
   );
 };
 export default RedeemCard;

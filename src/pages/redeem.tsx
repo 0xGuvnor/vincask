@@ -10,16 +10,15 @@ import Overlay from "@/components/Overlay";
 import RedeemCard from "@/components/RedeemCard";
 import { vincask } from "@/constants/contracts";
 import useIsMounted from "@/hooks/useIsMounted";
+import { redeemNftCardListVariant } from "@/utils/motionVariants";
 
 const Redeem = ({
   defaultImg,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const isMounted = useIsMounted();
-  const { address } = useAccount();
-  const [count, setCount] = useState(0);
+  const { address, isConnected } = useAccount();
   const expandRef = useRef(null);
   const [expand, setExpand] = useState(false);
-
   const { data: numNfts } = useContractRead({
     address: vincask.address.sepolia,
     abi: vincask.abi,
@@ -28,6 +27,26 @@ const Redeem = ({
     watch: true,
     select: (data) => Number(data),
   });
+  const [toggleStates, setToggleStates] = useState(
+    new Array(numNfts).fill(false)
+  );
+  const allTogglesOn = toggleStates.every((state) => state);
+  const toggleCount = toggleStates.reduce((accumulator, currentValue) => {
+    const numericalValue = currentValue ? 1 : 0;
+
+    return accumulator + numericalValue;
+  }, 0);
+
+  const handleToggleChange = (id: number, checked: boolean) => {
+    const newToggleStates = [...toggleStates];
+    newToggleStates[id] = checked;
+    setToggleStates(newToggleStates);
+  };
+
+  const handleToggleAll = () => {
+    const newToggleStates = toggleStates.map(() => !allTogglesOn);
+    setToggleStates(newToggleStates);
+  };
 
   function isComponentOnTop(ref: RefObject<HTMLDivElement>) {
     if (!ref.current) return false;
@@ -61,50 +80,84 @@ const Redeem = ({
 
       <Overlay />
 
-      <Container classNames="">
+      <Container>
         <Heading
           title="Unlock the Legacy"
-          subtitle="Burn your NFT to redeem our exclusive whisky."
+          subtitle="Swap your NFT to redeem our exclusive whisky."
         />
 
-        <motion.div
-          ref={expandRef}
-          initial={false}
-          animate={expand ? "big" : "small"}
-          variants={{
-            big: { width: "100%" },
-            small: { width: "auto" },
-          }}
-          transition={{ duration: 1 }}
-          className={`sticky inset-x-0 top-14 md:top-20 flex flex-col md:flex-row items-center justify-between self-center gap-4 transition duration-300 ease-in-out z-40 max-w-xl`}
-        >
-          <span
-            className={`${
-              expand
-                ? "bg-base-100/75 backdrop-blur-sm shadow-2xl"
-                : "bg-base-100"
-            } text-lg md:text-2xl h-12 px-4 py-2 rounded-b-lg`}
+        {isConnected ? (
+          <>
+            <motion.div
+              ref={expandRef}
+              initial={false}
+              animate={expand ? "big" : "small"}
+              variants={{
+                big: { width: "100%" },
+                small: { width: "auto" },
+              }}
+              transition={{ duration: 0.75 }}
+              className={`sticky inset-x-0 top-14 md:top-20 flex flex-col md:flex-row items-center md:items-start justify-between self-center gap-4 transition duration-300 ease-in-out z-40 max-w-xl`}
+            >
+              <motion.div
+                className={`${
+                  expand &&
+                  "bg-base-100/75 backdrop-blur-sm shadow-2xl w-[195px] md:w-[245px]"
+                } flex flex-col items-center justify-center rounded-b-lg bg-base-100 px-4 py-2 gap-1`}
+              >
+                <span className="text-lg md:text-2xl h-12x">
+                  Selected{" "}
+                  <span className="font-mono">
+                    {`[`}
+                    <span className="text-primary">{toggleCount}</span>
+                    {`]`}
+                  </span>{" "}
+                  NFT{toggleCount > 1 || toggleCount === 0 ? "s" : ""}
+                </span>
+
+                <div className="flex items-center justify-center gap-3 px-3 py-2">
+                  <label htmlFor="toggleAll" className="text-sm md:text-base">
+                    Select All
+                  </label>
+                  <input
+                    id="toggleAll"
+                    type="checkbox"
+                    checked={allTogglesOn}
+                    onChange={handleToggleAll}
+                    className={`${allTogglesOn && "toggle-success"} toggle`}
+                  />
+                </div>
+              </motion.div>
+
+              <button className="normal-case btn btn-primary">Redeem</button>
+            </motion.div>
+            <motion.ul
+              initial="hidden"
+              animate="visible"
+              variants={redeemNftCardListVariant}
+              className="flex flex-wrap items-center justify-center gap-6 md:gap-8"
+            >
+              {toggleStates.map((checked, id) => (
+                <RedeemCard
+                  key={id}
+                  id={id}
+                  defaultImg={defaultImg}
+                  checked={checked}
+                  onChange={handleToggleChange}
+                />
+              ))}
+            </motion.ul>
+          </>
+        ) : (
+          <motion.h1
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="self-center text-lg md:text-2xl text-primary"
           >
-            Selected{" "}
-            <span className="font-mono">
-              {`[`}
-              <span className="text-primary">{count}</span>
-              {`]`}
-            </span>{" "}
-            NFT{count > 1 || count === 0 ? "s" : ""}
-          </span>
-
-          <button className="normal-case btn btn-primary">Redeem</button>
-        </motion.div>
-
-        <ul className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
-          <RedeemCard defaultImg={defaultImg} id={1} setCount={setCount} />
-          <RedeemCard defaultImg={defaultImg} id={2} setCount={setCount} />
-          <RedeemCard defaultImg={defaultImg} id={3} setCount={setCount} />
-          <RedeemCard defaultImg={defaultImg} id={4} setCount={setCount} />
-          <RedeemCard defaultImg={defaultImg} id={5} setCount={setCount} />
-          <RedeemCard defaultImg={defaultImg} id={6} setCount={setCount} />
-        </ul>
+            Please connect your wallet to view your NFTs
+          </motion.h1>
+        )}
       </Container>
     </>
   );
@@ -112,8 +165,15 @@ const Redeem = ({
 export default Redeem;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/25`);
+  let res;
 
+  try {
+    res = await axios.get(`https://pokeapi.co/api/v2/pokemon/25`);
+  } catch (error) {
+    console.error(error);
+  }
+
+  if (!res) return { props: { defaultImg: "" } };
   return {
     props: {
       defaultImg: res.data.sprites.other["official-artwork"].front_default,
