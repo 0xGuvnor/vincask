@@ -13,7 +13,12 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`bg-base-100/75 backdrop-blur-sm shadow-xl fixed inset-x-0 top-0 flex items-center justify-between h-14 px-2 md:px-12 transition duration-300 ease-in-out md:h-20 text-neutral-content z-50`}
+      className={`${
+        isMobileOrTablet
+          ? isMobileOrTabletScrolled &&
+            "bg-base-100/75 backdrop-blur-sm shadow-xl"
+          : isDesktopScrolled && "bg-base-100/75 backdrop-blur-sm shadow-xl"
+      } fixed inset-x-0 top-0 flex items-center justify-between h-14 px-2 md:px-12 transition duration-300 ease-in-out md:h-20 text-neutral-content z-50`}
     >
       <MobileMenu />
 
