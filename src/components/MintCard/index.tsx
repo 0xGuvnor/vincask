@@ -126,14 +126,18 @@ const MintCard = () => {
       currentValue = Number(readData[0].result?.toString());
     }
 
-    if (!isLoading) {
-      setQuantity((prev) => {
-        if (prev === maxValue - currentValue) {
-          return prev;
-        } else {
-          return prev + 1;
-        }
-      });
+    if (!isLoading && readData) {
+      if (readData[0].result?.toString() === readData[0].result?.toString()) {
+        return;
+      } else {
+        setQuantity((prev) => {
+          if (prev === maxValue - currentValue) {
+            return prev;
+          } else {
+            return prev + 1;
+          }
+        });
+      }
     }
   };
 
@@ -284,7 +288,12 @@ const MintCard = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.2, duration: 0.5 }}
-                    disabled={isLoading}
+                    disabled={
+                      isLoading ||
+                      (readData &&
+                        readData[0].result?.toString() ===
+                          readData[1].result?.toString())
+                    }
                     onClick={mintNft}
                     className="normal-case transition duration-300 ease-in-out border-none rounded shadow-lg !h-[52px] shadow-primary/20 w-44 disabled:ring-primary/25 disabled:ring-1 text-primary-content !text-lg md:w-60 md:btn-md btn-sm hover:bg-primary-focus btn bg-primary"
                   >
