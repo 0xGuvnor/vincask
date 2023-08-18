@@ -11,7 +11,7 @@ import { useNetwork } from "wagmi";
 
 const NFT = () => {
   const { chain } = useNetwork();
-  console.log(chain);
+
   return (
     <div>
       <Head>
