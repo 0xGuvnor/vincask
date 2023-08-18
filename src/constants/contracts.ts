@@ -1,6 +1,6 @@
 export const vincask = {
   address: {
-    sepolia: "0xD6B21Ad151b86fED2C83A80877cf5CEBBea21A72" as `0x${string}`,
+    sepolia: "0x395F696c29aabC689cBF81064e05dc3cd35274A6" as `0x${string}`,
     goerli: "0x8e1CdF038adCcaC943844282534bfCE4805c775A" as `0x${string}`,
   },
   abi: [
@@ -25,6 +25,11 @@ export const vincask = {
           internalType: "address",
           name: "_multiSig",
           type: "address",
+        },
+        {
+          internalType: "uint96",
+          name: "_royaltyFee",
+          type: "uint96",
         },
         {
           internalType: "contract VincaskX",
@@ -391,11 +396,58 @@ export const vincask = {
       inputs: [
         {
           internalType: "uint256",
+          name: "tokenId",
+          type: "uint256",
+        },
+        {
+          internalType: "uint256",
+          name: "salePrice",
+          type: "uint256",
+        },
+      ],
+      name: "royaltyInfo",
+      outputs: [
+        {
+          internalType: "address",
+          name: "",
+          type: "address",
+        },
+        {
+          internalType: "uint256",
+          name: "",
+          type: "uint256",
+        },
+      ],
+      stateMutability: "view",
+      type: "function",
+    },
+    {
+      inputs: [
+        {
+          internalType: "uint256",
           name: "_quantity",
           type: "uint256",
         },
       ],
       name: "safeMultiMintForAdmin",
+      outputs: [],
+      stateMutability: "nonpayable",
+      type: "function",
+    },
+    {
+      inputs: [
+        {
+          internalType: "uint256",
+          name: "_quantity",
+          type: "uint256",
+        },
+        {
+          internalType: "address",
+          name: "_to",
+          type: "address",
+        },
+      ],
+      name: "safeMultiMintWithCreditCard",
       outputs: [],
       stateMutability: "nonpayable",
       type: "function",
@@ -512,7 +564,7 @@ export const vincask = {
       inputs: [
         {
           internalType: "bytes4",
-          name: "interfaceId",
+          name: "_interfaceId",
           type: "bytes4",
         },
       ],

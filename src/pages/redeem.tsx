@@ -30,7 +30,7 @@ const Redeem = ({
     select: (data) => Number(data),
   });
   const [nftDataArr, setNftDataArr] = useState<NftData[]>();
-  const [toggleStates, setToggleStates] = useState(
+  const [toggleStates, setToggleStates] = useState<boolean[]>(
     new Array(numNfts).fill(false)
   );
   const allTogglesOn = toggleStates.every((state) => state);
@@ -156,18 +156,19 @@ const Redeem = ({
               variants={redeemNftCardListVariant}
               className="flex flex-wrap items-center justify-center gap-6 md:gap-8"
             >
-              {toggleStates.map((checked, id) => (
-                <RedeemCard
-                  key={id}
-                  id={id}
-                  nftData={
-                    nftDataArr ? nftDataArr[id] : { title: "", tokenId: "" }
-                  }
-                  defaultImg={defaultImg}
-                  checked={checked}
-                  onChange={handleToggleChange}
-                />
-              ))}
+              {toggleStates &&
+                toggleStates.map((checked, id) => (
+                  <RedeemCard
+                    key={id}
+                    id={id}
+                    nftData={
+                      nftDataArr ? nftDataArr[id] : { title: "", tokenId: "" }
+                    }
+                    defaultImg={defaultImg}
+                    checked={checked}
+                    onChange={handleToggleChange}
+                  />
+                ))}
             </motion.ul>
           </>
         ) : (
