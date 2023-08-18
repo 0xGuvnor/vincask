@@ -1,6 +1,6 @@
-import { Alchemy, Network } from "alchemy-sdk";
+import { Alchemy, AlchemySettings, Network } from "alchemy-sdk";
 
-const config = {
+const config: AlchemySettings = {
   apiKey: process.env.ALCHEMY_ID,
   network: Network.ETH_SEPOLIA,
 };
