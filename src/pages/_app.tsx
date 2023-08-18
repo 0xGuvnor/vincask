@@ -6,8 +6,13 @@ import {
   getDefaultWallets,
   RainbowKitProvider,
 } from "@rainbow-me/rainbowkit";
-import { configureChains, createConfig, mainnet, WagmiConfig } from "wagmi";
-import { sepolia } from "wagmi/chains";
+import {
+  configureChains,
+  createConfig,
+  mainnet,
+  sepolia,
+  WagmiConfig,
+} from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import Navbar from "@/components/Navbar";
