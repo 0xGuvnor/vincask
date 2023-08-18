@@ -120,9 +120,8 @@ const Redeem = ({
             >
               <motion.div
                 className={`${
-                  expand &&
-                  "bg-base-100/75 backdrop-blur-sm shadow-2xl w-[195px] md:w-[245px]"
-                } flex flex-col items-center justify-center rounded-b-lg bg-base-100 px-4 py-2 gap-1`}
+                  expand && "bg-base-100/75 backdrop-blur-sm shadow-2xl"
+                } flex flex-col items-center justify-center w-[195px] md:w-[245px] rounded-b-lg bg-base-100 px-4 py-2 gap-1`}
               >
                 <span className="text-lg md:text-2xl h-12x">
                   Selected{" "}
