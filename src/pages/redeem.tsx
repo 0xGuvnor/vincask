@@ -11,6 +11,8 @@ import RedeemCard from "@/components/RedeemCard";
 import { vincask } from "@/constants/contracts";
 import useIsMounted from "@/hooks/useIsMounted";
 import { redeemNftCardListVariant } from "@/utils/motionVariants";
+import { alchemy } from "@/lib/alchemy";
+import { NftData } from "@/types";
 
 const Redeem = ({
   defaultImg,
@@ -27,6 +29,7 @@ const Redeem = ({
     watch: true,
     select: (data) => Number(data),
   });
+  const [nftData, setNftData] = useState<NftData[]>();
   const [toggleStates, setToggleStates] = useState(
     new Array(numNfts).fill(false)
   );
@@ -67,6 +70,22 @@ const Redeem = ({
       window.removeEventListener("scroll", checkPosition);
     };
   }, []);
+
+  useEffect(() => {
+    if (address) {
+      (async () => {
+        const nfts = await alchemy.nft.getNftsForOwner(address, {
+          contractAddresses: [vincask.address.sepolia],
+        });
+
+        const newNftData: NftData[] = nfts.ownedNfts.map((nft) => ({
+          title: nft.title,
+          tokenId: nft.tokenId,
+        }));
+        setNftData(newNftData);
+      })();
+    }
+  }, [address, vincask]);
 
   if (!isMounted) return null;
   return (
@@ -142,6 +161,7 @@ const Redeem = ({
                 <RedeemCard
                   key={id}
                   id={id}
+                  nftData={nftData ? nftData[id] : { title: "", tokenId: "" }}
                   defaultImg={defaultImg}
                   checked={checked}
                   onChange={handleToggleChange}

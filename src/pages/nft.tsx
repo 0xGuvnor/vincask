@@ -6,8 +6,12 @@ import Head from "next/head";
 import { LayoutGroup, motion } from "framer-motion";
 import Faucet from "@/components/Faucet";
 import Overlay from "@/components/Overlay";
+import { looksRareUrl, openSeaUrl } from "@/constants/urls";
+import { useNetwork } from "wagmi";
 
 const NFT = () => {
+  const { chain } = useNetwork();
+  console.log(chain);
   return (
     <div>
       <Head>
@@ -52,12 +56,11 @@ const NFT = () => {
             <div className="flex flex-col gap-4 md:flex-row">
               <NftCollectionButton
                 name="OpenSea"
-                url="https://testnets.opensea.io/collection/vincask-1"
+                url={`${
+                  chain?.testnet ? openSeaUrl.testnet : openSeaUrl.mainnet
+                }collection/vincask-1`}
               />
-              {/* <NftCollectionButton
-                name="LooksRare"
-                url="https://looksrare.org/"
-              /> */}
+              {/* <NftCollectionButton name="LooksRare" url={looksRareUrl} /> */}
             </div>
           </motion.div>
 

@@ -6,32 +6,40 @@ import { ImFire } from "react-icons/im";
 import Trait from "./Trait";
 import { motion } from "framer-motion";
 import { redeemNftCardVariant } from "@/utils/motionVariants";
+import { NftData } from "@/types";
+import { useNetwork } from "wagmi";
+import { vincask } from "@/constants/contracts";
+import { openSeaUrl } from "@/constants/urls";
 
 interface Props {
   id: number;
+  nftData: NftData;
   defaultImg: string;
   checked: boolean;
   onChange: (id: number, checked: boolean) => void;
 }
 
-const RedeemCard = ({ id, defaultImg, checked, onChange }: Props) => {
+const RedeemCard = ({ id, nftData, defaultImg, checked, onChange }: Props) => {
   const [name, setName] = useState("");
   const [pic, setPic] = useState("");
+  const { chain } = useNetwork();
 
   useEffect(() => {
     // Loads name and pic data on mount
-    (async () => {
-      try {
-        const res = await axios.get(
-          `https://pokeapi.co/api/v2/pokemon/${id + 1}`
-        );
-        setName(res.data.name);
-        setPic(res.data.sprites.other["official-artwork"].front_default);
-      } catch (error) {
-        console.error(error);
-      }
-    })();
-  }, [id]);
+    if (nftData.tokenId) {
+      (async () => {
+        try {
+          const res = await axios.get(
+            `https://pokeapi.co/api/v2/pokemon/${nftData.tokenId}`
+          );
+          setName(res.data.name);
+          setPic(res.data.sprites.other["official-artwork"].front_default);
+        } catch (error) {
+          console.error(`Redeem card - ${error}`);
+        }
+      })();
+    }
+  }, [nftData]);
 
   return (
     <motion.article
@@ -50,15 +58,23 @@ const RedeemCard = ({ id, defaultImg, checked, onChange }: Props) => {
         </figure>
 
         <header className="flex items-center justify-between text-black">
-          <h1 className="text-lg font-semibold capitalize">{name}</h1>
-          <a
-            href="https://testnets.opensea.io/"
-            rel="noreferrer"
-            target="_blank"
-            className="transition duration-300 ease-in-out hover:opacity-75"
-          >
-            <SiOpensea className="w-6 h-6" />
-          </a>
+          <h1 className="text-lg font-semibold capitalize">
+            {name} #{nftData.tokenId}
+          </h1>
+          {chain && (
+            <a
+              href={`${
+                chain.testnet ? openSeaUrl.testnet : openSeaUrl.mainnet
+              }assets/${chain?.network}/${
+                vincask.address[chain.network as keyof typeof vincask.address]
+              }/${nftData.tokenId}`}
+              rel="noreferrer"
+              target="_blank"
+              className="transition duration-300 ease-in-out hover:opacity-75"
+            >
+              <SiOpensea className="w-6 h-6" />
+            </a>
+          )}
         </header>
 
         <div className="flex items-center justify-between h-7">
