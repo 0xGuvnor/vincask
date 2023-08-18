@@ -138,17 +138,17 @@ const MintCard = () => {
   };
 
   const mintNft = async () => {
-    setIsLoading(true);
+    if (readData && approve && mint) {
+      setIsLoading(true);
 
-    if (readData) {
       if (
         // Checking if paymentToken's spending allowance is less than the total price to mint
         Number(formatEther(readData[4].result as bigint)) < // paymentToken's spending allowance
         Number(formatEther(readData[2].result! as bigint)) * quantity // Total price
       ) {
-        approve?.();
+        approve();
       } else {
-        mint?.();
+        mint();
       }
     }
   };
@@ -177,9 +177,9 @@ const MintCard = () => {
       ));
     }
 
-    if (approveTxReceipt?.status === "success") {
+    if (approveTxReceipt?.status === "success" && mint) {
       toast.dismiss(approveToast);
-      mint?.();
+      mint();
     }
   }, [
     isMintError,
