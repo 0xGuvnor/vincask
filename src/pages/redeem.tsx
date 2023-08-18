@@ -85,7 +85,7 @@ const Redeem = ({
         setNftDataArr(newNftDataArr);
       })();
     }
-  }, [address, vincask]);
+  }, [address]);
 
   if (!isMounted) return null;
   return (
