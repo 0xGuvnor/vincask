@@ -8,15 +8,15 @@ const Hero2 = () => {
 
   return (
     <div className="relative flex items-center justify-center w-screen h-screen">
-      <main className="flex flex-col md:flex-row items-center justify-center h-[88vh]">
-        <section className="flex flex-col items-center md:items-start justify-center max-w-xs md:max-w-[36rem] md:-mt-20 md:basis-2/3 gap-6 py-8 md:gap-14 text-center md:text-left">
+      <main className="flex flex-col md:flex-row items-center justify-center h-[85vh]">
+        <section className="flex flex-col items-center md:items-start justify-center max-w-xs md:max-w-[34rem] md:-mt-20 md:basis-2/3 gap-6 py-8 md:gap-14 text-center md:text-left">
           <h1 className="text-4xl font-black md:text-8xl font-header">
             Crafted with{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-tr from-accent to-primary">
               Passion & Precision
             </span>
           </h1>
-          <h2 className="text-lg md:text-3xl">
+          <h2 className="text-lg md:text-2xl">
             Our whisky embodies the essence of <br />
             dedication and distinction.
           </h2>
