@@ -142,8 +142,8 @@ const MintCard = () => {
     }
   };
 
-  const mintNft = async () => {
-    if (readData) {
+  const handleMint = async () => {
+    if (readData && approve) {
       setIsLoading(true);
 
       if (
@@ -151,7 +151,7 @@ const MintCard = () => {
         Number(formatEther(readData[4].result as bigint)) < // paymentToken's spending allowance
         Number(formatEther(readData[2].result! as bigint)) * quantity // Total price
       ) {
-        approve?.();
+        approve();
       } else {
         mint();
       }
@@ -159,9 +159,11 @@ const MintCard = () => {
   };
 
   useEffect(() => {
+    // Error handling Toasts
     if (isMintError) {
       setIsLoading(false);
       toast.error((t) => <ToastError t={t} errorMessage={mintError?.name} />);
+      // console.log(mintError);
     }
 
     if (isApproveError) {
@@ -169,6 +171,7 @@ const MintCard = () => {
       toast.error((t) => (
         <ToastError t={t} errorMessage={approveError?.name} />
       ));
+      // console.log(approveError);
     }
   }, [isMintError, mintError?.name, isApproveError, approveError?.name]);
 
@@ -205,12 +208,16 @@ const MintCard = () => {
     }
 
     if (mintTxReceipt?.status === "success") {
-      setIsLoading(false);
-      setQuantity(1);
       toast.dismiss(mintToast);
       toast.success((t) => (
-        <ToastSuccess t={t} txHash={mintTxReceipt.transactionHash} />
+        <ToastSuccess
+          t={t}
+          message={`NFT${quantity > 1 ? "s" : ""} successfully minted`}
+          txHash={mintTxReceipt.transactionHash}
+        />
       ));
+      setIsLoading(false);
+      setQuantity(1);
     }
   }, [mintIsLoading, mintTxReceipt?.status]);
 
@@ -290,7 +297,7 @@ const MintCard = () => {
                         readData[0].result?.toString() ===
                           readData[1].result?.toString())
                     }
-                    onClick={mintNft}
+                    onClick={handleMint}
                     className="normal-case transition duration-300 ease-in-out border-none rounded shadow-lg !h-[52px] shadow-primary/20 w-44 disabled:ring-primary/25 disabled:ring-1 text-primary-content !text-lg md:w-60 md:btn-md btn-sm hover:bg-primary-focus btn bg-primary"
                   >
                     {isLoading ? (
