@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import Hero2 from "@/components/Hero 2";
 import Overlay from "@/components/Overlay";
 import Team from "@/components/Team";
 import Testimonials from "@/components/Testimonials";
@@ -17,7 +18,8 @@ export default function Home() {
       <Overlay />
 
       <div className="flex flex-col">
-        <Hero />
+        {/* <Hero /> */}
+        <Hero2 />
         <Testimonials />
         <Team />
       </div>
