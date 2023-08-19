@@ -60,7 +60,7 @@ const MintCard = () => {
     watch: true,
   });
 
-  const { config: paymentTokenConfig } = usePrepareContractWrite({
+  const { config: approveConfig } = usePrepareContractWrite({
     ...paymentTokenContract,
     functionName: "approve",
     args: [
@@ -80,25 +80,23 @@ const MintCard = () => {
     write: approve,
     error: approveError,
     isError: isApproveError,
-  } = useContractWrite(paymentTokenConfig);
+  } = useContractWrite(approveConfig);
 
   const { data: approveTxReceipt, isLoading: approveIsLoading } =
     useWaitForTransaction({
       hash: approveData?.hash,
     });
 
-  const { config: mintConfig } = usePrepareContractWrite({
-    ...vincaskContract,
-    functionName: "safeMultiMintWithUsdc",
-    args: [parseUnits(`${quantity}`, 0)],
-  });
-
   const {
     data: mintData,
     write: mint,
     error: mintError,
     isError: isMintError,
-  } = useContractWrite(mintConfig);
+  } = useContractWrite({
+    ...vincaskContract,
+    functionName: "safeMultiMintWithUsdc",
+    args: [parseUnits(`${quantity}`, 0)],
+  });
 
   const { data: mintTxReceipt, isLoading: mintIsLoading } =
     useWaitForTransaction({
@@ -108,6 +106,7 @@ const MintCard = () => {
   const decrement = () => {
     if (!isLoading) {
       setQuantity((prev) => {
+        // Can't go below 1
         if (prev === 1) {
           return prev;
         } else {
@@ -127,7 +126,9 @@ const MintCard = () => {
     }
 
     if (!isLoading && readData) {
-      if (readData[0].result?.toString() === readData[0].result?.toString()) {
+      if (readData[0].result?.toString() === readData[1].result?.toString()) {
+        // If total minted == total supply
+        // Do nothing
         return;
       } else {
         setQuantity((prev) => {
@@ -142,7 +143,7 @@ const MintCard = () => {
   };
 
   const mintNft = async () => {
-    if (readData && approve && mint) {
+    if (readData) {
       setIsLoading(true);
 
       if (
@@ -150,7 +151,7 @@ const MintCard = () => {
         Number(formatEther(readData[4].result as bigint)) < // paymentToken's spending allowance
         Number(formatEther(readData[2].result! as bigint)) * quantity // Total price
       ) {
-        approve();
+        approve?.();
       } else {
         mint();
       }
@@ -169,7 +170,9 @@ const MintCard = () => {
         <ToastError t={t} errorMessage={approveError?.name} />
       ));
     }
+  }, [isMintError, mintError?.name, isApproveError, approveError?.name]);
 
+  useEffect(() => {
     let approveToast;
     if (approveIsLoading) {
       approveToast = toast.loading((t) => (
@@ -181,18 +184,11 @@ const MintCard = () => {
       ));
     }
 
-    if (approveTxReceipt?.status === "success" && mint) {
+    if (approveTxReceipt?.status === "success") {
       toast.dismiss(approveToast);
       mint();
     }
-  }, [
-    isMintError,
-    mintError,
-    isApproveError,
-    approveError,
-    approveIsLoading,
-    approveTxReceipt,
-  ]);
+  }, [approveIsLoading, approveTxReceipt?.status]);
 
   useEffect(() => {
     // We use a new useEffect so that approveIsLoading and approveTxReceipt will not keep retriggering
@@ -216,7 +212,7 @@ const MintCard = () => {
         <ToastSuccess t={t} txHash={mintTxReceipt.transactionHash} />
       ));
     }
-  }, [mintIsLoading, mintTxReceipt]);
+  }, [mintIsLoading, mintTxReceipt?.status]);
 
   if (!isMounted) return null;
   return (
