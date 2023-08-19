@@ -148,7 +148,12 @@ const Redeem = ({
                 </div>
               </motion.div>
 
-              <button className="normal-case btn btn-primary">Redeem</button>
+              <button
+                disabled={!numNfts}
+                className="normal-case btn btn-primary"
+              >
+                Redeem
+              </button>
             </motion.div>
 
             <motion.ul

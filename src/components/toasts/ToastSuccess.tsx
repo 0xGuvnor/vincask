@@ -2,14 +2,15 @@ import { Toast, toast } from "react-hot-toast";
 
 interface Props {
   t: Toast;
+  message: string;
   txHash: `0x${string}` | null;
 }
 
-const ToastSuccess = ({ t, txHash }: Props) => {
+const ToastSuccess = ({ t, message, txHash }: Props) => {
   return (
     <div className="flex items-center justify-center w-full h-full">
       <div>
-        <p>NFT successfully minted</p>
+        <p>{message}</p>
         <a
           href={`https://sepolia.etherscan.io/tx/${txHash}`}
           rel="noreferrer"

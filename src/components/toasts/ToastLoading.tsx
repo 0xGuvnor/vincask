@@ -1,4 +1,3 @@
-import { paymentToken } from "@/constants/contracts";
 import { Toast, toast } from "react-hot-toast";
 
 interface Props {

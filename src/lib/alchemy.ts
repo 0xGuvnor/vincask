@@ -1,7 +1,7 @@
 import { Alchemy, AlchemySettings, Network } from "alchemy-sdk";
 
 const config: AlchemySettings = {
-  apiKey: process.env.ALCHEMY_ID,
+  apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID,
   network: Network.ETH_SEPOLIA,
 };
 

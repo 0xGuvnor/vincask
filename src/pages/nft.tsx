@@ -1,17 +1,20 @@
+import Head from "next/head";
 import Container from "@/components/Container";
 import Heading from "@/components/Heading";
 import MintCard from "@/components/MintCard";
 import NftCollectionButton from "@/components/buttons/NftCollectionButton";
-import Head from "next/head";
-import { LayoutGroup, motion } from "framer-motion";
 import Faucet from "@/components/Faucet";
 import Overlay from "@/components/Overlay";
 import { looksRareUrl, openSeaUrl } from "@/constants/urls";
 import { useNetwork } from "wagmi";
+import useIsMounted from "@/hooks/useIsMounted";
+import { LayoutGroup, motion } from "framer-motion";
 
 const NFT = () => {
   const { chain } = useNetwork();
+  const isMounted = useIsMounted();
 
+  if (!isMounted) return null;
   return (
     <div>
       <Head>
