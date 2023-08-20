@@ -45,7 +45,7 @@ const RedeemedCardSection = ({ defaultImg }: Props) => {
 
   return (
     <>
-      <h2 className="text-xl text-centerx md:text-5xl font-header">
+      <h2 className="text-2xl text-centerx md:text-5xl font-header">
         Redeemed NFTs
       </h2>
 
