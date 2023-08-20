@@ -23,9 +23,10 @@ const RedeemedCardSection = ({ defaultImg }: Props) => {
     select: (data) => Number(data),
   });
 
-  const [nftDataArr, setNftDataArr] = useState<NftData[]>(
+  const [cardArr, setCardArr] = useState(
     new Array(numNfts).fill({ title: "", tokenId: "" })
   );
+  const [nftDataArr, setNftDataArr] = useState<NftData[]>();
 
   useEffect(() => {
     if (address && numNfts) {
@@ -55,11 +56,18 @@ const RedeemedCardSection = ({ defaultImg }: Props) => {
         variants={redeemNftCardListVariant}
         className="flex flex-wrap items-center justify-center gap-6 md:gap-8"
       >
-        {nftDataArr.map((nftData) => (
+        {/* {nftDataArr.map((nftData) => (
           <RedeemedCard
             key={nftData.tokenId}
             defaultImg={defaultImg}
             nftData={nftData}
+          />
+        ))} */}
+        {cardArr.map((nftData, id) => (
+          <RedeemedCard
+            key={nftData.tokenId}
+            defaultImg={defaultImg}
+            nftData={nftDataArr ? nftDataArr[id] : { title: "", tokenId: "" }}
           />
         ))}
       </motion.ul>
