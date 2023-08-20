@@ -13,7 +13,7 @@ const Hero2 = () => {
           <h1 className="text-4xl font-black md:text-8xl font-header">
             Crafted with{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-tr from-accent to-primary">
-              Passion & Precision
+              passion & precision
             </span>
           </h1>
           <h2 className="text-lg md:text-2xl">
