@@ -156,14 +156,14 @@ const Redeem = ({
               </button>
             </motion.div>
 
-            <motion.ul
-              initial="hidden"
-              animate="visible"
-              variants={redeemNftCardListVariant}
-              className="flex flex-wrap items-center justify-center gap-6 md:gap-8"
-            >
-              {toggleStates &&
-                toggleStates.map((checked, id) => (
+            {numNfts || numNfts! >= 1 ? (
+              <motion.ul
+                initial="hidden"
+                animate="visible"
+                variants={redeemNftCardListVariant}
+                className="flex flex-wrap items-center justify-center gap-6 md:gap-8"
+              >
+                {toggleStates.map((checked, id) => (
                   <RedeemCard
                     key={id}
                     id={id}
@@ -175,7 +175,10 @@ const Redeem = ({
                     onChange={handleToggleChange}
                   />
                 ))}
-            </motion.ul>
+              </motion.ul>
+            ) : (
+              <div>{toggleStates.length}</div>
+            )}
           </>
         ) : (
           <motion.h1
