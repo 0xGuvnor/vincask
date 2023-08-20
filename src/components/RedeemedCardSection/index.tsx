@@ -13,7 +13,6 @@ interface Props {
 
 const RedeemedCardSection = ({ defaultImg }: Props) => {
   const { address } = useAccount();
-
   const { data: numNfts } = useContractRead({
     address: vincaskX.address.sepolia,
     abi: vincaskX.abi,
