@@ -62,9 +62,9 @@ const RedeemedCardSection = ({ defaultImg }: Props) => {
             nftData={nftData}
           />
         ))} */}
-        {cardArr.map((nftData, id) => (
+        {cardArr.map((x, id) => (
           <RedeemedCard
-            key={nftData.tokenId}
+            key={id}
             defaultImg={defaultImg}
             nftData={nftDataArr ? nftDataArr[id] : { title: "", tokenId: "" }}
           />
