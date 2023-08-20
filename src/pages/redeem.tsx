@@ -1,6 +1,12 @@
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { RefObject, useEffect, useRef, useState } from "react";
-import { useAccount, useContractRead } from "wagmi";
+import {
+  useAccount,
+  useContractRead,
+  useContractWrite,
+  usePrepareContractWrite,
+  useWaitForTransaction,
+} from "wagmi";
 import { motion } from "framer-motion";
 import axios from "axios";
 import Head from "next/head";
@@ -13,6 +19,13 @@ import useIsMounted from "@/hooks/useIsMounted";
 import { redeemNftCardListVariant } from "@/utils/motionVariants";
 import { alchemy } from "@/lib/alchemy";
 import { NftData } from "@/types";
+import Link from "next/link";
+import { parseUnits } from "viem";
+import { toast } from "react-hot-toast";
+import ToastError from "@/components/toasts/ToastError";
+import ToastLoading from "@/components/toasts/ToastLoading";
+import ToastSuccess from "@/components/toasts/ToastSuccess";
+import RedeemedCardSection from "@/components/RedeemedCardSection";
 
 const Redeem = ({
   defaultImg,
@@ -20,10 +33,16 @@ const Redeem = ({
   const isMounted = useIsMounted();
   const { address, isConnected } = useAccount();
   const expandRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [expand, setExpand] = useState(false);
-  const { data: numNfts } = useContractRead({
+  const [selectedNfts, setSelectedNfts] = useState<number[]>([]);
+  const vincaskContract = {
     address: vincask.address.sepolia,
     abi: vincask.abi,
+  };
+
+  const { data: numNfts } = useContractRead({
+    ...vincaskContract,
     functionName: "balanceOf",
     args: [address || "0x"],
     watch: true,
@@ -47,9 +66,124 @@ const Redeem = ({
   };
 
   const handleToggleAll = () => {
+    if (!allTogglesOn && nftDataArr) {
+      setSelectedNfts(nftDataArr?.map((nftData) => Number(nftData.tokenId)));
+    } else {
+      setSelectedNfts([]);
+    }
+
     const newToggleStates = toggleStates.map(() => !allTogglesOn);
     setToggleStates(newToggleStates);
   };
+
+  const { data: isApproved } = useContractRead({
+    ...vincaskContract,
+    functionName: "isApprovedForAll",
+    args: [address || "0x0", vincask.address.sepolia],
+  });
+
+  const { config: approveConfig } = usePrepareContractWrite({
+    ...vincaskContract,
+    functionName: "setApprovalForAll",
+    args: [vincask.address.sepolia, true],
+  });
+
+  const {
+    data: approveData,
+    write: approve,
+    error: approveError,
+    isError: isApproveError,
+  } = useContractWrite(approveConfig);
+
+  const { data: approveTxReceipt, isLoading: approveIsLoading } =
+    useWaitForTransaction({ hash: approveData?.hash });
+
+  const {
+    data: redeemData,
+    write: redeem,
+    error: redeemError,
+    isError: isRedeemError,
+  } = useContractWrite({
+    ...vincaskContract,
+    functionName: "multiRedeem",
+    args: [selectedNfts.map((nft) => parseUnits(`${nft}`, 0))],
+  });
+
+  const { data: redeemTxReceipt, isLoading: redeemIsLoading } =
+    useWaitForTransaction({ hash: redeemData?.hash });
+
+  const handleRedeem = () => {
+    setIsLoading(true);
+
+    if (isApproved) {
+      redeem();
+    } else {
+      approve?.();
+    }
+  };
+
+  useEffect(() => {
+    if (isApproveError) {
+      setIsLoading(false);
+      toast.error((t) => (
+        <ToastError t={t} errorMessage={approveError?.name} />
+      ));
+    }
+
+    if (isRedeemError) {
+      setIsLoading(false);
+      toast.error((t) => <ToastError t={t} errorMessage={redeemError?.name} />);
+    }
+  }, [isApproveError, isRedeemError]);
+
+  useEffect(() => {
+    let approveToast;
+    if (approveIsLoading) {
+      approveToast = toast.loading((t) => (
+        <ToastLoading
+          t={t}
+          message={`Approving Vincask to transfer your NFT${
+            numNfts ? "s" : ""
+          }`}
+          txHash={approveData?.hash}
+        />
+      ));
+    }
+
+    if (approveTxReceipt?.status === "success") {
+      toast.dismiss(approveToast);
+      redeem();
+    }
+  }, [approveIsLoading, approveTxReceipt?.status]);
+
+  useEffect(() => {
+    let redeemToast;
+    if (redeemIsLoading) {
+      redeemToast = toast.loading((t) => (
+        <ToastLoading
+          t={t}
+          message={`Redeeming ${selectedNfts.length} NFT${
+            selectedNfts.length > 1 ? "s" : ""
+          }`}
+          txHash={redeemData?.hash}
+        />
+      ));
+    }
+
+    if (redeemTxReceipt?.status === "success") {
+      toast.dismiss(redeemToast);
+      toast.success((t) => (
+        <ToastSuccess
+          t={t}
+          message={`Successfully redeemed ${selectedNfts.length} NFT${
+            selectedNfts.length > 1 ? "s" : ""
+          }`}
+          txHash={redeemTxReceipt.transactionHash}
+        />
+      ));
+      setIsLoading(false);
+    }
+  }, [redeemIsLoading, redeemTxReceipt?.status]);
 
   useEffect(() => {
     const isComponentOnTop = (ref: RefObject<HTMLDivElement>) => {
@@ -72,7 +206,7 @@ const Redeem = ({
   }, []);
 
   useEffect(() => {
-    if (address) {
+    if (address && numNfts) {
       (async () => {
         const nfts = await alchemy.nft.getNftsForOwner(address, {
           contractAddresses: [vincask.address.sepolia],
@@ -85,7 +219,9 @@ const Redeem = ({
         setNftDataArr(newNftDataArr);
       })();
     }
-  }, [address]);
+
+    setToggleStates(new Array(numNfts).fill(false));
+  }, [address, numNfts]);
 
   if (!isMounted) return null;
   return (
@@ -128,7 +264,7 @@ const Redeem = ({
                   <span className="font-mono">
                     {`[`}
                     <span className="text-primary">{toggleCount}</span>
-                    <span>/{numNfts}</span>
+                    <span>/{toggleStates.length}</span>
                     {`]`}
                   </span>{" "}
                   NFT{toggleCount > 1 || toggleCount === 0 ? "s" : ""}
@@ -149,12 +285,30 @@ const Redeem = ({
               </motion.div>
 
               <button
-                disabled={!numNfts}
-                className="normal-case btn btn-primary"
+                disabled={!numNfts || isLoading}
+                onClick={handleRedeem}
+                className="w-40 text-lg normal-case shadow-lg disabled:bg-base-100 disabled:ring-primary/25 disabled:ring-1 btn btn-primary shadow-primary/20"
               >
-                Redeem
+                {isLoading ? (
+                  <div className="flex items-end">
+                    <span>Redeeming</span>
+                    <span className="loading loading-dots loading-xs"></span>
+                  </div>
+                ) : (
+                  <span>Redeem</span>
+                )}
               </button>
             </motion.div>
+
+            {/* <ul className="flex flex-wrap items-center justify-center gap-2">
+              {selectedNfts
+                .sort((a, b) => a - b)
+                .map((nft, id) => (
+                  <div key={id} className="px-2 text-black bg-white">
+                    {nft}
+                  </div>
+                ))}
+            </ul> */}
 
             {numNfts || numNfts! >= 1 ? (
               <motion.ul
@@ -172,12 +326,22 @@ const Redeem = ({
                     }
                     defaultImg={defaultImg}
                     checked={checked}
+                    isLoading={isLoading}
                     onChange={handleToggleChange}
+                    setSelectedNfts={setSelectedNfts}
                   />
                 ))}
               </motion.ul>
             ) : (
-              <div>{toggleStates.length}</div>
+              <div className="text-lg text-center md:text-2xl text-primary">
+                <Link
+                  href="/nft"
+                  className="underline transition duration-300 ease-in-out underline-offset-2 decoration-2 hover:text-primary-focus"
+                >
+                  Mint an NFT
+                </Link>{" "}
+                to view them here.
+              </div>
             )}
           </>
         ) : (
@@ -190,6 +354,10 @@ const Redeem = ({
             Please connect your wallet to view your NFTs
           </motion.h1>
         )}
+      </Container>
+
+      <Container>
+        <RedeemedCardSection defaultImg={defaultImg} />
       </Container>
     </>
   );

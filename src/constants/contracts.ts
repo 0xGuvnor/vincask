@@ -1,6 +1,6 @@
 export const vincask = {
   address: {
-    sepolia: "0x395F696c29aabC689cBF81064e05dc3cd35274A6" as `0x${string}`,
+    sepolia: "0x0AB7209C41CFCC992A1F0511E7e5571fa73144db" as `0x${string}`,
     goerli: "0x8e1CdF038adCcaC943844282534bfCE4805c775A" as `0x${string}`,
   },
   abi: [
@@ -39,6 +39,11 @@ export const vincask = {
       ],
       stateMutability: "nonpayable",
       type: "constructor",
+    },
+    {
+      inputs: [],
+      name: "Vincask__CallerNotAuthorised",
+      type: "error",
     },
     {
       inputs: [],
@@ -315,7 +320,7 @@ export const vincask = {
           type: "uint256[]",
         },
       ],
-      name: "multiRedeemAndBurn",
+      name: "multiRedeem",
       outputs: [],
       stateMutability: "nonpayable",
       type: "function",
@@ -659,7 +664,7 @@ export const vincask = {
 
 export const vincaskX = {
   address: {
-    sepolia: "0x3FFc81E5863B0F843168E850C6f1f50928e87E5e" as `0x${string}`,
+    sepolia: "0xaD80F2792F2254aC4646585639E44Ad5d34001CA" as `0x${string}`,
     goerli: "0x52507255e11b23e8d311cF4839a8a6d17eD4F3Af" as `0x${string}`,
   },
   abi: [
