@@ -56,7 +56,11 @@ const RedeemedCardSection = ({ defaultImg }: Props) => {
         className="flex flex-wrap items-center justify-center gap-6 md:gap-8"
       >
         {nftDataArr.map((nftData) => (
-          <RedeemedCard defaultImg={defaultImg} nftData={nftData} />
+          <RedeemedCard
+            key={nftData.tokenId}
+            defaultImg={defaultImg}
+            nftData={nftData}
+          />
         ))}
       </motion.ul>
     </>
