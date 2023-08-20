@@ -116,12 +116,12 @@ const Redeem = ({
                 small: { width: "auto" },
               }}
               transition={{ duration: 0.75 }}
-              className={`sticky inset-x-0 top-14 md:top-20 flex flex-col md:flex-row items-center md:items-start justify-between self-center gap-4 transition duration-300 ease-in-out z-30 max-w-xl md:min-w-[395px]`}
+              className={`sticky inset-x-0 top-14 md:top-20 flex flex-col md:flex-row items-center md:items-start justify-between self-center transition duration-300 ease-in-out z-30 max-w-xl md:min-w-[395px]`}
             >
               <motion.div
                 className={`${
                   expand && "bg-base-100/75 backdrop-blur-sm shadow-2xl"
-                } flex flex-col items-center justify-center w-[230px] md:w-[290px] rounded-b-lg bg-base-100 px-4 py-2 gap-1`}
+                } flex flex-col items-center justify-center w-[230px] md:w-[320px] rounded-b-lg bg-base-100 px-4 py-2 gap-1`}
               >
                 <span className="text-lg md:text-2xl h-12x">
                   Selected{" "}

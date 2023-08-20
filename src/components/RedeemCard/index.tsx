@@ -59,7 +59,7 @@ const RedeemCard = ({ id, nftData, defaultImg, checked, onChange }: Props) => {
 
         <header className="flex items-center justify-between text-black">
           <h1 className="text-lg font-semibold capitalize">
-            {name} #{nftData.tokenId}
+            {name} #{nftData.tokenId && ""}
           </h1>
           {chain && (
             <a
