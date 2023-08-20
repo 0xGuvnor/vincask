@@ -14,6 +14,7 @@ import {
   WagmiConfig,
 } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
+import { infuraProvider } from "wagmi/providers/infura";
 import { publicProvider } from "wagmi/providers/public";
 import Navbar from "@/components/Navbar";
 import type { AppProps } from "next/app";
@@ -49,6 +50,7 @@ const { chains, publicClient } = configureChains(
     alchemyProvider({
       apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID!,
     }),
+    infuraProvider({ apiKey: process.env.NEXT_PUBLIC_INFURA_ID! }),
     publicProvider(),
   ]
 );
