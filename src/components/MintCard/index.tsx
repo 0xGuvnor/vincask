@@ -376,7 +376,7 @@ const MintCard = () => {
                     quantity: quantity,
                   }}
                   environment="staging"
-                  mintTo="0x000000000000000000000000000000000000dEaD"
+                  // mintTo="0x000000000000000000000000000000000000dEaD"
                   className="absolute inset-0"
                 />
               </motion.div>
