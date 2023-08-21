@@ -84,8 +84,8 @@ const Redeem = ({
 
   const { config: approveConfig } = usePrepareContractWrite({
     ...vincaskContract,
-    functionName: "setApprovalForAll",
-    args: [vincask.address.sepolia, true],
+    functionName: "multiApprove",
+    args: [selectedNfts.map((nft) => parseUnits(`${nft}`, 0))],
   });
 
   const {
@@ -285,7 +285,7 @@ const Redeem = ({
               </motion.div>
 
               <button
-                disabled={!numNfts || isLoading}
+                disabled={!numNfts || isLoading || selectedNfts.length === 0}
                 onClick={handleRedeem}
                 className="w-40 text-lg normal-case shadow-lg disabled:bg-base-100 disabled:ring-primary/25 disabled:ring-1 btn btn-primary shadow-primary/20"
               >

@@ -22,7 +22,7 @@ const RedeemedCardSection = ({ defaultImg }: Props) => {
     select: (data) => Number(data),
   });
 
-  const [cardArr, setCardArr] = useState(
+  const [cardArr, setCardArr] = useState<NftData[]>(
     new Array(numNfts).fill({ title: "", tokenId: "" })
   );
   const [nftDataArr, setNftDataArr] = useState<NftData[]>();
@@ -41,10 +41,12 @@ const RedeemedCardSection = ({ defaultImg }: Props) => {
         setNftDataArr(newNftDataArr);
       })();
     }
+
+    setCardArr(new Array(numNfts).fill({ title: "", tokenId: "" }));
   }, [address, numNfts]);
 
   return (
-    <>
+    <div className={`${!numNfts && "hidden"} contents`}>
       <h2 className="text-2xl text-centerx md:text-5xl font-header">
         Redeemed NFTs
       </h2>
@@ -62,15 +64,15 @@ const RedeemedCardSection = ({ defaultImg }: Props) => {
             nftData={nftData}
           />
         ))} */}
-        {cardArr.map((x, id) => (
+        {cardArr.map((initData, id) => (
           <RedeemedCard
             key={id}
             defaultImg={defaultImg}
-            nftData={nftDataArr ? nftDataArr[id] : { title: "", tokenId: "" }}
+            nftData={nftDataArr ? nftDataArr[id] : initData}
           />
         ))}
       </motion.ul>
-    </>
+    </div>
   );
 };
 export default RedeemedCardSection;

@@ -22,7 +22,7 @@ const RedeemedCard = ({ nftData, defaultImg }: Props) => {
 
   useEffect(() => {
     // Loads name and pic data on mount
-    if (nftData.tokenId) {
+    if (nftData?.tokenId) {
       (async () => {
         try {
           const res = await axios.get(
@@ -55,7 +55,7 @@ const RedeemedCard = ({ nftData, defaultImg }: Props) => {
 
         <header className="flex items-center justify-between text-black">
           <h1 className="text-lg font-semibold capitalize">
-            {name} #{nftData.tokenId}
+            {name} #{nftData?.tokenId}
           </h1>
           {chain && (
             <a
@@ -63,7 +63,7 @@ const RedeemedCard = ({ nftData, defaultImg }: Props) => {
                 chain.testnet ? openSeaUrl.testnet : openSeaUrl.mainnet
               }assets/${chain?.network}/${
                 vincaskX.address[chain.network as keyof typeof vincask.address]
-              }/${nftData.tokenId}`}
+              }/${nftData?.tokenId}`}
               rel="noreferrer"
               target="_blank"
               className="transition duration-300 ease-in-out hover:opacity-75"
