@@ -57,13 +57,6 @@ const RedeemedCardSection = ({ defaultImg }: Props) => {
         variants={redeemNftCardListVariant}
         className="flex flex-wrap items-center justify-center gap-6 md:gap-8"
       >
-        {/* {nftDataArr.map((nftData) => (
-          <RedeemedCard
-            key={nftData.tokenId}
-            defaultImg={defaultImg}
-            nftData={nftData}
-          />
-        ))} */}
         {cardArr.map((initData, id) => (
           <RedeemedCard
             key={id}
