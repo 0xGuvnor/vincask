@@ -6,8 +6,8 @@ import {
   usePrepareContractWrite,
   useWaitForTransaction,
 } from "wagmi";
-import { paymentToken, vincask } from "@/constants/contracts";
-import { formatEther, parseEther, parseUnits } from "viem";
+import { usdc, vincask } from "@/constants/contracts";
+import { formatUnits, parseUnits } from "viem";
 import useIsMounted from "@/hooks/useIsMounted";
 import { AnimatePresence, motion } from "framer-motion";
 import TabButton from "./TabButton";
@@ -20,20 +20,22 @@ import Logo from "./Logo";
 import MintedStatus from "./MintedStatus";
 import TotalPrice from "./TotalPrice";
 import QuantitySelection from "./QuantitySelection";
+import useActiveChain from "@/hooks/useActiveChain";
 
 const MintCard = () => {
   const isMounted = useIsMounted();
+  const activeChain = useActiveChain();
   const [quantity, setQuantity] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [tab, setTab] = useState<"crypto" | "cc">("crypto");
   const { address, isConnected } = useAccount();
   const vincaskContract = {
-    address: vincask.address.sepolia,
+    address: vincask.address[activeChain as keyof typeof vincask.address],
     abi: vincask.abi,
   };
-  const paymentTokenContract = {
-    address: paymentToken.address.sepolia,
-    abi: paymentToken.abi,
+  const usdcContract = {
+    address: usdc.address[activeChain as keyof typeof vincask.address],
+    abi: usdc.abi,
   };
 
   const { data: readData } = useContractReads({
@@ -50,27 +52,37 @@ const MintCard = () => {
         ...vincaskContract,
         functionName: "getMintPrice",
       },
-      { ...paymentTokenContract, functionName: "name" },
+      { ...usdcContract, functionName: "name" },
       {
-        ...paymentTokenContract,
+        ...usdcContract,
         functionName: "allowance",
-        args: [address ? address : "0x0", vincask.address.sepolia],
+        args: [
+          address ? address : "0x0",
+          vincask.address[activeChain as keyof typeof vincask.address],
+        ],
       },
+      { ...usdcContract, functionName: "decimals" },
     ],
     watch: true,
   });
 
   const { config: approveConfig } = usePrepareContractWrite({
-    ...paymentTokenContract,
+    ...usdcContract,
     functionName: "approve",
     args: [
-      vincask.address.sepolia,
-      parseEther(
+      vincask.address[activeChain as keyof typeof vincask.address],
+      parseUnits(
         `${
           (readData
-            ? Number(formatEther(readData[2].result as bigint))
+            ? Number(
+                formatUnits(
+                  (readData[2].result || 0) as bigint, // Mint price
+                  Number(readData[5].result) // Decimals
+                )
+              )
             : 20000) /* Default price is 20,000 */ * quantity
-        }`
+        }`,
+        Number(readData && readData[5].result) // Decimals
       ),
     ],
   });
@@ -103,7 +115,7 @@ const MintCard = () => {
       hash: mintData?.hash,
     });
 
-  const decrement = () => {
+  const handleDecrement = () => {
     if (!isLoading) {
       setQuantity((prev) => {
         // Can't go below 1
@@ -116,7 +128,7 @@ const MintCard = () => {
     }
   };
 
-  const increment = () => {
+  const handleIncrement = () => {
     let maxValue = 99,
       currentValue = 0;
 
@@ -147,9 +159,10 @@ const MintCard = () => {
       setIsLoading(true);
 
       if (
-        // Checking if paymentToken's spending allowance is less than the total price to mint
-        Number(formatEther(readData[4].result as bigint)) < // paymentToken's spending allowance
-        Number(formatEther(readData[2].result! as bigint)) * quantity // Total price
+        // Checking if USDC's spending allowance is less than the total price to mint
+        Number(formatUnits(readData[4].result as bigint, Number(readData[5]))) < // USDC's spending allowance
+        Number(formatUnits(readData[2].result as bigint, Number(readData[5]))) *
+          quantity // Total price
       ) {
         approve();
       } else {
@@ -181,7 +194,9 @@ const MintCard = () => {
       approveToast = toast.loading((t) => (
         <ToastLoading
           t={t}
-          message={`Approving Vincask to spend your ${paymentToken.name}...`}
+          message={`Approving Vincask to spend your ${
+            readData && readData[3].result?.toString()
+          }...`}
           txHash={approveData?.hash}
         />
       ));
@@ -269,8 +284,12 @@ const MintCard = () => {
                 price={
                   readData
                     ? (
-                        Number(formatEther(readData[2].result as bigint)) *
-                        quantity
+                        Number(
+                          formatUnits(
+                            readData[2].result as bigint,
+                            Number(readData[5].result)
+                          )
+                        ) * quantity
                       ).toLocaleString()
                     : ""
                 }
@@ -281,8 +300,8 @@ const MintCard = () => {
                 <div className="contents">
                   <QuantitySelection
                     isLoading={isLoading}
-                    decrement={decrement}
-                    increment={increment}
+                    decrement={handleDecrement}
+                    increment={handleIncrement}
                     quantity={quantity}
                   />
 
@@ -336,8 +355,8 @@ const MintCard = () => {
               />
               <QuantitySelection
                 isLoading={isLoading}
-                decrement={decrement}
-                increment={increment}
+                decrement={handleDecrement}
+                increment={handleIncrement}
                 quantity={quantity}
               />
 
@@ -348,14 +367,16 @@ const MintCard = () => {
                 className="w-[222.32px] h-[52px] relative"
               >
                 <CrossmintPayButton
-                  collectionId="c3069566-2655-4ed1-96da-130f12345082"
+                  collectionId="604eb21e-339d-4281-af11-335d426822e1"
                   projectId="011b8900-8f68-4e25-b9f6-b1a6c84af69f"
                   mintConfig={{
-                    type: "managed-erc-721",
-                    totalPrice: "1",
-                    quantity: { quantity },
+                    type: "erc-721",
+                    totalPrice: (quantity * 25000).toString(),
+                    _quantity: quantity,
+                    quantity: quantity,
                   }}
                   environment="staging"
+                  mintTo="0x000000000000000000000000000000000000dEaD"
                   className="absolute inset-0"
                 />
               </motion.div>

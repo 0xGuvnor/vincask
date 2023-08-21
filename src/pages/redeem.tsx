@@ -143,7 +143,7 @@ const Redeem = ({
         <ToastLoading
           t={t}
           message={`Approving Vincask to transfer your NFT${
-            numNfts ? "s" : ""
+            selectedNfts.length > 1 ? "s" : ""
           }`}
           txHash={approveData?.hash}
         />

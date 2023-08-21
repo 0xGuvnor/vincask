@@ -61,7 +61,7 @@ const NFT = () => {
                 name="OpenSea"
                 url={`${
                   chain?.testnet ? openSeaUrl.testnet : openSeaUrl.mainnet
-                }collection/vincask-3`}
+                }collection/vincask-13`}
               />
               {/* <NftCollectionButton name="LooksRare" url={looksRareUrl} /> */}
             </div>

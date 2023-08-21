@@ -13,6 +13,7 @@ import {
   sepolia,
   WagmiConfig,
 } from "wagmi";
+import { goerli } from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { infuraProvider } from "wagmi/providers/infura";
 import { publicProvider } from "wagmi/providers/public";
@@ -46,6 +47,7 @@ const { chains, publicClient } = configureChains(
   [
     // mainnet,
     sepolia,
+    goerli,
   ],
   [
     alchemyProvider({

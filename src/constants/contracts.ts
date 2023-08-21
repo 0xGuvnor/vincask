@@ -1,7 +1,7 @@
 export const vincask = {
   address: {
-    sepolia: "0x2afe9bEB9f35DEf1B0537a01b19f60aEfe1e63b8" as `0x${string}`,
-    goerli: "0x8e1CdF038adCcaC943844282534bfCE4805c775A" as `0x${string}`,
+    sepolia: "0xcE34B1CD0296B4550e60af205a08bD9bb5105E14" as `0x${string}`,
+    goerli: "0xc2493DA33E934c2979763B64970a19E6970169CE" as `0x${string}`,
   },
   abi: [
     {
@@ -682,8 +682,8 @@ export const vincask = {
 
 export const vincaskX = {
   address: {
-    sepolia: "0xe0b838cB0e7aC13aC6b916c6986380bF88397d33" as `0x${string}`,
-    goerli: "0x52507255e11b23e8d311cF4839a8a6d17eD4F3Af" as `0x${string}`,
+    sepolia: "0xC90A6E8682b5293C6d0Aa6A13f66Fb316f0E19C3" as `0x${string}`,
+    goerli: "0x0D50454a791c5Ba47396174110149Bf0b646f2D2" as `0x${string}`,
   },
   abi: [
     { inputs: [], stateMutability: "nonpayable", type: "constructor" },
@@ -923,11 +923,11 @@ export const vincaskX = {
   ] as const,
 };
 
-export const paymentToken = {
-  name: "ERC20Mock",
+export const usdc = {
   address: {
-    sepolia: "0xe0f8792e4521706ddEfdBFad1a4785257e83d17E" as `0x${string}`,
-    goerli: "0x13Fb0f5445E75425dE69d974f5614a2EFc332eC3" as `0x${string}`,
+    mainnet: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48" as `0x${string}`,
+    sepolia: "0xee3a254b0810FC5de2771057D97ed1DD0a6fD330" as `0x${string}`,
+    goerli: "0x98339D8C260052B7ad81c28c16C0b98420f2B46a" as `0x${string}`,
   },
   abi: [
     {

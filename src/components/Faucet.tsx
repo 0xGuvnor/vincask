@@ -1,17 +1,19 @@
-import { paymentToken } from "@/constants/contracts";
+import { usdc } from "@/constants/contracts";
+import useActiveChain from "@/hooks/useActiveChain";
 import useIsMounted from "@/hooks/useIsMounted";
-import { parseEther } from "viem";
+import { parseUnits } from "viem";
 import { useAccount, useContractWrite, usePrepareContractWrite } from "wagmi";
 
 const Faucet = () => {
   const isMounted = useIsMounted();
+  const activeChain = useActiveChain();
   const { address, isConnected } = useAccount();
 
   const { config } = usePrepareContractWrite({
-    address: paymentToken.address.sepolia,
-    abi: paymentToken.abi,
+    address: usdc.address[activeChain as keyof typeof usdc.address],
+    abi: usdc.abi,
     functionName: "mint",
-    args: [address ? address : "0x0", parseEther(`${1_000_000}`)],
+    args: [address ? address : "0x0", parseUnits(`${1_000_000}`, 6)],
   });
 
   const { write } = useContractWrite(config);
@@ -29,7 +31,7 @@ const Faucet = () => {
         className="flex items-center self-center justify-center gap-1 px-4 py-2 font-semibold text-black transition duration-300 ease-in-out rounded-full shadow-2xl shadow-white/10 bg-emerald-500 hover:bg-emerald-600"
       >
         <span className="text-xl">🤑</span>
-        Mint 1 million ERC20Mock
+        Mint 1 million USD Coin
       </button>
     </div>
   );
