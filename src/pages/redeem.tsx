@@ -357,9 +357,11 @@ const Redeem = ({
         )}
       </Container>
 
-      <Container>
-        <RedeemedCardSection defaultImg={defaultImg} />
-      </Container>
+      {isConnected && (
+        <Container>
+          <RedeemedCardSection defaultImg={defaultImg} />
+        </Container>
+      )}
     </>
   );
 };
