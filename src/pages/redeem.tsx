@@ -182,6 +182,7 @@ const Redeem = ({
         />
       ));
       setIsLoading(false);
+      setSelectedNfts([]);
     }
   }, [redeemIsLoading, redeemTxReceipt?.status]);
 
