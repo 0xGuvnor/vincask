@@ -1,3 +1,4 @@
+import useActiveChain from "@/hooks/useActiveChain";
 import { Toast, toast } from "react-hot-toast";
 
 interface Props {
@@ -7,12 +8,14 @@ interface Props {
 }
 
 const ToastSuccess = ({ t, message, txHash }: Props) => {
+  const activeChain = useActiveChain();
+
   return (
     <div className="flex items-center justify-center w-full h-full">
       <div>
         <p>{message}</p>
         <a
-          href={`https://sepolia.etherscan.io/tx/${txHash}`}
+          href={`https://${activeChain}.etherscan.io/tx/${txHash}`}
           rel="noreferrer"
           target="_blank"
           className="text-blue-500 underline transition duration-300 ease-in-out underline-offset-2 hover:opacity-80"

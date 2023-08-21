@@ -6,15 +6,17 @@ import { alchemy } from "@/lib/alchemy";
 import { NftData } from "@/types";
 import { motion } from "framer-motion";
 import { redeemNftCardListVariant } from "@/utils/motionVariants";
+import useActiveChain from "@/hooks/useActiveChain";
 
 interface Props {
   defaultImg: string;
 }
 
 const RedeemedCardSection = ({ defaultImg }: Props) => {
+  const activeChain = useActiveChain();
   const { address } = useAccount();
   const { data: numNfts } = useContractRead({
-    address: vincaskX.address.sepolia,
+    address: vincaskX.address[activeChain as keyof typeof vincaskX.address],
     abi: vincaskX.abi,
     functionName: "balanceOf",
     args: [address || "0x"],
@@ -30,8 +32,12 @@ const RedeemedCardSection = ({ defaultImg }: Props) => {
   useEffect(() => {
     if (address && numNfts) {
       (async () => {
-        const nfts = await alchemy.nft.getNftsForOwner(address, {
-          contractAddresses: [vincaskX.address.sepolia],
+        const nfts = await alchemy[
+          activeChain as keyof typeof alchemy
+        ].nft.getNftsForOwner(address, {
+          contractAddresses: [
+            vincaskX.address[activeChain as keyof typeof vincaskX.address],
+          ],
         });
 
         const newNftDataArr: NftData[] = nfts.ownedNfts.map((nft) => ({

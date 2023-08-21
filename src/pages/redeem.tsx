@@ -26,18 +26,20 @@ import ToastError from "@/components/toasts/ToastError";
 import ToastLoading from "@/components/toasts/ToastLoading";
 import ToastSuccess from "@/components/toasts/ToastSuccess";
 import RedeemedCardSection from "@/components/RedeemedCardSection";
+import useActiveChain from "@/hooks/useActiveChain";
 
 const Redeem = ({
   defaultImg,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const isMounted = useIsMounted();
+  const activeChain = useActiveChain();
   const { address, isConnected } = useAccount();
   const expandRef = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
   const [expand, setExpand] = useState(false);
   const [selectedNfts, setSelectedNfts] = useState<number[]>([]);
   const vincaskContract = {
-    address: vincask.address.sepolia,
+    address: vincask.address[activeChain as keyof typeof vincask.address],
     abi: vincask.abi,
   };
 
@@ -144,7 +146,7 @@ const Redeem = ({
           t={t}
           message={`Approving Vincask to transfer your NFT${
             selectedNfts.length > 1 ? "s" : ""
-          }`}
+          }...`}
           txHash={approveData?.hash}
         />
       ));
@@ -164,7 +166,7 @@ const Redeem = ({
           t={t}
           message={`Redeeming ${selectedNfts.length} NFT${
             selectedNfts.length > 1 ? "s" : ""
-          }`}
+          }...`}
           txHash={redeemData?.hash}
         />
       ));
@@ -209,8 +211,12 @@ const Redeem = ({
   useEffect(() => {
     if (address && numNfts) {
       (async () => {
-        const nfts = await alchemy.nft.getNftsForOwner(address, {
-          contractAddresses: [vincask.address.sepolia],
+        const nfts = await alchemy[
+          activeChain as keyof typeof alchemy
+        ].nft.getNftsForOwner(address, {
+          contractAddresses: [
+            vincask.address[activeChain as keyof typeof vincask.address],
+          ],
         });
 
         const newNftDataArr: NftData[] = nfts.ownedNfts.map((nft) => ({

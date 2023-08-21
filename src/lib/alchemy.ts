@@ -1,8 +1,16 @@
 import { Alchemy, AlchemySettings, Network } from "alchemy-sdk";
 
-const config: AlchemySettings = {
+const sepConfig: AlchemySettings = {
   apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID,
   network: Network.ETH_SEPOLIA,
 };
 
-export const alchemy = new Alchemy(config);
+const gorConfig: AlchemySettings = {
+  apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID,
+  network: Network.ETH_GOERLI,
+};
+
+export const alchemy = {
+  sepolia: new Alchemy(sepConfig),
+  goerli: new Alchemy(gorConfig),
+};
