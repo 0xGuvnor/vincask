@@ -1,7 +1,7 @@
 import AffiliatedCompanies from "@/components/AffiliatedCompanies";
 import Collage from "@/components/Collage";
 import Container from "@/components/Container";
-import Overlay from "@/components/Overlay";
+import MobileOverlay from "@/components/MobileOverlay";
 import Timeline from "@/components/Timeline";
 import Head from "next/head";
 
@@ -15,7 +15,7 @@ const About = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Overlay />
+      <MobileOverlay />
 
       {/* Background gradient */}
       <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-[#2A3439]/40 from-0% -z-10"></div>

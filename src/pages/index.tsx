@@ -1,6 +1,6 @@
 import Hero from "@/components/Hero";
 import Hero2 from "@/components/Hero 2";
-import Overlay from "@/components/Overlay";
+import MobileOverlay from "@/components/MobileOverlay";
 import Team from "@/components/Team";
 import Testimonials from "@/components/Testimonials";
 import Head from "next/head";
@@ -15,7 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Overlay />
+      <MobileOverlay />
 
       <div className="flex flex-col">
         {/* <Hero /> */}

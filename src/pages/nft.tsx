@@ -4,7 +4,7 @@ import Heading from "@/components/Heading";
 import MintCard from "@/components/MintCard";
 import NftCollectionButton from "@/components/buttons/NftCollectionButton";
 import Faucet from "@/components/Faucet";
-import Overlay from "@/components/Overlay";
+import MobileOverlay from "@/components/MobileOverlay";
 import { looksRareUrl, openSeaUrl } from "@/constants/urls";
 import { useNetwork } from "wagmi";
 import useIsMounted from "@/hooks/useIsMounted";
@@ -24,7 +24,7 @@ const NFT = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Overlay />
+      <MobileOverlay />
 
       <LayoutGroup>
         <Container classNames="md:!flex-row flex-col-reverse">

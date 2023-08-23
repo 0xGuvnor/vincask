@@ -13,7 +13,7 @@ export const vincask = {
         },
         {
           internalType: "address",
-          name: "_paymentToken",
+          name: "_stableCoin",
           type: "address",
         },
         {
@@ -52,7 +52,7 @@ export const vincask = {
     },
     {
       inputs: [],
-      name: "Vincask__MustApproveAtleastOne",
+      name: "Vincask__MustApproveAtLeastOne",
       type: "error",
     },
     {
@@ -269,7 +269,7 @@ export const vincask = {
     },
     {
       inputs: [],
-      name: "getPaymentToken",
+      name: "getStableCoin",
       outputs: [
         {
           internalType: "address",
@@ -574,11 +574,11 @@ export const vincask = {
       inputs: [
         {
           internalType: "address",
-          name: "_newPaymentToken",
+          name: "_newStableCoin",
           type: "address",
         },
       ],
-      name: "setPaymentToken",
+      name: "setStableCoin",
       outputs: [],
       stateMutability: "nonpayable",
       type: "function",

@@ -1,5 +1,5 @@
 import Container from "@/components/Container";
-import Overlay from "@/components/Overlay";
+import MobileOverlay from "@/components/MobileOverlay";
 import Head from "next/head";
 
 const Whisky = () => {
@@ -12,7 +12,7 @@ const Whisky = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Overlay />
+      <MobileOverlay />
 
       <Container classNames="italic">product placeholder</Container>
     </div>

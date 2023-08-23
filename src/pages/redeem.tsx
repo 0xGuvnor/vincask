@@ -12,7 +12,7 @@ import axios from "axios";
 import Head from "next/head";
 import Container from "@/components/Container";
 import Heading from "@/components/Heading";
-import Overlay from "@/components/Overlay";
+import MobileOverlay from "@/components/MobileOverlay";
 import RedeemCard from "@/components/RedeemCard";
 import { vincask } from "@/constants/contracts";
 import useIsMounted from "@/hooks/useIsMounted";
@@ -27,6 +27,7 @@ import ToastLoading from "@/components/toasts/ToastLoading";
 import ToastSuccess from "@/components/toasts/ToastSuccess";
 import RedeemedCardSection from "@/components/RedeemedCardSection";
 import useActiveChain from "@/hooks/useActiveChain";
+import RedeemDialog from "@/components/RedeemDialog";
 
 const Redeem = ({
   defaultImg,
@@ -240,7 +241,7 @@ const Redeem = ({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Overlay />
+      <MobileOverlay />
 
       <Container>
         <Heading
@@ -291,7 +292,7 @@ const Redeem = ({
                 </div>
               </motion.div>
 
-              <button
+              {/* <button
                 disabled={!numNfts || isLoading || selectedNfts.length === 0}
                 onClick={handleRedeem}
                 className="w-40 text-lg normal-case shadow-lg disabled:bg-base-100 disabled:ring-primary/25 disabled:ring-1 btn btn-primary shadow-primary/20"
@@ -304,7 +305,16 @@ const Redeem = ({
                 ) : (
                   <span>Redeem</span>
                 )}
-              </button>
+              </button> */}
+              <RedeemDialog
+                numNfts={numNfts}
+                selectedNfts={selectedNfts.length}
+                isLoading={isLoading}
+                setIsLoading={setIsLoading}
+                isApproved={isApproved}
+                redeem={redeem}
+                approve={approve}
+              />
             </motion.div>
 
             {/* <ul className="flex flex-wrap items-center justify-center gap-2">

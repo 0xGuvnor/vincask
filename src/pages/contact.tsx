@@ -3,7 +3,7 @@ import ContactForm from "@/components/ContactForm";
 import Container from "@/components/Container";
 import FAQ from "@/components/FAQ";
 import Heading from "@/components/Heading";
-import Overlay from "@/components/Overlay";
+import MobileOverlay from "@/components/MobileOverlay";
 import Head from "next/head";
 
 const Contact = () => {
@@ -16,7 +16,7 @@ const Contact = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Overlay />
+      <MobileOverlay />
 
       <Container classNames="flex-1">
         <Heading

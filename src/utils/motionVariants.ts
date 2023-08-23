@@ -19,3 +19,9 @@ export const redeemNftCardVariant: Variants = {
   hidden: { opacity: 0, y: 100 },
   visible: { opacity: 1, y: 0 },
 };
+
+export const addressVariant: Variants = {
+  initial: { opacity: 0, y: -50 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.2, delay: 0.25 } },
+  exit: { opacity: 0, y: -50, transition: { duration: 0.2 } },
+};

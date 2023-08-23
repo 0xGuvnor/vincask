@@ -1,10 +1,11 @@
 import { FieldErrors, UseFormRegister } from "react-hook-form";
 import { IFormInput } from "../ContactForm";
+import { HTMLInputTypeAttribute } from "react";
 
 interface Props {
   id: keyof IFormInput;
   label: string;
-  type?: string;
+  type?: HTMLInputTypeAttribute;
   register: UseFormRegister<IFormInput>;
   required?: boolean;
   minLength?: number;
@@ -25,7 +26,7 @@ const ContactFormInput = ({
   errorMessage = "This field is required",
 }: Props) => {
   return (
-    <div className="relative flex flex-col w-full gap-1">
+    <fieldset className="relative flex flex-col w-full gap-1">
       <input
         {...register(id, { required, minLength, maxLength })}
         id={id}
@@ -45,7 +46,7 @@ const ContactFormInput = ({
           {errorMessage}
         </span>
       )}
-    </div>
+    </fieldset>
   );
 };
 export default ContactFormInput;
