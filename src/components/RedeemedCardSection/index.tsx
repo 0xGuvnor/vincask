@@ -49,7 +49,7 @@ const RedeemedCardSection = ({ defaultImg }: Props) => {
     }
 
     setCardArr(new Array(numNfts).fill({ title: "", tokenId: "" }));
-  }, [address, numNfts]);
+  }, [address, numNfts, activeChain]);
 
   return (
     <div className={`${!numNfts && "hidden"} contents`}>
