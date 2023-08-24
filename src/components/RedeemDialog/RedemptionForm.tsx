@@ -1,14 +1,16 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import RedeemDialogInput from "./RedeemDialogInput";
 import RedeemDialogSelect from "./RedeemDialogSelect";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { RedemptionType } from "@/types";
 import { AnimatePresence, motion } from "framer-motion";
 import { addressVariant } from "@/utils/motionVariants";
 import { supabase } from "@/lib/supabase";
-import { useAccount } from "wagmi";
+import { useAccount, useSignMessage } from "wagmi";
 import { toast } from "react-hot-toast";
 import ToastError from "../toasts/ToastError";
+import axios from "axios";
+import { messageToSign } from "@/constants/messageToSign";
 
 interface Props {
   setOpen: Dispatch<SetStateAction<boolean>>;
@@ -25,7 +27,7 @@ export interface IFormInput {
   redemption_type: RedemptionType;
   address1: string;
   address2: string;
-  postal_code: number;
+  postal_code: string;
 }
 
 const RedemptionForm = ({
@@ -40,36 +42,79 @@ const RedemptionForm = ({
     handleSubmit,
     formState: { errors },
   } = useForm<IFormInput>();
+  const { address } = useAccount();
+  const { data: sigHash, signMessage } = useSignMessage({
+    message: messageToSign,
+  });
   const [redemptionTypeState, setRedemptionTypeState] =
     useState<RedemptionType>("");
-  const { address } = useAccount();
 
   const onSubmit: SubmitHandler<IFormInput> = async (formData) => {
-    const { error } = await supabase
-      .from("customers")
-      .insert([{ ...formData, wallet_address: address as string }]);
+    try {
+      // Verification to ensure only the person signing the message is allowed to
+      // upload their details to the redemption form DB.
 
-    if (error) {
-      console.error("Error inserting data:", error);
-      toast.error((t) => <ToastError t={t} errorMessage={error.message} />);
-      return;
-    }
-    setOpen(false);
+      // Supabase login credentials are returned by the API
+      const {
+        data: { email, password },
+      } = await axios.post("/api/auth", {
+        address,
+        message: messageToSign,
+        signature: sigHash,
+      });
 
-    setIsLoading(true);
+      const { error: authError } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-    if (isApproved) {
-      redeem();
-    } else {
-      approve?.();
+      if (authError) {
+        console.error(authError);
+        toast.error((t) => (
+          <ToastError t={t} errorMessage={authError?.message} />
+        ));
+        return;
+      }
+
+      const { error: insertError } = await supabase
+        .from("customers")
+        .insert([{ ...formData, wallet_address: address as string }]);
+
+      if (insertError) {
+        console.error("Error inserting data:", insertError);
+        toast.error((t) => (
+          <ToastError t={t} errorMessage={insertError.message} />
+        ));
+        return;
+      }
+      setOpen(false);
+
+      setIsLoading(true);
+
+      if (isApproved) {
+        redeem();
+      } else {
+        approve?.();
+      }
+    } catch (error) {
+      toast.error((t) => (
+        <ToastError t={t} errorMessage="Signature verification failed" />
+      ));
     }
   };
+
+  useEffect(() => {
+    // sigHash is generated after user signs the message
+    if (sigHash) {
+      handleSubmit(onSubmit)();
+    }
+  }, [sigHash]);
 
   return (
     <motion.form
       layout
       transition={{ duration: 0.25 }}
-      onSubmit={handleSubmit(onSubmit)}
+      // onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col gap-14"
     >
       <div className="flex items-center justify-between gap-10">
@@ -160,12 +205,27 @@ const RedemptionForm = ({
         )}
       </AnimatePresence>
 
-      <motion.input
+      {/* <motion.input
         layout="position"
         transition={{ duration: 0.25 }}
         type="submit"
         className="self-end normal-case btn btn-primary"
-      />
+      /> */}
+      <motion.button
+        layout="position"
+        transition={{ duration: 0.25 }}
+        type="button"
+        onClick={() => {
+          if (!sigHash) {
+            signMessage();
+          } else {
+            handleSubmit(onSubmit)();
+          }
+        }}
+        className="self-end normal-case btn btn-primary"
+      >
+        Submit
+      </motion.button>
     </motion.form>
   );
 };
