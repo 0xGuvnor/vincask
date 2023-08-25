@@ -20,7 +20,7 @@ import { publicProvider } from "wagmi/providers/public";
 import Navbar from "@/components/Navbar";
 import type { AppProps } from "next/app";
 import Footer from "@/components/Footer";
-import { MobileMenuProvider } from "@/context/MobileMenuContext";
+import { GlobalProvider } from "@/context/GlobalContext";
 import { Toaster } from "react-hot-toast";
 import { AnimatePresence, LayoutGroup } from "framer-motion";
 
@@ -85,7 +85,7 @@ export default function App({ Component, pageProps }: AppProps) {
             overlayBlur: "small",
           })}
         >
-          <MobileMenuProvider>
+          <GlobalProvider>
             <LayoutGroup>
               <main
                 className={`${outfit.className} ${marcellus.variable} ${spaceMono.variable} flex flex-col justify-between min-h-screen`}
@@ -126,7 +126,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 <Footer />
               </main>
             </LayoutGroup>
-          </MobileMenuProvider>
+          </GlobalProvider>
         </RainbowKitProvider>
       </WagmiConfig>
     </AnimatePresence>

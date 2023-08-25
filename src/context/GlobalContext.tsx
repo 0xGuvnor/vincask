@@ -8,27 +8,27 @@ import {
   useState,
 } from "react";
 
-interface IMobileMenuContext {
+interface IGlobalContext {
   show: boolean;
   setShow: Dispatch<SetStateAction<boolean>>;
   cachedSigHash: string;
   setCachedSigHash: Dispatch<SetStateAction<string>>;
 }
 
-const MobileMenuContext = createContext<IMobileMenuContext>({
+const GlobalContext = createContext<IGlobalContext>({
   show: false,
   setShow: () => {},
   cachedSigHash: "",
   setCachedSigHash: () => {},
 });
 
-const useMobileMenuContext = () => useContext(MobileMenuContext);
+const useGlobalContext = () => useContext(GlobalContext);
 
-const MobileMenuProvider: FC<PropsWithChildren> = ({ children }) => {
+const GlobalProvider: FC<PropsWithChildren> = ({ children }) => {
   const [show, setShow] = useState(false);
   const [cachedSigHash, setCachedSigHash] = useState("");
 
-  const contextValue: IMobileMenuContext = {
+  const contextValue: IGlobalContext = {
     show,
     setShow,
     cachedSigHash,
@@ -36,10 +36,10 @@ const MobileMenuProvider: FC<PropsWithChildren> = ({ children }) => {
   };
 
   return (
-    <MobileMenuContext.Provider value={contextValue}>
+    <GlobalContext.Provider value={contextValue}>
       {children}
-    </MobileMenuContext.Provider>
+    </GlobalContext.Provider>
   );
 };
 
-export { useMobileMenuContext, MobileMenuProvider };
+export { useGlobalContext, GlobalProvider };

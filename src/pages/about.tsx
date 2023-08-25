@@ -3,9 +3,16 @@ import Collage from "@/components/Collage";
 import Container from "@/components/Container";
 import MobileOverlay from "@/components/MobileOverlay";
 import Timeline from "@/components/Timeline";
+import { baseUrl } from "@/constants/urls";
+import axios from "axios";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Head from "next/head";
 
-const About = () => {
+const About = ({
+  companyInfos,
+  timelineItems,
+  collageImages,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <div className="relative">
       <Head>
@@ -34,14 +41,30 @@ const About = () => {
             </h3>
           </div>
 
-          <Collage />
+          <Collage collageImages={collageImages} />
         </div>
 
-        <Timeline />
+        <Timeline timelineItems={timelineItems} />
       </Container>
 
-      <AffiliatedCompanies />
+      <AffiliatedCompanies companyInfos={companyInfos} />
     </div>
   );
 };
 export default About;
+
+export const getStaticProps: GetStaticProps = async () => {
+  const {
+    data: { companyInfos },
+  } = await axios.get(`${baseUrl}api/get-company-info`);
+
+  const {
+    data: { timelineItems },
+  } = await axios.get(`${baseUrl}api/get-timeline-items`);
+
+  const {
+    data: { collageImages },
+  } = await axios.get(`${baseUrl}api/get-collage-images`);
+
+  return { props: { companyInfos, timelineItems, collageImages } };
+};

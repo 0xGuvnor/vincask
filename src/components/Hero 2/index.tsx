@@ -3,7 +3,11 @@ import CtaButtons from "./CtaButtons";
 import useScroll from "@/hooks/useScroll";
 import { AnimatePresence, motion } from "framer-motion";
 
-const Hero2 = () => {
+interface Props {
+  heroImage: string;
+}
+
+const Hero2 = ({ heroImage }: Props) => {
   const isScrolled = useScroll(25);
 
   return (
@@ -26,7 +30,7 @@ const Hero2 = () => {
 
         <div className="relative h-full w-80 md:w-[34.5rem]">
           <Image
-            src="/hero2.jpg"
+            src={heroImage}
             alt="Hero image of a glass of whisky"
             fill
             className="object-cover md:rounded-br-[1rem] md:rounded-tr-[1rem] rounded-tl-[1rem] rounded-tr-[1rem] md:rounded-tl-none"

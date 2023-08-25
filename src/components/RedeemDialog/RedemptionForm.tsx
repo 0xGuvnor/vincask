@@ -11,7 +11,7 @@ import { toast } from "react-hot-toast";
 import ToastError from "../toasts/ToastError";
 import axios from "axios";
 import { messageToSign } from "@/constants/messageToSign";
-import { useMobileMenuContext } from "@/context/MobileMenuContext";
+import { useGlobalContext } from "@/context/GlobalContext";
 
 interface Props {
   setOpen: Dispatch<SetStateAction<boolean>>;
@@ -44,7 +44,7 @@ const RedemptionForm = ({
     formState: { errors },
   } = useForm<IFormInput>();
   const { address } = useAccount();
-  const { setCachedSigHash } = useMobileMenuContext();
+  const { setCachedSigHash } = useGlobalContext();
   const datetime = new Date();
   const [cachedMessage, setCachedMessage] = useState("");
   const { data: sigHash, signMessage } = useSignMessage();

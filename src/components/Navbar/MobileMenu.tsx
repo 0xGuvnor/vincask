@@ -3,10 +3,10 @@ import { AnimatePresence } from "framer-motion";
 import Hamburger from "hamburger-react";
 import MenuDropdown from "./MenuDropdown";
 import { useEffect } from "react";
-import { useMobileMenuContext } from "@/context/MobileMenuContext";
+import { useGlobalContext } from "@/context/GlobalContext";
 
 const MobileMenu = () => {
-  const { setShow, show } = useMobileMenuContext();
+  const { setShow, show } = useGlobalContext();
 
   useEffect(() => {
     if (show) {

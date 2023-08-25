@@ -29,7 +29,7 @@ import RedeemedCardSection from "@/components/RedeemedCardSection";
 import useActiveChain from "@/hooks/useActiveChain";
 import RedeemDialog from "@/components/RedeemDialog";
 import { supabase } from "@/lib/supabase";
-import { useMobileMenuContext } from "@/context/MobileMenuContext";
+import { useGlobalContext } from "@/context/GlobalContext";
 import useWarnRefresh from "@/hooks/useWarnRefresh";
 
 const Redeem = ({
@@ -42,7 +42,7 @@ const Redeem = ({
   const [isLoading, setIsLoading] = useState(false);
   const [expand, setExpand] = useState(false);
   const [selectedNfts, setSelectedNfts] = useState<number[]>([]);
-  const { cachedSigHash } = useMobileMenuContext();
+  const { cachedSigHash } = useGlobalContext();
   const { setShowWarning } = useWarnRefresh();
   const vincaskContract = {
     address: vincask.address[activeChain as keyof typeof vincask.address],

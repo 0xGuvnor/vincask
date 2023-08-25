@@ -1,4 +1,4 @@
-import { useMobileMenuContext } from "@/context/MobileMenuContext";
+import { useGlobalContext } from "@/context/GlobalContext";
 import {
   mobileMenuItemVariants,
   mobileMenuItemsVariants,
@@ -20,7 +20,7 @@ export const menuItems = [
 ];
 
 const MenuDropdown = () => {
-  const { show } = useMobileMenuContext();
+  const { show } = useGlobalContext();
   const router = useRouter();
 
   return (

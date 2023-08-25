@@ -9,6 +9,54 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      About_Affiliated_Companies: {
+        Row: {
+          company_description: string;
+          company_name: string;
+          id: number;
+          last_updated_at: string;
+          website: string;
+        };
+        Insert: {
+          company_description: string;
+          company_name: string;
+          id?: number;
+          last_updated_at?: string;
+          website: string;
+        };
+        Update: {
+          company_description?: string;
+          company_name?: string;
+          id?: number;
+          last_updated_at?: string;
+          website?: string;
+        };
+        Relationships: [];
+      };
+      About_Timeline: {
+        Row: {
+          date: string;
+          description: string;
+          id: number;
+          last_updated_at: string;
+          title: string;
+        };
+        Insert: {
+          date: string;
+          description: string;
+          id?: number;
+          last_updated_at?: string;
+          title: string;
+        };
+        Update: {
+          date?: string;
+          description?: string;
+          id?: number;
+          last_updated_at?: string;
+          title?: string;
+        };
+        Relationships: [];
+      };
       customers: {
         Row: {
           address1: string | null;

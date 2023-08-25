@@ -1,8 +1,8 @@
-import { useMobileMenuContext } from "@/context/MobileMenuContext";
+import { useGlobalContext } from "@/context/GlobalContext";
 import { AnimatePresence, motion } from "framer-motion";
 
 const MobileOverlay = () => {
-  const { show } = useMobileMenuContext();
+  const { show } = useGlobalContext();
 
   return (
     <AnimatePresence mode="wait">

@@ -3,9 +3,13 @@ import Hero2 from "@/components/Hero 2";
 import MobileOverlay from "@/components/MobileOverlay";
 import Team from "@/components/Team";
 import Testimonials from "@/components/Testimonials";
+import { supabase } from "@/lib/supabase";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Head from "next/head";
 
-export default function Home() {
+export default function Home({
+  heroImage,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <Head>
@@ -19,10 +23,18 @@ export default function Home() {
 
       <div className="flex flex-col">
         {/* <Hero /> */}
-        <Hero2 />
+        <Hero2 heroImage={heroImage} />
         <Testimonials />
         <Team />
       </div>
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps<{ heroImage: string }> = () => {
+  const {
+    data: { publicUrl: heroImage },
+  } = supabase.storage.from("images").getPublicUrl("hero2.jpg");
+
+  return { props: { heroImage } };
+};

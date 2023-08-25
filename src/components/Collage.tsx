@@ -1,19 +1,17 @@
 import Image from "next/image";
 
-const aboutImages = [
-  { path: "/about/about1.jpeg", description: "Whisky barrels" },
-  { path: "/about/about2.jpg", description: "Whisky warehouse" },
-  { path: "/about/about3.jpg", description: "NFT image" },
-  { path: "/about/about4.jpg", description: "NFT image" },
-  { path: "/about/about5.jpg", description: "NFT image" },
-  { path: "/about/about6.jpg", description: "Whisky barrels" },
-];
+interface Props {
+  collageImages: {
+    src: string;
+    description: any;
+  }[];
+}
 
-const Collage = () => {
+const Collage = ({ collageImages }: Props) => {
   return (
     <div className="relative h-[550px] md:h-[75vh]x md:h-[800px] w-full">
       <div className="absolute grid h-full grid-flow-col grid-rows-5 gap-4 -top-9 md:top-0 -left-20 md:left-0 md:grid-rows-6">
-        {aboutImages.map((image, id) => (
+        {collageImages.map((image, id) => (
           <div
             key={id}
             className={`
@@ -38,7 +36,7 @@ const Collage = () => {
             relative top-0 left-0 w-44 h-44 md:w-64 md:h-64 2xl:h-[300px] 2xl:w-[300px]`}
           >
             <Image
-              src={image.path}
+              src={image.src}
               alt={image.description}
               fill
               className="object-cover rounded shadow-2xl shadow-slate-700"
