@@ -11,6 +11,7 @@ import { toast } from "react-hot-toast";
 import ToastError from "../toasts/ToastError";
 import axios from "axios";
 import { messageToSign } from "@/constants/messageToSign";
+import { useMobileMenuContext } from "@/context/MobileMenuContext";
 
 interface Props {
   setOpen: Dispatch<SetStateAction<boolean>>;
@@ -43,9 +44,10 @@ const RedemptionForm = ({
     formState: { errors },
   } = useForm<IFormInput>();
   const { address } = useAccount();
-  const { data: sigHash, signMessage } = useSignMessage({
-    message: messageToSign,
-  });
+  const { setCachedSigHash } = useMobileMenuContext();
+  const datetime = new Date();
+  const [cachedMessage, setCachedMessage] = useState("");
+  const { data: sigHash, signMessage } = useSignMessage();
   const [redemptionTypeState, setRedemptionTypeState] =
     useState<RedemptionType>("");
 
@@ -59,7 +61,7 @@ const RedemptionForm = ({
         data: { email, password },
       } = await axios.post("/api/auth", {
         address,
-        message: messageToSign,
+        message: cachedMessage,
         signature: sigHash,
       });
 
@@ -78,7 +80,14 @@ const RedemptionForm = ({
 
       const { error: insertError } = await supabase
         .from("customers")
-        .insert([{ ...formData, wallet_address: address as string }]);
+        .insert([
+          {
+            ...formData,
+            wallet_address: address as string,
+            message_hash: sigHash as string,
+          },
+        ])
+        .select();
 
       if (insertError) {
         console.error("Error inserting data:", insertError);
@@ -106,9 +115,19 @@ const RedemptionForm = ({
   useEffect(() => {
     // sigHash is generated after user signs the message
     if (sigHash) {
+      setCachedSigHash(sigHash);
       handleSubmit(onSubmit)();
     }
   }, [sigHash]);
+
+  useEffect(() => {
+    // Once there's a cached message, user is prompted to sign it
+    if (cachedMessage) {
+      signMessage({
+        message: cachedMessage,
+      });
+    }
+  }, [cachedMessage]);
 
   return (
     <motion.form
@@ -217,7 +236,7 @@ const RedemptionForm = ({
         type="button"
         onClick={() => {
           if (!sigHash) {
-            signMessage();
+            setCachedMessage(messageToSign(address, datetime));
           } else {
             handleSubmit(onSubmit)();
           }

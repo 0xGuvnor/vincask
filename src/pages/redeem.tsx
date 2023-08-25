@@ -28,6 +28,9 @@ import ToastSuccess from "@/components/toasts/ToastSuccess";
 import RedeemedCardSection from "@/components/RedeemedCardSection";
 import useActiveChain from "@/hooks/useActiveChain";
 import RedeemDialog from "@/components/RedeemDialog";
+import { supabase } from "@/lib/supabase";
+import { useMobileMenuContext } from "@/context/MobileMenuContext";
+import useWarnRefresh from "@/hooks/useWarnRefresh";
 
 const Redeem = ({
   defaultImg,
@@ -39,6 +42,8 @@ const Redeem = ({
   const [isLoading, setIsLoading] = useState(false);
   const [expand, setExpand] = useState(false);
   const [selectedNfts, setSelectedNfts] = useState<number[]>([]);
+  const { cachedSigHash } = useMobileMenuContext();
+  const { setShowWarning } = useWarnRefresh();
   const vincaskContract = {
     address: vincask.address[activeChain as keyof typeof vincask.address],
     abi: vincask.abi,
@@ -142,12 +147,16 @@ const Redeem = ({
   useEffect(() => {
     let approveToast;
     if (approveIsLoading) {
+      setShowWarning(true);
+
       approveToast = toast.loading((t) => (
         <ToastLoading
           t={t}
           message={`Approving Vincask to transfer your NFT${
             selectedNfts.length > 1 ? "s" : ""
-          }...`}
+          }...
+          
+          Do not refresh the page.`}
           txHash={approveData?.hash}
         />
       ));
@@ -167,7 +176,9 @@ const Redeem = ({
           t={t}
           message={`Redeeming ${selectedNfts.length} NFT${
             selectedNfts.length > 1 ? "s" : ""
-          }...`}
+          }...
+
+          Do not refresh the page.`}
           txHash={redeemData?.hash}
         />
       ));
@@ -184,8 +195,32 @@ const Redeem = ({
           txHash={redeemTxReceipt.transactionHash}
         />
       ));
+
+      (async () => {
+        const { data: txPassedData, error: txPassedError } = await supabase
+          .from("customers")
+          .update({ redeem_tx_passed: true })
+          .eq("message_hash", cachedSigHash)
+          .select();
+
+        console.log(txPassedData);
+        console.log(txPassedError);
+      })();
+
+      (async () => {
+        const { data: nftData, error: nftError } = await supabase
+          .from("customers")
+          .update({ selected_nfts: selectedNfts })
+          .eq("message_hash", cachedSigHash)
+          .select();
+
+        console.log(nftData);
+        console.log(nftError);
+      })();
+
       setIsLoading(false);
       setSelectedNfts([]);
+      setShowWarning(false);
     }
   }, [redeemIsLoading, redeemTxReceipt?.status]);
 
