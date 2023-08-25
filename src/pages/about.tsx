@@ -55,16 +55,16 @@ export default About;
 
 export const getStaticProps: GetStaticProps = async () => {
   const {
-    data: { companyInfos },
-  } = await axios.get(`${baseUrl}api/get-company-info`);
+    data: { collageImages },
+  } = await axios.get(`${baseUrl}api/get-collage-images`);
 
   const {
     data: { timelineItems },
   } = await axios.get(`${baseUrl}api/get-timeline-items`);
 
   const {
-    data: { collageImages },
-  } = await axios.get(`${baseUrl}api/get-collage-images`);
+    data: { companyInfos },
+  } = await axios.get(`${baseUrl}api/get-company-info`);
 
-  return { props: { companyInfos, timelineItems, collageImages } };
+  return { props: { collageImages, timelineItems, companyInfos } };
 };
