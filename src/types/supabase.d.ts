@@ -14,22 +14,34 @@ export interface Database {
           company_description: string;
           company_name: string;
           id: number;
-          last_updated_at: string;
           website: string;
         };
         Insert: {
           company_description: string;
           company_name: string;
           id?: number;
-          last_updated_at?: string;
           website: string;
         };
         Update: {
           company_description?: string;
           company_name?: string;
           id?: number;
-          last_updated_at?: string;
           website?: string;
+        };
+        Relationships: [];
+      };
+      About_Collage_Descriptions: {
+        Row: {
+          description: string;
+          id: number;
+        };
+        Insert: {
+          description: string;
+          id?: number;
+        };
+        Update: {
+          description?: string;
+          id?: number;
         };
         Relationships: [];
       };
@@ -38,21 +50,18 @@ export interface Database {
           date: string;
           description: string;
           id: number;
-          last_updated_at: string;
           title: string;
         };
         Insert: {
           date: string;
           description: string;
           id?: number;
-          last_updated_at?: string;
           title: string;
         };
         Update: {
           date?: string;
           description?: string;
           id?: number;
-          last_updated_at?: string;
           title?: string;
         };
         Relationships: [];
