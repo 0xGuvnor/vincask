@@ -202,9 +202,6 @@ const Redeem = ({
           .update({ redeem_tx_passed: true })
           .eq("message_hash", cachedSigHash)
           .select();
-
-        console.log(txPassedData);
-        console.log(txPassedError);
       })();
 
       (async () => {
@@ -213,9 +210,6 @@ const Redeem = ({
           .update({ selected_nfts: selectedNfts })
           .eq("message_hash", cachedSigHash)
           .select();
-
-        console.log(nftData);
-        console.log(nftError);
       })();
 
       setIsLoading(false);
