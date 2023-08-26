@@ -13,4 +13,6 @@ export const fetchAboutPageProps = async () => {
   const {
     data: { companyInfos },
   } = await axios.get(`${baseUrl}api/getCompanyInfo`);
+
+  return { collageImages, timelineItems, companyInfos };
 };

@@ -4,6 +4,7 @@ import Container from "@/components/Container";
 import MobileOverlay from "@/components/MobileOverlay";
 import Timeline from "@/components/Timeline";
 import { baseUrl } from "@/constants/urls";
+import { fetchAboutPageProps } from "@/utils/fetchAboutPageProps";
 import axios from "axios";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Head from "next/head";
@@ -54,17 +55,20 @@ const About = ({
 export default About;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const {
-    data: { collageImages },
-  } = await axios.get(`${baseUrl}/api/getCollageImages`);
+  // const {
+  //   data: { collageImages },
+  // } = await axios.get(`${baseUrl}/api/getCollageImages`);
 
-  const {
-    data: { timelineItems },
-  } = await axios.get(`${baseUrl}/api/getTimelineItems`);
+  // const {
+  //   data: { timelineItems },
+  // } = await axios.get(`${baseUrl}/api/getTimelineItems`);
 
-  const {
-    data: { companyInfos },
-  } = await axios.get(`${baseUrl}/api/getCompanyInfo`);
+  // const {
+  //   data: { companyInfos },
+  // } = await axios.get(`${baseUrl}/api/getCompanyInfo`);
+
+  const { collageImages, timelineItems, companyInfos } =
+    await fetchAboutPageProps();
 
   return { props: { collageImages, timelineItems, companyInfos } };
 };
