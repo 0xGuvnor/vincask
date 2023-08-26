@@ -1,4 +1,4 @@
-import Image from "next/image";
+import BlurImage from "./BlurImage";
 
 interface Props {
   collageImages: {
@@ -35,12 +35,7 @@ const Collage = ({ collageImages }: Props) => {
             } 
             relative top-0 left-0 w-44 h-44 md:w-64 md:h-64 2xl:h-[300px] 2xl:w-[300px]`}
           >
-            <Image
-              src={image.src}
-              alt={image.description}
-              fill
-              className="object-cover rounded shadow-2xl shadow-slate-700"
-            />
+            <BlurImage image={image} />
           </div>
         ))}
       </div>
