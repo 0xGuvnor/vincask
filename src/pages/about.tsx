@@ -56,15 +56,15 @@ export default About;
 export const getStaticProps: GetStaticProps = async () => {
   const {
     data: { collageImages },
-  } = await axios.get(`${baseUrl}/api/getCollageImages`);
+  } = await axios.get(`https://vincask.vercel.app/api/getCollageImages`);
 
   const {
     data: { timelineItems },
-  } = await axios.get(`${baseUrl}/api/getTimelineItems`);
+  } = await axios.get(`https://vincask.vercel.app/api/getTimelineItems`);
 
   const {
     data: { companyInfos },
-  } = await axios.get(`${baseUrl}/api/getCompanyInfo`);
+  } = await axios.get(`https://vincask.vercel.app/api/getCompanyInfo`);
 
   return { props: { collageImages, timelineItems, companyInfos } };
 };
