@@ -10,6 +10,8 @@ export default async function handler(
 
   try {
     await res.revalidate("/");
+    await res.revalidate("/about");
+
     res.status(200).json({ revalidated: true });
   } catch (error) {
     return res.status(500).json({
