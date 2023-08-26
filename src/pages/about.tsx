@@ -72,6 +72,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
     return { props: { collageImages, timelineItems, companyInfos } };
   } catch (error) {
+    console.error(error);
     return {
       props: { collageImages: null, timelineItems: null, companyInfos: null },
     };
