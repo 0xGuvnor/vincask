@@ -66,9 +66,15 @@ export const getStaticProps: GetStaticProps = async () => {
   // const {
   //   data: { companyInfos },
   // } = await axios.get(`${baseUrl}/api/getCompanyInfo`);
+  try {
+    const { collageImages, timelineItems, companyInfos } =
+      await fetchAboutPageProps();
 
-  const { collageImages, timelineItems, companyInfos } =
-    await fetchAboutPageProps();
-
-  return { props: { collageImages, timelineItems, companyInfos } };
+    return { props: { collageImages, timelineItems, companyInfos } };
+  } catch (error) {
+    console.log(error);
+    return {
+      props: { collageImages: null, timelineItems: null, companyInfos: null },
+    };
+  }
 };
