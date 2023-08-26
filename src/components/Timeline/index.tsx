@@ -9,7 +9,7 @@ interface Props {
 }
 const Timeline = ({ timelineItems }: Props) => {
   return (
-    <div className="flex flex-col items-start justify-between space-y-8 md:flex-wrap md:space-y-0 md:flex-row md:mt-20">
+    <div className="flex flex-col items-start justify-between gap-y-8 md:flex-wrap md:gap-y-4 md:flex-row md:mt-20">
       {timelineItems.map(({ date, title, description }) => (
         <TimelineItem
           key={title}

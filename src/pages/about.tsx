@@ -3,9 +3,7 @@ import Collage from "@/components/Collage";
 import Container from "@/components/Container";
 import MobileOverlay from "@/components/MobileOverlay";
 import Timeline from "@/components/Timeline";
-import { baseUrl } from "@/constants/urls";
-import { fetchAboutPageProps } from "@/utils/fetchAboutPageProps";
-import axios from "axios";
+import { getAboutPageProps } from "@/utils/getAboutPageProps";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Head from "next/head";
 
@@ -55,24 +53,14 @@ const About = ({
 export default About;
 
 export const getStaticProps: GetStaticProps = async () => {
-  // const {
-  //   data: { collageImages },
-  // } = await axios.get(`${baseUrl}/api/getCollageImages`);
-
-  // const {
-  //   data: { timelineItems },
-  // } = await axios.get(`${baseUrl}/api/getTimelineItems`);
-
-  // const {
-  //   data: { companyInfos },
-  // } = await axios.get(`${baseUrl}/api/getCompanyInfo`);
   try {
     const { collageImages, timelineItems, companyInfos } =
-      await fetchAboutPageProps();
+      await getAboutPageProps();
 
     return { props: { collageImages, timelineItems, companyInfos } };
   } catch (error) {
     console.error(error);
+
     return {
       props: { collageImages: null, timelineItems: null, companyInfos: null },
     };

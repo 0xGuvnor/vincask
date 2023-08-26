@@ -1,20 +1,6 @@
-import { baseUrl } from "@/constants/urls";
 import { supabase } from "@/lib/supabase";
-import axios from "axios";
 
-export const fetchAboutPageProps = async () => {
-  //   const {
-  //     data: { collageImages },
-  //   } = await axios.get(`${baseUrl}api/aboutCollageImages`);
-
-  //   const {
-  //     data: { timelineItems },
-  //   } = await axios.get(`${baseUrl}api/aboutTimelineItems`);
-
-  //   const {
-  //     data: { companyInfos },
-  //   } = await axios.get(`${baseUrl}api/aboutCompanyInfo`);
-
+export const getAboutPageProps = async () => {
   // Getting collage images
   const {
     data: { publicUrl: about1 },
@@ -75,12 +61,6 @@ export const fetchAboutPageProps = async () => {
     .from("About_Timeline")
     .select("date, title, description")
     .order("id", { ascending: true });
-
-  //   const timelineItems = timelineData!.map((row, id) => ({
-  //     date: row.date,
-  //     title: row.title,
-  //     description: row.description,
-  //   }));
 
   return { collageImages, timelineItems, companyInfos };
 };
