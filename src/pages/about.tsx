@@ -1,5 +1,6 @@
 import AffiliatedCompanies from "@/components/AffiliatedCompanies";
 import Collage from "@/components/Collage";
+import Collage2 from "@/components/Collage2";
 import Container from "@/components/Container";
 import MobileOverlay from "@/components/MobileOverlay";
 import Timeline from "@/components/Timeline";
@@ -27,7 +28,7 @@ const About = ({
       <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-[#2A3439]/40 from-0% -z-10"></div>
 
       <Container classNames="flex-1 overflow-x-hidden xl:overflow-x-visible relative">
-        <div className="flex flex-col justify-start items-center md:justify-center min-h-[75vh] md:flex-row space-y-8 md:space-y-0 md:space-x-4x">
+        <div className="flex flex-col justify-start items-center md:justify-center min-h-[97vh] md:min-h-[75vh] md:flex-row space-y-8 md:space-y-0 md:space-x-12">
           <div className="flex flex-col md:min-w-[670px] mt-6 space-y-2 text-center md:max-w-3xl md:space-y-4 md:text-left md:mt-0">
             <h1 className="text-3xl font-black text-white font-header md:text-5xl">
               Our mission is to redefine the world of whisky and art.
@@ -40,7 +41,8 @@ const About = ({
             </h3>
           </div>
 
-          <Collage collageImages={collageImages} />
+          {/* <Collage collageImages={collageImages} /> */}
+          <Collage2 collageImages={collageImages} />
         </div>
 
         <Timeline timelineItems={timelineItems} />
