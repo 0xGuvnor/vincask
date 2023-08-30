@@ -106,7 +106,7 @@ const MintCard = () => {
     isError: isMintError,
   } = useContractWrite({
     ...vincaskContract,
-    functionName: "safeMultiMintWithUsdc",
+    functionName: "safeMultiMintWithStableCoin",
     args: [parseUnits(`${quantity}`, 0)],
   });
 
@@ -350,8 +350,8 @@ const MintCard = () => {
             <motion.div layout="size" className="contents">
               <TotalPrice
                 dataLoaded={!!readData}
-                price={`${(25000 * quantity).toLocaleString()}`}
-                currency={"SGD"}
+                price={`${(100 * quantity).toLocaleString()}`}
+                currency={"USD"}
               />
               <QuantitySelection
                 isLoading={isLoading}
@@ -367,11 +367,11 @@ const MintCard = () => {
                 className="w-[222.32px] h-[52px] relative"
               >
                 <CrossmintPayButton
-                  collectionId="604eb21e-339d-4281-af11-335d426822e1"
+                  collectionId="c366ff72-8081-4a43-91ef-7ab631566828"
                   projectId="011b8900-8f68-4e25-b9f6-b1a6c84af69f"
                   mintConfig={{
                     type: "erc-721",
-                    totalPrice: (quantity * 25000).toString(),
+                    totalPrice: (quantity * 100).toString(),
                     _quantity: quantity,
                     quantity: quantity,
                   }}

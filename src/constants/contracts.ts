@@ -1,7 +1,7 @@
 export const vincask = {
   address: {
-    sepolia: "0xcE34B1CD0296B4550e60af205a08bD9bb5105E14" as `0x${string}`,
-    goerli: "0x1A1aCF11F4CE3B0D7e406BA63e56B83a4CBF72Ef" as `0x${string}`,
+    sepolia: "0x03361D96525DbAC4731e4FF4660819a7F61E0863" as `0x${string}`,
+    goerli: "0xb0Ff138B4FF35883754392B5D4d45F6f43d00342" as `0x${string}`,
   },
   abi: [
     {
@@ -27,14 +27,14 @@ export const vincask = {
           type: "address",
         },
         {
-          internalType: "uint96",
-          name: "_royaltyFee",
-          type: "uint96",
-        },
-        {
           internalType: "contract VincaskX",
           name: "_VIN_X",
           type: "address",
+        },
+        {
+          internalType: "uint96",
+          name: "_royaltyFee",
+          type: "uint96",
         },
       ],
       stateMutability: "nonpayable",
@@ -58,6 +58,16 @@ export const vincask = {
     {
       inputs: [],
       name: "Vincask__MustMintAtLeastOne",
+      type: "error",
+    },
+    {
+      inputs: [],
+      name: "Vincask__MustSetDifferentPrice",
+      type: "error",
+    },
+    {
+      inputs: [],
+      name: "Vincask__MustSetDifferentStableCoin",
       type: "error",
     },
     {
@@ -226,6 +236,19 @@ export const vincask = {
       inputs: [
         {
           internalType: "uint256",
+          name: "_tokenId",
+          type: "uint256",
+        },
+      ],
+      name: "burn",
+      outputs: [],
+      stateMutability: "nonpayable",
+      type: "function",
+    },
+    {
+      inputs: [
+        {
+          internalType: "uint256",
           name: "tokenId",
           type: "uint256",
         },
@@ -262,6 +285,19 @@ export const vincask = {
           internalType: "uint256",
           name: "",
           type: "uint256",
+        },
+      ],
+      stateMutability: "view",
+      type: "function",
+    },
+    {
+      inputs: [],
+      name: "getMultiSig",
+      outputs: [
+        {
+          internalType: "address",
+          name: "",
+          type: "address",
         },
       ],
       stateMutability: "view",
@@ -326,6 +362,19 @@ export const vincask = {
         },
       ],
       name: "multiApprove",
+      outputs: [],
+      stateMutability: "nonpayable",
+      type: "function",
+    },
+    {
+      inputs: [
+        {
+          internalType: "uint256[]",
+          name: "_tokenIds",
+          type: "uint256[]",
+        },
+      ],
+      name: "multiBurn",
       outputs: [],
       stateMutability: "nonpayable",
       type: "function",
@@ -452,7 +501,7 @@ export const vincask = {
           type: "uint256",
         },
       ],
-      name: "safeMultiMintForAdmin",
+      name: "safeMultiMintAndBurnForAdmin",
       outputs: [],
       stateMutability: "nonpayable",
       type: "function",
@@ -483,7 +532,7 @@ export const vincask = {
           type: "uint256",
         },
       ],
-      name: "safeMultiMintWithUsdc",
+      name: "safeMultiMintWithStableCoin",
       outputs: [],
       stateMutability: "nonpayable",
       type: "function",
@@ -561,7 +610,7 @@ export const vincask = {
       inputs: [
         {
           internalType: "uint256",
-          name: "_newPrice",
+          name: "_newMintPrice",
           type: "uint256",
         },
       ],
@@ -682,11 +731,15 @@ export const vincask = {
 
 export const vincaskX = {
   address: {
-    sepolia: "0xC90A6E8682b5293C6d0Aa6A13f66Fb316f0E19C3" as `0x${string}`,
-    goerli: "0x8d67eF06E27e16E7E656D9dEEf6f304d6B590c90" as `0x${string}`,
+    sepolia: "0xBC11305904BFf89bDB7208f6eDCaE0558B69752b" as `0x${string}`,
+    goerli: "0xACAEF5158FB01Fa98f17734890fC64b57C66db8f" as `0x${string}`,
   },
   abi: [
-    { inputs: [], stateMutability: "nonpayable", type: "constructor" },
+    {
+      inputs: [],
+      stateMutability: "nonpayable",
+      type: "constructor",
+    },
     {
       anonymous: false,
       inputs: [
@@ -765,7 +818,12 @@ export const vincaskX = {
           name: "from",
           type: "address",
         },
-        { indexed: true, internalType: "address", name: "to", type: "address" },
+        {
+          indexed: true,
+          internalType: "address",
+          name: "to",
+          type: "address",
+        },
         {
           indexed: true,
           internalType: "uint256",
@@ -778,8 +836,16 @@ export const vincaskX = {
     },
     {
       inputs: [
-        { internalType: "address", name: "to", type: "address" },
-        { internalType: "uint256", name: "tokenId", type: "uint256" },
+        {
+          internalType: "address",
+          name: "to",
+          type: "address",
+        },
+        {
+          internalType: "uint256",
+          name: "tokenId",
+          type: "uint256",
+        },
       ],
       name: "approve",
       outputs: [],
@@ -787,47 +853,109 @@ export const vincaskX = {
       type: "function",
     },
     {
-      inputs: [{ internalType: "address", name: "owner", type: "address" }],
+      inputs: [
+        {
+          internalType: "address",
+          name: "owner",
+          type: "address",
+        },
+      ],
       name: "balanceOf",
-      outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-      stateMutability: "view",
-      type: "function",
-    },
-    {
-      inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
-      name: "getApproved",
-      outputs: [{ internalType: "address", name: "", type: "address" }],
+      outputs: [
+        {
+          internalType: "uint256",
+          name: "",
+          type: "uint256",
+        },
+      ],
       stateMutability: "view",
       type: "function",
     },
     {
       inputs: [
-        { internalType: "address", name: "owner", type: "address" },
-        { internalType: "address", name: "operator", type: "address" },
+        {
+          internalType: "uint256",
+          name: "tokenId",
+          type: "uint256",
+        },
+      ],
+      name: "getApproved",
+      outputs: [
+        {
+          internalType: "address",
+          name: "",
+          type: "address",
+        },
+      ],
+      stateMutability: "view",
+      type: "function",
+    },
+    {
+      inputs: [
+        {
+          internalType: "address",
+          name: "owner",
+          type: "address",
+        },
+        {
+          internalType: "address",
+          name: "operator",
+          type: "address",
+        },
       ],
       name: "isApprovedForAll",
-      outputs: [{ internalType: "bool", name: "", type: "bool" }],
+      outputs: [
+        {
+          internalType: "bool",
+          name: "",
+          type: "bool",
+        },
+      ],
       stateMutability: "view",
       type: "function",
     },
     {
       inputs: [],
       name: "name",
-      outputs: [{ internalType: "string", name: "", type: "string" }],
+      outputs: [
+        {
+          internalType: "string",
+          name: "",
+          type: "string",
+        },
+      ],
       stateMutability: "view",
       type: "function",
     },
     {
       inputs: [],
       name: "owner",
-      outputs: [{ internalType: "address", name: "", type: "address" }],
+      outputs: [
+        {
+          internalType: "address",
+          name: "",
+          type: "address",
+        },
+      ],
       stateMutability: "view",
       type: "function",
     },
     {
-      inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
+      inputs: [
+        {
+          internalType: "uint256",
+          name: "tokenId",
+          type: "uint256",
+        },
+      ],
       name: "ownerOf",
-      outputs: [{ internalType: "address", name: "", type: "address" }],
+      outputs: [
+        {
+          internalType: "address",
+          name: "",
+          type: "address",
+        },
+      ],
       stateMutability: "view",
       type: "function",
     },
@@ -840,8 +968,16 @@ export const vincaskX = {
     },
     {
       inputs: [
-        { internalType: "address", name: "_to", type: "address" },
-        { internalType: "uint256", name: "_tokenId", type: "uint256" },
+        {
+          internalType: "address",
+          name: "_to",
+          type: "address",
+        },
+        {
+          internalType: "uint256",
+          name: "_tokenId",
+          type: "uint256",
+        },
       ],
       name: "safeMint",
       outputs: [],
@@ -850,9 +986,21 @@ export const vincaskX = {
     },
     {
       inputs: [
-        { internalType: "address", name: "from", type: "address" },
-        { internalType: "address", name: "to", type: "address" },
-        { internalType: "uint256", name: "tokenId", type: "uint256" },
+        {
+          internalType: "address",
+          name: "from",
+          type: "address",
+        },
+        {
+          internalType: "address",
+          name: "to",
+          type: "address",
+        },
+        {
+          internalType: "uint256",
+          name: "tokenId",
+          type: "uint256",
+        },
       ],
       name: "safeTransferFrom",
       outputs: [],
@@ -861,10 +1009,26 @@ export const vincaskX = {
     },
     {
       inputs: [
-        { internalType: "address", name: "from", type: "address" },
-        { internalType: "address", name: "to", type: "address" },
-        { internalType: "uint256", name: "tokenId", type: "uint256" },
-        { internalType: "bytes", name: "data", type: "bytes" },
+        {
+          internalType: "address",
+          name: "from",
+          type: "address",
+        },
+        {
+          internalType: "address",
+          name: "to",
+          type: "address",
+        },
+        {
+          internalType: "uint256",
+          name: "tokenId",
+          type: "uint256",
+        },
+        {
+          internalType: "bytes",
+          name: "data",
+          type: "bytes",
+        },
       ],
       name: "safeTransferFrom",
       outputs: [],
@@ -873,8 +1037,16 @@ export const vincaskX = {
     },
     {
       inputs: [
-        { internalType: "address", name: "operator", type: "address" },
-        { internalType: "bool", name: "approved", type: "bool" },
+        {
+          internalType: "address",
+          name: "operator",
+          type: "address",
+        },
+        {
+          internalType: "bool",
+          name: "approved",
+          type: "bool",
+        },
       ],
       name: "setApprovalForAll",
       outputs: [],
@@ -882,31 +1054,73 @@ export const vincaskX = {
       type: "function",
     },
     {
-      inputs: [{ internalType: "bytes4", name: "interfaceId", type: "bytes4" }],
+      inputs: [
+        {
+          internalType: "bytes4",
+          name: "interfaceId",
+          type: "bytes4",
+        },
+      ],
       name: "supportsInterface",
-      outputs: [{ internalType: "bool", name: "", type: "bool" }],
+      outputs: [
+        {
+          internalType: "bool",
+          name: "",
+          type: "bool",
+        },
+      ],
       stateMutability: "view",
       type: "function",
     },
     {
       inputs: [],
       name: "symbol",
-      outputs: [{ internalType: "string", name: "", type: "string" }],
-      stateMutability: "view",
-      type: "function",
-    },
-    {
-      inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
-      name: "tokenURI",
-      outputs: [{ internalType: "string", name: "", type: "string" }],
+      outputs: [
+        {
+          internalType: "string",
+          name: "",
+          type: "string",
+        },
+      ],
       stateMutability: "view",
       type: "function",
     },
     {
       inputs: [
-        { internalType: "address", name: "from", type: "address" },
-        { internalType: "address", name: "to", type: "address" },
-        { internalType: "uint256", name: "tokenId", type: "uint256" },
+        {
+          internalType: "uint256",
+          name: "tokenId",
+          type: "uint256",
+        },
+      ],
+      name: "tokenURI",
+      outputs: [
+        {
+          internalType: "string",
+          name: "",
+          type: "string",
+        },
+      ],
+      stateMutability: "view",
+      type: "function",
+    },
+    {
+      inputs: [
+        {
+          internalType: "address",
+          name: "from",
+          type: "address",
+        },
+        {
+          internalType: "address",
+          name: "to",
+          type: "address",
+        },
+        {
+          internalType: "uint256",
+          name: "tokenId",
+          type: "uint256",
+        },
       ],
       name: "transferFrom",
       outputs: [],
@@ -914,7 +1128,13 @@ export const vincaskX = {
       type: "function",
     },
     {
-      inputs: [{ internalType: "address", name: "newOwner", type: "address" }],
+      inputs: [
+        {
+          internalType: "address",
+          name: "newOwner",
+          type: "address",
+        },
+      ],
       name: "transferOwnership",
       outputs: [],
       stateMutability: "nonpayable",
@@ -926,7 +1146,7 @@ export const vincaskX = {
 export const usdc = {
   address: {
     mainnet: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48" as `0x${string}`,
-    sepolia: "0xee3a254b0810FC5de2771057D97ed1DD0a6fD330" as `0x${string}`,
+    sepolia: "0xa4Eb0D6f240F6F7BA3561Fc2a118B27C4438F7ed" as `0x${string}`,
     goerli: "0x98339D8C260052B7ad81c28c16C0b98420f2B46a" as `0x${string}`,
   },
   abi: [
@@ -1080,7 +1300,7 @@ export const usdc = {
           type: "uint8",
         },
       ],
-      stateMutability: "view",
+      stateMutability: "pure",
       type: "function",
     },
     {
