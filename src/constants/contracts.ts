@@ -1,7 +1,7 @@
 export const vincask = {
   address: {
     sepolia: "0x03361D96525DbAC4731e4FF4660819a7F61E0863" as `0x${string}`,
-    goerli: "0xb0Ff138B4FF35883754392B5D4d45F6f43d00342" as `0x${string}`,
+    goerli: "0xc1e1a04320A9BB0b6E66B7D21B8d1dEf5B5D7f98" as `0x${string}`,
   },
   abi: [
     {
@@ -732,7 +732,7 @@ export const vincask = {
 export const vincaskX = {
   address: {
     sepolia: "0xBC11305904BFf89bDB7208f6eDCaE0558B69752b" as `0x${string}`,
-    goerli: "0xACAEF5158FB01Fa98f17734890fC64b57C66db8f" as `0x${string}`,
+    goerli: "0x103281e6A012f8Dd96De33929C0BAEe6d7A9425B" as `0x${string}`,
   },
   abi: [
     {

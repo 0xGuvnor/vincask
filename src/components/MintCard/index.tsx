@@ -350,7 +350,7 @@ const MintCard = () => {
             <motion.div layout="size" className="contents">
               <TotalPrice
                 dataLoaded={!!readData}
-                price={`${(100 * quantity).toLocaleString()}`}
+                price={`${(10 * quantity).toLocaleString()}`}
                 currency={"USD"}
               />
               <QuantitySelection
@@ -367,11 +367,11 @@ const MintCard = () => {
                 className="w-[222.32px] h-[52px] relative"
               >
                 <CrossmintPayButton
-                  collectionId="c366ff72-8081-4a43-91ef-7ab631566828"
+                  collectionId="c010a7fa-c555-49c8-8a93-acec95b30b2c"
                   projectId="011b8900-8f68-4e25-b9f6-b1a6c84af69f"
                   mintConfig={{
                     type: "erc-721",
-                    totalPrice: (quantity * 100).toString(),
+                    totalPrice: (quantity * 10).toString(),
                     _quantity: quantity,
                     quantity: quantity,
                   }}
