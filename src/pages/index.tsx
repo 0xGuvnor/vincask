@@ -34,7 +34,7 @@ export default function Home({
 export const getStaticProps: GetStaticProps<{ heroImage: string }> = () => {
   const {
     data: { publicUrl: heroImage },
-  } = supabase.storage.from("images").getPublicUrl("hero2.jpg");
+  } = supabase.storage.from("images").getPublicUrl("heroAlt.jpg");
 
   return { props: { heroImage } };
 };
