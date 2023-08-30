@@ -3,7 +3,7 @@ import Collage from "@/components/Collage";
 import Container from "@/components/Container";
 import MobileOverlay from "@/components/MobileOverlay";
 import Timeline from "@/components/Timeline";
-import { getAboutPageProps } from "@/utils/getAboutPageProps";
+import { getAboutPageProps } from "@/utils/helpers/getAboutPageProps";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Head from "next/head";
 
