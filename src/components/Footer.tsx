@@ -37,7 +37,7 @@ const Footer = () => {
                 />
               </div>
 
-              <ul className="flex gap-6 mt-8 w-[13.5rem]">
+              <ul className="flex items-center justify-between mt-8 w-[13.5rem]">
                 <li>
                   <a
                     href="/"
