@@ -9,35 +9,34 @@ interface Props {
 
 const Collage = ({ collageImages }: Props) => {
   return (
-    <div className="relative h-[550px] md:h-[75vh]x md:h-[800px] w-full">
-      <div className="absolute grid h-full grid-flow-col grid-rows-5 gap-4 -top-9 md:top-0 -left-20 md:left-0 md:grid-rows-6">
-        {collageImages.map((image, id) => (
-          <div
-            key={id}
-            className={`
-            ${id === 0 && "row-span-6 self-center hidden md:block"} 
-            ${id === 1 && "row-span-3 self-end -translate-y-7 md:translate-y-0"}
-            ${
-              id === 2 &&
-              "row-span-2 md:row-span-3 self-start -translate-y-7 md:translate-y-0"
-            }
-            ${
-              id === 3 &&
-              "row-span-2 md:row-span-2 self-end md:translate-y-[1.5px]"
-            } 
-            ${
-              id === 4 &&
-              "row-span-1 md:row-span-2 self-center translate-y-9 md:translate-y-0"
-            }
-            ${
-              id === 5 &&
-              "row-span-2 md:row-span-2 self-start md:-translate-y-[1.5px] translate-y-[74px]"
-            } 
-            relative top-0 left-0 w-44 h-44 md:w-64 md:h-64 2xl:h-[300px] 2xl:w-[300px]`}
-          >
-            <BlurImage image={image} />
-          </div>
-        ))}
+    <div className="relative w-full">
+      <div className="absolute inset-x-0 top-0 flex items-center justify-center gap-2 md:gap-4 md:inset-y-0 md:left-0">
+        <ul className="flex">
+          <li className="relative w-40 h-40 md:w-72 md:h-72">
+            <BlurImage image={collageImages[0]} />
+          </li>
+        </ul>
+
+        <ul className="flex flex-col gap-2 md:gap-4">
+          <li className="relative w-40 h-40 md:w-72 md:h-72">
+            <BlurImage image={collageImages[1]} />
+          </li>
+          <li className="relative w-40 h-40 md:w-72 md:h-72">
+            <BlurImage image={collageImages[2]} />
+          </li>
+        </ul>
+
+        <ul className="flex flex-col gap-2 md:gap-4">
+          <li className="relative w-40 h-40 md:w-72 md:h-72">
+            <BlurImage image={collageImages[3]} />
+          </li>
+          <li className="relative w-40 h-40 md:w-72 md:h-72">
+            <BlurImage image={collageImages[4]} />
+          </li>
+          <li className="relative w-40 h-40 md:w-72 md:h-72">
+            <BlurImage image={collageImages[5]} />
+          </li>
+        </ul>
       </div>
     </div>
   );

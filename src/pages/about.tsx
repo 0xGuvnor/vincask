@@ -1,6 +1,5 @@
 import AffiliatedCompanies from "@/components/AffiliatedCompanies";
 import Collage from "@/components/Collage";
-import Collage2 from "@/components/Collage2";
 import Container from "@/components/Container";
 import MobileOverlay from "@/components/MobileOverlay";
 import Timeline from "@/components/Timeline";
@@ -41,8 +40,7 @@ const About = ({
             </h3>
           </div>
 
-          {/* <Collage collageImages={collageImages} /> */}
-          <Collage2 collageImages={collageImages} />
+          <Collage collageImages={collageImages} />
         </div>
 
         <Timeline timelineItems={timelineItems} />
