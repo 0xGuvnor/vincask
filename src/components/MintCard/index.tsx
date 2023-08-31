@@ -282,7 +282,7 @@ const MintCard = () => {
               <TotalPrice
                 dataLoaded={!!readData}
                 price={
-                  readData
+                  readData && readData[2].result
                     ? (
                         Number(
                           formatUnits(
