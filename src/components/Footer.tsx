@@ -28,12 +28,12 @@ const Footer = () => {
         <div className="max-w-[1500px] w-full px-4 py-16 mx-auto space-y-8 md:px-12 lg:space-y-16 2xl:px-0">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
             <div>
-              <div className="relative top-0 left-0 w-32 h-16 md:w-[13.5rem] md:h-32 overflow-visible">
+              <div className="relative top-0 left-0 w-32 h-16 md:w-[13.5rem] md:h-[8.39rem]">
                 <Image
                   src={logoUrl}
                   alt="Vincask logo"
                   fill
-                  className="object-cover overflow-visible"
+                  className="object-cover"
                 />
               </div>
 
