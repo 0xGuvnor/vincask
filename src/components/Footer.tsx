@@ -32,7 +32,10 @@ const Footer = () => {
                 <Image
                   src={logoUrl}
                   alt="Vincask logo"
+                  quality={100}
+                  priority
                   fill
+                  sizes="(max-width: 768px) 50vw, 33vw"
                   className="object-contain"
                 />
               </div>
