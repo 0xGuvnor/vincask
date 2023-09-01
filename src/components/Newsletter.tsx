@@ -56,7 +56,7 @@ const Newsletter = () => {
             We care about your data. Read our{" "}
             <Link
               href="/"
-              className="underline transition-colors duration-300 ease-in-out cursor-pointer hover:text-blue-500 decoration-primary underline-offset-[3px]"
+              className="underline transition-colors duration-300 ease-in-out cursor-pointer hover:text-blue-500 hover:decoration-blue-500 decoration-primary underline-offset-[3px]"
             >
               privacy policy
             </Link>
