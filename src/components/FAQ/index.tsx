@@ -27,7 +27,7 @@ const FAQ = ({ faqs }: Props) => {
             <p>
               <Link
                 href="/contact"
-                className="underline transition-colors duration-200 ease-in-out cursor-pointer decoration-primary underline-offset-[3px] decoration-1 hover:text-blue-500"
+                className="underline transition-colors duration-200 ease-in-out cursor-pointer decoration-primary underline-offset-[3px] decoration-1 hover:text-blue-500 hover:decoration-blue-500"
               >
                 Reach out to our support team
               </Link>{" "}
