@@ -5,11 +5,15 @@ import MobileMenu from "./MobileMenu";
 import DesktopMenu from "./DesktopMenu";
 import ConnectWallet from "./ConnectWallet";
 import Image from "next/image";
+import { supabase } from "@/lib/supabase";
 
 const Navbar = () => {
   const isMobileOrTablet = useMediaQuery({ maxWidth: 768 });
   const isMobileOrTabletScrolled = useScroll(10);
   const isDesktopScrolled = useScroll(30);
+  const {
+    data: { publicUrl: logoUrl },
+  } = supabase.storage.from("images").getPublicUrl("logos/logo1.png");
 
   return (
     <nav
@@ -25,7 +29,7 @@ const Navbar = () => {
       <div className="fixed inset-x-0 flex items-center justify-center md:top-0 -top-1 md:relative">
         <Link href="/" className="relative z-50 w-16 h-16 md:w-20 md:h-20">
           <Image
-            src="/logo1.png"
+            src={logoUrl}
             alt="Vincask logo"
             fill
             priority
