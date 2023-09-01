@@ -33,7 +33,7 @@ const Footer = () => {
                   src={logoUrl}
                   alt="Vincask logo"
                   fill
-                  className="object-cover"
+                  className="object-contain"
                 />
               </div>
 

@@ -13,7 +13,12 @@ const Hero2 = ({ heroImage }: Props) => {
   return (
     <div className="relative flex items-center justify-center w-screen h-screen">
       <main className="flex flex-col md:flex-row items-center justify-center h-[85vh]">
-        <section className="flex flex-col items-center md:items-start justify-center max-w-xs md:max-w-[34.5rem] md:-mt-20 md:basis-2/3 gap-6 py-8 md:gap-14 text-center md:text-left">
+        <motion.section
+          initial={{ opacity: 0, y: 50, zIndex: 10 }}
+          animate={{ opacity: 1, y: 0, zIndex: 10 }}
+          transition={{ duration: 1.5 }}
+          className="flex flex-col items-center md:items-start justify-center max-w-xs md:max-w-[34.5rem] md:-mt-20 md:basis-2/3 gap-6 py-8 md:gap-14 text-center md:text-left"
+        >
           <h1 className="text-4xl font-black md:text-7xl 2xl:text-8xl font-header">
             Crafted with{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-tr from-accent to-primary">
@@ -26,9 +31,14 @@ const Hero2 = ({ heroImage }: Props) => {
           </h2>
 
           <CtaButtons />
-        </section>
+        </motion.section>
 
-        <div className="relative h-full w-80 md:w-[34.5rem]">
+        <motion.div
+          initial={{ opacity: 0, x: 0, zIndex: -10 }}
+          animate={{ opacity: 1, x: 0, zIndex: 0 }}
+          transition={{ duration: 1, delay: 1.5 }}
+          className="relative h-full w-80 md:w-[34.5rem]"
+        >
           <Image
             src={heroImage}
             alt="Hero image of a glass of whisky"
@@ -36,7 +46,7 @@ const Hero2 = ({ heroImage }: Props) => {
             className="object-cover md:rounded-br-[1rem] md:rounded-tr-[1rem] rounded-tl-[1rem] rounded-tr-[1rem] md:rounded-tl-none"
           />
           <div className="absolute inset-x-0 bottom-0 z-30 w-full h-28 md:w-64 md:h-full md:inset-y-0 md:left-0 bg-gradient-to-t md:bg-gradient-to-r from-base-100"></div>
-        </div>
+        </motion.div>
       </main>
 
       <AnimatePresence initial={false}>
