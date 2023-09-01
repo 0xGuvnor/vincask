@@ -28,6 +28,8 @@ const Navbar = () => {
             src="/logo1.png"
             alt="Vincask logo"
             fill
+            priority
+            sizes="20vw"
             className="object-contain"
           />
         </Link>

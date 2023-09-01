@@ -49,6 +49,9 @@ const Hero2 = ({ heroImage }: Props) => {
           <Image
             src={heroImage}
             alt="Hero image of a glass of whisky"
+            quality={100}
+            priority
+            sizes="(max-width: 768px) 40vw, 50vw"
             fill
             className="object-cover md:rounded-br-[1rem] md:rounded-tr-[1rem] rounded-tl-[1rem] rounded-tr-[1rem] md:rounded-tl-none"
           />
