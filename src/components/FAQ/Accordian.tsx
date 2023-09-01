@@ -1,32 +1,76 @@
-import AccordianItem from "./AccordianItem";
+import * as Accordion from "@radix-ui/react-accordion";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
+import { HiChevronUp } from "react-icons/hi";
 
-const faqs = [
-  {
-    header:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita, ex.",
-    content:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem, similique beatae id earum a repellendus architecto suscipit eum tenetur? Perspiciatis.",
-  },
-  {
-    header:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque, voluptate eum! Voluptatem rerum, minima alias eveniet doloribus magni? Saepe aliquid cupiditate animi vitae dolores optio possimus iure earum excepturi quos.",
-    content: "lorem ipsum dolor sit amet, consectetur adip",
-  },
-  {
-    header:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, aperiam fuga distinctio a ratione expedita?",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste debitis sapiente est, rem ullam ducimus quae, doloremque, ratione eveniet vel atque quos aperiam tenetur!",
-  },
-];
+interface Props {
+  faqs:
+    | {
+        header: string;
+        content: string;
+      }[]
+    | null;
+}
 
-const Accordian = () => {
-  return (
-    <div className="flex flex-col w-full">
-      {faqs.map((faq, id) => (
-        <AccordianItem key={id} header={faq.header} content={faq.content} />
+const Accordian = ({ faqs }: Props) => {
+  const [values, setValues] = useState<string[]>();
+
+  return faqs ? (
+    <Accordion.Root type="multiple" value={values} onValueChange={setValues}>
+      {faqs.map((faq, index) => (
+        <Accordion.Item key={index} value={`item${index}`} asChild>
+          <motion.div
+            layout
+            transition={{ duration: 0.3 }}
+            className="py-6 space-y-4 border-b-[0.5px] border-primary first:border-t-[0.5px]"
+          >
+            <Accordion.Header asChild>
+              <motion.div layout className="flex group">
+                <Accordion.Trigger className="flex items-center justify-between flex-1 text-left transition duration-300 ease-in-out group-hover:text-primary-focus">
+                  <p className="font-semibold md:text-xl">{faq.header}</p>
+                  <motion.div
+                    initial={false}
+                    animate={
+                      values?.includes(`item${index}`)
+                        ? { rotateX: 180 }
+                        : { rotateX: 0 }
+                    }
+                    transition={{ duration: 0.3 }}
+                  >
+                    <HiChevronUp
+                      className={`${
+                        values?.includes(`item${index}`) && "rotate-180x"
+                      } h-5 md:h-7 w-5 md:w-7 mx-2 shrink-0`}
+                    />
+                  </motion.div>
+                </Accordion.Trigger>
+              </motion.div>
+            </Accordion.Header>
+
+            <AnimatePresence>
+              {values?.includes(`item${index}`) && (
+                <Accordion.Content asChild forceMount>
+                  <motion.p
+                    layout
+                    initial={{ opacity: 0, y: -25 }}
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                      transition: { delay: 0.2, duration: 0.3 },
+                    }}
+                    exit={{ opacity: 0, y: -25 }}
+                    transition={{ ease: "easeInOut" }}
+                    className="md:text-xl"
+                  >
+                    {faq.content}
+                  </motion.p>
+                </Accordion.Content>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        </Accordion.Item>
       ))}
-    </div>
-  );
+    </Accordion.Root>
+  ) : null;
 };
 export default Accordian;

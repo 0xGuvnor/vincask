@@ -4,9 +4,11 @@ import Container from "@/components/Container";
 import FAQ from "@/components/FAQ";
 import Heading from "@/components/Heading";
 import MobileOverlay from "@/components/MobileOverlay";
+import getContactPageProps from "@/utils/helpers/getContactPageProps";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Head from "next/head";
 
-const Contact = () => {
+const Contact = ({ faqs }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <Head>
@@ -33,8 +35,14 @@ const Contact = () => {
         </Container>
       </div>
 
-      <FAQ />
+      <FAQ faqs={faqs} />
     </>
   );
 };
 export default Contact;
+
+export const getStaticProps: GetStaticProps = async () => {
+  const { faqData } = await getContactPageProps();
+
+  return { props: { faqs: faqData } };
+};

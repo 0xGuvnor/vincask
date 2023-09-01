@@ -66,6 +66,24 @@ export interface Database {
         };
         Relationships: [];
       };
+      Contact_FAQs: {
+        Row: {
+          content: string;
+          header: string;
+          id: number;
+        };
+        Insert: {
+          content: string;
+          header: string;
+          id?: number;
+        };
+        Update: {
+          content?: string;
+          header?: string;
+          id?: number;
+        };
+        Relationships: [];
+      };
       customers: {
         Row: {
           address1: string | null;

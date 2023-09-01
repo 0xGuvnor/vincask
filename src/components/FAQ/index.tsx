@@ -3,7 +3,16 @@ import Container from "../Container";
 import Heading from "../Heading";
 import Accordian from "./Accordian";
 
-const FAQ = () => {
+interface Props {
+  faqs:
+    | {
+        header: string;
+        content: string;
+      }[]
+    | null;
+}
+
+const FAQ = ({ faqs }: Props) => {
   return (
     <Container>
       <Heading
@@ -28,7 +37,7 @@ const FAQ = () => {
         }
       />
 
-      <Accordian />
+      <Accordian faqs={faqs} />
     </Container>
   );
 };

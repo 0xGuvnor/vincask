@@ -32,7 +32,7 @@ const marcellus = Marcellus({
 });
 // Body font
 const outfit = Outfit({
-  weight: ["300", "700", "800", "900"],
+  weight: ["300", "600", "700", "800", "900"],
   subsets: ["latin"],
 });
 // Mono font
