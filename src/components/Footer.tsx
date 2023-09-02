@@ -9,6 +9,7 @@ import {
 import { motion } from "framer-motion";
 import { supabase } from "@/lib/supabase";
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   const {
@@ -28,17 +29,19 @@ const Footer = () => {
         <div className="relative mx-auto w-full max-w-[1500px] space-y-8 px-4 py-16 md:px-12 lg:space-y-16 2xl:px-0">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
             <div>
-              <div className="relative left-0 top-0 h-[4.999rem] w-32 md:h-[7rem] md:w-[13.5rem]">
-                <Image
-                  src={logoUrl}
-                  alt="Vincask logo"
-                  quality={100}
-                  priority
-                  fill
-                  sizes="(max-width: 768px) 50vw, 33vw"
-                  className="object-contain"
-                />
-              </div>
+              <Link href="/">
+                <div className="relative left-0 top-0 h-[4.999rem] w-32 md:h-[7rem] md:w-[13.5rem]">
+                  <Image
+                    src={logoUrl}
+                    alt="Vincask logo"
+                    quality={100}
+                    priority
+                    fill
+                    sizes="(max-width: 768px) 50vw, 33vw"
+                    className="object-contain"
+                  />
+                </div>
+              </Link>
 
               <ul className="mt-8 flex w-[13.5rem] items-center justify-between">
                 <li>
