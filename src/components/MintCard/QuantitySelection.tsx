@@ -25,7 +25,7 @@ const QuantitySelection = ({
       transition={{ delay: 0.2, duration: 0.5 }}
       className={`${
         isLoading ? "text-primary/25" : "text-primary"
-      } flex w-28 items-center justify-between md:w-36`}
+      } flex w-28 select-none items-center justify-between md:w-36`}
     >
       <AmountButton onClick={decrement} icon={HiMinus} isLoading={isLoading} />
       <span className="text-2xl md:text-4xl">{quantity}</span>
