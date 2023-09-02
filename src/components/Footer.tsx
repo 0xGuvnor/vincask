@@ -156,7 +156,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <p className="absolute bottom-16 right-0 text-xs">
+          <p className="absolute bottom-4 left-4 text-xs md:bottom-16 md:left-auto md:right-0">
             &copy; {new Date().getFullYear()}. VinCask Pte Ltd. All rights
             reserved.
           </p>
