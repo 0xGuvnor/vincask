@@ -6,7 +6,7 @@ interface Props {
 
 const AuditorBadge = ({ logo }: Props) => {
   return (
-    <div className="self-start rounded-md bg-zinc-800 p-3">
+    <div className="select-none self-start rounded-md bg-zinc-800 p-3">
       <div className="flex items-center justify-center gap-2">
         <span className="text-base-content md:text-lg">Audited by</span>
         <a
@@ -21,7 +21,7 @@ const AuditorBadge = ({ logo }: Props) => {
             quality={100}
             priority
             fill
-            className="cursor-pointer rounded bg-violet-200 object-contain px-2 py-1 transition duration-300 ease-in-out hover:scale-105"
+            className="cursor-pointer rounded bg-violet-100 object-contain px-2 py-1 transition duration-300 ease-in-out hover:scale-105"
           />
         </a>
       </div>
