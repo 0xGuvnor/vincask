@@ -13,21 +13,10 @@ module.exports = {
       },
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"), require("tailwindcss-debug-screens")],
   daisyui: {
     themes: [
       {
-        // mytheme: {
-        //   primary: "#FE5E41",
-        //   secondary: "#5448C8",
-        //   accent: "#32c1c1",
-        //   neutral: "#141b1f",
-        //   "base-100": "#230007",
-        //   info: "#82a5d9",
-        //   success: "#1bc097",
-        //   warning: "#ebce4c",
-        //   error: "#ef7186",
-        // },
         mytheme: {
           primary: "#FACA16",
           secondary: "#0059CF",

@@ -88,7 +88,12 @@ export default function App({ Component, pageProps }: AppProps) {
           <GlobalProvider>
             <LayoutGroup>
               <main
-                className={`${outfit.className} ${marcellus.variable} ${spaceMono.variable} flex flex-col justify-between min-h-screen`}
+                className={`${outfit.className} ${marcellus.variable} ${
+                  spaceMono.variable
+                } ${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === "development" &&
+                  "debug-screens"
+                } flex flex-col justify-between min-h-screen `}
               >
                 <Toaster
                   toastOptions={{
