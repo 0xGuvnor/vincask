@@ -71,6 +71,8 @@ const wagmiConfig = createConfig({
 });
 
 export default function App({ Component, pageProps }: AppProps) {
+  const environment = process.env.NEXT_PUBLIC_ENVIRONMENT;
+
   return (
     <AnimatePresence mode="wait">
       <WagmiConfig config={wagmiConfig}>
@@ -91,8 +93,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 className={`${outfit.className} ${marcellus.variable} ${
                   spaceMono.variable
                 } ${
-                  process.env.NEXT_PUBLIC_ENVIRONMENT === "development" &&
-                  "debug-screens"
+                  environment === "development" && "debug-screens"
                 } flex flex-col justify-between min-h-screen `}
               >
                 <Toaster
