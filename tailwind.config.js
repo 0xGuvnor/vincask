@@ -13,7 +13,11 @@ module.exports = {
       },
     },
   },
-  plugins: [require("daisyui"), require("tailwindcss-debug-screens")],
+  plugins: [
+    "prettier-plugin-tailwindcss",
+    require("daisyui"),
+    require("tailwindcss-debug-screens"),
+  ],
   daisyui: {
     themes: [
       {

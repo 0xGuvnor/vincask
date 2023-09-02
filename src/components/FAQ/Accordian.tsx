@@ -22,11 +22,11 @@ const Accordian = ({ faqs }: Props) => {
           <motion.div
             layout
             transition={{ duration: 0.3 }}
-            className="py-6 space-y-4 border-b-[0.5px] border-primary first:border-t-[0.5px]"
+            className="space-y-4 border-b-[0.5px] border-primary py-6 first:border-t-[0.5px]"
           >
             <Accordion.Header asChild>
-              <motion.div layout className="flex group">
-                <Accordion.Trigger className="flex items-center justify-between flex-1 text-left transition duration-300 ease-in-out group-hover:text-primary-focus">
+              <motion.div layout className="group flex">
+                <Accordion.Trigger className="flex flex-1 items-center justify-between text-left transition duration-300 ease-in-out group-hover:text-primary-focus">
                   <p className="font-semibold md:text-xl">{faq.header}</p>
                   <motion.div
                     initial={false}
@@ -40,7 +40,7 @@ const Accordian = ({ faqs }: Props) => {
                     <HiChevronUp
                       className={`${
                         values?.includes(`item${index}`) && "rotate-180x"
-                      } h-5 md:h-7 w-5 md:w-7 mx-2 shrink-0`}
+                      } mx-2 h-5 w-5 shrink-0 md:h-7 md:w-7`}
                     />
                   </motion.div>
                 </Accordion.Trigger>

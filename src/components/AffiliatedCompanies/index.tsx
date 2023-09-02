@@ -15,7 +15,7 @@ const AffiliatedCompanies = ({ companyInfos }: Props) => {
         subtitle="Vincask is a wholly owned subsidiary of Seng Lee Tobacco Factory Pte Ltd & a sister company to Grande Vida Pte Ltd."
       />
 
-      <div className="grid grid-cols-1 gap-8 md:gap-16 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-16">
         {companyInfos.map((companyInfo) => (
           <CompanyCard
             key={companyInfo.name}

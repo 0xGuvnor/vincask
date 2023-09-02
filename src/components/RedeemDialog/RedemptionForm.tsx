@@ -241,7 +241,7 @@ const RedemptionForm = ({
             handleSubmit(onSubmit)();
           }
         }}
-        className="self-end normal-case btn btn-primary"
+        className="btn-primary btn self-end normal-case"
       >
         Submit
       </motion.button>

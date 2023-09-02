@@ -25,7 +25,7 @@ const RedeemedCardSection = ({ defaultImg }: Props) => {
   });
 
   const [cardArr, setCardArr] = useState<NftData[]>(
-    new Array(numNfts).fill({ title: "", tokenId: "" })
+    new Array(numNfts).fill({ title: "", tokenId: "" }),
   );
   const [nftDataArr, setNftDataArr] = useState<NftData[]>();
 
@@ -53,7 +53,7 @@ const RedeemedCardSection = ({ defaultImg }: Props) => {
 
   return (
     <div className={`${!numNfts && "hidden"} contents`}>
-      <h2 className="text-2xl text-centerx md:text-5xl font-header">
+      <h2 className="text-centerx font-header text-2xl md:text-5xl">
         Redeemed NFTs
       </h2>
 

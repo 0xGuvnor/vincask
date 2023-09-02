@@ -13,17 +13,17 @@ const Hero2 = ({ heroImage }: Props) => {
   const isMobileOrTablet = useMediaQuery({ maxWidth: 768 });
 
   return (
-    <div className="relative flex items-center justify-center w-screen h-screen">
-      <main className="flex flex-col md:flex-row items-center justify-center h-[85vh] md:gap-6">
+    <div className="relative flex h-screen w-screen items-center justify-center">
+      <main className="flex h-[85vh] flex-col items-center justify-center md:flex-row md:gap-6">
         <motion.section
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex flex-col items-center md:items-start justify-center max-w-xs md:max-w-[34.5rem] md:-mt-20 md:basis-2/3 gap-6 py-8 md:gap-14 text-center md:text-left"
+          className="flex max-w-xs flex-col items-center justify-center gap-6 py-8 text-center md:-mt-20 md:max-w-[34.5rem] md:basis-2/3 md:items-start md:gap-14 md:text-left"
         >
-          <motion.h1 className="text-4xl font-black md:text-7xl 2xl:text-8xl font-header">
+          <motion.h1 className="font-header text-4xl font-black md:text-7xl 2xl:text-8xl">
             Crafted with{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-tr from-accent to-primary">
+            <span className="bg-gradient-to-tr from-accent to-primary bg-clip-text text-transparent">
               passion & precision
             </span>
           </motion.h1>
@@ -53,9 +53,9 @@ const Hero2 = ({ heroImage }: Props) => {
             priority
             sizes="(max-width: 768px) 40vw, 50vw"
             fill
-            className="object-cover md:rounded-br-[1rem] md:rounded-tr-[1rem] rounded-tl-[1rem] rounded-tr-[1rem] md:rounded-tl-none"
+            className="rounded-tl-[1rem] rounded-tr-[1rem] object-cover md:rounded-br-[1rem] md:rounded-tl-none md:rounded-tr-[1rem]"
           />
-          <div className="absolute inset-x-0 bottom-0 z-30 w-full h-28 md:w-64 md:h-full md:inset-y-0 md:left-0 bg-gradient-to-t md:bg-gradient-to-r from-base-100"></div>
+          <div className="absolute inset-x-0 bottom-0 z-30 h-28 w-full bg-gradient-to-t from-base-100 md:inset-y-0 md:left-0 md:h-full md:w-64 md:bg-gradient-to-r"></div>
         </motion.div>
       </main>
 
@@ -65,10 +65,10 @@ const Hero2 = ({ heroImage }: Props) => {
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -100 }}
-            className="absolute inset-x-0 z-50 flex flex-col items-center self-center justify-center w-full h-10 bottom-20 md:bottom-4"
+            className="absolute inset-x-0 bottom-20 z-50 flex h-10 w-full flex-col items-center justify-center self-center md:bottom-4"
           >
             <p className="text-xs md:text-sm">Scroll to learn more</p>
-            <div className="w-[1px] h-5 bg-whitex bg-gradient-to-b from-white"></div>
+            <div className="bg-whitex h-5 w-[1px] bg-gradient-to-b from-white"></div>
           </motion.div>
         )}
       </AnimatePresence>

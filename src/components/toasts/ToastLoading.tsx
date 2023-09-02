@@ -18,7 +18,7 @@ const ToastLoading = ({ t, message, txHash }: Props) => {
           href={`https://${activeChain}.etherscan.io/tx/${txHash}`}
           rel="noreferrer"
           target="_blank"
-          className="text-blue-700 underline transition duration-300 ease-in-out hover:opacity-80 underline-offset-2"
+          className="text-blue-700 underline underline-offset-2 transition duration-300 ease-in-out hover:opacity-80"
         >
           <span className="text-sm">View your tx on Etherscan</span>
         </a>
@@ -26,7 +26,7 @@ const ToastLoading = ({ t, message, txHash }: Props) => {
 
       <button
         onClick={() => toast.dismiss(t.id)}
-        className="p-2 text-xs rounded-md bg-[#B8860B]/20 hover:bg-[#B8860B]/40 transition duration-300 ease-in-out translate-x-[10px]"
+        className="translate-x-[10px] rounded-md bg-[#B8860B]/20 p-2 text-xs transition duration-300 ease-in-out hover:bg-[#B8860B]/40"
       >
         Dismiss
       </button>

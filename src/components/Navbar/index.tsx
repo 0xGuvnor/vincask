@@ -20,14 +20,14 @@ const Navbar = () => {
       className={`${
         isMobileOrTablet
           ? isMobileOrTabletScrolled &&
-            "bg-base-100/75 backdrop-blur-sm shadow-xl"
-          : isDesktopScrolled && "bg-base-100/75 backdrop-blur-sm shadow-xl"
-      } fixed inset-x-0 top-0 flex items-center justify-between h-14 px-2 md:px-12 transition duration-300 ease-in-out md:h-20 text-neutral-content z-50`}
+            "bg-base-100/75 shadow-xl backdrop-blur-sm"
+          : isDesktopScrolled && "bg-base-100/75 shadow-xl backdrop-blur-sm"
+      } fixed inset-x-0 top-0 z-50 flex h-14 items-center justify-between px-2 text-neutral-content transition duration-300 ease-in-out md:h-20 md:px-12`}
     >
       <MobileMenu />
 
-      <div className="fixed inset-x-0 flex items-center justify-center md:top-0 -top-1 md:relative">
-        <Link href="/" className="relative z-50 w-16 h-16 md:w-20 md:h-20">
+      <div className="fixed inset-x-0 -top-1 flex items-center justify-center md:relative md:top-0">
+        <Link href="/" className="relative z-50 h-16 w-16 md:h-20 md:w-20">
           <Image
             src={logoUrl}
             alt="Vincask logo"
@@ -41,7 +41,7 @@ const Navbar = () => {
 
       <div className="flex items-center justify-end">
         <DesktopMenu />
-        <hr className="h-8 border-l-[1px] border-slate-600 hidden md:flex lg:mx-6 mx-3" />
+        <hr className="mx-3 hidden h-8 border-l-[1px] border-slate-600 md:flex lg:mx-6" />
         <ConnectWallet />
       </div>
     </nav>

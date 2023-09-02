@@ -25,10 +25,10 @@ const Footer = () => {
       <Newsletter />
 
       <footer className="bg-base-100">
-        <div className="max-w-[1500px] w-full px-4 py-16 mx-auto space-y-8 md:px-12 lg:space-y-16 2xl:px-0">
+        <div className="mx-auto w-full max-w-[1500px] space-y-8 px-4 py-16 md:px-12 lg:space-y-16 2xl:px-0">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
             <div>
-              <div className="relative top-0 left-0 w-32 h-[4.999rem] md:w-[13.5rem] md:h-[8.35rem]">
+              <div className="relative left-0 top-0 h-[4.999rem] w-32 md:h-[8.35rem] md:w-[13.5rem]">
                 <Image
                   src={logoUrl}
                   alt="Vincask logo"
@@ -40,7 +40,7 @@ const Footer = () => {
                 />
               </div>
 
-              <ul className="flex items-center justify-between mt-8 w-[13.5rem]">
+              <ul className="mt-8 flex w-[13.5rem] items-center justify-between">
                 <li>
                   <a
                     href="/"
@@ -50,7 +50,7 @@ const Footer = () => {
                   >
                     <span className="sr-only">Facebook</span>
 
-                    <FaFacebookF className="w-6 h-6" />
+                    <FaFacebookF className="h-6 w-6" />
                   </a>
                 </li>
 
@@ -63,7 +63,7 @@ const Footer = () => {
                   >
                     <span className="sr-only">Instagram</span>
 
-                    <FaInstagram className="w-6 h-6" />
+                    <FaInstagram className="h-6 w-6" />
                   </a>
                 </li>
 
@@ -76,7 +76,7 @@ const Footer = () => {
                   >
                     <span className="sr-only">TikTok</span>
 
-                    <FaTiktok className="w-6 h-6" />
+                    <FaTiktok className="h-6 w-6" />
                   </a>
                 </li>
 
@@ -89,7 +89,7 @@ const Footer = () => {
                   >
                     <span className="sr-only">Twitter</span>
 
-                    <FaTwitter className="w-6 h-6" />
+                    <FaTwitter className="h-6 w-6" />
                   </a>
                 </li>
 
@@ -102,7 +102,7 @@ const Footer = () => {
                   >
                     <span className="sr-only">Telegram</span>
 
-                    <FaTelegramPlane className="w-6 h-6" />
+                    <FaTelegramPlane className="h-6 w-6" />
                   </a>
                 </li>
               </ul>

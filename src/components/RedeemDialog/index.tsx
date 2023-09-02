@@ -30,7 +30,7 @@ const RedeemDialog = ({
       <Dialog.Trigger asChild>
         <button
           disabled={!numNfts || isLoading || selectedNfts === 0}
-          className="w-40 text-lg normal-case shadow-lg disabled:bg-base-100 disabled:ring-primary/25 disabled:ring-1 btn btn-primary shadow-primary/20"
+          className="btn-primary btn w-40 text-lg normal-case shadow-lg shadow-primary/20 disabled:bg-base-100 disabled:ring-1 disabled:ring-primary/25"
         >
           {isLoading ? (
             <div className="flex items-end">
@@ -52,7 +52,7 @@ const RedeemDialog = ({
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="fixed top-0 left-0 w-screen h-screen bg-white/5 brightness-75 backdrop-blur-sm z-[60]"
+                className="fixed left-0 top-0 z-[60] h-screen w-screen bg-white/5 brightness-75 backdrop-blur-sm"
               ></motion.div>
             </Dialog.Overlay>
 
@@ -62,12 +62,12 @@ const RedeemDialog = ({
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: "80vh", opacity: 1 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="fixed top-0 left-0 w-full h-full z-[70] flex items-center justify-center focus:outline-none"
+                className="fixed left-0 top-0 z-[70] flex h-full w-full items-center justify-center focus:outline-none"
               >
                 <motion.div
                   layout
                   transition={{ layout: { duration: 0.25 } }}
-                  className="relative max-h-[80vh] p-8 w-[90vw] max-w-2xl bg-base-100 gap-10 flex flex-col rounded-lg overflow-y-scroll"
+                  className="relative flex max-h-[80vh] w-[90vw] max-w-2xl flex-col gap-10 overflow-y-scroll rounded-lg bg-base-100 p-8"
                 >
                   <motion.div layout className="flex flex-col gap-2">
                     <Dialog.Title className="text-2xl font-semibold md:text-4xl">
@@ -81,8 +81,8 @@ const RedeemDialog = ({
                     </Dialog.Description>
                   </motion.div>
                   <Dialog.Close asChild>
-                    <button className="absolute top-2.5 right-2.5 focus:outline-none">
-                      <VscChromeClose className="md:w-10 w-8 h-8 md:h-10 p-1.5 rounded-full hover:bg-white/10" />
+                    <button className="absolute right-2.5 top-2.5 focus:outline-none">
+                      <VscChromeClose className="h-8 w-8 rounded-full p-1.5 hover:bg-white/10 md:h-10 md:w-10" />
                     </button>
                   </Dialog.Close>
 

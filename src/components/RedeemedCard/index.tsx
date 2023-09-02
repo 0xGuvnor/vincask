@@ -26,7 +26,7 @@ const RedeemedCard = ({ nftData, defaultImg }: Props) => {
       (async () => {
         try {
           const res = await axios.get(
-            `https://pokeapi.co/api/v2/pokemon/${nftData.tokenId}`
+            `https://pokeapi.co/api/v2/pokemon/${nftData.tokenId}`,
           );
           setName(res.data.name);
           setPic(res.data.sprites.other["official-artwork"].front_default);
@@ -40,10 +40,10 @@ const RedeemedCard = ({ nftData, defaultImg }: Props) => {
   return (
     <motion.article
       variants={redeemNftCardVariant}
-      className="p-2 group bg-gradient-to-b from-[#0070FF] from-30% to-[#15F4EE] to-90% rounded-lg w-[250px]"
+      className="group w-[250px] rounded-lg bg-gradient-to-b from-[#0070FF] from-30% to-[#15F4EE] to-90% p-2"
     >
       <div className="flex flex-col gap-3">
-        <figure className="flex items-center justify-center overflow-hidden rounded-md shadow-2xl bg-black/70">
+        <figure className="flex items-center justify-center overflow-hidden rounded-md bg-black/70 shadow-2xl">
           <Image
             alt="NFT Picture"
             src={pic || defaultImg}
@@ -68,7 +68,7 @@ const RedeemedCard = ({ nftData, defaultImg }: Props) => {
               target="_blank"
               className="transition duration-300 ease-in-out hover:opacity-75"
             >
-              <SiOpensea className="w-6 h-6" />
+              <SiOpensea className="h-6 w-6" />
             </a>
           )}
         </header>

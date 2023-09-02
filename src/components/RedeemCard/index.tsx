@@ -40,7 +40,7 @@ const RedeemCard = ({
       (async () => {
         try {
           const res = await axios.get(
-            `https://pokeapi.co/api/v2/pokemon/${nftData?.tokenId}`
+            `https://pokeapi.co/api/v2/pokemon/${nftData?.tokenId}`,
           );
           setName(res.data.name);
           setPic(res.data.sprites.other["official-artwork"].front_default);
@@ -54,10 +54,10 @@ const RedeemCard = ({
   return (
     <motion.article
       variants={redeemNftCardVariant}
-      className="p-2 group bg-gradient-to-b from-[#ff930f] from-30% to-[#fff95b] to-90% rounded-lg w-[250px]"
+      className="group w-[250px] rounded-lg bg-gradient-to-b from-[#ff930f] from-30% to-[#fff95b] to-90% p-2"
     >
       <div className="flex flex-col gap-3">
-        <figure className="flex items-center justify-center overflow-hidden rounded-md shadow-2xl bg-black/70">
+        <figure className="flex items-center justify-center overflow-hidden rounded-md bg-black/70 shadow-2xl">
           <Image
             alt="NFT Picture"
             src={pic || defaultImg}
@@ -82,17 +82,17 @@ const RedeemCard = ({
               target="_blank"
               className="transition duration-300 ease-in-out hover:opacity-75"
             >
-              <SiOpensea className="w-6 h-6" />
+              <SiOpensea className="h-6 w-6" />
             </a>
           )}
         </header>
 
-        <div className="flex items-center justify-between h-7">
+        <div className="flex h-7 items-center justify-between">
           <div className="flex items-center justify-center gap-1">
             <ImFire
               className={`${
                 checked && "text-red-400"
-              } w-6 h-6 p-1 rounded-md bg-black transition duration-300 ease-in-out`}
+              } h-6 w-6 rounded-md bg-black p-1 transition duration-300 ease-in-out`}
             />
             <label htmlFor={`redeemToggle-${id}`} className="text-black">
               Redeem
@@ -109,7 +109,7 @@ const RedeemCard = ({
                 setSelectedNfts((prev) => [...prev, Number(nftData?.tokenId)]);
               } else {
                 setSelectedNfts((prev) =>
-                  prev.filter((nft) => nft !== Number(nftData?.tokenId))
+                  prev.filter((nft) => nft !== Number(nftData?.tokenId)),
                 );
               }
 

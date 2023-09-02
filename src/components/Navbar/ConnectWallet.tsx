@@ -41,9 +41,9 @@ const ConnectWallet = () => {
                   <button
                     onClick={openConnectModal}
                     type="button"
-                    className="flex items-center justify-center gap-1 p-1.5 text-primary-content transition duration-300 ease-in-out rounded md:p-2 bg-primary md:hover:bg-primary-focus md:hover:shadow-2xl focus:outline-none font-semibold"
+                    className="flex items-center justify-center gap-1 rounded bg-primary p-1.5 font-semibold text-primary-content transition duration-300 ease-in-out focus:outline-none md:p-2 md:hover:bg-primary-focus md:hover:shadow-2xl"
                   >
-                    <BiWallet className="w-5 h-5 md:h-6 md:w-6" />
+                    <BiWallet className="h-5 w-5 md:h-6 md:w-6" />
                     <span className="text-sm md:text-base">
                       Connect <span className="hidden md:inline">Wallet</span>
                     </span>
@@ -56,31 +56,31 @@ const ConnectWallet = () => {
                   <button
                     onClick={openChainModal}
                     type="button"
-                    className="bg-error text-error-content p-1.5 md:p-2 gap-1 rounded hover:brightness-75 transition duration-300 ease-in-out flex items-center justify-center"
+                    className="flex items-center justify-center gap-1 rounded bg-error p-1.5 text-error-content transition duration-300 ease-in-out hover:brightness-75 md:p-2"
                   >
-                    <IoWarningOutline className="w-4 h-4 md:w-5 md:h-5" />
+                    <IoWarningOutline className="h-4 w-4 md:h-5 md:w-5" />
                     <span className="text-xs md:text-base">Wrong network</span>
                   </button>
                 );
               }
 
               return (
-                <div className="flex items-center justify-center gap-1 md:gap-2 bg-slate-600/25 p-1.5 rounded md:py-2 md:px-3">
+                <div className="flex items-center justify-center gap-1 rounded bg-slate-600/25 p-1.5 md:gap-2 md:px-3 md:py-2">
                   <button
                     onClick={openChainModal}
                     type="button"
-                    className="flex items-center transition duration-300 ease-in-out md:border-0 hover:brightness-125"
+                    className="flex items-center transition duration-300 ease-in-out hover:brightness-125 md:border-0"
                   >
                     {chain.hasIcon && (
                       <div
                         style={{ background: chain.iconBackground }}
-                        className="w-5 h-5 overflow-hidden rounded-full md:w-6 md:h-6"
+                        className="h-5 w-5 overflow-hidden rounded-full md:h-6 md:w-6"
                       >
                         {chain.iconUrl && (
                           <img
                             alt={chain.name ?? "Chain icon"}
                             src={chain.iconUrl}
-                            className="w-5 h-5 md:w-6 md:h-6"
+                            className="h-5 w-5 md:h-6 md:w-6"
                           />
                         )}
                       </div>
@@ -91,7 +91,7 @@ const ConnectWallet = () => {
                   <button
                     onClick={openAccountModal}
                     type="button"
-                    className="text-sm text-center transition duration-300 ease-in-out hover:brightness-200 md:text-base"
+                    className="text-center text-sm transition duration-300 ease-in-out hover:brightness-200 md:text-base"
                   >
                     {account.displayName}
                     {!isMobileOrTablet && (

@@ -77,12 +77,12 @@ const MintCard = () => {
             ? Number(
                 formatUnits(
                   (readData[2].result || 0) as bigint, // Mint price
-                  Number(readData[5].result) // Decimals
-                )
+                  Number(readData[5].result), // Decimals
+                ),
               )
             : 20000) /* Default price is 20,000 */ * quantity
         }`,
-        Number(readData && readData[5].result) // Decimals
+        Number(readData && readData[5].result), // Decimals
       ),
     ],
   });
@@ -247,11 +247,11 @@ const MintCard = () => {
         style={{
           boxShadow: "0px 25px 50px -12px rgba(250, 200, 21, 0.26)",
         }}
-        className="flex flex-col items-center justify-center self-center md:self-start rounded-xl w-[320px] md:w-96 bg-[#1B1B1B] md:sticky md:top-24"
+        className="flex w-[320px] flex-col items-center justify-center self-center rounded-xl bg-[#1B1B1B] md:sticky md:top-24 md:w-96 md:self-start"
       >
         <motion.ul
           layout
-          className="flex items-center justify-center w-full bg-[#1B1B1B] rounded-t-xl z-10"
+          className="z-10 flex w-full items-center justify-center rounded-t-xl bg-[#1B1B1B]"
         >
           <TabButton
             tab={tab}
@@ -269,7 +269,7 @@ const MintCard = () => {
 
         <motion.div
           layout="position"
-          className="flex flex-col items-center justify-center gap-6 py-9 md:py-10 md:gap-7 w-[250px]"
+          className="flex w-[250px] flex-col items-center justify-center gap-6 py-9 md:gap-7 md:py-10"
         >
           <Logo />
           <MintedStatus
@@ -287,8 +287,8 @@ const MintCard = () => {
                         Number(
                           formatUnits(
                             readData[2].result as bigint,
-                            Number(readData[5].result)
-                          )
+                            Number(readData[5].result),
+                          ),
                         ) * quantity
                       ).toLocaleString()
                     : ""
@@ -317,7 +317,7 @@ const MintCard = () => {
                           readData[1].result?.toString())
                     }
                     onClick={handleMint}
-                    className="normal-case transition duration-300 ease-in-out border-none rounded shadow-lg !h-[52px] shadow-primary/20 w-44 disabled:ring-primary/25 disabled:ring-1 text-primary-content !text-lg md:w-60 md:btn-md btn-sm hover:bg-primary-focus btn bg-primary"
+                    className="btn-sm btn !h-[52px] w-44 rounded border-none bg-primary !text-lg normal-case text-primary-content shadow-lg shadow-primary/20 transition duration-300 ease-in-out md:btn-md hover:bg-primary-focus disabled:ring-1 disabled:ring-primary/25 md:w-60"
                   >
                     {isLoading ? (
                       <div className="flex items-end">
@@ -336,7 +336,7 @@ const MintCard = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.2, duration: 0.5 }}
-                    className="text-sm font-semibold text-center md:text-lg text-primary"
+                    className="text-center text-sm font-semibold text-primary md:text-lg"
                   >
                     Please connect your wallet <br />
                     to mint
@@ -364,7 +364,7 @@ const MintCard = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
-                className="w-[222.32px] h-[52px] relative"
+                className="relative h-[52px] w-[222.32px]"
               >
                 <CrossmintPayButton
                   collectionId="c010a7fa-c555-49c8-8a93-acec95b30b2c"

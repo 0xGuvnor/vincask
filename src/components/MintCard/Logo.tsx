@@ -10,7 +10,7 @@ const Logo = () => {
   return (
     <motion.div
       layout
-      className="relative w-44 h-[108px] ml-[2.51995555px] md:w-60 md:h-[148px] md:ml-0"
+      className="relative ml-[2.51995555px] h-[108px] w-44 md:ml-0 md:h-[148px] md:w-60"
     >
       <Image
         src={logoUrl}

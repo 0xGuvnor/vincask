@@ -21,14 +21,14 @@ const MobileMenu = () => {
   }, [show]);
 
   return (
-    <div className="z-50 flex items-center justify-start shrink-0 md:hidden">
+    <div className="z-50 flex shrink-0 items-center justify-start md:hidden">
       <Menu>
         {({ open }) => {
           setShow(open);
 
           return (
             <>
-              <Menu.Button className="focus:outline-none -translate-x-1.5">
+              <Menu.Button className="-translate-x-1.5 focus:outline-none">
                 <Hamburger size={20} label="Show navigation" toggled={open} />
               </Menu.Button>
               <AnimatePresence>{open && <MenuDropdown />}</AnimatePresence>

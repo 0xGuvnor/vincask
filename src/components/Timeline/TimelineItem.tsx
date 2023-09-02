@@ -8,18 +8,18 @@ interface Props {
 
 const TimelineItem = ({ date, title, description }: Props) => {
   return (
-    <div className="flex flex-col space-y-4 md:space-y-6 md:max-w-[285px]">
+    <div className="flex flex-col space-y-4 md:max-w-[285px] md:space-y-6">
       <div className="relative flex items-center">
-        <div className="absolute inset-y-0 flex items-center justify-center w-4 -left-5 md:hidden">
-          <div className="bg-gray-500 w-full h-[0.5px]"></div>
+        <div className="absolute inset-y-0 -left-5 flex w-4 items-center justify-center md:hidden">
+          <div className="h-[0.5px] w-full bg-gray-500"></div>
         </div>
         <GoPrimitiveDot className="mr-2 text-primary" />
-        <p className="md:text-lg text-primary">{date}</p>
-        <div className="h-[0.5px] ml-6 bg-gray-500 flex-1 hidden md:block"></div>
+        <p className="text-primary md:text-lg">{date}</p>
+        <div className="ml-6 hidden h-[0.5px] flex-1 bg-gray-500 md:block"></div>
       </div>
 
-      <div className="md:max-w-[275px] space-y-2 md:space-y-3">
-        <h3 className="text-lg font-black text-white md:text-2xl font-header">
+      <div className="space-y-2 md:max-w-[275px] md:space-y-3">
+        <h3 className="font-header text-lg font-black text-white md:text-2xl">
           {title}
         </h3>
         <p className="md:text-lg">{description}</p>

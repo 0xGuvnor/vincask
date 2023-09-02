@@ -27,14 +27,14 @@ const Newsletter = () => {
   return isMounted ? (
     <div className="border-y-[0.5px] border-white/30">
       <Container classNames="md:flex-row justify-between items-center w-full !gap-10">
-        <div className="w-full text-2xl md:text-4xl sm:w-auto">
-          <h3 className="text-white font-header">
+        <div className="w-full text-2xl sm:w-auto md:text-4xl">
+          <h3 className="font-header text-white">
             Want the latest product news and updates? {!isMobile && <br />}Sign
             up for our newsletter.
           </h3>
         </div>
 
-        <div className="relative flex-1 w-full space-y-2 md:space-y-0">
+        <div className="relative w-full flex-1 space-y-2 md:space-y-0">
           <form onSubmit={handleSubmit(onSubmit)} className="flex gap-4">
             <NewsletterInput
               label="Enter your email address"
@@ -46,17 +46,17 @@ const Newsletter = () => {
 
             <button
               type="submit"
-              className="px-4 h-[42px] text-primary-content md:text-lg md:!h-[46px] py-2 normal-case transition-colors duration-300 ease-in-out rounded btn btn-sm bg-primary hover:bg-primary-focus"
+              className="btn-sm btn h-[42px] rounded bg-primary px-4 py-2 normal-case text-primary-content transition-colors duration-300 ease-in-out hover:bg-primary-focus md:!h-[46px] md:text-lg"
             >
               Subscribe
             </button>
           </form>
 
-          <p className="left-0 text-xs md:absolute md:text-sm -bottom-7">
+          <p className="-bottom-7 left-0 text-xs md:absolute md:text-sm">
             We care about your data. Read our{" "}
             <Link
               href="/"
-              className="underline transition-colors duration-300 ease-in-out cursor-pointer hover:text-blue-500 hover:decoration-blue-500 decoration-primary underline-offset-[3px]"
+              className="cursor-pointer underline decoration-primary underline-offset-[3px] transition-colors duration-300 ease-in-out hover:text-blue-500 hover:decoration-blue-500"
             >
               privacy policy
             </Link>

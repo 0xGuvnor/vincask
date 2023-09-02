@@ -13,9 +13,9 @@ const AmountButton = ({ onClick, icon: Icon, isLoading }: Props) => {
       onClick={onClick}
       className={`${
         isLoading ? "cursor-default" : "hover:bg-slate-500/20"
-      } flex items-center justify-center p-1 rounded-full md:p-2`}
+      } flex items-center justify-center rounded-full p-1 md:p-2`}
     >
-      <Icon className="w-6 h-6 md:w-7 md:h-7" />
+      <Icon className="h-6 w-6 md:h-7 md:w-7" />
     </button>
   );
 };

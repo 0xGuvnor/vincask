@@ -19,9 +19,9 @@ const BlurImage = ({ image }: Props) => {
       onLoadingComplete={() => setIsLoading(false)}
       className={`${
         isLoading
-          ? "grayscale blur-lg scale-110"
-          : "grayscale-0 blur-0 scale-100 shadow-2xl shadow-slate-700"
-      } object-cover rounded transition duration-700 ease-in-out`}
+          ? "scale-110 blur-lg grayscale"
+          : "scale-100 shadow-2xl shadow-slate-700 blur-0 grayscale-0"
+      } rounded object-cover transition duration-700 ease-in-out`}
     />
   );
 };

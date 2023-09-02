@@ -26,7 +26,7 @@ const RedeemDialogSelect = ({
   setRedemptionTypeState,
 }: Props) => {
   return (
-    <motion.fieldset layout className="relative flex flex-col w-full">
+    <motion.fieldset layout className="relative flex w-full flex-col">
       <select
         id={id}
         autoComplete="off"
@@ -35,7 +35,7 @@ const RedeemDialogSelect = ({
         onChange={(e) =>
           setRedemptionTypeState(e.target.value as RedemptionType)
         }
-        className="w-full px-4 py-2 md:text-lg text-black border-b-2 rounded peer bg-[#B2B09B] focus:outline-none focus-within:ring-1 focus-within:ring-primary disabled:cursor-not-allowed border-primary"
+        className="peer w-full rounded border-b-2 border-primary bg-[#B2B09B] px-4 py-2 text-black focus-within:ring-1 focus-within:ring-primary focus:outline-none disabled:cursor-not-allowed md:text-lg"
       >
         <option value="" disabled>
           Choose one
@@ -48,12 +48,12 @@ const RedeemDialogSelect = ({
         htmlFor={id}
         className={`${
           redemptionTypeState !== "" && "scale-75"
-        } absolute transition duration-300 ease-in-out origin-bottom-left -translate-y-9 md:text-lg peer-placeholder-shown:text-slate-700 peer-focus:text-base-content peer-placeholder-shown:scale-100 inset-y-2 left-4 peer-placeholder-shown:translate-y-0 cursor-text peer-focus:-translate-y-9`}
+        } absolute inset-y-2 left-4 origin-bottom-left -translate-y-9 cursor-text transition duration-300 ease-in-out peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:text-slate-700 peer-focus:-translate-y-9 peer-focus:text-base-content md:text-lg`}
       >
         {label}
       </label>
       {errors[id] && (
-        <span className="absolute text-xs text-red-500 left-4 -bottom-5 md:-bottom-6 md:text-sm">
+        <span className="absolute -bottom-5 left-4 text-xs text-red-500 md:-bottom-6 md:text-sm">
           {errorMessage}
         </span>
       )}

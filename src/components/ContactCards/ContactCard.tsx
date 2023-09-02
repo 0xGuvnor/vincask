@@ -8,11 +8,11 @@ interface Props {
 
 const ContactCard = ({ type, email, phone }: Props) => {
   return (
-    <div className="flex flex-col px-4 py-2 space-y-4 border-l-[1px] relative border-gray-400 w-56">
-      <h3 className="overflow-x-visible text-lg font-black md:text-2xl font-header">
+    <div className="relative flex w-56 flex-col space-y-4 border-l-[1px] border-gray-400 px-4 py-2">
+      <h3 className="overflow-x-visible font-header text-lg font-black md:text-2xl">
         {type}
       </h3>
-      <span className="absolute -top-4 -left-[1px] w-[1px] h-12 bg-primary z-30"></span>
+      <span className="absolute -left-[1px] -top-4 z-30 h-12 w-[1px] bg-primary"></span>
 
       <div className="space-y-1 md:text-lg">
         <a
