@@ -8,7 +8,7 @@ const AuditorBadge = ({ logo }: Props) => {
   return (
     <div className="select-none self-start rounded-md bg-zinc-800 p-3">
       <div className="flex items-center justify-center gap-2">
-        <span className="text-base-content md:text-lg">Audited by</span>
+        <span className="font-mono text-base-content">Audited by</span>
         <a
           href="https://paladinsec.co/"
           rel="noreferrer"
