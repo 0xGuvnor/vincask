@@ -28,6 +28,14 @@ export const addressVariants: Variants = {
 
 export const faqIconVariants: Variants = {
   hidden: { opacity: 0, rotate: 180 },
-  visible: { opacity: 1, rotate: 0, transition: { duration: 0.3 } },
-  exit: { opacity: 0, rotate: -180, transition: { duration: 0.3 } },
+  visible: {
+    opacity: 1,
+    rotate: 0,
+    transition: { type: "spring", duration: 0.5 },
+  },
+  exit: {
+    opacity: 0,
+    rotate: -180,
+    transition: { type: "spring", duration: 0.5 },
+  },
 };
