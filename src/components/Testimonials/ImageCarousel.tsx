@@ -1,4 +1,5 @@
 import useIsMounted from "@/hooks/useIsMounted";
+import Image from "next/image";
 import Carousel from "react-material-ui-carousel";
 import { useMediaQuery } from "react-responsive";
 
@@ -27,11 +28,17 @@ const ImageCarousel = () => {
       className="w-80 rounded md:w-[500px] 2xl:w-[600px]"
     >
       {images.map((image, id) => (
-        <img
-          key={id}
-          src={image}
-          className="h-full w-full rounded object-cover"
-        />
+        <div key={id} className="relative h-[30rem] md:h-[40rem] xl:h-[45rem]">
+          <Image
+            src={image}
+            alt="Carousel image"
+            fill
+            quality={100}
+            sizes="(max-width: 768px) 95vw, (max-width: 1280px) 50vw, 33vw"
+            priority
+            className="rounded object-cover md:rounded-md"
+          />
+        </div>
       ))}
     </Carousel>
   ) : null;
