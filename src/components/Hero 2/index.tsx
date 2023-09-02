@@ -14,7 +14,7 @@ const Hero2 = ({ heroImage }: Props) => {
 
   return (
     <div className="relative flex items-center justify-center w-screen h-screen">
-      <main className="flex flex-col md:flex-row items-center justify-center h-[85vh]">
+      <main className="flex flex-col md:flex-row items-center justify-center h-[85vh] md:gap-6">
         <motion.section
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
