@@ -9,8 +9,13 @@ import { looksRareUrl, openSeaUrl } from "@/constants/urls";
 import { useNetwork } from "wagmi";
 import useIsMounted from "@/hooks/useIsMounted";
 import { LayoutGroup, motion } from "framer-motion";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
+import { supabase } from "@/lib/supabase";
+import AuditorBadge from "@/components/AuditorBadge";
 
-const NFT = () => {
+const NFT = ({
+  auditorLogo,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { chain } = useNetwork();
   const isMounted = useIsMounted();
 
@@ -31,7 +36,7 @@ const NFT = () => {
           <motion.div
             layout="position"
             transition={{ duration: 0.25 }}
-            className="flex flex-col gap-12 md:gap-16 md:basis-2/3"
+            className="flex flex-col gap-12 md:basis-2/3 md:gap-16"
           >
             <div className="md:max-w-3xl">
               <Heading
@@ -39,6 +44,8 @@ const NFT = () => {
                 subtitle="Mint a Vincask NFT to secure your claim to a bottle of our premium whisky."
               />
             </div>
+
+            <AuditorBadge logo={auditorLogo} />
 
             <p className="md:text-lg">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit.
@@ -81,3 +88,11 @@ const NFT = () => {
   );
 };
 export default NFT;
+
+export const getStaticProps: GetStaticProps<{ auditorLogo: string }> = () => {
+  const {
+    data: { publicUrl: auditorLogo },
+  } = supabase.storage.from("images").getPublicUrl("logos/paladin.svg");
+
+  return { props: { auditorLogo } };
+};
