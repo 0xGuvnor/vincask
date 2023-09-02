@@ -14,12 +14,12 @@ const Hero2 = ({ heroImage }: Props) => {
 
   return (
     <div className="relative flex h-screen w-screen items-center justify-center">
-      <main className="flex h-[85vh] flex-col items-center justify-center md:flex-row md:gap-6">
+      <main className="flex h-[85vh] flex-col items-center justify-center md:flex-row 2xl:gap-6">
         <motion.section
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex max-w-xs flex-col items-center justify-center gap-6 py-8 text-center md:-mt-20 md:max-w-[34.5rem] md:basis-2/3 md:items-start md:gap-14 md:text-left"
+          className="flex max-w-xs flex-col items-center justify-center gap-6 py-8 text-center md:-mt-20 md:max-w-[34.5rem] md:basis-2/3 md:items-start md:gap-14 md:text-left xl:max-w-[28rem]"
         >
           <motion.h1 className="font-header text-4xl font-black md:text-7xl 2xl:text-8xl">
             Crafted with{" "}
