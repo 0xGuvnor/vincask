@@ -10,18 +10,24 @@ export const mobileMenuItemVariants: Variants = {
   closed: { opacity: 0, x: -50, transition: { duration: 0.1 } },
 };
 
-export const redeemNftCardListVariant: Variants = {
+export const redeemNftCardListVariants: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.1 } },
 };
 
-export const redeemNftCardVariant: Variants = {
+export const redeemNftCardVariants: Variants = {
   hidden: { opacity: 0, y: 100 },
   visible: { opacity: 1, y: 0 },
 };
 
-export const addressVariant: Variants = {
+export const addressVariants: Variants = {
   initial: { opacity: 0, y: -50 },
   animate: { opacity: 1, y: 0, transition: { duration: 0.2, delay: 0.25 } },
   exit: { opacity: 0, y: -50, transition: { duration: 0.2 } },
+};
+
+export const faqIconVariants: Variants = {
+  hidden: { opacity: 0, rotate: 180 },
+  visible: { opacity: 1, rotate: 0, transition: { duration: 0.3 } },
+  exit: { opacity: 0, rotate: -180, transition: { duration: 0.3 } },
 };

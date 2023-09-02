@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 import { alchemy } from "@/lib/alchemy";
 import { NftData } from "@/types";
 import { motion } from "framer-motion";
-import { redeemNftCardListVariant } from "@/utils/motionVariants";
 import useActiveChain from "@/hooks/useActiveChain";
+import { redeemNftCardListVariants } from "@/utils/motionVariants";
 
 interface Props {
   defaultImg: string;
@@ -60,7 +60,7 @@ const RedeemedCardSection = ({ defaultImg }: Props) => {
       <motion.ul
         initial="hidden"
         animate="visible"
-        variants={redeemNftCardListVariant}
+        variants={redeemNftCardListVariants}
         className="flex flex-wrap items-center justify-center gap-6 md:gap-8"
       >
         {cardArr.map((initData, id) => (

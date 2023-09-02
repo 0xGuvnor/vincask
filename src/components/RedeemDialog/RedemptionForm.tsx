@@ -4,7 +4,6 @@ import RedeemDialogSelect from "./RedeemDialogSelect";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { RedemptionType } from "@/types";
 import { AnimatePresence, motion } from "framer-motion";
-import { addressVariant } from "@/utils/motionVariants";
 import { supabase } from "@/lib/supabase";
 import { useAccount, useSignMessage } from "wagmi";
 import { toast } from "react-hot-toast";
@@ -12,6 +11,7 @@ import ToastError from "../toasts/ToastError";
 import axios from "axios";
 import { messageToSign } from "@/constants/messageToSign";
 import { useGlobalContext } from "@/context/GlobalContext";
+import { addressVariants } from "@/utils/motionVariants";
 
 interface Props {
   setOpen: Dispatch<SetStateAction<boolean>>;
@@ -193,7 +193,7 @@ const RedemptionForm = ({
               errors={errors}
               required={redemptionTypeState === "delivery" ? true : false}
               maxLength={50}
-              variants={addressVariant}
+              variants={addressVariants}
             />
 
             <div className="flex items-center justify-between gap-10">
@@ -204,7 +204,7 @@ const RedemptionForm = ({
                 type="text"
                 errors={errors}
                 maxLength={50}
-                variants={addressVariant}
+                variants={addressVariants}
               />
 
               <RedeemDialogInput
@@ -217,7 +217,7 @@ const RedemptionForm = ({
                 required={redemptionTypeState === "delivery" ? true : false}
                 minLength={6}
                 maxLength={6}
-                variants={addressVariant}
+                variants={addressVariants}
               />
             </div>
           </>

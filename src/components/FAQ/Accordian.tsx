@@ -1,7 +1,8 @@
+import { faqIconVariants } from "@/utils/motionVariants";
 import * as Accordion from "@radix-ui/react-accordion";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { HiChevronUp } from "react-icons/hi";
+import { HiMinus, HiPlus } from "react-icons/hi";
 
 interface Props {
   faqs:
@@ -26,23 +27,44 @@ const Accordian = ({ faqs }: Props) => {
           >
             <Accordion.Header asChild>
               <motion.div layout className="group flex">
-                <Accordion.Trigger className="flex flex-1 items-center justify-between text-left transition duration-300 ease-in-out group-hover:text-primary-focus">
+                <Accordion.Trigger
+                  className={`${
+                    values?.includes(`item${index}`) && "text-primary"
+                  } flex flex-1 items-center justify-between text-left transition duration-300 ease-in-out group-hover:text-primary-focus`}
+                >
                   <p className="font-semibold md:text-xl">{faq.header}</p>
-                  <motion.div
-                    initial={false}
-                    animate={
-                      values?.includes(`item${index}`)
-                        ? { rotateX: 180 }
-                        : { rotateX: 0 }
-                    }
-                    transition={{ duration: 0.3 }}
-                  >
-                    <HiChevronUp
-                      className={`${
-                        values?.includes(`item${index}`) && "rotate-180x"
-                      } mx-2 h-5 w-5 shrink-0 md:h-7 md:w-7`}
-                    />
-                  </motion.div>
+
+                  <AnimatePresence initial={false} mode="popLayout">
+                    {values?.includes(`item${index}`) ? (
+                      <motion.div
+                        key="opened"
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
+                        variants={faqIconVariants}
+                      >
+                        <HiMinus
+                          className={`${
+                            values?.includes(`item${index}`) && "rotate-180x"
+                          } mx-2 h-5 w-5 shrink-0 md:h-7 md:w-7`}
+                        />
+                      </motion.div>
+                    ) : (
+                      <motion.div
+                        key="closed"
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
+                        variants={faqIconVariants}
+                      >
+                        <HiPlus
+                          className={`${
+                            values?.includes(`item${index}`) && "rotate-180x"
+                          } mx-2 h-5 w-5 shrink-0 md:h-7 md:w-7`}
+                        />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </Accordion.Trigger>
               </motion.div>
             </Accordion.Header>
@@ -58,7 +80,7 @@ const Accordian = ({ faqs }: Props) => {
                       y: 0,
                       transition: { delay: 0.2, duration: 0.3 },
                     }}
-                    exit={{ opacity: 0, y: -25 }}
+                    exit={{ opacity: 0, y: -25, transition: { duration: 0.3 } }}
                     transition={{ ease: "easeInOut" }}
                     className="md:text-xl"
                   >

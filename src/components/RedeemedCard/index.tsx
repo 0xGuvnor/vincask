@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import { SiOpensea } from "react-icons/si";
 import Trait from "./Trait";
 import { motion } from "framer-motion";
-import { redeemNftCardVariant } from "@/utils/motionVariants";
 import { NftData } from "@/types";
 import { useNetwork } from "wagmi";
 import { vincask, vincaskX } from "@/constants/contracts";
 import { openSeaUrl } from "@/constants/urls";
+import { redeemNftCardVariants } from "@/utils/motionVariants";
 
 interface Props {
   nftData: NftData;
@@ -39,7 +39,7 @@ const RedeemedCard = ({ nftData, defaultImg }: Props) => {
 
   return (
     <motion.article
-      variants={redeemNftCardVariant}
+      variants={redeemNftCardVariants}
       className="group w-[250px] rounded-lg bg-gradient-to-b from-[#0070FF] from-30% to-[#15F4EE] to-90% p-2"
     >
       <div className="flex flex-col gap-3">

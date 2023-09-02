@@ -16,7 +16,6 @@ import MobileOverlay from "@/components/MobileOverlay";
 import RedeemCard from "@/components/RedeemCard";
 import { vincask } from "@/constants/contracts";
 import useIsMounted from "@/hooks/useIsMounted";
-import { redeemNftCardListVariant } from "@/utils/motionVariants";
 import { alchemy } from "@/lib/alchemy";
 import { NftData } from "@/types";
 import Link from "next/link";
@@ -31,6 +30,7 @@ import RedeemDialog from "@/components/RedeemDialog";
 import { supabase } from "@/lib/supabase";
 import { useGlobalContext } from "@/context/GlobalContext";
 import useWarnRefresh from "@/hooks/useWarnRefresh";
+import { redeemNftCardListVariants } from "@/utils/motionVariants";
 
 const Redeem = ({
   defaultImg,
@@ -58,7 +58,7 @@ const Redeem = ({
   });
   const [nftDataArr, setNftDataArr] = useState<NftData[]>();
   const [toggleStates, setToggleStates] = useState<boolean[]>(
-    new Array(numNfts).fill(false)
+    new Array(numNfts).fill(false),
   );
   const allTogglesOn = toggleStates.every((state) => state);
   const toggleCount = toggleStates.reduce((accumulator, currentValue) => {
@@ -289,14 +289,14 @@ const Redeem = ({
                 small: { width: "auto" },
               }}
               transition={{ duration: 0.75 }}
-              className={`sticky inset-x-0 top-14 md:top-20 flex flex-col md:flex-row items-center md:items-start justify-between self-center transition duration-300 ease-in-out z-30 max-w-xl md:min-w-[395px]`}
+              className={`sticky inset-x-0 top-14 z-30 flex max-w-xl flex-col items-center justify-between self-center transition duration-300 ease-in-out md:top-20 md:min-w-[395px] md:flex-row md:items-start`}
             >
               <motion.div
                 className={`${
-                  expand && "bg-base-100/75 backdrop-blur-sm shadow-2xl"
-                } flex flex-col items-center justify-center w-[230px] md:w-[320px] rounded-b-lg bg-base-100 px-4 py-2 gap-1 md:gap-2`}
+                  expand && "bg-base-100/75 shadow-2xl backdrop-blur-sm"
+                } flex w-[230px] flex-col items-center justify-center gap-1 rounded-b-lg bg-base-100 px-4 py-2 md:w-[320px] md:gap-2`}
               >
-                <span className="text-lg md:text-2xl h-12x">
+                <span className="h-12x text-lg md:text-2xl">
                   Selected{" "}
                   <span className="font-mono">
                     {`[`}
@@ -360,7 +360,7 @@ const Redeem = ({
               <motion.ul
                 initial="hidden"
                 animate="visible"
-                variants={redeemNftCardListVariant}
+                variants={redeemNftCardListVariants}
                 className="flex flex-wrap items-center justify-center gap-6 md:gap-8"
               >
                 {toggleStates.map((checked, id) => (
@@ -379,10 +379,10 @@ const Redeem = ({
                 ))}
               </motion.ul>
             ) : (
-              <div className="text-lg text-center md:text-2xl text-primary">
+              <div className="text-center text-lg text-primary md:text-2xl">
                 <Link
                   href="/nft"
-                  className="underline transition duration-300 ease-in-out underline-offset-2 decoration-2 hover:text-primary-focus"
+                  className="underline decoration-2 underline-offset-2 transition duration-300 ease-in-out hover:text-primary-focus"
                 >
                   Mint an NFT
                 </Link>{" "}
@@ -395,7 +395,7 @@ const Redeem = ({
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="self-center text-lg md:text-2xl text-primary"
+            className="self-center text-lg text-primary md:text-2xl"
           >
             Please connect your wallet to view your NFTs
           </motion.h1>
