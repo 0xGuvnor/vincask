@@ -45,8 +45,9 @@ const RedeemedCard = ({ nftData, defaultImg }: Props) => {
       <div className="flex flex-col gap-3">
         <figure className="flex items-center justify-center overflow-hidden rounded-md bg-black/70 shadow-2xl">
           <Image
-            alt="NFT Picture"
             src={pic || defaultImg}
+            alt="NFT Picture"
+            quality={100}
             width={200}
             height={200}
             className="p-6 transition-all duration-300 ease-in-out group-hover:scale-110"
