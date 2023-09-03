@@ -15,25 +15,30 @@ const Hero2 = ({ heroImage }: Props) => {
   return (
     <div className="relative flex h-screen w-screen items-center justify-center">
       <main className="flex h-[85vh] flex-col items-center justify-center md:flex-row 2xl:gap-6">
-        <motion.section
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex max-w-xs flex-col items-center justify-center gap-6 py-8 text-center md:-mt-20 md:max-w-[34.5rem] md:basis-2/3 md:items-start md:gap-14 md:text-left xl:max-w-[28rem] 2xl:max-w-[35rem]"
-        >
-          <motion.h1 className="font-header text-4xl font-black md:text-7xl 2xl:text-8xl">
+        <section className="flex max-w-xs flex-col items-center justify-center gap-6 py-8 text-center md:-mt-20 md:max-w-[34.5rem] md:basis-2/3 md:items-start md:gap-14 md:text-left xl:max-w-[28rem] 2xl:max-w-[35rem]">
+          <motion.h1
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.75 }}
+            className="font-header text-4xl font-black md:text-7xl 2xl:text-8xl"
+          >
             Crafted with{" "}
             <span className="bg-gradient-to-tr from-accent to-primary bg-clip-text text-transparent">
               passion & precision
             </span>
           </motion.h1>
-          <h2 className="text-lg md:text-2xl">
+          <motion.h2
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 1 }}
+            className="text-lg md:text-2xl"
+          >
             Our whisky embodies the essence of <br />
             dedication and distinction.
-          </h2>
+          </motion.h2>
 
           <CtaButtons />
-        </motion.section>
+        </section>
 
         <motion.div
           initial={{
@@ -43,7 +48,7 @@ const Hero2 = ({ heroImage }: Props) => {
             zIndex: -10,
           }}
           animate={{ opacity: 1, x: 0, y: 0, zIndex: -10 }}
-          transition={{ duration: 1, delay: 1 }}
+          transition={{ duration: 1 }}
           className="relative h-full w-80 md:w-[34.5rem]"
         >
           <Image

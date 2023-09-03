@@ -1,9 +1,15 @@
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const CtaButtons = () => {
   return (
-    <div className="flex flex-col items-center justify-center md:flex-row md:gap-16">
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 1.25 }}
+      className="flex flex-col items-center justify-center md:flex-row md:gap-16"
+    >
       <button type="button" className="focus:outline-none">
         <Link
           href="/nft"
@@ -28,7 +34,7 @@ const CtaButtons = () => {
           <span className="absolute inset-x-0 bottom-2.5 h-0.5 w-full origin-left scale-0 bg-primary transition duration-300 ease-in-out group-hover:scale-100"></span>
         </Link>
       </button>
-    </div>
+    </motion.div>
   );
 };
 export default CtaButtons;
