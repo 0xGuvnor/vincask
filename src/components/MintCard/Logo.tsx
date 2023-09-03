@@ -17,6 +17,7 @@ const Logo = () => {
         alt="Vincask logo"
         quality={100}
         priority
+        draggable={false}
         sizes="(max-width: 768px) 50vw, 33vw"
         fill
         className="object-contain"

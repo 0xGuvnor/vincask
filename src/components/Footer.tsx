@@ -38,6 +38,7 @@ const Footer = () => {
                     priority
                     fill
                     sizes="(max-width: 768px) 50vw, 33vw"
+                    draggable={false}
                     className="object-contain"
                   />
                 </div>

@@ -31,6 +31,7 @@ const Navbar = () => {
           <Image
             src={logoUrl}
             alt="Vincask logo"
+            draggable={false}
             fill
             priority
             sizes="20vw"
