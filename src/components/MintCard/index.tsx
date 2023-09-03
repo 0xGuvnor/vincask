@@ -178,6 +178,14 @@ const MintCard = () => {
             }
           });
         }
+      } else {
+        setQuantity((prev) => {
+          if (prev === maxValue - currentValue) {
+            return prev;
+          } else {
+            return prev + 1;
+          }
+        });
       }
     }
   };
