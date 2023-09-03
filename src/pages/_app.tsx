@@ -43,23 +43,23 @@ const spaceMono = Space_Mono({
   preload: true,
 });
 
-const { chains, publicClient } = configureChains(
+const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
     // mainnet,
     sepolia,
-    // goerli,
+    goerli,
   ],
   [
     alchemyProvider({
-      apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID!,
+      apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID || "",
     }),
-    infuraProvider({ apiKey: process.env.NEXT_PUBLIC_INFURA_ID! }),
+    infuraProvider({ apiKey: process.env.NEXT_PUBLIC_INFURA_ID || "" }),
     publicProvider(),
   ],
 );
 
 const { connectors } = getDefaultWallets({
-  appName: "Vincask NFT",
+  appName: "VinCask NFT",
   // projectId: "YOUR_PROJECT_ID",
   chains,
 });
@@ -68,6 +68,7 @@ const wagmiConfig = createConfig({
   autoConnect: true,
   connectors,
   publicClient,
+  webSocketPublicClient,
 });
 
 export default function App({ Component, pageProps }: AppProps) {

@@ -21,6 +21,7 @@ import MintedStatus from "./MintedStatus";
 import TotalPrice from "./TotalPrice";
 import QuantitySelection from "./QuantitySelection";
 import useActiveChain from "@/hooks/useActiveChain";
+import usePublicMintData from "@/hooks/usePublicMintData";
 
 const MintCard = () => {
   const isMounted = useIsMounted();
@@ -29,6 +30,8 @@ const MintCard = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [tab, setTab] = useState<"crypto" | "cc">("crypto");
   const { address, isConnected } = useAccount();
+  const { publicNumMinted, publicPrice, publicStableCoin, publicTotalSupply } =
+    usePublicMintData();
   const vincaskContract = {
     address: vincask.address[activeChain as keyof typeof vincask.address],
     abi: vincask.abi,
@@ -132,24 +135,49 @@ const MintCard = () => {
     let maxValue = 99,
       currentValue = 0;
 
+    if (publicNumMinted && publicTotalSupply) {
+      maxValue = publicTotalSupply;
+      currentValue = publicNumMinted;
+    }
+
     if (readData) {
+      // Override values if wallet is connected
       maxValue = Number(readData[1].result?.toString());
       currentValue = Number(readData[0].result?.toString());
     }
 
-    if (!isLoading && readData) {
-      if (readData[0].result?.toString() === readData[1].result?.toString()) {
-        // If total minted == total supply
-        // Do nothing
-        return;
-      } else {
-        setQuantity((prev) => {
-          if (prev === maxValue - currentValue) {
-            return prev;
+    if (!isLoading) {
+      if (publicNumMinted && publicTotalSupply) {
+        if (publicNumMinted === publicTotalSupply) {
+          // If total minted == total supply
+          // Do nothing
+
+          return;
+        } else if (readData) {
+          if (
+            readData[0].result?.toString() === readData[1].result?.toString()
+          ) {
+            // If total minted == total supply
+            // Do nothing
+            return;
           } else {
-            return prev + 1;
+            setQuantity((prev) => {
+              if (prev === maxValue - currentValue) {
+                return prev;
+              } else {
+                return prev + 1;
+              }
+            });
           }
-        });
+        } else {
+          setQuantity((prev) => {
+            if (prev === maxValue - currentValue) {
+              return prev;
+            } else {
+              return prev + 1;
+            }
+          });
+        }
       }
     }
   };
@@ -273,27 +301,55 @@ const MintCard = () => {
         >
           <Logo />
           <MintedStatus
-            numMinted={readData ? readData[0].result?.toString() : "..."}
-            totalMinted={readData ? readData[1].result?.toString() : "..."}
+            numMinted={
+              isConnected
+                ? readData
+                  ? readData[0].result?.toString()
+                  : "..."
+                : publicNumMinted
+                ? publicNumMinted.toString()
+                : "..."
+            }
+            totalMinted={
+              isConnected
+                ? readData
+                  ? `${readData[1].result}`
+                  : "..."
+                : publicTotalSupply
+                ? `${publicTotalSupply}`
+                : "..."
+            }
           />
 
           {tab === "crypto" && (
             <motion.div layout="size" className="contents">
               <TotalPrice
-                dataLoaded={!!readData}
+                dataLoaded={!!readData || (!!publicStableCoin && !!publicPrice)}
                 price={
-                  readData && readData[2].result
-                    ? (
-                        Number(
-                          formatUnits(
-                            readData[2].result as bigint,
-                            Number(readData[5].result),
-                          ),
-                        ) * quantity
-                      ).toLocaleString()
+                  isConnected
+                    ? readData && readData[2].result
+                      ? (
+                          Number(
+                            formatUnits(
+                              readData[2].result as bigint,
+                              Number(readData[5].result),
+                            ),
+                          ) * quantity
+                        ).toLocaleString()
+                      : ""
+                    : publicPrice
+                    ? publicPrice
                     : ""
                 }
-                currency={readData ? readData[3].result?.toString() : ""}
+                currency={
+                  isConnected
+                    ? readData
+                      ? readData[3].result?.toString()
+                      : ""
+                    : publicStableCoin
+                    ? publicStableCoin
+                    : ""
+                }
               />
 
               {isConnected ? (
@@ -349,7 +405,8 @@ const MintCard = () => {
           {tab === "cc" && (
             <motion.div layout="size" className="contents">
               <TotalPrice
-                dataLoaded={!!readData}
+                dataLoaded={!!readData || (!!publicStableCoin && !!publicPrice)}
+                // Hardcoded price, remember to update!!
                 price={`${(10 * quantity).toLocaleString()}`}
                 currency={"USD"}
               />
