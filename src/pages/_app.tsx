@@ -46,7 +46,7 @@ const spaceMono = Space_Mono({
 const { chains, publicClient } = configureChains(
   [
     // mainnet,
-    sepolia,
+    // sepolia,
     goerli,
   ],
   [
@@ -55,7 +55,7 @@ const { chains, publicClient } = configureChains(
     }),
     infuraProvider({ apiKey: process.env.NEXT_PUBLIC_INFURA_ID! }),
     publicProvider(),
-  ]
+  ],
 );
 
 const { connectors } = getDefaultWallets({
@@ -94,7 +94,7 @@ export default function App({ Component, pageProps }: AppProps) {
                   spaceMono.variable
                 } ${
                   environment === "development" && "debug-screens"
-                } flex flex-col justify-between min-h-screen `}
+                } flex min-h-screen flex-col justify-between `}
               >
                 <Toaster
                   toastOptions={{
