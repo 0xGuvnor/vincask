@@ -3,7 +3,7 @@ import { VscQuote } from "react-icons/vsc";
 const Testimony = () => {
   return (
     <div className="max-w-4xl flex-1 md:ml-20 md:px-0">
-      <h1 className="px-4 font-header text-3xl font-black text-white md:px-0 md:text-5xl 2xl:text-6xl">
+      <h1 className="px-4 font-header text-3xl font-black md:px-0 md:text-5xl 2xl:text-6xl">
         Craftsmanship You Can{" "}
         <span className="relative">
           Taste

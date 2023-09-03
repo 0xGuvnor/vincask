@@ -5,7 +5,7 @@ interface Props {
 
 const MintedStatus = ({ numMinted, totalMinted }: Props) => {
   return (
-    <div className="text-lg font-bold text-white md:text-2xl">
+    <div className="text-lg font-bold md:text-2xl">
       <span>{numMinted}</span> / <span>{totalMinted}</span> <span>minted</span>
     </div>
   );

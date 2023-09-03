@@ -21,8 +21,10 @@ const CompanyCard = ({ name, website, image, description }: Props) => {
       </div>
 
       <div className="flex-1 space-y-4 rounded-b bg-gray-300/30 p-4">
-        <div className="flex items-center justify-between text-white">
-          <h3 className="font-header text-lg md:text-2xl">{name}</h3>
+        <div className="flex items-center justify-between">
+          <h3 className="font-header text-lg font-semibold text-white md:text-2xl">
+            {name}
+          </h3>
           <a
             href={website}
             rel="noreferrer"
