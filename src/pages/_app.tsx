@@ -46,8 +46,8 @@ const spaceMono = Space_Mono({
 const { chains, publicClient } = configureChains(
   [
     // mainnet,
-    // sepolia,
-    goerli,
+    sepolia,
+    // goerli,
   ],
   [
     alchemyProvider({
