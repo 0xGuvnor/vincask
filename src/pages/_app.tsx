@@ -46,14 +46,14 @@ const spaceMono = Space_Mono({
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
     // mainnet,
-    sepolia,
     goerli,
+    sepolia,
   ],
   [
     alchemyProvider({
-      apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID || "",
+      apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID!,
     }),
-    infuraProvider({ apiKey: process.env.NEXT_PUBLIC_INFURA_ID || "" }),
+    infuraProvider({ apiKey: process.env.NEXT_PUBLIC_INFURA_ID! }),
     publicProvider(),
   ],
 );

@@ -1,39 +1,27 @@
-import { supabase } from "@/lib/supabase";
-import { GetStaticProps, InferGetServerSidePropsType } from "next";
-import Image from "next/image";
+import { usdc, vincask } from "@/constants/contracts";
+import usePublicMintData from "@/hooks/usePublicMintData";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import { useEffect, useState } from "react";
+import { formatUnits, fromHex } from "viem";
+import { useNetwork, useWebSocketPublicClient } from "wagmi";
 
-const Test = ({
-  publicUrl,
-  data,
-}: InferGetServerSidePropsType<typeof getStaticProps>) => {
-  console.log(data);
+const Test = ({}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const { chain } = useNetwork();
+  const { chainId, publicNumMinted, publicTotalSupply } = usePublicMintData();
+
+  // console.log(chain?.name);
+
   return (
-    <div className="flex h-screen items-center justify-center">
-      <div className="flex items-center justify-center gap-2 rounded-md bg-gray-400 p-4">
-        <span className="text-2xl text-black">Audited by</span>
-        <Image
-          src={publicUrl}
-          alt="test"
-          width={200}
-          height={200}
-          quality={100}
-          className="rounded bg-violet-200 px-2 py-1 shadow-xl"
-        />
+    <div className="flex h-screen flex-col items-center justify-center">
+      <div>chain: {chainId}</div>
+      <div className="flex gap-2">
+        <div>{publicNumMinted}</div>/ <div>{publicTotalSupply}</div>
       </div>
     </div>
   );
 };
 export default Test;
 
-export const getStaticProps: GetStaticProps = async () => {
-  const {
-    data: { publicUrl },
-  } = supabase.storage.from("images").getPublicUrl("logos/paladin.svg");
-
-  const { data } = await supabase
-    .from("Affiliated_Companies")
-    .select("*")
-    .eq("company_name", "Seng Lee");
-
-  return { props: { publicUrl, data } };
+export const getServerSideProps: GetServerSideProps = async () => {
+  return { props: {} };
 };

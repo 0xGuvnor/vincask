@@ -5,21 +5,27 @@ import { useWebSocketPublicClient } from "wagmi";
 
 const usePublicMintData = () => {
   const publicClient = useWebSocketPublicClient();
+  const [chainId, setChainId] = useState<number>();
   const [publicNumMinted, setPublicNumMinted] = useState<number>();
   const [publicTotalSupply, setPublicTotalSupply] = useState<number>();
   const [publicPrice, setPublicPrice] = useState<string>();
   const [publicStableCoin, setPublicStableCoin] = useState<string>();
 
   useEffect(() => {
-    let chainId: number | undefined;
     (async () => {
-      chainId = await publicClient?.getChainId();
+      setChainId(await publicClient?.getChainId());
     })();
+
+    const vincaskAddress =
+      chainId === 5 ? vincask.address.goerli : vincask.address.sepolia;
+
+    const stableCoinAddress =
+      chainId === 5 ? usdc.address.goerli : usdc.address.sepolia;
 
     (async () => {
       const numMinted = await publicClient?.call({
         data: "0x25d112a9",
-        to: chainId === 5 ? vincask.address.goerli : vincask.address.sepolia,
+        to: vincaskAddress,
       });
 
       if (numMinted?.data) {
@@ -30,7 +36,7 @@ const usePublicMintData = () => {
     (async () => {
       const totalSupply = await publicClient?.call({
         data: "0xc4e41b22",
-        to: chainId === 5 ? vincask.address.goerli : vincask.address.sepolia,
+        to: vincaskAddress,
       });
 
       if (totalSupply?.data) {
@@ -41,7 +47,7 @@ const usePublicMintData = () => {
     (async () => {
       const price = await publicClient?.call({
         data: "0xa7f93ebd",
-        to: chainId === 5 ? vincask.address.goerli : vincask.address.sepolia,
+        to: vincaskAddress,
       });
 
       if (price?.data) {
@@ -56,15 +62,21 @@ const usePublicMintData = () => {
     (async () => {
       const stableCoin = await publicClient?.call({
         data: "0x06fdde03",
-        to: chainId === 5 ? usdc.address.goerli : usdc.address.sepolia,
+        to: stableCoinAddress,
       });
 
       if (stableCoin?.data) {
         setPublicStableCoin(fromHex(stableCoin.data, "string"));
       }
     })();
-  }, []);
+  }, [chainId]);
 
-  return { publicNumMinted, publicTotalSupply, publicPrice, publicStableCoin };
+  return {
+    chainId,
+    publicNumMinted,
+    publicTotalSupply,
+    publicPrice,
+    publicStableCoin,
+  };
 };
 export default usePublicMintData;
