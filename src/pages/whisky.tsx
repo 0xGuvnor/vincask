@@ -1,10 +1,14 @@
 import Container from "@/components/Container";
+import Heading from "@/components/Heading";
 import MobileOverlay from "@/components/MobileOverlay";
+import WhiskyGrid from "@/components/WhiskyGrid";
+import getWhiskyPageProps from "@/utils/helpers/getWhiskyPageProps";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Head from "next/head";
 
-const Whisky = () => {
+const Whisky = ({ images }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <div>
+    <>
       <Head>
         <title>Vincask - Whisky</title>
         <meta name="description" content="Vincask Pte Ltd" />
@@ -14,8 +18,21 @@ const Whisky = () => {
 
       <MobileOverlay />
 
-      <Container classNames="italic">product placeholder</Container>
-    </div>
+      <Container classNames="">
+        <Heading
+          title={`Sip. Savour. Indulge. Repeat.`}
+          subtitle="Your journey to whisky excellence starts here."
+        />
+
+        <WhiskyGrid images={images} />
+      </Container>
+    </>
   );
 };
 export default Whisky;
+
+export const getStaticProps: GetStaticProps = () => {
+  const images = getWhiskyPageProps();
+
+  return { props: { images } };
+};

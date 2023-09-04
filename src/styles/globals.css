@@ -10,6 +10,6 @@
 
 @layer components {
   .socialIcon {
-    @apply cursor-pointer rounded-xl hover:bg-black/30 p-2 transition duration-300 ease-in-out h-8 w-8 md:h-10 md:w-10;
+    @apply h-8 w-8 cursor-pointer rounded-xl p-2 transition duration-300 ease-in-out hover:bg-black/30 md:h-10 md:w-10;
   }
 }
