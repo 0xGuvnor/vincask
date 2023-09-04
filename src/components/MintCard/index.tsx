@@ -135,58 +135,39 @@ const MintCard = () => {
     let maxValue = 99,
       currentValue = 0;
 
-    if (publicNumMinted && publicTotalSupply) {
-      maxValue = publicTotalSupply;
-      currentValue = publicNumMinted;
-    }
-
-    if (readData) {
-      // Override values if wallet is connected
-      maxValue = Number(readData[1].result?.toString());
-      currentValue = Number(readData[0].result?.toString());
+    if (isConnected) {
+      if (readData) {
+        // Override values if wallet is connected
+        maxValue = Number(readData[1].result?.toString());
+        currentValue = Number(readData[0].result?.toString());
+      }
+    } else {
+      if (publicNumMinted && publicTotalSupply) {
+        maxValue = publicTotalSupply;
+        currentValue = publicNumMinted;
+      }
     }
 
     if (!isLoading) {
       if (publicNumMinted && publicTotalSupply) {
         if (publicNumMinted === publicTotalSupply) {
-          // If total minted == total supply
-          // Do nothing
-
           return;
-        } else if (readData) {
-          if (
-            readData[0].result?.toString() === readData[1].result?.toString()
-          ) {
-            // If total minted == total supply
-            // Do nothing
-            return;
-          } else {
-            setQuantity((prev) => {
-              if (prev === maxValue - currentValue) {
-                return prev;
-              } else {
-                return prev + 1;
-              }
-            });
-          }
-        } else {
-          setQuantity((prev) => {
-            if (prev === maxValue - currentValue) {
-              return prev;
-            } else {
-              return prev + 1;
-            }
-          });
         }
-      } else {
-        setQuantity((prev) => {
-          if (prev === maxValue - currentValue) {
-            return prev;
-          } else {
-            return prev + 1;
-          }
-        });
       }
+
+      if (readData && readData[0].result && readData[1].result) {
+        if (readData[0].result.toString() === readData[1].result.toString()) {
+          return;
+        }
+      }
+
+      setQuantity((prev) => {
+        if (prev === maxValue - currentValue) {
+          return prev;
+        } else {
+          return prev + 1;
+        }
+      });
     }
   };
 
