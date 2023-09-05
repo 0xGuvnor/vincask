@@ -10,10 +10,10 @@ import { useRouter } from "next/router";
 
 export const menuItems = [
   { title: "Home", link: "/" },
-  { title: "About", link: "/about" },
   { title: "Whisky", link: "/whisky" },
   { title: "NFT", link: "/nft" },
   { title: "Redeem", link: "/redeem" },
+  { title: "About", link: "/about" },
   // { title: "Our Team", link: "/#team" },
   // { title: "FAQs", link: "/#faq" },
   { title: "Contact", link: "/contact" },
