@@ -2,10 +2,14 @@ import Container from "../Container";
 import ImageCarousel from "./ImageCarousel";
 import Testimony from "./Testimony";
 
-const Testimonials = () => {
+interface Props {
+  carouselImages: string[];
+}
+
+const Testimonials = ({ carouselImages }: Props) => {
   return (
     <Container classNames="md:flex-row items-center justify-center">
-      <ImageCarousel />
+      <ImageCarousel carouselImages={carouselImages} />
       <Testimony />
     </Container>
   );

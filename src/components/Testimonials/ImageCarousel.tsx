@@ -3,15 +3,11 @@ import Image from "next/image";
 import Carousel from "react-material-ui-carousel";
 import { useMediaQuery } from "react-responsive";
 
-const images = [
-  "/carousel/promo0.jpeg",
-  "/carousel/promo1.jpg",
-  "/carousel/promo2.jpg",
-  "/carousel/promo3.jpg",
-  "/carousel/promo4.jpg",
-];
+interface Props {
+  carouselImages: string[];
+}
 
-const ImageCarousel = () => {
+const ImageCarousel = ({ carouselImages }: Props) => {
   const isMobileOrTablet = useMediaQuery({ maxWidth: 768 });
   const isMounted = useIsMounted();
 
@@ -27,7 +23,7 @@ const ImageCarousel = () => {
       }}
       className="w-80 rounded md:w-[500px] 2xl:w-[600px]"
     >
-      {images.map((image, id) => (
+      {carouselImages.map((image, id) => (
         <div key={id} className="relative h-[30rem] md:h-[40rem] xl:h-[45rem]">
           <Image
             src={image}

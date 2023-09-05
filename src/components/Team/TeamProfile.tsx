@@ -14,6 +14,8 @@ const TeamProfile = ({ name, title, src, description }: Props) => {
         src={src}
         alt="Company founder photo"
         width={500}
+        priority
+        quality={100}
         height={500}
         className="h-[375px] w-[300px] rounded-xl object-cover"
       />

@@ -14,7 +14,7 @@ const Hero2 = ({ heroImage }: Props) => {
 
   return (
     <div className="relative flex h-screen w-screen items-center justify-center">
-      <main className="flex h-[85vh] flex-col items-center justify-center md:flex-row 2xl:gap-6">
+      <main className="flex h-[85vh] flex-col items-center justify-center md:flex-row lg:px-10 2xl:gap-6">
         <section className="flex max-w-xs flex-col items-center justify-center gap-6 py-8 text-center md:-mt-20 md:max-w-[34.5rem] md:basis-2/3 md:items-start md:gap-14 md:text-left xl:max-w-[28rem] 2xl:max-w-[35rem]">
           <motion.h1
             initial={{ opacity: 0, y: 50 }}
