@@ -3,6 +3,7 @@ import Step from "./Step";
 import { GiAnvilImpact, GiPartyPopper } from "react-icons/gi";
 import { FiPackage } from "react-icons/fi";
 import { useEffect, useState } from "react";
+import Gallery from "./Gallery";
 
 const Steps = () => {
   const [selected, setSelected] = useState(() => {
@@ -45,19 +46,23 @@ const Steps = () => {
   }, []);
 
   return (
-    <section className="space-y-6 md:space-y-10">
-      {stepsArray.map((step, id) => (
-        <Step
-          key={id}
-          {...step}
-          id={id}
-          selected={selected}
-          onClick={handleClick}
-          icon={step.icon}
-          step={step.title}
-          description={step.description}
-        />
-      ))}
+    <section className="flex flex-col lg:flex-row">
+      <div className="space-y-6 md:space-y-10 lg:w-1/2">
+        {stepsArray.map((step, id) => (
+          <Step
+            key={id}
+            {...step}
+            id={id}
+            selected={selected}
+            onClick={handleClick}
+            icon={step.icon}
+            step={step.title}
+            description={step.description}
+          />
+        ))}
+      </div>
+
+      <Gallery />
     </section>
   );
 };
