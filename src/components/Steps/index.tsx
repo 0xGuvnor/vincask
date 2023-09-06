@@ -11,6 +11,7 @@ const Steps = () => {
       false,
     );
     startingSelectedArray[0] = true;
+
     return startingSelectedArray;
   });
 
@@ -40,7 +41,7 @@ const Steps = () => {
 
         return newSelected;
       });
-    }, 5000);
+    }, 8000);
 
     return () => clearInterval(intervalId);
   }, []);
