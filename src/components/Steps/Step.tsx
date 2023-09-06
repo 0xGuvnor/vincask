@@ -41,7 +41,7 @@ const Step = ({
 
         <Icon className="z-20 h-10 w-10 shrink-0 rounded-md bg-primary p-1.5 text-primary-content shadow-2xl md:h-12 md:w-12 md:p-2" />
 
-        <div>
+        <div className="select-none">
           <h2 className="text-lg text-white md:text-xl">{step}</h2>
           <p className="md:text-lg">{description}</p>
         </div>
