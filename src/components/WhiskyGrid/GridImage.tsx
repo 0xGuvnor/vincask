@@ -33,7 +33,7 @@ const GridImage = ({ big, image, description }: Props) => {
           isLoading ? "scale-125 blur-lg" : "scale-105"
         } object-cover object-center transition-all delay-100 duration-300 ease-in-out group-hover:scale-100 group-hover:blur-md group-hover:brightness-50 group-hover:grayscale`}
       />
-      <span className="font-outline-2 absolute inset-2 flex cursor-default select-none items-center justify-center opacity-0 transition duration-300 ease-in-out group-hover:opacity-100 group-hover:delay-100 md:text-lg">
+      <span className="absolute inset-2 flex cursor-default select-none items-center justify-center opacity-0 transition duration-300 ease-in-out group-hover:opacity-100 group-hover:delay-100 md:text-lg">
         {description}
       </span>
     </div>
