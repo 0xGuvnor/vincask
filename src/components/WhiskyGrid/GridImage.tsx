@@ -14,7 +14,7 @@ const GridImage = ({ big, image, description }: Props) => {
     <div
       className={`${
         big ? "col-span-2 row-span-2" : "h-40 md:h-52"
-      } group relative overflow-hidden rounded`}
+      } group relative overflow-hidden rounded-lg`}
     >
       <Image
         src={image}

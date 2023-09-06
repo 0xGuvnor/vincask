@@ -74,7 +74,7 @@ const RedeemedCard = ({ nftData, defaultImg }: Props) => {
           )}
         </header>
 
-        <section className="flex flex-wrap justify-between gap-1">
+        <section className="grid grid-cols-2 gap-1">
           <Trait
             attribute="Taste"
             level={Math.floor(Math.random() * 30 + 70)}

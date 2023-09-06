@@ -21,7 +21,7 @@ const Whisky = ({ images }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
       <Container classNames="">
         <Heading
-          title={`Sip. Savour. Indulge. Repeat.`}
+          title="Sip. Savour. Indulge. Repeat."
           subtitle="Your journey to whisky excellence starts here."
         />
 

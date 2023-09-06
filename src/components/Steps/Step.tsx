@@ -1,5 +1,6 @@
 import { IconType } from "react-icons";
 import { motion } from "framer-motion";
+import { ReactNode } from "react";
 
 interface Props {
   id: number;
@@ -7,7 +8,7 @@ interface Props {
   onClick: (id: number) => void;
   icon: IconType;
   step: string;
-  description: string;
+  description: string | ReactNode;
   isLast?: boolean;
 }
 

@@ -16,27 +16,27 @@ const Gallery = ({ selected }: Props) => {
   }, [selected]);
 
   return (
-    <section className="flex-1">
+    <section className="flex-1 lg:col-span-2">
       <AnimatePresence initial={false} mode="popLayout">
         <motion.div
           key={id}
-          initial={{ opacity: 0, scaleX: 0 }}
+          initial={{ opacity: 0, rotateY: -90 }}
           animate={{
             opacity: 1,
-            scaleX: 1,
+            rotateY: 0,
             transition: {
-              delay: 0.3,
-              duration: 0.3,
+              delay: 0.4,
+              duration: 0.4,
             },
           }}
           exit={{
             opacity: 0,
-            scaleX: 0,
-            transition: { duration: 0.3 },
+            rotateY: 90,
+            transition: { duration: 0.4 },
           }}
-          className="z-20 flex h-full items-center justify-center bg-red-500"
+          className="z-20 flex h-52 items-center justify-center rounded-lg bg-red-500 lg:h-full"
         >
-          {id}
+          {`Step ${id + 1} Image`}
         </motion.div>
       </AnimatePresence>
     </section>
