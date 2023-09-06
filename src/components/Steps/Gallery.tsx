@@ -34,7 +34,7 @@ const Gallery = ({ selected }: Props) => {
             rotateY: 90,
             transition: { duration: 0.4 },
           }}
-          className="z-20 flex h-52 items-center justify-center rounded-lg bg-red-500 lg:h-full"
+          className="z-20 flex h-52 items-center justify-center rounded-md bg-red-500 lg:h-full lg:rounded-lg"
         >
           {`Step ${id + 1} Image`}
         </motion.div>

@@ -26,12 +26,12 @@ const Step = ({
       onClick={() => onClick(id)}
       className={`${
         selected[id] ? "bg-gray-800" : "hover:bg-gray-700"
-      } relative cursor-pointer rounded-lg p-4 transition duration-500 ease-in-out`}
+      } relative cursor-pointer rounded-md p-4 transition duration-500 ease-in-out lg:rounded-lg`}
     >
       {selected[id] && (
         <motion.div
           layoutId="selection"
-          className="absolute -inset-0 -z-10 rounded-lg bg-gray-800"
+          className="absolute -inset-0 -z-10 rounded-md bg-gray-800 lg:rounded-lg"
         ></motion.div>
       )}
 
@@ -40,7 +40,7 @@ const Step = ({
           <div className="absolute -bottom-[4.5rem] left-5 z-10 h-[calc(100%+2rem)] w-1 -translate-x-[0.125rem] bg-primary shadow-2xl md:-bottom-20 md:left-6"></div>
         )}
 
-        <Icon className="z-20 h-10 w-10 shrink-0 rounded-md bg-primary p-1.5 text-primary-content shadow-2xl md:h-12 md:w-12 md:p-2" />
+        <Icon className="z-20 h-10 w-10 shrink-0 rounded bg-primary p-1.5 text-primary-content shadow-2xl md:h-12 md:w-12 md:p-2 lg:rounded-md" />
 
         <div className="select-none">
           <h2 className="text-lg text-white md:text-xl">{step}</h2>
