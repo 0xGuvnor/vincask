@@ -30,8 +30,8 @@ const GridImage = ({ big, image, description }: Props) => {
         draggable={false}
         onLoadingComplete={() => setIsLoading(false)}
         className={`${
-          isLoading ? "scale-110 blur-lg" : "scale-100"
-        } object-cover object-center transition delay-100 duration-300 ease-in-out group-hover:scale-95 group-hover:blur-md group-hover:brightness-50 group-hover:grayscale`}
+          isLoading ? "scale-125 blur-lg" : "scale-105"
+        } object-cover object-center transition delay-100 duration-300 ease-in-out group-hover:scale-100 group-hover:blur-md group-hover:brightness-50 group-hover:grayscale`}
       />
       <span className="font-outline-2 absolute inset-2 flex cursor-default select-none items-center justify-center opacity-0 transition duration-300 ease-in-out group-hover:opacity-100 group-hover:delay-100 md:text-lg">
         {description}
