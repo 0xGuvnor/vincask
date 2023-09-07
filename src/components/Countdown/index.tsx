@@ -62,7 +62,7 @@ const Countdown = ({ year, month, date, hour, minute }: Props) => {
         minutes: remainingMinutes,
         seconds: remainingSeconds,
       });
-    }, 1000);
+    }, 100);
 
     return () => clearInterval(intervalId);
   }, []);

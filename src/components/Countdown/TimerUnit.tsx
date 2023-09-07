@@ -4,7 +4,7 @@ interface Props {
 }
 
 const TimerUnit = ({ unit, value }: Props) => {
-  return unit === "weeks" && value! <= 0 ? null : (
+  return (
     <div className="flex flex-col items-center justify-center rounded bg-primary p-2 text-primary-content">
       <span className="countdown font-mono text-3xl md:text-5xl">
         {/* @ts-ignore */}
