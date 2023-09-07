@@ -59,8 +59,8 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
 );
 
 const { connectors } = getDefaultWallets({
-  appName: "VinCask NFT",
-  // projectId: "YOUR_PROJECT_ID",
+  appName: "VinCask",
+  projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID,
   chains,
 });
 

@@ -1,4 +1,4 @@
-import { GoPrimitiveDot } from "react-icons/go";
+import { GoDotFill } from "react-icons/go";
 
 interface Props {
   date: string;
@@ -13,7 +13,7 @@ const TimelineItem = ({ date, title, description }: Props) => {
         <div className="absolute inset-y-0 -left-5 flex w-4 items-center justify-center md:hidden">
           <div className="h-[0.5px] w-full bg-gray-500"></div>
         </div>
-        <GoPrimitiveDot className="mr-2 text-primary" />
+        <GoDotFill className="mr-2 text-primary" />
         <p className="text-primary md:text-lg">{date}</p>
         <div className="ml-6 hidden h-[0.5px] flex-1 bg-gray-500 md:block"></div>
       </div>
