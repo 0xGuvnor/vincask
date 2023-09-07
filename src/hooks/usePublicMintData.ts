@@ -69,7 +69,7 @@ const usePublicMintData = () => {
         setPublicStableCoin(fromHex(stableCoin.data, "string"));
       }
     })();
-  }, [chainId]);
+  }, [chainId, publicClient]);
 
   return {
     chainId,
