@@ -1,3 +1,4 @@
+import Countdown from "@/components/Countdown";
 import { usdc, vincask } from "@/constants/contracts";
 import usePublicMintData from "@/hooks/usePublicMintData";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
@@ -6,17 +7,9 @@ import { formatUnits, fromHex } from "viem";
 import { useNetwork, useWebSocketPublicClient } from "wagmi";
 
 const Test = ({}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const { chain } = useNetwork();
-  const { chainId, publicNumMinted, publicTotalSupply } = usePublicMintData();
-
-  // console.log(chain?.name);
-
   return (
     <div className="flex h-screen flex-col items-center justify-center">
-      <div>chain: {chainId}</div>
-      <div className="flex gap-2">
-        <div>{publicNumMinted}</div>/ <div>{publicTotalSupply}</div>
-      </div>
+      <Countdown year={2023} month={11} date={25} hour={0} minute={0} />
     </div>
   );
 };

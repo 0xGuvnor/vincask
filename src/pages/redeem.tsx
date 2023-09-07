@@ -32,6 +32,8 @@ import { supabase } from "@/lib/supabase";
 import { useGlobalContext } from "@/context/GlobalContext";
 import useWarnRefresh from "@/hooks/useWarnRefresh";
 import { redeemNftCardListVariants } from "@/utils/motionVariants";
+import useCountdownDifference from "@/hooks/useCountdownDifference";
+import Countdown from "@/components/Countdown";
 
 const Redeem = ({
   defaultImg,
@@ -50,6 +52,14 @@ const Redeem = ({
     address: vincask.address[activeChain as keyof typeof vincask.address],
     abi: vincask.abi,
   };
+  const countdownTimer = {
+    year: 2023,
+    month: 11,
+    date: 25,
+    hour: 0,
+    minute: 0,
+  };
+  const timeDifference = useCountdownDifference(countdownTimer);
 
   const { data: numNfts } = useContractRead({
     ...vincaskContract,
@@ -123,16 +133,6 @@ const Redeem = ({
 
   const { data: redeemTxReceipt, isLoading: redeemIsLoading } =
     useWaitForTransaction({ hash: redeemData?.hash });
-
-  const handleRedeem = () => {
-    setIsLoading(true);
-
-    if (isApproved) {
-      redeem();
-    } else {
-      approve?.();
-    }
-  };
 
   useEffect(() => {
     if (isApproveError) {
@@ -282,7 +282,12 @@ const Redeem = ({
           subtitle="Swap your NFT to redeem our exclusive whisky on a one-to-one basis."
         />
 
-        {isConnected ? (
+        {timeDifference > 0 ? (
+          <div className="self-center">
+            <h3 className="text-xl md:text-3xl">Redemption opens in</h3>
+            <Countdown {...countdownTimer} />
+          </div>
+        ) : isConnected ? (
           <>
             <motion.div
               ref={expandRef}
@@ -325,20 +330,6 @@ const Redeem = ({
                 </div>
               </motion.div>
 
-              {/* <button
-                disabled={!numNfts || isLoading || selectedNfts.length === 0}
-                onClick={handleRedeem}
-                className="w-40 text-lg normal-case shadow-lg disabled:bg-base-100 disabled:ring-primary/25 disabled:ring-1 btn btn-primary shadow-primary/20"
-              >
-                {isLoading ? (
-                  <div className="flex items-end">
-                    <span>Redeeming</span>
-                    <span className="loading loading-dots loading-xs"></span>
-                  </div>
-                ) : (
-                  <span>Redeem</span>
-                )}
-              </button> */}
               <RedeemDialog
                 numNfts={numNfts}
                 selectedNfts={selectedNfts.length}
@@ -349,16 +340,6 @@ const Redeem = ({
                 approve={approve}
               />
             </motion.div>
-
-            {/* <ul className="flex flex-wrap items-center justify-center gap-2">
-              {selectedNfts
-                .sort((a, b) => a - b)
-                .map((nft, id) => (
-                  <div key={id} className="px-2 text-black bg-white">
-                    {nft}
-                  </div>
-                ))}
-            </ul> */}
 
             {numNfts || numNfts! >= 1 ? (
               <motion.ul
@@ -406,7 +387,7 @@ const Redeem = ({
         )}
       </Container>
 
-      {isConnected && (
+      {timeDifference <= 0 && isConnected && (
         <Container>
           <RedeemedCardSection defaultImg={defaultImg} />
         </Container>
