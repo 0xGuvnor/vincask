@@ -30,7 +30,7 @@ const About = ({
         <div className="flex min-h-[105vh] flex-col items-center justify-start space-y-8 md:min-h-[75vh] md:flex-row md:justify-center md:space-x-8 md:space-y-0">
           <div className="mt-6 flex flex-col space-y-2 text-center md:mt-0 md:min-w-[40rem] md:max-w-3xl md:space-y-4 md:text-left">
             <h1 className="font-header text-3xl font-black md:text-5xl">
-              Our mission is to redefine the world of whisky and art
+              Our Mission Is to Redefine the World of Whisky and Art
             </h1>
             <h3 className="text-lg md:max-w-xl md:text-xl">
               We believe in pushing boundaries, intertwining the realms of
