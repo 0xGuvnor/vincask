@@ -6,6 +6,7 @@ import {
   useContractWrite,
   usePrepareContractWrite,
   useWaitForTransaction,
+  useWalletClient,
 } from "wagmi";
 import { motion } from "framer-motion";
 import axios from "axios";
@@ -38,6 +39,7 @@ const Redeem = ({
   const isMounted = useIsMounted();
   const activeChain = useActiveChain();
   const { address, isConnected } = useAccount();
+  const { data: walletClient } = useWalletClient();
   const expandRef = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
   const [expand, setExpand] = useState(false);
@@ -53,6 +55,7 @@ const Redeem = ({
     ...vincaskContract,
     functionName: "balanceOf",
     args: [address || "0x"],
+    account: walletClient?.account,
     watch: true,
     select: (data) => Number(data),
   });
@@ -88,6 +91,7 @@ const Redeem = ({
     ...vincaskContract,
     functionName: "isApprovedForAll",
     args: [address || "0x0", vincask.address.sepolia],
+    account: walletClient?.account,
   });
 
   const { config: approveConfig } = usePrepareContractWrite({
@@ -258,7 +262,7 @@ const Redeem = ({
     }
 
     setToggleStates(new Array(numNfts).fill(false));
-  }, [address, numNfts]);
+  }, [address, numNfts, activeChain]);
 
   if (!isMounted) return null;
   return (
