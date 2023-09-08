@@ -279,7 +279,7 @@ const MintCard = () => {
               transition={{ duration: 0.25 }}
               className="absolute inset-0 z-30 flex select-none flex-col items-center justify-center rounded-xl bg-transparent/60 backdrop-blur-sm"
             >
-              <Countdown {...countdownTimer} title="Minting begins in..." />
+              <Countdown {...countdownTimer} title="Mint begins in..." />
             </motion.div>
           )}
         </AnimatePresence>
