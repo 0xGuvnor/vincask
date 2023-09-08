@@ -11,7 +11,7 @@ const DesktopMenu = () => {
         <Link
           key={menuItem.link}
           href={menuItem.link}
-          className="group relative cursor-pointer hover:text-primary-content hover:delay-100"
+          className="group relative cursor-pointer text-sm hover:text-primary-content hover:delay-100 lg:text-base"
         >
           <span
             className={`${

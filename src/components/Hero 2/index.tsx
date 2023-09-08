@@ -19,8 +19,8 @@ const Hero2 = ({ heroImage }: Props) => {
 
   return (
     <div className="relative flex h-screen w-screen items-center justify-center">
-      <main className="flex h-[85vh] flex-col items-center justify-center md:flex-row lg:px-10 xl:gap-6">
-        <section className="relative flex max-w-xs flex-col items-center justify-center gap-6 py-8 text-center md:-mt-20 md:max-w-[34.5rem] md:basis-2/3 md:items-start md:gap-14 md:text-left xl:max-w-[28rem] 2xl:max-w-[35rem]">
+      <main className="flex h-[85vh] flex-col items-center justify-center md:flex-row md:px-8 lg:px-10 xl:gap-6">
+        <section className="flex max-w-xs flex-col items-center justify-center gap-6 py-8 text-center md:-mt-20 md:max-w-none md:basis-2/3 md:items-start md:gap-14 md:text-left lg:max-w-[34.5rem] xl:max-w-[28rem] 2xl:max-w-[35rem]">
           {timeDifference > 0 && (
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -35,7 +35,7 @@ const Hero2 = ({ heroImage }: Props) => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.75 }}
-            className="font-header text-4xl font-black md:text-7xl 2xl:text-8xl"
+            className="font-header text-4xl font-black md:text-5xl lg:text-7xl 2xl:text-8xl"
           >
             Crafted with{" "}
             <span className="bg-gradient-to-tr from-accent to-primary bg-clip-text text-transparent">
@@ -64,7 +64,7 @@ const Hero2 = ({ heroImage }: Props) => {
           }}
           animate={{ opacity: 1, x: 0, y: 0, zIndex: -10 }}
           transition={{ duration: 1 }}
-          className="relative h-full w-80 md:w-[34.5rem]"
+          className="relative h-full w-80 md:h-5/6 lg:h-full lg:w-[34.5rem]"
         >
           <Image
             src={heroImage}
