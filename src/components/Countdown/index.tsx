@@ -7,6 +7,7 @@ interface Props {
   date: number;
   hour: number;
   minute: number;
+  title?: string;
 }
 
 type CountdownTimer = {
@@ -17,7 +18,7 @@ type CountdownTimer = {
   seconds: number;
 };
 
-const Countdown = ({ year, month, date, hour, minute }: Props) => {
+const Countdown = ({ year, month, date, hour, minute, title }: Props) => {
   const [timer, setTimer] = useState<CountdownTimer>();
 
   // Specify the date and time in UTC+8 (Singapore Standard Time)
@@ -72,7 +73,11 @@ const Countdown = ({ year, month, date, hour, minute }: Props) => {
   }, []);
 
   return (
-    <section className="grid auto-cols-max grid-flow-col gap-3 text-center md:gap-5">
+    <section className="relative grid auto-cols-max grid-flow-col gap-3 text-center md:gap-5">
+      <h3 className="absolute -top-8 left-0 text-xl md:-top-11 md:text-3xl">
+        {title}
+      </h3>
+
       <TimerUnit unit="weeks" value={timer?.weeks} />
       <TimerUnit unit="days" value={timer?.days} />
       <TimerUnit unit="hours" value={timer?.hours} />

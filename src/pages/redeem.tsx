@@ -283,9 +283,8 @@ const Redeem = ({
         />
 
         {timeDifference > 0 ? (
-          <div className="self-center">
-            <h3 className="text-xl md:text-3xl">Redemption opens in</h3>
-            <Countdown {...countdownTimer} />
+          <div className="mt-4 self-center md:mt-8">
+            <Countdown {...countdownTimer} title="Redemption opens in" />
           </div>
         ) : isConnected ? (
           <>

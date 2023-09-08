@@ -22,6 +22,9 @@ import TotalPrice from "./TotalPrice";
 import QuantitySelection from "./QuantitySelection";
 import useActiveChain from "@/hooks/useActiveChain";
 import usePublicMintData from "@/hooks/usePublicMintData";
+import useCountdownDifference from "@/hooks/useCountdownDifference";
+import Countdown from "../Countdown";
+import { useGlobalContext } from "@/context/GlobalContext";
 
 const MintCard = () => {
   const isMounted = useIsMounted();
@@ -40,6 +43,8 @@ const MintCard = () => {
     address: usdc.address[activeChain as keyof typeof vincask.address],
     abi: usdc.abi,
   };
+  const { mintCountdownTimer: countdownTimer } = useGlobalContext();
+  const timeDifference = useCountdownDifference(countdownTimer);
 
   const { data: readData } = useContractReads({
     contracts: [
@@ -264,8 +269,21 @@ const MintCard = () => {
         style={{
           boxShadow: "0px 25px 50px -12px rgba(250, 200, 21, 0.26)",
         }}
-        className="flex w-[320px] flex-col items-center justify-center self-center rounded-xl bg-[#1B1B1B] md:sticky md:top-24 md:w-96 md:self-start"
+        className="relative flex w-[320px] flex-col items-center justify-center self-center rounded-xl bg-[#1B1B1B] md:sticky md:top-24 md:w-96 md:self-start"
       >
+        <AnimatePresence initial={false}>
+          {timeDifference > 0 && (
+            <motion.div
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="absolute inset-0 z-30 flex select-none flex-col items-center justify-center rounded-xl bg-transparent/60 backdrop-blur-sm"
+            >
+              <Countdown {...countdownTimer} title="Minting begins in" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         <motion.ul
           layout
           className="z-10 flex w-full items-center justify-center rounded-t-xl bg-[#1B1B1B]"
