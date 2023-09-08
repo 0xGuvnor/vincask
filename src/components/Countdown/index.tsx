@@ -11,7 +11,7 @@ interface Props {
 }
 
 type CountdownTimer = {
-  weeks: number;
+  weeks?: number;
   days: number;
   hours: number;
   minutes: number;
@@ -56,13 +56,22 @@ const Countdown = ({ year, month, date, hour, minute, title }: Props) => {
       const remainingHours = hoursDifference % hoursInDay;
       const remainingDays = daysDifference % daysInWeek;
 
-      setTimer({
-        weeks: weeksDifference,
-        days: remainingDays,
-        hours: remainingHours,
-        minutes: remainingMinutes,
-        seconds: remainingSeconds,
-      });
+      if (weeksDifference < 14) {
+        setTimer({
+          days: daysDifference,
+          hours: remainingHours,
+          minutes: remainingMinutes,
+          seconds: remainingSeconds,
+        });
+      } else {
+        setTimer({
+          weeks: weeksDifference,
+          days: remainingDays,
+          hours: remainingHours,
+          minutes: remainingMinutes,
+          seconds: remainingSeconds,
+        });
+      }
     };
 
     handleTimeDifference();
@@ -73,16 +82,31 @@ const Countdown = ({ year, month, date, hour, minute, title }: Props) => {
   }, []);
 
   return (
-    <section className="relative grid auto-cols-max grid-flow-col gap-3 text-center md:gap-5">
-      <h3 className="absolute -top-8 left-0 text-xl md:-top-11 md:text-3xl">
+    <section className="relative grid auto-cols-max grid-flow-col gap-1 rounded-md bg-accent p-1.5 text-center md:gap-2 md:p-2">
+      <h3 className="absolute -top-7 left-0 text-lg md:-top-10 md:text-3xl">
         {title}
       </h3>
 
-      <TimerUnit unit="weeks" value={timer?.weeks} />
-      <TimerUnit unit="days" value={timer?.days} />
-      <TimerUnit unit="hours" value={timer?.hours} />
-      <TimerUnit unit="minutes" value={timer?.minutes} />
-      <TimerUnit unit="seconds" value={timer?.seconds} />
+      <TimerUnit
+        unit={timer?.weeks! === 1 ? "week" : "weeks"}
+        value={timer?.weeks}
+      />
+      <TimerUnit
+        unit={timer?.days! === 1 ? "day" : "days"}
+        value={timer?.days}
+      />
+      <TimerUnit
+        unit={timer?.hours! === 1 ? "hour" : "hours"}
+        value={timer?.hours}
+      />
+      <TimerUnit
+        unit={timer?.minutes! === 1 ? "minute" : "minutes"}
+        value={timer?.minutes}
+      />
+      <TimerUnit
+        unit={timer?.seconds! === 1 ? "second" : "seconds"}
+        value={timer?.seconds}
+      />
     </section>
   );
 };

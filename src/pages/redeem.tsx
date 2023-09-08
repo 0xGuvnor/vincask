@@ -284,7 +284,7 @@ const Redeem = ({
 
         {timeDifference > 0 ? (
           <div className="mt-4 self-center md:mt-8">
-            <Countdown {...countdownTimer} title="Redemption opens in" />
+            <Countdown {...countdownTimer} title="Redemption opens in..." />
           </div>
         ) : isConnected ? (
           <>

@@ -3,6 +3,9 @@ import CtaButtons from "./CtaButtons";
 import useScroll from "@/hooks/useScroll";
 import { AnimatePresence, motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
+import Countdown from "../Countdown";
+import { useGlobalContext } from "@/context/GlobalContext";
+import useCountdownDifference from "@/hooks/useCountdownDifference";
 
 interface Props {
   heroImage: string;
@@ -11,11 +14,23 @@ interface Props {
 const Hero2 = ({ heroImage }: Props) => {
   const isScrolled = useScroll(25);
   const isMobileOrTablet = useMediaQuery({ maxWidth: 768 });
+  const { mintCountdownTimer } = useGlobalContext();
+  const timeDifference = useCountdownDifference(mintCountdownTimer);
 
   return (
     <div className="relative flex h-screen w-screen items-center justify-center">
-      <main className="flex h-[85vh] flex-col items-center justify-center md:flex-row lg:px-10 2xl:gap-6">
-        <section className="flex max-w-xs flex-col items-center justify-center gap-6 py-8 text-center md:-mt-20 md:max-w-[34.5rem] md:basis-2/3 md:items-start md:gap-14 md:text-left xl:max-w-[28rem] 2xl:max-w-[35rem]">
+      <main className="flex h-[85vh] flex-col items-center justify-center md:flex-row lg:px-10 xl:gap-6">
+        <section className="relative flex max-w-xs flex-col items-center justify-center gap-6 py-8 text-center md:-mt-20 md:max-w-[34.5rem] md:basis-2/3 md:items-start md:gap-14 md:text-left xl:max-w-[28rem] 2xl:max-w-[35rem]">
+          {timeDifference > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+            >
+              <Countdown {...mintCountdownTimer} title="Mint launching in..." />
+            </motion.div>
+          )}
+
           <motion.h1
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
