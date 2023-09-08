@@ -18,7 +18,7 @@ const CtaButtons = () => {
           <span className="absolute h-0 w-0 rounded-full bg-primary-focus transition-all duration-500 ease-out group-hover:h-56 group-hover:w-56"></span>
           <span className="absolute inset-0 -mt-1 h-full w-full rounded-lg bg-gradient-to-b from-transparent via-transparent to-[#ED9121] opacity-30"></span>
           <span className="relative text-base font-semibold text-primary-content md:text-xl">
-            Mint Now
+            Mint
           </span>
         </Link>
       </button>
