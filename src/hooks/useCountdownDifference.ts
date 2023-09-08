@@ -18,35 +18,20 @@ const useCountdownDifference = ({ year, month, date, hour, minute }: Props) => {
   );
 
   useEffect(() => {
-    let secondIntervalId: NodeJS.Timer;
-
-    const initialIntervalId = setInterval(() => {
+    const handleTimeDifference = () => {
       const currentTime = new Date();
       const currentSgTime = new Date(
         currentTime.getTime() + singaporeTimeZoneOffset * 60000, // Convert minutes to milliseconds
       );
 
       setTimeDifference(endTime.getTime() - currentSgTime.getTime());
-    }, 1);
-
-    const timeoutId = setTimeout(() => {
-      clearInterval(initialIntervalId);
-
-      secondIntervalId = setInterval(() => {
-        const currentTime = new Date();
-        const currentSgTime = new Date(
-          currentTime.getTime() + singaporeTimeZoneOffset * 60000, // Convert minutes to milliseconds
-        );
-
-        setTimeDifference(endTime.getTime() - currentSgTime.getTime());
-      }, 1000);
-    }, 500);
-
-    return () => {
-      clearInterval(initialIntervalId);
-      clearTimeout(timeoutId);
-      clearInterval(secondIntervalId);
     };
+
+    handleTimeDifference();
+
+    const intervalId = setInterval(handleTimeDifference, 1000);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   return timeDifference;

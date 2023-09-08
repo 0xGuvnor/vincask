@@ -34,7 +34,7 @@ const Countdown = ({ year, month, date, hour, minute }: Props) => {
   const daysInWeek = 7;
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
+    const handleTimeDifference = () => {
       const currentTime = new Date();
       const currentSgTime = new Date(
         currentTime.getTime() + singaporeTimeZoneOffset * 60000, // Convert minutes to milliseconds
@@ -62,7 +62,11 @@ const Countdown = ({ year, month, date, hour, minute }: Props) => {
         minutes: remainingMinutes,
         seconds: remainingSeconds,
       });
-    }, 100);
+    };
+
+    handleTimeDifference();
+
+    const intervalId = setInterval(handleTimeDifference, 1000);
 
     return () => clearInterval(intervalId);
   }, []);
