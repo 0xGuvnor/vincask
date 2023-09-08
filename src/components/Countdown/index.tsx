@@ -82,7 +82,7 @@ const Countdown = ({ year, month, date, hour, minute, title }: Props) => {
   }, []);
 
   return (
-    <section className="relative grid auto-cols-max grid-flow-col gap-1 rounded-md bg-accent p-1.5 text-center md:gap-2 md:p-2">
+    <section className="relative grid auto-cols-max grid-flow-col gap-1.5 rounded-md bg-accent p-1.5 text-center md:gap-2 md:p-2">
       <h3 className="absolute -top-6 left-0 text-base md:-top-7 md:text-xl">
         {title}
       </h3>

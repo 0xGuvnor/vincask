@@ -13,7 +13,7 @@ const TimerUnit = ({ unit, value }: Props) => {
     //   <span className="text-sm md:text-base">{unit}</span>
     // </div>
 
-    <div className="relative flex flex-col items-center justify-center rounded">
+    <div className="relative flex flex-col items-center justify-center rounded border border-primary">
       <span className="countdown z-0 text-5xl font-bold text-primary lg:text-6xl lg:font-extrabold">
         {/* @ts-ignore */}
         <span style={{ "--value": value }}></span>
