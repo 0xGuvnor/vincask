@@ -68,7 +68,7 @@ const Hero2 = ({ heroImage }: Props) => {
           }}
           animate={{ opacity: 1, x: 0, y: 0, zIndex: -10 }}
           transition={{ duration: 1 }}
-          className="relative h-full w-80 md:h-5/6 lg:h-full lg:w-[34.5rem]"
+          className="relative h-full w-80 shrink md:h-5/6 md:w-96 lg:h-full lg:w-[34.5rem]"
         >
           <Image
             src={heroImage}
