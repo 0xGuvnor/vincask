@@ -30,7 +30,7 @@ const Team = ({ teamImages }: Props) => {
           subtitle="Vincask was founded by a group of whisky enthusiasts with a passion for Irish whisky and a vision to bring the finest and rarest bottles to customers worldwide."
         />
 
-        <div className="flex flex-col gap-10 md:flex-row md:justify-between">
+        <div className="flex flex-col gap-10 md:flex-row md:justify-between md:gap-24">
           {teamImages.map((image, id) => (
             <TeamProfile
               key={id}
