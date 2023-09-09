@@ -29,7 +29,7 @@ const ContactForm = () => {
       onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col gap-8 md:gap-10"
     >
-      <div className="flex gap-8 md:gap-16">
+      <div className="flex gap-8 md:gap-16 2xl:gap-32">
         <ContactFormInput
           id="firstName"
           label="First Name*"
@@ -46,7 +46,7 @@ const ContactForm = () => {
           errors={errors}
         />
       </div>
-      <div className="flex gap-8 md:gap-16">
+      <div className="flex gap-8 md:gap-16 2xl:gap-32">
         <ContactFormInput
           id="email"
           label="Email*"
