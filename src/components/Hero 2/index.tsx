@@ -23,7 +23,7 @@ const Hero2 = ({ heroImage }: Props) => {
         <section
           className={`${
             timeDifference <= 0 && "md:-mt-20"
-          } flex max-w-xs flex-col items-center justify-center gap-6 py-8 text-center md:max-w-none md:basis-2/3 md:items-start md:gap-14 md:text-left lg:max-w-[34.5rem] xl:max-w-[28rem] 2xl:max-w-[35rem]`}
+          } flex max-w-xs flex-col items-center justify-center gap-6 py-8 text-center md:max-w-[27rem] md:basis-2/3 md:items-start md:gap-14 md:text-left lg:max-w-[34.5rem] xl:max-w-[28rem] 2xl:max-w-[35rem]`}
         >
           {timeDifference > 0 && (
             <motion.div
