@@ -32,7 +32,7 @@ const NFT = ({
       <MobileOverlay />
 
       <LayoutGroup>
-        <Container classNames="md:!flex-row flex-col-reverse">
+        <Container classNames="lg:!flex-row flex-col-reverse">
           <motion.div
             layout="position"
             transition={{ duration: 0.25 }}
