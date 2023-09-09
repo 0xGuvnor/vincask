@@ -10,7 +10,7 @@ interface Props {
 
 const CompanyCard = ({ name, website, image, description }: Props) => {
   return (
-    <div className="flex flex-col md:first:mr-16 md:last:ml-16">
+    <div className="flex flex-col">
       <div className="relative h-36 w-full rounded-t bg-gray-800/75 md:h-40">
         <Image
           src={image}
