@@ -36,7 +36,7 @@ const TextArea = ({
         {label}
       </label>
       {errors[id] && (
-        <span className="absolute -bottom-[22px] left-0 ml-4 text-red-500 md:-bottom-[26px] md:text-lg">
+        <span className="absolute -bottom-[22px] left-0 ml-4 text-red-500 md:-bottom-[1.7rem] md:text-lg">
           {errorMessage}
         </span>
       )}
