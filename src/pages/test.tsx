@@ -1,20 +1,46 @@
-import Countdown from "@/components/Countdown";
-import { usdc, vincask } from "@/constants/contracts";
-import usePublicMintData from "@/hooks/usePublicMintData";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { useEffect, useState } from "react";
-import { formatUnits, fromHex } from "viem";
-import { useNetwork, useWebSocketPublicClient } from "wagmi";
+import { useEffect, useRef, useState } from "react";
+import { FaFacebookF, FaGithub, FaTelegram } from "react-icons/fa";
+import { FaInstagram, FaSnapchat } from "react-icons/fa6";
+import { RiTwitterXFill } from "react-icons/ri";
 
-const Test = ({}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const list = [
+  RiTwitterXFill,
+  FaFacebookF,
+  FaInstagram,
+  FaGithub,
+  FaSnapchat,
+  FaTelegram,
+];
+
+const Test = () => {
+  const [boxWidth, setBoxWidth] = useState<number>(1);
+  const ref = useRef<HTMLUListElement>(null);
+
+  useEffect(() => {
+    if (!ref.current) return;
+
+    setBoxWidth(ref.current.clientWidth);
+  }, []);
+
   return (
-    <div className="flex h-screen flex-col items-center justify-center">
-      <Countdown year={2023} month={11} date={25} hour={0} minute={0} />
+    <div className="flex h-screen w-screen flex-col items-center justify-center">
+      <div className={`overflow-hidden w-[${boxWidth}px] flex`}>
+        <ul ref={ref} className="animate-marquee flex">
+          {list.map((Icon, id) => (
+            <li key={id} className="mr-8">
+              <Icon size={28} />
+            </li>
+          ))}
+        </ul>
+        <ul className="animate-marquee flex">
+          {list.map((Icon, id) => (
+            <li key={id} className="mr-8">
+              <Icon size={28} />
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
 export default Test;
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  return { props: {} };
-};

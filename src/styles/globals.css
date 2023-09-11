@@ -12,4 +12,33 @@
   .socialIcon {
     @apply h-8 w-8 cursor-pointer rounded-xl p-2 transition duration-300 ease-in-out hover:bg-black/30 md:h-10 md:w-10;
   }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 3s linear infinite;
+  }
+
+  @keyframes logo {
+    0% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .animate-logo {
+    animation: logo 3s linear infinite;
+  }
 }
