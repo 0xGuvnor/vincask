@@ -59,20 +59,4 @@
   .animate-marquee {
     animation: marquee 3s linear infinite;
   }
-
-  @keyframes logo {
-    0% {
-      opacity: 0;
-    }
-    25% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-
-  .animate-logo {
-    animation: logo 3s linear infinite;
-  }
 }

@@ -1,17 +1,18 @@
 import { motion } from "framer-motion";
-import { Dispatch, SetStateAction } from "react";
+import { useRouter } from "next/router";
 
 interface Props {
-  tab: "crypto" | "cc";
-  setTab: Dispatch<SetStateAction<"crypto" | "cc">>;
+  tab: string | string[] | undefined;
   tabValue: "crypto" | "cc";
   title: string;
 }
 
-const TabButton = ({ tab, setTab, tabValue, title }: Props) => {
+const TabButton = ({ tab, tabValue, title }: Props) => {
+  const router = useRouter();
+
   return (
     <li
-      onClick={() => setTab(tabValue)}
+      onClick={() => router.push(`?method=${tabValue}`)}
       className="relative w-1/2 cursor-pointer select-none py-3 text-center transition duration-300 ease-in-out first:rounded-tl-xl last:rounded-tr-xl hover:bg-zinc-800 md:py-4"
     >
       <p className="text-sm md:text-base">{title}</p>

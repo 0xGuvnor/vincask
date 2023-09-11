@@ -25,13 +25,15 @@ import usePublicMintData from "@/hooks/usePublicMintData";
 import useCountdownDifference from "@/hooks/useCountdownDifference";
 import Countdown from "../Countdown";
 import { useGlobalContext } from "@/context/GlobalContext";
+import { useRouter } from "next/router";
 
 const MintCard = () => {
   const isMounted = useIsMounted();
+  const router = useRouter();
+  const query = router.query;
   const activeChain = useActiveChain();
   const [quantity, setQuantity] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
-  const [tab, setTab] = useState<"crypto" | "cc">("crypto");
   const { address, isConnected } = useAccount();
   const { publicNumMinted, publicPrice, publicStableCoin, publicTotalSupply } =
     usePublicMintData();
@@ -272,16 +274,19 @@ const MintCard = () => {
         className="relative flex w-[320px] flex-col items-center justify-center self-center rounded-xl bg-[#1B1B1B] md:sticky md:top-24 md:w-96 md:self-start"
       >
         <AnimatePresence initial={false}>
-          {timeDifference > 0 && (
-            <motion.div
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              className="absolute inset-0 z-30 flex select-none flex-col items-center justify-center rounded-xl bg-transparent/60 backdrop-blur-sm"
-            >
-              <Countdown {...countdownTimer} title="Mint begins in..." />
-            </motion.div>
-          )}
+          {
+            // timeDifference > 0
+            timeDifference < 0 && (
+              <motion.div
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                className="absolute inset-0 z-30 flex select-none flex-col items-center justify-center rounded-xl bg-transparent/60 backdrop-blur-sm"
+              >
+                <Countdown {...countdownTimer} title="Mint begins in..." />
+              </motion.div>
+            )
+          }
         </AnimatePresence>
 
         <motion.ul
@@ -289,14 +294,12 @@ const MintCard = () => {
           className="z-10 flex w-full items-center justify-center rounded-t-xl bg-[#1B1B1B]"
         >
           <TabButton
-            tab={tab}
-            setTab={setTab}
+            tab={query.method || "crypto"}
             tabValue="crypto"
             title="Buy with crypto"
           />
           <TabButton
-            tab={tab}
-            setTab={setTab}
+            tab={query.method}
             tabValue="cc"
             title="Buy with credit card"
           />
@@ -328,7 +331,7 @@ const MintCard = () => {
             }
           />
 
-          {tab === "crypto" && (
+          {(query.method === "crypto" || query.method === undefined) && (
             <motion.div layout="size" className="contents">
               <TotalPrice
                 dataLoaded={!!readData || (!!publicStableCoin && !!publicPrice)}
@@ -409,7 +412,7 @@ const MintCard = () => {
             </motion.div>
           )}
 
-          {tab === "cc" && (
+          {query.method === "cc" && (
             <motion.div layout="size" className="contents">
               <TotalPrice
                 dataLoaded={!!readData || (!!publicStableCoin && !!publicPrice)}
