@@ -13,7 +13,7 @@ const list = [
 ];
 
 const Test = () => {
-  const [boxWidth, setBoxWidth] = useState<number>(1);
+  const [boxWidth, setBoxWidth] = useState<number>(0);
   const ref = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
