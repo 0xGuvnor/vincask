@@ -24,7 +24,7 @@ const Test = () => {
 
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center">
-      <div className={`overflow-hidden w-[${boxWidth}px] flex`}>
+      <div style={{ width: `${boxWidth}px` }} className="flex overflow-hidden">
         <ul ref={ref} className="animate-marquee flex">
           {list.map((Icon, id) => (
             <li key={id} className="mr-8">
