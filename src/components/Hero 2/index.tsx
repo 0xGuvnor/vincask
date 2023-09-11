@@ -6,6 +6,7 @@ import { useMediaQuery } from "react-responsive";
 import Countdown from "../Countdown";
 import { useGlobalContext } from "@/context/GlobalContext";
 import useCountdownDifference from "@/hooks/useCountdownDifference";
+import useIsMounted from "@/hooks/useIsMounted";
 
 interface Props {
   heroImage: string;
@@ -14,10 +15,11 @@ interface Props {
 const Hero2 = ({ heroImage }: Props) => {
   const isScrolled = useScroll(25);
   const isMobileOrTablet = useMediaQuery({ maxWidth: 768 });
+  const isMounted = useIsMounted();
   const { mintCountdownTimer } = useGlobalContext();
   const timeDifference = useCountdownDifference(mintCountdownTimer);
 
-  return (
+  return isMounted ? (
     <div className="relative flex h-screen w-screen items-center justify-center">
       <main className="flex h-[85vh] flex-col items-center justify-center md:flex-row md:px-8 lg:px-10 xl:gap-6">
         <section
@@ -98,6 +100,8 @@ const Hero2 = ({ heroImage }: Props) => {
         </AnimatePresence>
       </motion.div>
     </div>
+  ) : (
+    <div className="h-screen w-screen"></div>
   );
 };
 export default Hero2;
