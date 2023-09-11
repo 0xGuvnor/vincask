@@ -274,19 +274,16 @@ const MintCard = () => {
         className="relative flex w-[320px] flex-col items-center justify-center self-center rounded-xl bg-[#1B1B1B] md:sticky md:top-24 md:w-96 md:self-start"
       >
         <AnimatePresence initial={false}>
-          {
-            // timeDifference > 0
-            timeDifference < 0 && (
-              <motion.div
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.25 }}
-                className="absolute inset-0 z-30 flex select-none flex-col items-center justify-center rounded-xl bg-transparent/60 backdrop-blur-sm"
-              >
-                <Countdown {...countdownTimer} title="Mint begins in..." />
-              </motion.div>
-            )
-          }
+          {timeDifference > 0 && (
+            <motion.div
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="absolute inset-0 z-30 flex select-none flex-col items-center justify-center rounded-xl bg-transparent/60 backdrop-blur-sm"
+            >
+              <Countdown {...countdownTimer} title="Mint begins in..." />
+            </motion.div>
+          )}
         </AnimatePresence>
 
         <motion.ul
