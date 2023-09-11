@@ -1,4 +1,5 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import Image from "next/image";
 import { BiWallet } from "react-icons/bi";
 import { IoWarningOutline } from "react-icons/io5";
 import { useMediaQuery } from "react-responsive";
@@ -77,11 +78,17 @@ const ConnectWallet = () => {
                         className="h-5 w-5 overflow-hidden rounded-full lg:h-6 lg:w-6"
                       >
                         {chain.iconUrl && (
-                          <img
-                            alt={chain.name ?? "Chain icon"}
-                            src={chain.iconUrl}
-                            className="h-5 w-5 lg:h-6 lg:w-6"
-                          />
+                          <div className="relative h-5 w-5 lg:h-6 lg:w-6">
+                            <Image
+                              src={chain.iconUrl}
+                              alt={chain.name ?? "Chain icon"}
+                              quality={100}
+                              draggable={false}
+                              sizes="(max-width: 768px) 10vw, 8vw"
+                              fill
+                              className="object-contain"
+                            />
+                          </div>
                         )}
                       </div>
                     )}
