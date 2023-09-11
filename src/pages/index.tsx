@@ -3,6 +3,7 @@ import Hero2 from "@/components/Hero 2";
 import MobileOverlay from "@/components/MobileOverlay";
 import Team from "@/components/Team";
 import Testimonials from "@/components/Testimonials";
+import useIsMounted from "@/hooks/useIsMounted";
 import getHomePageProps from "@/utils/helpers/getHomePageProps";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Head from "next/head";
@@ -12,6 +13,8 @@ export default function Home({
   teamImages,
   carouselImages,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  // const isMounted = useIsMounted();
+
   return (
     <>
       <Head>
@@ -23,12 +26,14 @@ export default function Home({
 
       <MobileOverlay />
 
+      {/* {isMounted && ( */}
       <div className="flex flex-col">
         {/* <Hero /> */}
         <Hero2 heroImage={heroImage} />
         <Testimonials carouselImages={carouselImages} />
         <Team teamImages={teamImages} />
       </div>
+      {/* )} */}
     </>
   );
 }

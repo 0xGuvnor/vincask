@@ -59,16 +59,10 @@ const Hero2 = ({ heroImage }: Props) => {
           <CtaButtons />
         </section>
 
-        <motion.div
-          initial={{
-            opacity: 0,
-            x: isMobileOrTablet ? 0 : -200,
-            y: isMobileOrTablet ? 200 : 0,
-            zIndex: -10,
-          }}
-          animate={{ opacity: 1, x: 0, y: 0, zIndex: -10 }}
-          transition={{ duration: 1 }}
-          className="relative h-full w-80 shrink md:h-5/6 md:w-96 lg:h-full lg:w-[34.5rem]"
+        <div
+          className={`${
+            isMobileOrTablet ? "animate-slide-up" : "animate-slide-right"
+          } relative h-full w-80 shrink md:h-5/6 md:w-96 lg:h-full lg:w-[34.5rem]`}
         >
           <Image
             src={heroImage}
@@ -80,7 +74,7 @@ const Hero2 = ({ heroImage }: Props) => {
             className="rounded-tl-[1rem] rounded-tr-[1rem] object-cover md:rounded-br-[1rem] md:rounded-tl-none md:rounded-tr-[1rem]"
           />
           <div className="absolute inset-x-0 bottom-0 z-30 h-28 w-full bg-gradient-to-t from-base-100 md:inset-y-0 md:left-0 md:h-full md:w-64 md:bg-gradient-to-r"></div>
-        </motion.div>
+        </div>
       </main>
 
       <motion.div

@@ -13,6 +13,40 @@
     @apply h-8 w-8 cursor-pointer rounded-xl p-2 transition duration-300 ease-in-out hover:bg-black/30 md:h-10 md:w-10;
   }
 
+  @keyframes slideRight {
+    0% {
+      transform: translateX(-200px);
+      opacity: 0;
+      z-index: -10;
+    }
+    100% {
+      transform: translateX(0px);
+      opacity: 100;
+      z-index: 0;
+    }
+  }
+
+  .animate-slide-right {
+    animation: slideRight 1s ease-in-out 1;
+  }
+
+  @keyframes slideUp {
+    0% {
+      transform: translateY(200px);
+      opacity: 0;
+      z-index: -10;
+    }
+    100% {
+      transform: translateY(0px);
+      opacity: 100;
+      z-index: 0;
+    }
+  }
+
+  .animate-slide-up {
+    animation: slideUp 1s ease-in-out 1;
+  }
+
   @keyframes marquee {
     0% {
       transform: translateX(0%);
