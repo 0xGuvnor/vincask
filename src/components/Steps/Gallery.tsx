@@ -20,10 +20,10 @@ const Gallery = ({ selected }: Props) => {
       <AnimatePresence initial={false} mode="popLayout">
         <motion.div
           key={id}
-          initial={{ opacity: 0, rotateY: -90 }}
+          initial={{ opacity: 0, scaleX: 0 }}
           animate={{
             opacity: 1,
-            rotateY: 0,
+            scaleX: 1,
             transition: {
               delay: 0.4,
               duration: 0.4,
@@ -31,7 +31,7 @@ const Gallery = ({ selected }: Props) => {
           }}
           exit={{
             opacity: 0,
-            rotateY: 90,
+            scaleX: 0,
             transition: { duration: 0.4 },
           }}
           className="z-20 flex h-52 items-center justify-center rounded-md bg-red-500 lg:h-full lg:rounded-lg"
