@@ -64,7 +64,7 @@ const Steps = () => {
         ))}
       </div>
 
-      <Gallery selected={selected} />
+      {/* <Gallery selected={selected} /> */}
     </section>
   );
 };
