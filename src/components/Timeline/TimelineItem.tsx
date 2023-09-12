@@ -10,10 +10,10 @@ interface Props {
 const TimelineItem = ({ date, title, description }: Props) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 100 }}
+      initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.8 }}
-      transition={{ duration: 0.5, ease: "easeInOut" }}
+      transition={{ type: "spring", duration: 1, bounce: 0.4 }}
       className="flex flex-col space-y-4 md:max-w-[285px] md:space-y-6"
     >
       <div className="relative flex items-center">
