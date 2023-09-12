@@ -50,7 +50,7 @@ const OwnershipCertModal = ({ certImages }: Props) => {
             <Dialog.Content asChild>
               <motion.div
                 initial={{
-                  y: "80vh",
+                  y: "100vh",
                   opacity: 1,
                   translateX: "-50%",
                   translateY: "-50%",
@@ -61,7 +61,7 @@ const OwnershipCertModal = ({ certImages }: Props) => {
                   translateX: "-50%",
                   translateY: "-50%",
                 }}
-                exit={{ y: "80vh", opacity: 1 }}
+                exit={{ y: "100vh", opacity: 1 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
                 className="fixed left-1/2 top-1/2 z-[70] grid max-h-[80dvh] w-11/12 max-w-screen-xl grid-cols-1 gap-2 overflow-y-auto rounded-lg bg-base-100 p-8 focus:outline-none md:w-5/6 md:gap-4"
               >
