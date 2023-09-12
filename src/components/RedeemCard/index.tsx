@@ -102,7 +102,7 @@ const RedeemCard = ({
           <input
             id={`redeemToggle-${id}`}
             type="checkbox"
-            disabled={isLoading}
+            disabled={isLoading || !nftData.tokenId}
             checked={checked}
             onChange={(e) => {
               if (!checked) {
