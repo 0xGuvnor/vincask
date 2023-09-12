@@ -58,9 +58,9 @@ const RedeemDialog = ({
 
             <Dialog.Content asChild>
               <motion.div
-                initial={{ y: "80vh", opacity: 1 }}
+                initial={{ y: "100vh", opacity: 1 }}
                 animate={{ y: 0, opacity: 1 }}
-                exit={{ y: "80vh", opacity: 1 }}
+                exit={{ y: "100vh", opacity: 1 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
                 className="fixed left-0 top-0 z-[70] flex h-full w-full items-center justify-center focus:outline-none"
               >
