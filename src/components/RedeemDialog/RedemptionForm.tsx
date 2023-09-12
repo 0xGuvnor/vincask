@@ -136,7 +136,7 @@ const RedemptionForm = ({
       // onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col gap-14"
     >
-      <div className="flex items-center justify-between gap-10">
+      <div className="flex items-center justify-between gap-5 md:gap-10">
         <RedeemDialogInput
           id="name"
           register={register}
@@ -157,7 +157,7 @@ const RedemptionForm = ({
         />
       </div>
 
-      <div className="flex items-center justify-between gap-10">
+      <div className="flex items-center justify-between gap-5 md:gap-10">
         <RedeemDialogSelect
           id="redemption_type"
           register={register}
@@ -177,7 +177,7 @@ const RedemptionForm = ({
           maxLength={8}
           pattern={/^[89]\d*$/}
           errors={errors}
-          errorMessage="Not a valid phone number!"
+          errorMessage="Invalid phone number"
           layout={true}
         />
       </div>
@@ -196,7 +196,7 @@ const RedemptionForm = ({
               variants={addressVariants}
             />
 
-            <div className="flex items-center justify-between gap-10">
+            <div className="flex items-center justify-between gap-5 md:gap-10">
               <RedeemDialogInput
                 id="address2"
                 register={register}
