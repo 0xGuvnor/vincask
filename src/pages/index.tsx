@@ -11,6 +11,7 @@ export default function Home({
   heroImage,
   teamImages,
   carouselImages,
+  certImages,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
@@ -26,7 +27,7 @@ export default function Home({
       <div className="flex flex-col">
         {/* <Hero /> */}
         <Hero2 heroImage={heroImage} />
-        <Testimonials carouselImages={carouselImages} />
+        <Testimonials carouselImages={carouselImages} certImages={certImages} />
         <Team teamImages={teamImages} />
       </div>
     </>
@@ -34,13 +35,15 @@ export default function Home({
 }
 
 export const getStaticProps: GetStaticProps = () => {
-  const { heroImage, teamImages, carouselImages } = getHomePageProps();
+  const { heroImage, teamImages, carouselImages, certImages } =
+    getHomePageProps();
 
   return {
     props: {
       heroImage,
       teamImages,
       carouselImages,
+      certImages,
     },
   };
 };

@@ -33,10 +33,21 @@ const getHomePageProps = () => {
     data: { publicUrl: promo4 },
   } = supabase.storage.from("images").getPublicUrl("carousel/promo4.jpg");
 
+  const {
+    data: { publicUrl: certScanned },
+  } = supabase.storage
+    .from("images")
+    .getPublicUrl("product/certificate_of_ownership.png");
+
+  const {
+    data: { publicUrl: cert1 },
+  } = supabase.storage.from("images").getPublicUrl("product/cert1.jpg");
+
   return {
     heroImage,
     teamImages: [founder1, founder2],
     carouselImages: [promo0, promo1, promo2, promo3, promo4],
+    certImages: [certScanned, cert1],
   };
 };
 export default getHomePageProps;

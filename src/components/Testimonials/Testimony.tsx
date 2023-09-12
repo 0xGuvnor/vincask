@@ -1,7 +1,11 @@
 import { VscQuote } from "react-icons/vsc";
-import OwnershipCertLightbox from "./OwnershipCertLightbox";
+import OwnershipCertModal from "./OwnershipCertModal";
 
-const Testimony = () => {
+interface Props {
+  certImages: string[];
+}
+
+const Testimony = ({ certImages }: Props) => {
   return (
     <section className="flex max-w-4xl flex-1 flex-col gap-10 md:ml-20 md:gap-16 md:px-0 2xl:gap-24">
       <h1 className="font-header text-3xl font-black md:px-0 md:text-5xl 2xl:text-6xl">
@@ -28,10 +32,9 @@ const Testimony = () => {
           impression on the most discerning palates.
         </span>
         <span className="mt-4 text-lg">Logan Roy</span>
-        <span className="italic">Distillery owner</span>
+        <span className="mb-4 italic">Distillery owner</span>
+        <OwnershipCertModal certImages={certImages} />
       </div>
-
-      <OwnershipCertLightbox />
     </section>
   );
 };

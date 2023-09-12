@@ -4,13 +4,14 @@ import Testimony from "./Testimony";
 
 interface Props {
   carouselImages: string[];
+  certImages: string[];
 }
 
-const Testimonials = ({ carouselImages }: Props) => {
+const Testimonials = ({ carouselImages, certImages }: Props) => {
   return (
     <Container classNames="md:flex-row items-center justify-center">
       <ImageCarousel carouselImages={carouselImages} />
-      <Testimony />
+      <Testimony certImages={certImages} />
     </Container>
   );
 };
