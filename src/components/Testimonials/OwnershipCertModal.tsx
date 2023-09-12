@@ -63,7 +63,7 @@ const OwnershipCertModal = ({ certImages }: Props) => {
                 }}
                 exit={{ y: "100vh", opacity: 1 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="fixed left-1/2 top-1/2 z-[70] grid max-h-[80dvh] w-11/12 max-w-screen-xl grid-cols-1 gap-2 overflow-y-auto rounded-lg bg-base-100 p-8 focus:outline-none md:w-5/6 md:gap-4"
+                className="fixed left-1/2 top-1/2 z-[70] grid max-h-[90dvh] w-11/12 max-w-screen-xl grid-cols-1 gap-2 overflow-y-auto rounded-lg bg-base-100 p-8 focus:outline-none md:w-5/6 md:gap-4"
               >
                 <Dialog.Title className="text-2xl font-semibold md:text-4xl">
                   Certificate of Ownership
@@ -75,10 +75,7 @@ const OwnershipCertModal = ({ certImages }: Props) => {
 
                 <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-8">
                   {certImages.map((image, id) => (
-                    <div
-                      key={id}
-                      className="bg-red-500x relative h-[26rem] md:h-[52.2rem]"
-                    >
+                    <div key={id} className="relative h-[26rem] md:h-[52.2rem]">
                       <Image
                         src={image}
                         alt="VinCask's certificate of ownership"
