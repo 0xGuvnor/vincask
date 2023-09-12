@@ -81,7 +81,7 @@ const OwnershipCertModal = ({ certImages }: Props) => {
                     >
                       <Image
                         src={image}
-                        alt="Proof of certificate"
+                        alt="Proof of ownership certificate"
                         sizes="(max-width: 1024px) 80vw, 40vw"
                         fill
                         quality={100}
