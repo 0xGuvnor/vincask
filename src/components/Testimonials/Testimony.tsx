@@ -1,4 +1,5 @@
 import { VscQuote } from "react-icons/vsc";
+import OwnershipCertLightbox from "./OwnershipCertLightbox";
 
 const Testimony = () => {
   return (
@@ -30,7 +31,7 @@ const Testimony = () => {
         <span className="italic">Distillery owner</span>
       </div>
 
-      <span>Proof of ownership</span>
+      <OwnershipCertLightbox />
     </section>
   );
 };
