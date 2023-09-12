@@ -1,7 +1,7 @@
 export const vincask = {
   address: {
     sepolia: "0x03361D96525DbAC4731e4FF4660819a7F61E0863" as `0x${string}`,
-    goerli: "0xc1e1a04320A9BB0b6E66B7D21B8d1dEf5B5D7f98" as `0x${string}`,
+    goerli: "0x091Eea088C7486701D2C53F6c685A745e53b51F7" as `0x${string}`,
   },
   abi: [
     {
@@ -27,7 +27,7 @@ export const vincask = {
           type: "address",
         },
         {
-          internalType: "contract VincaskX",
+          internalType: "contract VinCaskX",
           name: "_VIN_X",
           type: "address",
         },
@@ -42,37 +42,42 @@ export const vincask = {
     },
     {
       inputs: [],
-      name: "Vincask__CallerNotAuthorised",
+      name: "VinCask__CallerNotAuthorised",
       type: "error",
     },
     {
       inputs: [],
-      name: "Vincask__MaxSupplyExceeded",
+      name: "VinCask__MaxSupplyExceeded",
       type: "error",
     },
     {
       inputs: [],
-      name: "Vincask__MustApproveAtLeastOne",
+      name: "VinCask__MustApproveAtLeastOne",
       type: "error",
     },
     {
       inputs: [],
-      name: "Vincask__MustMintAtLeastOne",
+      name: "VinCask__MustMintAtLeastOne",
       type: "error",
     },
     {
       inputs: [],
-      name: "Vincask__MustSetDifferentPrice",
+      name: "VinCask__MustSetDifferentPrice",
       type: "error",
     },
     {
       inputs: [],
-      name: "Vincask__MustSetDifferentStableCoin",
+      name: "VinCask__MustSetDifferentStableCoin",
       type: "error",
     },
     {
       inputs: [],
-      name: "Vincask__PaymentFailed",
+      name: "VinCask__PaymentFailed",
+      type: "error",
+    },
+    {
+      inputs: [],
+      name: "VinCask__RedemptionNotOpen",
       type: "error",
     },
     {
@@ -163,6 +168,32 @@ export const vincask = {
         {
           indexed: true,
           internalType: "address",
+          name: "account",
+          type: "address",
+        },
+      ],
+      name: "RedemptionClosed",
+      type: "event",
+    },
+    {
+      anonymous: false,
+      inputs: [
+        {
+          indexed: true,
+          internalType: "address",
+          name: "account",
+          type: "address",
+        },
+      ],
+      name: "RedemptionOpened",
+      type: "event",
+    },
+    {
+      anonymous: false,
+      inputs: [
+        {
+          indexed: true,
+          internalType: "address",
           name: "from",
           type: "address",
         },
@@ -241,6 +272,13 @@ export const vincask = {
         },
       ],
       name: "burn",
+      outputs: [],
+      stateMutability: "nonpayable",
+      type: "function",
+    },
+    {
+      inputs: [],
+      name: "closeRedemption",
       outputs: [],
       stateMutability: "nonpayable",
       type: "function",
@@ -354,6 +392,19 @@ export const vincask = {
       type: "function",
     },
     {
+      inputs: [],
+      name: "isRedemptionOpen",
+      outputs: [
+        {
+          internalType: "bool",
+          name: "",
+          type: "bool",
+        },
+      ],
+      stateMutability: "view",
+      type: "function",
+    },
+    {
       inputs: [
         {
           internalType: "uint256[]",
@@ -403,6 +454,13 @@ export const vincask = {
         },
       ],
       stateMutability: "view",
+      type: "function",
+    },
+    {
+      inputs: [],
+      name: "openRedemption",
+      outputs: [],
+      stateMutability: "nonpayable",
       type: "function",
     },
     {
@@ -732,7 +790,7 @@ export const vincask = {
 export const vincaskX = {
   address: {
     sepolia: "0xBC11305904BFf89bDB7208f6eDCaE0558B69752b" as `0x${string}`,
-    goerli: "0x103281e6A012f8Dd96De33929C0BAEe6d7A9425B" as `0x${string}`,
+    goerli: "0x59977eb180AEdC1A7f7cB1a193Df1F1E2Af91673" as `0x${string}`,
   },
   abi: [
     {
