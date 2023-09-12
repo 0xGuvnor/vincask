@@ -35,7 +35,8 @@ const RedeemDialogSelect = ({
         onChange={(e) =>
           setRedemptionTypeState(e.target.value as RedemptionType)
         }
-        className="peer w-full rounded border-b-2 border-primary bg-[#B2B09B] px-4 py-2 text-sm text-black focus-within:ring-1 focus-within:ring-primary focus:outline-none disabled:cursor-not-allowed md:text-lg"
+        style={{ paddingTop: "0.5rem", paddingBottom: "0.5rem" }}
+        className="py-2x peer w-full rounded border-b-2 border-primary bg-[#B2B09B] px-4 text-sm text-black focus-within:ring-1 focus-within:ring-primary focus:outline-none disabled:cursor-not-allowed md:text-lg"
       >
         <option value="" disabled>
           Choose one
