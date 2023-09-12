@@ -24,7 +24,7 @@ const OwnershipCertLightbox = () => {
           scroll={false}
           className="text-sm underline decoration-primary underline-offset-[3px] transition duration-300 ease-in-out hover:text-white hover:decoration-2 md:text-base"
         >
-          VinCask's Proof of Ownership
+          VinCask&apos;s Proof of Ownership
         </Link>
       </Dialog.Trigger>
 
