@@ -13,7 +13,7 @@ const TimelineItem = ({ date, title, description }: Props) => {
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.8 }}
-      transition={{ type: "spring", duration: 1, bounce: 0.4 }}
+      transition={{ type: "spring", duration: 1, bounce: 0.2 }}
       className="flex flex-col space-y-4 md:max-w-[285px] md:space-y-6"
     >
       <div className="relative flex items-center">
