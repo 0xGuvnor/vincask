@@ -24,7 +24,7 @@ const Hero2 = ({ heroImage }: Props) => {
       <main className="flex h-[85vh] flex-col items-center justify-center md:flex-row md:px-8 lg:px-10 xl:gap-6">
         <section
           className={`${
-            timeDifference <= 0 && "md:-mt-20"
+            timeDifference <= 0 && "md:-mt-10 2xl:-mt-20"
           } flex max-w-xs flex-col items-center justify-center gap-6 py-8 text-center md:max-w-[27rem] md:basis-2/3 md:items-start md:gap-14 md:text-left lg:max-w-[34.5rem] xl:max-w-[28rem] 2xl:max-w-[35rem]`}
         >
           {timeDifference > 0 && (
