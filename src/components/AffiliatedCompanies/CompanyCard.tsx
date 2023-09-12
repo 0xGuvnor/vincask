@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { SlGlobe } from "react-icons/sl";
+import { motion } from "framer-motion";
 
 interface Props {
   name: string;
@@ -10,7 +11,13 @@ interface Props {
 
 const CompanyCard = ({ name, website, image, description }: Props) => {
   return (
-    <div className="flex flex-col">
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: false, amount: 0.6 }}
+      transition={{ type: "spring", duration: 1, bounce: 0.2 }}
+      className="flex flex-col"
+    >
       <div className="relative h-36 w-full rounded-t bg-gray-800/75 md:h-40">
         <Image
           src={image}
@@ -37,7 +44,7 @@ const CompanyCard = ({ name, website, image, description }: Props) => {
 
         <p className="text-justify md:text-lg">{description}</p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 export default CompanyCard;
