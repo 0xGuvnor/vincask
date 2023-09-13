@@ -85,7 +85,7 @@ const Hero2 = ({ heroImage }: Props) => {
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.25, duration: 1 }}
-        className="absolute inset-x-0 bottom-20 md:bottom-4"
+        className="absolute inset-x-0 bottom-20 z-40 md:bottom-4"
       >
         <AnimatePresence initial={false}>
           {!isScrolled && (
@@ -93,7 +93,7 @@ const Hero2 = ({ heroImage }: Props) => {
               initial={{ opacity: 0, y: 100 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -100 }}
-              className="z-40 flex h-10 w-full flex-col items-center justify-center self-center"
+              className="flex h-10 w-full flex-col items-center justify-center self-center"
             >
               <p className="text-xs md:text-sm">Scroll to learn more</p>
               <div className="h-5 w-[1px] bg-gradient-to-b from-white"></div>
