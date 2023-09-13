@@ -53,7 +53,7 @@ const Redeem = ({
     abi: vincask.abi,
   };
   const countdownTimer = {
-    year: 2022,
+    year: 2023,
     month: 11,
     date: 25,
     hour: 0,
