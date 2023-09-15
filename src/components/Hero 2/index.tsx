@@ -44,7 +44,7 @@ const Hero2 = ({ heroImage }: Props) => {
             className="font-header text-4xl font-black md:text-5xl lg:text-7xl 2xl:text-8xl"
           >
             Crafted with{" "}
-            <span className="bg-gradient-to-tr from-accent to-primary bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
               passion & precision
             </span>
           </motion.h1>
