@@ -1,11 +1,13 @@
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 interface Props {
   selected: boolean[];
+  images: string[];
 }
 
-const Gallery = ({ selected }: Props) => {
+const Gallery = ({ selected, images }: Props) => {
   const [id, setId] = useState(() =>
     selected.findIndex((value) => value === true),
   );
@@ -34,9 +36,17 @@ const Gallery = ({ selected }: Props) => {
             scaleX: 0,
             transition: { duration: 0.4 },
           }}
-          className="z-20 flex h-52 items-center justify-center rounded-md bg-red-500 lg:h-full lg:rounded-lg"
+          className="relative z-20 h-64 rounded-md ring ring-primary md:h-96 lg:h-full lg:rounded-lg"
         >
-          {`Step ${id + 1} Image`}
+          <Image
+            src={images[6 + id]}
+            alt="GIF of step"
+            quality={100}
+            sizes="(max-width: 768px) 100vw, 40vw"
+            priority
+            fill
+            className="object-contain"
+          />
         </motion.div>
       </AnimatePresence>
     </section>

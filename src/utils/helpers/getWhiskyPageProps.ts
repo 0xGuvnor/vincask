@@ -19,7 +19,28 @@ const getWhiskyPageProps = () => {
   const {
     data: { publicUrl: whisky6 },
   } = supabase.storage.from("images").getPublicUrl("product/whisky6.jpg");
+  const {
+    data: { publicUrl: mintGif },
+  } = supabase.storage.from("images").getPublicUrl("product/mint.gif");
+  const {
+    data: { publicUrl: redeemingGif },
+  } = supabase.storage.from("images").getPublicUrl("product/redeeming.gif");
+  const {
+    data: { publicUrl: deliveryGif },
+  } = supabase.storage.from("images").getPublicUrl("product/delivery.gif");
+  const enjoyGif = "https://media.giphy.com/media/g9582DNuQppxC/giphy.gif";
 
-  return [whisky1, whisky2, whisky3, whisky4, whisky5, whisky6];
+  return [
+    whisky1,
+    whisky2,
+    whisky3,
+    whisky4,
+    whisky5,
+    whisky6,
+    mintGif,
+    redeemingGif,
+    deliveryGif,
+    enjoyGif,
+  ];
 };
 export default getWhiskyPageProps;

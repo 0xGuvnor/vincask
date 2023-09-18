@@ -27,7 +27,7 @@ const Whisky = ({ images }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
         <WhiskyGrid images={images} />
 
-        <Steps />
+        <Steps images={images} />
       </Container>
     </>
   );

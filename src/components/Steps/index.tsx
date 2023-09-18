@@ -6,7 +6,11 @@ import { useEffect, useState } from "react";
 import Gallery from "./Gallery";
 import Link from "next/link";
 
-const Steps = () => {
+interface Props {
+  images: string[];
+}
+
+const Steps = ({ images }: Props) => {
   const [selected, setSelected] = useState(() => {
     const startingSelectedArray = new Array<boolean>(stepsArray.length).fill(
       false,
@@ -64,7 +68,7 @@ const Steps = () => {
         ))}
       </div>
 
-      <Gallery selected={selected} />
+      <Gallery selected={selected} images={images} />
     </section>
   );
 };
