@@ -1,5 +1,6 @@
 import { VscQuote } from "react-icons/vsc";
 import OwnershipCertModal from "./OwnershipCertModal";
+import { motion } from "framer-motion";
 
 interface Props {
   certImages: string[];
@@ -7,7 +8,13 @@ interface Props {
 
 const Testimony = ({ certImages }: Props) => {
   return (
-    <section className="flex max-w-4xl flex-1 flex-col gap-10 md:ml-20 md:gap-16 md:px-0 2xl:gap-24">
+    <motion.section
+      initial={{ opacity: 0, y: 100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.6 }}
+      transition={{ type: "spring", duration: 1, bounce: 0.2 }}
+      className="flex max-w-4xl flex-1 flex-col gap-10 md:ml-20 md:gap-16 md:px-0 2xl:gap-24"
+    >
       <h1 className="font-header text-3xl font-black md:px-0 md:text-5xl 2xl:text-6xl">
         Craftsmanship You Can{" "}
         <span className="relative">
@@ -35,7 +42,7 @@ const Testimony = ({ certImages }: Props) => {
         <span className="mb-4 italic">Distillery owner</span>
         <OwnershipCertModal certImages={certImages} />
       </div>
-    </section>
+    </motion.section>
   );
 };
 export default Testimony;

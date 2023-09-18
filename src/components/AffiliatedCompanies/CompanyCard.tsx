@@ -12,7 +12,7 @@ interface Props {
 const CompanyCard = ({ name, website, image, description }: Props) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.6 }}
       transition={{ type: "spring", duration: 1, bounce: 0.2 }}
