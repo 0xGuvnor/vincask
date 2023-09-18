@@ -19,7 +19,7 @@ const Whisky = ({ images }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
       <MobileOverlay />
 
-      <Container classNames="">
+      <Container>
         <Heading
           title="Sip. Savour. Indulge. Repeat."
           subtitle="Your journey to whisky excellence starts here."
