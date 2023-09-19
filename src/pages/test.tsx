@@ -1,20 +1,37 @@
-import Image from "next/image";
-import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
-import { FaFacebookF, FaGithub, FaTelegram } from "react-icons/fa";
-import { FaInstagram, FaSnapchat } from "react-icons/fa6";
-import { RiTwitterXFill } from "react-icons/ri";
+import { useEffect, useState } from "react";
+
+const initialTime = 60;
 
 const Test = () => {
+  const [timeLeft, setTimeLeft] = useState(initialTime);
+
+  useEffect(() => {
+    if (timeLeft > 0) {
+      const timer = setTimeout(() => {
+        setTimeLeft((prev) => prev - 1);
+      }, 1000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [timeLeft]);
+
+  const calculateProgress = () => {
+    return (1 - timeLeft / initialTime) * 100;
+  };
+
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center">
-      <div className="relative h-96 w-96">
-        <Image
-          src="https://media.giphy.com/media/XjqkkuB85hykv0IGCJ/giphy.gif"
-          alt=""
-          fill
-          className="object-contain"
-        />
+      <div className="countdown-timer">
+        {timeLeft > 0 ? (
+          <div className="timer-wrapper">
+            <div
+              className="timer-circle"
+              style={{ "--progress": calculateProgress() }}
+            ></div>
+          </div>
+        ) : (
+          <div className="timer-done">Time's up!</div>
+        )}
       </div>
     </div>
   );

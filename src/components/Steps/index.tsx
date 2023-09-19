@@ -87,7 +87,7 @@ const stepsArray = [
         >
           minting page
         </Link>{" "}
-        to mint your NFT.
+        to mint your NFT. You'll be able to pay with USDC or credit card.
       </span>
     ),
   },
