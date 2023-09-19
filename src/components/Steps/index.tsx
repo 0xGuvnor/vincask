@@ -60,11 +60,11 @@ const Steps = ({ images }: Props) => {
         {stepsArray.map((step, id) => (
           <Step
             key={id}
-            {...step}
+            countdownKey={countdownKey}
             id={id}
+            {...step}
             selected={selected}
             onClick={handleClick}
-            countdownKey={countdownKey}
           />
         ))}
       </div>
