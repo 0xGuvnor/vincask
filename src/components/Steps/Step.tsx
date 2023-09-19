@@ -13,6 +13,7 @@ interface Props {
   title: string;
   description: string | ReactNode;
   isLast?: boolean;
+  countdownKey: number;
 }
 
 const Step = ({
@@ -23,6 +24,7 @@ const Step = ({
   title,
   description,
   isLast,
+  countdownKey,
 }: Props) => {
   const isMobileOrTablet = useMediaQuery({ maxWidth: 768 });
   const isMounted = useIsMounted();
@@ -59,6 +61,7 @@ const Step = ({
               } text-xs md:text-base`}
             >
               <CountdownCircleTimer
+                key={countdownKey}
                 duration={8}
                 size={isMobileOrTablet ? 28 : 38}
                 strokeWidth={isMobileOrTablet ? 2 : 3}
