@@ -10,8 +10,9 @@ interface Props {
   selected: boolean[];
   onClick: (id: number) => void;
   icon: IconType;
-  step: string;
+  title: string;
   description: string | ReactNode;
+  countdownInMs: number;
   isLast?: boolean;
 }
 
@@ -20,8 +21,9 @@ const Step = ({
   selected,
   onClick,
   icon: Icon,
-  step,
+  title,
   description,
+  countdownInMs,
   isLast,
 }: Props) => {
   const isMobileOrTablet = useMediaQuery({ maxWidth: 768 });
@@ -51,7 +53,7 @@ const Step = ({
 
         <div className="flex-1 select-none">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg text-white md:text-xl">{step}</h2>
+            <h2 className="text-lg text-white md:text-xl">{title}</h2>
 
             <div
               className={`${
@@ -59,7 +61,7 @@ const Step = ({
               } text-xs md:text-base`}
             >
               <CountdownCircleTimer
-                duration={8}
+                duration={countdownInMs / 1000 /* convert ms to s */}
                 size={isMobileOrTablet ? 28 : 38}
                 strokeWidth={isMobileOrTablet ? 2 : 3}
                 trailStrokeWidth={isMobileOrTablet ? 0.5 : 1}

@@ -11,6 +11,7 @@ interface Props {
 }
 
 const Steps = ({ images }: Props) => {
+  const countdownInMs = 8000;
   const [selected, setSelected] = useState(() => {
     const startingSelectedArray = new Array<boolean>(stepsArray.length).fill(
       false,
@@ -46,7 +47,7 @@ const Steps = ({ images }: Props) => {
 
         return newSelected;
       });
-    }, 8000);
+    }, countdownInMs);
 
     return () => clearInterval(intervalId);
   }, []);
@@ -61,9 +62,7 @@ const Steps = ({ images }: Props) => {
             id={id}
             selected={selected}
             onClick={handleClick}
-            icon={step.icon}
-            step={step.title}
-            description={step.description}
+            countdownInMs={countdownInMs}
           />
         ))}
       </div>
