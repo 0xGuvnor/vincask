@@ -12,7 +12,6 @@ interface Props {
   icon: IconType;
   title: string;
   description: string | ReactNode;
-  countdownInMs: number;
   isLast?: boolean;
 }
 
@@ -23,7 +22,6 @@ const Step = ({
   icon: Icon,
   title,
   description,
-  countdownInMs,
   isLast,
 }: Props) => {
   const isMobileOrTablet = useMediaQuery({ maxWidth: 768 });
@@ -61,7 +59,7 @@ const Step = ({
               } text-xs md:text-base`}
             >
               <CountdownCircleTimer
-                duration={countdownInMs / 1000 /* convert ms to s */}
+                duration={8}
                 size={isMobileOrTablet ? 28 : 38}
                 strokeWidth={isMobileOrTablet ? 2 : 3}
                 trailStrokeWidth={isMobileOrTablet ? 0.5 : 1}
