@@ -30,7 +30,7 @@ const Test = () => {
             ></div>
           </div>
         ) : (
-          <div className="timer-done">Time's up!</div>
+          <div className="timer-done">Time&apos;s up!</div>
         )}
       </div>
     </div>
