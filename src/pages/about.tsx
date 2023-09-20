@@ -26,7 +26,7 @@ const About = ({
       {/* Background gradient */}
       <div className="absolute inset-0 -z-10 h-full w-full bg-gradient-to-br from-[#2A3439]/40 from-0%"></div>
 
-      <Container classNames="flex-1 overflow-x-hidden xl:overflow-x-visible relative">
+      <Container classNames="overflow-x-hidden xl:overflow-x-visible relative">
         <div className="flex min-h-[105vh] flex-col items-center justify-start space-y-8 md:min-h-[75vh] md:flex-row md:justify-center md:space-x-8 md:space-y-0">
           <div className="mt-6 flex flex-col space-y-2 text-center md:mt-0 md:min-w-[40rem] md:max-w-3xl md:space-y-4 md:text-left">
             <h1 className="font-header text-3xl font-black md:text-5xl">
@@ -53,16 +53,8 @@ const About = ({
 export default About;
 
 export const getStaticProps: GetStaticProps = async () => {
-  try {
-    const { collageImages, timelineItems, companyInfos } =
-      await getAboutPageProps();
+  const { collageImages, timelineItems, companyInfos } =
+    await getAboutPageProps();
 
-    return { props: { collageImages, timelineItems, companyInfos } };
-  } catch (error) {
-    console.error(error);
-
-    return {
-      props: { collageImages: null, timelineItems: null, companyInfos: null },
-    };
-  }
+  return { props: { collageImages, timelineItems, companyInfos } };
 };

@@ -15,7 +15,7 @@ const CompanyCard = ({ name, website, image, description }: Props) => {
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.6 }}
-      transition={{ type: "spring", duration: 1, bounce: 0.2 }}
+      transition={{ type: "spring", duration: 1.5, bounce: 0.2 }}
       className="flex flex-col"
     >
       <div className="relative h-36 w-full rounded-t bg-gray-800/75 md:h-40">
