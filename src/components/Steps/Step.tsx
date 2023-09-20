@@ -58,7 +58,7 @@ const Step = ({
             <div
               className={`${
                 selected[id] ? "visible" : "invisible"
-              } text-xs md:text-base`}
+              } text-sm md:text-base`}
             >
               <CountdownCircleTimer
                 key={countdownKey}
