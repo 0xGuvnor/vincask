@@ -15,6 +15,9 @@ const BlurImage = ({ image }: Props) => {
     <Image
       src={image.src}
       alt={image.description}
+      quality={100}
+      priority
+      sizes="(max-width: 768px) 40vw, 20vw"
       fill
       onLoadingComplete={() => setIsLoading(false)}
       className={`${
