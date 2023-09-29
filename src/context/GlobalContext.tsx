@@ -38,7 +38,7 @@ const GlobalProvider: FC<PropsWithChildren> = ({ children }) => {
   const [show, setShow] = useState(false);
   const [cachedSigHash, setCachedSigHash] = useState("");
   const mintCountdownTimer: CountdownTimer = {
-    year: 2023,
+    year: 2022,
     month: 10,
     date: 4,
     hour: 17,
