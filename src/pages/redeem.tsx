@@ -322,7 +322,7 @@ const Redeem = ({
                   <input
                     id="toggleAll"
                     type="checkbox"
-                    disabled={!nftDataArr}
+                    disabled={!nftDataArr || isLoading}
                     checked={allTogglesOn}
                     onChange={handleToggleAll}
                     className={`${allTogglesOn && "toggle-success"} toggle`}
