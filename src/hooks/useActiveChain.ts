@@ -7,7 +7,7 @@ const useActiveChain = () => {
 
   useEffect(() => {
     if (chain) {
-      setActiveChain(chain.network);
+      setActiveChain(chain.name.toLowerCase());
     }
   }, [chain]);
 

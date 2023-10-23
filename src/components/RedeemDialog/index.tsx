@@ -3,6 +3,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import { SetStateAction, useState } from "react";
 import { VscChromeClose } from "react-icons/vsc";
 import RedemptionForm from "./RedemptionForm";
+import useActiveChain from "@/hooks/useActiveChain";
+import { vincask } from "@/constants/contracts";
+import { useContractRead } from "wagmi";
 
 interface Props {
   numNfts: number | undefined;
@@ -24,12 +27,25 @@ const RedeemDialog = ({
   approve,
 }: Props) => {
   const [open, setOpen] = useState(false);
+  const activeChain = useActiveChain();
+  const vincaskContract = {
+    address: vincask.address[activeChain as keyof typeof vincask.address],
+    abi: vincask.abi,
+  };
+
+  const { data: redemptionIsOpen } = useContractRead({
+    ...vincaskContract,
+    functionName: "isRedemptionOpen",
+    watch: true,
+  });
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
         <button
-          disabled={!numNfts || isLoading || selectedNfts === 0}
+          disabled={
+            !numNfts || isLoading || selectedNfts === 0 || !redemptionIsOpen
+          }
           className="btn-primary btn w-40 text-lg normal-case shadow-lg shadow-primary/20 disabled:bg-base-100 disabled:ring-1 disabled:ring-primary/25"
         >
           {isLoading ? (

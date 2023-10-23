@@ -34,6 +34,7 @@ import useWarnRefresh from "@/hooks/useWarnRefresh";
 import { redeemNftCardListVariants } from "@/utils/motionVariants";
 import useCountdownDifference from "@/hooks/useCountdownDifference";
 import Countdown from "@/components/Countdown";
+import RedemptionStatus from "@/components/RedemptionStatus";
 
 const Redeem = ({
   defaultImg,
@@ -330,15 +331,18 @@ const Redeem = ({
                 </div>
               </motion.div>
 
-              <RedeemDialog
-                numNfts={numNfts}
-                selectedNfts={selectedNfts.length}
-                isLoading={isLoading}
-                setIsLoading={setIsLoading}
-                isApproved={isApproved}
-                redeem={redeem}
-                approve={approve}
-              />
+              <div className="flex flex-col items-center justify-center gap-4">
+                <RedemptionStatus />
+                <RedeemDialog
+                  numNfts={numNfts}
+                  selectedNfts={selectedNfts.length}
+                  isLoading={isLoading}
+                  setIsLoading={setIsLoading}
+                  isApproved={isApproved}
+                  redeem={redeem}
+                  approve={approve}
+                />
+              </div>
             </motion.div>
 
             {numNfts || numNfts! >= 1 ? (
