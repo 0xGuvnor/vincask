@@ -1,7 +1,7 @@
 export const vincask = {
   address: {
     sepolia: "0x03361D96525DbAC4731e4FF4660819a7F61E0863" as `0x${string}`,
-    goerli: "0xB29F6B273129F8f216cf47ebd37cE25D47a7cF7f" as `0x${string}`,
+    goerli: "0x6bB5163Aaf34f68605Ae3a2c3262B1E2E206E010" as `0x${string}`,
   },
   abi: [
     {
@@ -15,6 +15,11 @@ export const vincask = {
           internalType: "address",
           name: "_stableCoin",
           type: "address",
+        },
+        {
+          internalType: "uint256",
+          name: "_maxCirculatingSupply",
+          type: "uint256",
         },
         {
           internalType: "uint256",
@@ -42,7 +47,32 @@ export const vincask = {
     },
     {
       inputs: [],
+      name: "VinCask__AddressNotWhitelisted",
+      type: "error",
+    },
+    {
+      inputs: [],
       name: "VinCask__CallerNotAuthorised",
+      type: "error",
+    },
+    {
+      inputs: [],
+      name: "VinCask__CannotSetMintLimitLowerThanMintedAmount",
+      type: "error",
+    },
+    {
+      inputs: [],
+      name: "VinCask__CirculatingSupplyExceedsTotalSupply",
+      type: "error",
+    },
+    {
+      inputs: [],
+      name: "VinCask__InvalidAddress",
+      type: "error",
+    },
+    {
+      inputs: [],
+      name: "VinCask__MaxCirculatingSupplyExceeded",
       type: "error",
     },
     {
@@ -72,12 +102,27 @@ export const vincask = {
     },
     {
       inputs: [],
+      name: "VinCask__OnlyCanIncreaseCirculatingSupply",
+      type: "error",
+    },
+    {
+      inputs: [],
       name: "VinCask__PaymentFailed",
       type: "error",
     },
     {
       inputs: [],
+      name: "VinCask__QuantityExceedsWhitelistLimit",
+      type: "error",
+    },
+    {
+      inputs: [],
       name: "VinCask__RedemptionNotOpen",
+      type: "error",
+    },
+    {
+      inputs: [],
+      name: "VinCask__WhitelistAddressArrayOutOfBounds",
       type: "error",
     },
     {
@@ -264,19 +309,6 @@ export const vincask = {
       type: "function",
     },
     {
-      inputs: [
-        {
-          internalType: "uint256",
-          name: "_tokenId",
-          type: "uint256",
-        },
-      ],
-      name: "burn",
-      outputs: [],
-      stateMutability: "nonpayable",
-      type: "function",
-    },
-    {
       inputs: [],
       name: "closeRedemption",
       outputs: [],
@@ -304,7 +336,33 @@ export const vincask = {
     },
     {
       inputs: [],
+      name: "getCirculatingSupply",
+      outputs: [
+        {
+          internalType: "uint256",
+          name: "",
+          type: "uint256",
+        },
+      ],
+      stateMutability: "view",
+      type: "function",
+    },
+    {
+      inputs: [],
       name: "getLatestTokenId",
+      outputs: [
+        {
+          internalType: "uint256",
+          name: "",
+          type: "uint256",
+        },
+      ],
+      stateMutability: "view",
+      type: "function",
+    },
+    {
+      inputs: [],
+      name: "getMaxCirculatingSupply",
       outputs: [
         {
           internalType: "uint256",
@@ -368,6 +426,61 @@ export const vincask = {
       type: "function",
     },
     {
+      inputs: [],
+      name: "getWhitelistAddresses",
+      outputs: [
+        {
+          internalType: "address[]",
+          name: "",
+          type: "address[]",
+        },
+      ],
+      stateMutability: "view",
+      type: "function",
+    },
+    {
+      inputs: [
+        {
+          internalType: "address",
+          name: "_address",
+          type: "address",
+        },
+      ],
+      name: "getWhitelistDetails",
+      outputs: [
+        {
+          internalType: "bool",
+          name: "",
+          type: "bool",
+        },
+        {
+          internalType: "uint256",
+          name: "",
+          type: "uint256",
+        },
+        {
+          internalType: "uint256",
+          name: "",
+          type: "uint256",
+        },
+      ],
+      stateMutability: "view",
+      type: "function",
+    },
+    {
+      inputs: [
+        {
+          internalType: "uint256",
+          name: "_newCirculatingSupply",
+          type: "uint256",
+        },
+      ],
+      name: "increaseCirculatingSupply",
+      outputs: [],
+      stateMutability: "nonpayable",
+      type: "function",
+    },
+    {
       inputs: [
         {
           internalType: "address",
@@ -413,19 +526,6 @@ export const vincask = {
         },
       ],
       name: "multiApprove",
-      outputs: [],
-      stateMutability: "nonpayable",
-      type: "function",
-    },
-    {
-      inputs: [
-        {
-          internalType: "uint256[]",
-          name: "_tokenIds",
-          type: "uint256[]",
-        },
-      ],
-      name: "multiBurn",
       outputs: [],
       stateMutability: "nonpayable",
       type: "function",
@@ -516,6 +616,19 @@ export const vincask = {
       type: "function",
     },
     {
+      inputs: [
+        {
+          internalType: "address",
+          name: "_address",
+          type: "address",
+        },
+      ],
+      name: "removeWhitelistAddress",
+      outputs: [],
+      stateMutability: "nonpayable",
+      type: "function",
+    },
+    {
       inputs: [],
       name: "renounceOwnership",
       outputs: [],
@@ -560,6 +673,19 @@ export const vincask = {
         },
       ],
       name: "safeMultiMintAndBurnForAdmin",
+      outputs: [],
+      stateMutability: "nonpayable",
+      type: "function",
+    },
+    {
+      inputs: [
+        {
+          internalType: "uint256",
+          name: "_quantity",
+          type: "uint256",
+        },
+      ],
+      name: "safeMultiMintForWhitelist",
       outputs: [],
       stateMutability: "nonpayable",
       type: "function",
@@ -693,6 +819,24 @@ export const vincask = {
     {
       inputs: [
         {
+          internalType: "address",
+          name: "_address",
+          type: "address",
+        },
+        {
+          internalType: "uint256",
+          name: "_mintLimit",
+          type: "uint256",
+        },
+      ],
+      name: "setWhitelistAddress",
+      outputs: [],
+      stateMutability: "nonpayable",
+      type: "function",
+    },
+    {
+      inputs: [
+        {
           internalType: "bytes4",
           name: "_interfaceId",
           type: "bytes4",
@@ -790,7 +934,7 @@ export const vincask = {
 export const vincaskX = {
   address: {
     sepolia: "0xBC11305904BFf89bDB7208f6eDCaE0558B69752b" as `0x${string}`,
-    goerli: "0xA365155eAa4A0Afae62E82e4177Ce525f6B0Cd39" as `0x${string}`,
+    goerli: "0x600ED2144eda818B89A2308FcB9A9CB644D64696" as `0x${string}`,
   },
   abi: [
     {
