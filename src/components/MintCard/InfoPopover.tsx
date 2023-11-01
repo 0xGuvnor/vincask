@@ -5,7 +5,7 @@ const InfoPopover = () => {
   return (
     <Popover.Root>
       <Popover.Trigger>
-        <HiOutlineInformationCircle className="h-5 w-5" />
+        <HiOutlineInformationCircle className="h-4 w-4" />
       </Popover.Trigger>
 
       <Popover.Portal>
