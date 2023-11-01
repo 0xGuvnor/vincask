@@ -4,7 +4,7 @@ import { verifyMessage } from "viem";
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   try {
     const { address, message, signature } = req.body;
