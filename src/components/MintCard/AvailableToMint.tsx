@@ -3,7 +3,9 @@ import useActiveChain from "@/hooks/useActiveChain";
 import { useEffect, useState } from "react";
 import { VscLoading } from "react-icons/vsc";
 import { useContractReads } from "wagmi";
-import Tooltip from "./InfoTooltip";
+import InfoTooltip from "./InfoTooltip";
+import { useMediaQuery } from "react-responsive";
+import InfoPopover from "./InfoPopover";
 
 interface Props {
   publicCirculatingSupply: number | undefined;
@@ -14,6 +16,7 @@ const AvailableToMint = ({
   publicCirculatingSupply,
   publicMaxCirculatingSupply,
 }: Props) => {
+  const isMobile = useMediaQuery({ maxWidth: 768 });
   const [mintAvail, setMintAvail] = useState("...");
   const activeChain = useActiveChain();
   const vincaskContract = {
@@ -58,7 +61,7 @@ const AvailableToMint = ({
         available to mint
       </span>
 
-      <Tooltip />
+      {isMobile ? <InfoPopover /> : <InfoTooltip />}
     </div>
   );
 };
