@@ -8,6 +8,10 @@ const usePublicMintData = () => {
   const [chainId, setChainId] = useState<number>();
   const [publicNumMinted, setPublicNumMinted] = useState<number>();
   const [publicTotalSupply, setPublicTotalSupply] = useState<number>();
+  const [publicMaxCirculatingSupply, setPublicMaxCirculatingSupply] =
+    useState<number>();
+  const [publicCirculatingSupply, setPublicCirculatingSupply] =
+    useState<number>();
   const [publicPrice, setPublicPrice] = useState<string>();
   const [publicStableCoin, setPublicStableCoin] = useState<string>();
 
@@ -21,6 +25,30 @@ const usePublicMintData = () => {
 
     const stableCoinAddress =
       chainId === 5 ? usdc.address.goerli : usdc.address.sepolia;
+
+    (async () => {
+      const maxCirculatingSupply = await publicClient?.call({
+        data: "0x3a2f72a7",
+        to: vincaskAddress,
+      });
+
+      if (maxCirculatingSupply?.data) {
+        setPublicMaxCirculatingSupply(
+          fromHex(maxCirculatingSupply.data, "number"),
+        );
+      }
+    })();
+
+    (async () => {
+      const circulatingSupply = await publicClient?.call({
+        data: "0x2b112e49",
+        to: vincaskAddress,
+      });
+
+      if (circulatingSupply?.data) {
+        setPublicCirculatingSupply(fromHex(circulatingSupply.data, "number"));
+      }
+    })();
 
     (async () => {
       const numMinted = await publicClient?.call({
@@ -73,6 +101,8 @@ const usePublicMintData = () => {
 
   return {
     chainId,
+    publicCirculatingSupply,
+    publicMaxCirculatingSupply,
     publicNumMinted,
     publicTotalSupply,
     publicPrice,

@@ -26,6 +26,7 @@ import useCountdownDifference from "@/hooks/useCountdownDifference";
 import Countdown from "../Countdown";
 import { useGlobalContext } from "@/context/GlobalContext";
 import { useRouter } from "next/router";
+import AvailableToMint from "../AvailableToMint";
 
 const MintCard = () => {
   const isMounted = useIsMounted();
@@ -35,8 +36,14 @@ const MintCard = () => {
   const [quantity, setQuantity] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const { address, isConnected } = useAccount();
-  const { publicNumMinted, publicPrice, publicStableCoin, publicTotalSupply } =
-    usePublicMintData();
+  const {
+    publicCirculatingSupply,
+    publicMaxCirculatingSupply,
+    publicNumMinted,
+    publicPrice,
+    publicStableCoin,
+    publicTotalSupply,
+  } = usePublicMintData();
   const vincaskContract = {
     address: vincask.address[activeChain as keyof typeof vincask.address],
     abi: vincask.abi,
@@ -72,6 +79,8 @@ const MintCard = () => {
         ],
       },
       { ...usdcContract, functionName: "decimals" },
+      { ...vincaskContract, functionName: "getMaxCirculatingSupply" },
+      { ...vincaskContract, functionName: "getCirculatingSupply" },
     ],
     watch: true,
   });
@@ -138,9 +147,47 @@ const MintCard = () => {
     }
   };
 
+  const handleIncrement2 = () => {
+    let maxValue: number, currentValue: number;
+
+    if (isConnected) {
+      if (readData) {
+        // Override values if wallet is connected
+        maxValue = Number(readData[6].result?.toString());
+        currentValue = Number(readData[7].result?.toString());
+      }
+    } else {
+      if (publicCirculatingSupply && publicMaxCirculatingSupply) {
+        maxValue = publicMaxCirculatingSupply;
+        currentValue = publicCirculatingSupply;
+      }
+    }
+
+    if (!isLoading) {
+      if (publicCirculatingSupply && publicMaxCirculatingSupply) {
+        if (publicCirculatingSupply === publicMaxCirculatingSupply) {
+          return;
+        }
+      }
+
+      if (readData && readData[6].result && readData[7].result) {
+        if (readData[6].result.toString() === readData[7].result.toString()) {
+          return;
+        }
+      }
+
+      setQuantity((prev) => {
+        if (prev === maxValue - currentValue) {
+          return prev;
+        } else {
+          return prev + 1;
+        }
+      });
+    }
+  };
+
   const handleIncrement = () => {
-    let maxValue = 99,
-      currentValue = 0;
+    let maxValue: number, currentValue: number;
 
     if (isConnected) {
       if (readData) {
@@ -313,7 +360,7 @@ const MintCard = () => {
                 ? readData
                   ? readData[0].result?.toString()
                   : "..."
-                : publicNumMinted
+                : publicNumMinted !== undefined && publicNumMinted >= 0
                 ? publicNumMinted.toString()
                 : "..."
             }
@@ -326,6 +373,10 @@ const MintCard = () => {
                 ? `${publicTotalSupply}`
                 : "..."
             }
+          />
+          <AvailableToMint
+            publicCirculatingSupply={publicCirculatingSupply}
+            publicMaxCirculatingSupply={publicMaxCirculatingSupply}
           />
 
           {(query.method === "crypto" || query.method === undefined) && (
@@ -364,7 +415,7 @@ const MintCard = () => {
                   <QuantitySelection
                     isLoading={isLoading}
                     decrement={handleDecrement}
-                    increment={handleIncrement}
+                    increment={handleIncrement2}
                     quantity={quantity}
                   />
 
@@ -408,7 +459,6 @@ const MintCard = () => {
               )}
             </motion.div>
           )}
-
           {query.method === "cc" && (
             <motion.div layout="size" className="contents">
               <TotalPrice
@@ -420,7 +470,7 @@ const MintCard = () => {
               <QuantitySelection
                 isLoading={isLoading}
                 decrement={handleDecrement}
-                increment={handleIncrement}
+                increment={handleIncrement2}
                 quantity={quantity}
               />
 
