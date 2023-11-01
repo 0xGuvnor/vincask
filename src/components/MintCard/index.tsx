@@ -147,7 +147,7 @@ const MintCard = () => {
     }
   };
 
-  const handleIncrement2 = () => {
+  const handleIncrement = () => {
     let maxValue: number, currentValue: number;
 
     if (isConnected) {
@@ -175,45 +175,6 @@ const MintCard = () => {
 
       if (readData && readData[6].result && readData[7].result) {
         if (readData[6].result.toString() === readData[7].result.toString()) {
-          return;
-        }
-      }
-
-      setQuantity((prev) => {
-        if (prev === maxValue - currentValue) {
-          return prev;
-        } else {
-          return prev + 1;
-        }
-      });
-    }
-  };
-
-  const handleIncrement = () => {
-    let maxValue: number, currentValue: number;
-
-    if (isConnected) {
-      if (readData) {
-        // Override values if wallet is connected
-        maxValue = Number(readData[1].result?.toString());
-        currentValue = Number(readData[0].result?.toString());
-      }
-    } else {
-      if (publicNumMinted && publicTotalSupply) {
-        maxValue = publicTotalSupply;
-        currentValue = publicNumMinted;
-      }
-    }
-
-    if (!isLoading) {
-      if (publicNumMinted && publicTotalSupply) {
-        if (publicNumMinted === publicTotalSupply) {
-          return;
-        }
-      }
-
-      if (readData && readData[0].result && readData[1].result) {
-        if (readData[0].result.toString() === readData[1].result.toString()) {
           return;
         }
       }
@@ -418,7 +379,7 @@ const MintCard = () => {
                   <QuantitySelection
                     isLoading={isLoading}
                     decrement={handleDecrement}
-                    increment={handleIncrement2}
+                    increment={handleIncrement}
                     quantity={quantity}
                   />
 
@@ -473,7 +434,7 @@ const MintCard = () => {
               <QuantitySelection
                 isLoading={isLoading}
                 decrement={handleDecrement}
-                increment={handleIncrement2}
+                increment={handleIncrement}
                 quantity={quantity}
               />
 
