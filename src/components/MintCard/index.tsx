@@ -157,7 +157,10 @@ const MintCard = () => {
         currentValue = Number(readData[7].result?.toString());
       }
     } else {
-      if (publicCirculatingSupply && publicMaxCirculatingSupply) {
+      if (
+        publicCirculatingSupply !== undefined &&
+        publicMaxCirculatingSupply !== undefined
+      ) {
         maxValue = publicMaxCirculatingSupply;
         currentValue = publicCirculatingSupply;
       }
