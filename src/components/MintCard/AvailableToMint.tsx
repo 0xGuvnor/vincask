@@ -3,6 +3,7 @@ import useActiveChain from "@/hooks/useActiveChain";
 import { useEffect, useState } from "react";
 import { VscLoading } from "react-icons/vsc";
 import { useContractReads } from "wagmi";
+import Tooltip from "./InfoTooltip";
 
 interface Props {
   publicCirculatingSupply: number | undefined;
@@ -50,10 +51,14 @@ const AvailableToMint = ({
       <VscLoading className="h-6 w-6" />
     </div>
   ) : (
-    <div className="text-base md:text-lg">
-      <span>{mintAvail}</span> NFT
-      {mintAvail !== undefined && parseInt(mintAvail) > 1 ? "s" : ""} available
-      to mint
+    <div className="flex items-center justify-center gap-1 text-base md:text-lg">
+      <span>
+        <span>{mintAvail}</span> NFT
+        {mintAvail !== undefined && parseInt(mintAvail) !== 1 ? "s" : ""}{" "}
+        available to mint
+      </span>
+
+      <Tooltip />
     </div>
   );
 };

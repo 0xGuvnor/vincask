@@ -26,7 +26,7 @@ import useCountdownDifference from "@/hooks/useCountdownDifference";
 import Countdown from "../Countdown";
 import { useGlobalContext } from "@/context/GlobalContext";
 import { useRouter } from "next/router";
-import AvailableToMint from "../AvailableToMint";
+import AvailableToMint from "./AvailableToMint";
 
 const MintCard = () => {
   const isMounted = useIsMounted();
@@ -205,6 +205,19 @@ const MintCard = () => {
       }
     }
   };
+
+  const mintButtonDisabled =
+    isLoading ||
+    (readData &&
+      readData[6].result?.toString() === readData[7].result?.toString());
+
+  const crossmintDisabled =
+    isLoading ||
+    (readData &&
+      readData[6].result?.toString() === readData[7].result?.toString()) ||
+    (!!publicCirculatingSupply &&
+      !!publicMaxCirculatingSupply &&
+      publicCirculatingSupply === publicMaxCirculatingSupply);
 
   useEffect(() => {
     // Error handling Toasts
@@ -388,12 +401,7 @@ const MintCard = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.2, duration: 0.5 }}
-                    disabled={
-                      isLoading ||
-                      (readData &&
-                        readData[0].result?.toString() ===
-                          readData[1].result?.toString())
-                    }
+                    disabled={mintButtonDisabled}
                     onClick={handleMint}
                     className="btn-sm btn !h-[52px] w-44 rounded border-none bg-primary !text-lg normal-case text-primary-content shadow-lg shadow-primary/20 transition duration-300 ease-in-out md:btn-md hover:bg-primary-focus disabled:ring-1 disabled:ring-primary/25 md:w-60"
                   >
@@ -455,7 +463,10 @@ const MintCard = () => {
                   }}
                   environment="staging"
                   // mintTo="0x000000000000000000000000000000000000dEaD"
-                  className="absolute inset-0"
+                  disabled={crossmintDisabled}
+                  className={`${
+                    crossmintDisabled && "cursor-not-allowed opacity-25"
+                  } absolute inset-0`}
                 />
               </motion.div>
             </motion.div>
