@@ -4,7 +4,7 @@ import { Toast, toast } from "react-hot-toast";
 interface Props {
   t: Toast;
   message: string;
-  txHash: `0x${string}` | null;
+  txHash?: `0x${string}` | null;
 }
 
 const ToastSuccess = ({ t, message, txHash }: Props) => {
@@ -14,14 +14,16 @@ const ToastSuccess = ({ t, message, txHash }: Props) => {
     <div className="flex h-full w-full items-center justify-center">
       <div>
         <p>{message}</p>
-        <a
-          href={`https://${activeChain}.etherscan.io/tx/${txHash}`}
-          rel="noreferrer"
-          target="_blank"
-          className="text-blue-500 underline underline-offset-2 transition duration-300 ease-in-out hover:opacity-80"
-        >
-          <span className="text-sm">View your tx on Etherscan</span>
-        </a>
+        {txHash && (
+          <a
+            href={`https://${activeChain}.etherscan.io/tx/${txHash}`}
+            rel="noreferrer"
+            target="_blank"
+            className="text-blue-500 underline underline-offset-2 transition duration-300 ease-in-out hover:opacity-80"
+          >
+            <span className="text-sm">View your tx on Etherscan</span>
+          </a>
+        )}
       </div>
 
       <button

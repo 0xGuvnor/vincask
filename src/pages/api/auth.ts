@@ -11,7 +11,7 @@ export default async function handler(
     const isVerified = await verifyMessage({ address, message, signature });
 
     if (!isVerified) {
-      res.status(401).json({ error: "Signature verification failed" });
+      res.status(401).json({ error: "Signature Verification Failed" });
       return;
     }
 

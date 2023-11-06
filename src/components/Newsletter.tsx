@@ -4,6 +4,10 @@ import Link from "next/link";
 import NewsletterInput from "./inputs/NewsletterInput";
 import { useMediaQuery } from "react-responsive";
 import useIsMounted from "@/hooks/useIsMounted";
+import ToastError from "./toasts/ToastError";
+import toast from "react-hot-toast";
+import axios from "axios";
+import ToastSuccess from "./toasts/ToastSuccess";
 
 export interface INewsletterInput {
   email: string;
@@ -19,9 +23,27 @@ const Newsletter = () => {
     formState: { errors },
   } = useForm<INewsletterInput>();
 
-  const onSubmit: SubmitHandler<INewsletterInput> = (data) => {
-    console.log(data);
-    reset();
+  const onSubmit: SubmitHandler<INewsletterInput> = async (formData) => {
+    try {
+      const { status } = await axios.post("/api/subscribe", formData);
+
+      if (status === 200) {
+        toast.success((t) => (
+          <ToastSuccess t={t} message="Subscription successful" />
+        ));
+      } else {
+        throw new Error("Something went wrong");
+      }
+
+      reset();
+    } catch (error) {
+      toast.error((t) => (
+        <ToastError
+          t={t}
+          errorMessage="Something went wrong. Please try again."
+        />
+      ));
+    }
   };
 
   return isMounted ? (
