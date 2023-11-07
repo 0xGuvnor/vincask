@@ -29,7 +29,7 @@ const Subscribed = ({}: Props) => {
           fontStyle="normal"
         />
       </Head>
-      <Preview>You've subscribed to updates on VinCask NFTs.</Preview>
+      <Preview>You&apos;ve subscribed to updates on VinCask NFTs.</Preview>
 
       <Tailwind>
         <Body className="bg-[#2a323c] text-gray-100">
@@ -48,9 +48,9 @@ const Subscribed = ({}: Props) => {
             </Heading>
 
             <Text>
-              We're thrilled to have you on board, and we can't wait to keep you
-              in the loop about all the exciting updates as we near the whisky
-              bottling date.
+              We&apos;re thrilled to have you on board, and we can&apos;t wait
+              to keep you in the loop about all the exciting updates as we near
+              the whisky bottling date.
             </Text>
 
             <Text>
