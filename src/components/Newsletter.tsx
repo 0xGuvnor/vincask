@@ -27,6 +27,8 @@ const Newsletter = () => {
     try {
       const { status } = await axios.post("/api/subscribe", formData);
 
+      const {} = await axios.post("/api/send", formData);
+
       if (status === 200) {
         toast.success((t) => (
           <ToastSuccess t={t} message="Subscription successful" />
