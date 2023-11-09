@@ -136,17 +136,17 @@ export interface Database {
         Row: {
           created_at: string;
           email: string;
-          id: number;
+          id: string;
         };
         Insert: {
           created_at?: string;
           email: string;
-          id?: number;
+          id?: string;
         };
         Update: {
           created_at?: string;
           email?: string;
-          id?: number;
+          id?: string;
         };
         Relationships: [];
       };

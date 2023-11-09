@@ -5,7 +5,7 @@ import TextArea from "../TextArea";
 export interface IFormInput {
   firstName: string;
   lastName: string;
-  email: string;
+  contactEmail: string;
   company: string;
   phoneNumber: number;
   message: string;
@@ -48,7 +48,7 @@ const ContactForm = () => {
       </div>
       <div className="flex gap-8 md:gap-16 2xl:gap-32">
         <ContactFormInput
-          id="email"
+          id="contactEmail"
           label="Email*"
           register={register}
           required

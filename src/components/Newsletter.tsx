@@ -8,6 +8,7 @@ import ToastError from "./toasts/ToastError";
 import toast from "react-hot-toast";
 import axios from "axios";
 import ToastSuccess from "./toasts/ToastSuccess";
+import { useState } from "react";
 
 export interface INewsletterInput {
   email: string;
@@ -15,6 +16,7 @@ export interface INewsletterInput {
 
 const Newsletter = () => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
+  const [isLoading, setIsLoading] = useState(false);
   const isMounted = useIsMounted();
   const {
     register,
@@ -25,17 +27,17 @@ const Newsletter = () => {
 
   const onSubmit: SubmitHandler<INewsletterInput> = async (formData) => {
     try {
-      const { status } = await axios.post("/api/subscribe", formData);
+      setIsLoading(true);
+      const { data } = await axios.post("/api/subscribe", formData);
 
-      const {} = await axios.post("/api/send", formData);
-
-      if (status === 200) {
-        toast.success((t) => (
-          <ToastSuccess t={t} message="Subscription successful" />
-        ));
-      } else {
-        throw new Error("Something went wrong");
+      if (data) {
+        const id = data[0].id;
+        await axios.post("/api/send", { ...formData, id });
       }
+
+      toast.success((t) => (
+        <ToastSuccess t={t} message="Successfully subscribed to newsletter" />
+      ));
 
       reset();
     } catch (error) {
@@ -45,6 +47,8 @@ const Newsletter = () => {
           errorMessage="Something went wrong. Please try again."
         />
       ));
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -70,6 +74,7 @@ const Newsletter = () => {
 
             <button
               type="submit"
+              disabled={isLoading}
               className="btn-sm btn h-[42px] rounded bg-primary px-4 py-2 normal-case text-primary-content transition-colors duration-300 ease-in-out hover:bg-primary-focus md:!h-[46px] md:text-lg"
             >
               Subscribe

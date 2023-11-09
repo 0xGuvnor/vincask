@@ -1,7 +1,5 @@
 import {
   Body,
-  Button,
-  Column,
   Container,
   Font,
   Head,
@@ -11,14 +9,20 @@ import {
   Img,
   Link,
   Preview,
-  Section,
   Tailwind,
   Text,
 } from "@react-email/components";
 
-interface Props {}
+interface Props {
+  email: string;
+  id: string;
+}
 
-const Subscribed = ({}: Props) => {
+const baseUrl = process.env.BASE_URL
+  ? `${process.env.BASE_URL}/api/unsubscribe`
+  : "";
+
+const Subscribed = ({ email, id }: Props) => {
   return (
     <Html>
       <Head>
@@ -32,7 +36,7 @@ const Subscribed = ({}: Props) => {
       <Preview>You&apos;ve subscribed to updates on VinCask NFTs.</Preview>
 
       <Tailwind>
-        <Body className="bg-[#2a323c] text-gray-100">
+        <Body className="border-none bg-[#2a323c] p-2 text-gray-100">
           <Container className="rounded-md bg-[#111111] px-8 pb-4 shadow-2xl">
             <Img
               src="https://cyvqrxhvvlfwbqcqfzjq.supabase.co/storage/v1/object/public/images/logos/logo2.png"
@@ -49,17 +53,28 @@ const Subscribed = ({}: Props) => {
 
             <Text>
               We&apos;re thrilled to have you on board, and we can&apos;t wait
-              to keep you in the loop about all the exciting updates as we near
-              the whisky bottling date.
+              to keep you in the loop about all the exciting updates we have in
+              store for you.
             </Text>
 
             <Text>
               In our newsletter, you can expect:
               <ul>
-                <li>📢 Breaking news on the latest NFT drops.</li>
-                <li>🧐 Expert analysis and market trends. </li>
-                <li>💡 Tips and tricks for navigating the NFT space.</li>
-                <li>🎁 Exclusive giveaways and surprises.</li>
+                <li>
+                  <Text>
+                    📢 Announcements on when new batches of NFTs will be
+                    released for minting.
+                  </Text>
+                </li>
+                <li>
+                  <Text>
+                    📸 Progress photos on the cask and bottling process as it
+                    reaches maturity.
+                  </Text>
+                </li>
+                <li>
+                  <Text>🎁 Exclusive giveaways and surprises.</Text>
+                </li>
               </ul>
             </Text>
 
@@ -80,9 +95,15 @@ const Subscribed = ({}: Props) => {
             <Hr className="opacity-20" />
             <Text className="text-xs font-light text-gray-500">
               You were sent this message because you opted-in and subscribed to
-              the VinCask newsletter. If you believe this has been sent to you
+              the VinCask Newsletter. If you believe this has been sent to you
               in error, you can safely ignore it, or you can unsubscribe{" "}
-              <Link>here</Link>.
+              <Link
+                href={`${baseUrl}?email=${email}&id=${id}`}
+                className="cursor-pointer underline underline-offset-2"
+              >
+                here
+              </Link>
+              .
             </Text>
 
             <Text className="text-xs font-light text-gray-500">
