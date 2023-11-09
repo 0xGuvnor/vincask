@@ -13,7 +13,7 @@ const Testimony = ({ certImages }: Props) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.6 }}
       transition={{ type: "spring", duration: 1, bounce: 0.2 }}
-      className="flex max-w-4xl flex-1 flex-col gap-10 md:ml-20 md:gap-16 md:px-0 2xl:gap-24"
+      className="flex max-w-4xl flex-1 flex-col gap-10 md:gap-16 md:px-0 2xl:gap-24"
     >
       <h1 className="font-header text-3xl font-black md:px-0 md:text-5xl 2xl:text-6xl">
         Craftsmanship You Can{" "}
@@ -24,7 +24,7 @@ const Testimony = ({ certImages }: Props) => {
       </h1>
 
       <div className="relative flex flex-col px-12 md:px-0">
-        <VscQuote className="absolute -top-4 left-0 h-10 w-10 md:-left-[69px] md:-top-11 md:h-[69px] md:w-[69px]" />
+        <VscQuote className="absolute -top-4 left-0 h-10 w-10 md:-left-[52px] md:-top-9 md:h-14 md:w-14 lg:-left-[69px] lg:-top-11 lg:h-[69px] lg:w-[69px]" />
         <span className="text-justify leading-relaxed md:text-left 2xl:text-lg 2xl:leading-loose">
           Our premium whisky stands apart from the rest, setting a new standard
           of excellence in the industry. What separates our whisky from others

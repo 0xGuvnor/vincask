@@ -10,7 +10,7 @@ interface Props {
 
 const Testimonials = ({ carouselImages, certImages }: Props) => {
   return (
-    <Container classNames="md:flex-row items-center justify-center">
+    <Container classNames="md:flex-row items-center justify-center lg:gap-20">
       <motion.div
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}

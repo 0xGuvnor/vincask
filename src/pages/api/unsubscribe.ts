@@ -13,7 +13,7 @@ export default async function handler(
   res: NextApiResponse,
 ) {
   try {
-    const { id } = req.query;
+    const { id, email } = req.query;
 
     const { error } = await supabaseAdmin
       .from("newsletter")
@@ -24,7 +24,7 @@ export default async function handler(
       return res.status(400).json({ error });
     }
 
-    res.status(301).setHeader("Location", redirectUrl);
+    res.status(301).setHeader("Location", `${redirectUrl}?u=${email}`);
 
     res.end();
   } catch (error) {

@@ -118,21 +118,24 @@ const Footer = () => {
 
                 <ul className="mt-6 space-y-4 text-sm">
                   <li>
-                    <a href="#" className="transition hover:opacity-75">
+                    <Link href="/about" className="transition hover:opacity-75">
                       About
-                    </a>
+                    </Link>
                   </li>
 
                   <li>
-                    <a href="#" className="transition hover:opacity-75">
+                    <Link
+                      href="/whisky"
+                      className="transition hover:opacity-75"
+                    >
                       Whisky
-                    </a>
+                    </Link>
                   </li>
 
                   <li>
-                    <a href="#" className="transition hover:opacity-75">
+                    <Link href="/nft" className="transition hover:opacity-75">
                       NFT Mint
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -142,15 +145,21 @@ const Footer = () => {
 
                 <ul className="mt-6 space-y-4 text-sm">
                   <li>
-                    <a href="#" className="transition hover:opacity-75">
+                    <Link
+                      href="/terms-of-service"
+                      className="transition hover:opacity-75"
+                    >
                       Terms of Service
-                    </a>
+                    </Link>
                   </li>
 
                   <li>
-                    <a href="#" className="transition hover:opacity-75">
+                    <Link
+                      href="/privacy-policy"
+                      className="transition hover:opacity-75"
+                    >
                       Privacy Policy
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>

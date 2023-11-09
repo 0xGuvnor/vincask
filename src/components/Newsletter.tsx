@@ -84,7 +84,7 @@ const Newsletter = () => {
           <p className="-bottom-7 left-0 text-xs md:absolute md:text-sm">
             We care about your data. Read our{" "}
             <Link
-              href="/"
+              href="/privacy-policy"
               className="cursor-pointer underline decoration-primary underline-offset-[3px] transition-all duration-300 ease-in-out hover:text-white hover:decoration-2"
             >
               privacy policy

@@ -453,13 +453,13 @@ const MintCard = () => {
                 className="relative h-[52px] w-[222.32px]"
               >
                 <CrossmintPayButton
-                  collectionId="f0b4162d-262e-49d6-beba-10f6db3fdb54"
+                  collectionId="dfdfdffc-366d-45ee-9c22-66181fdce69b"
                   projectId="011b8900-8f68-4e25-b9f6-b1a6c84af69f"
                   mintConfig={{
                     type: "erc-721",
                     totalPrice: (quantity * 10).toString(),
                     _quantity: quantity,
-                    quantity: quantity,
+                    // quantity: quantity,
                   }}
                   environment="staging"
                   // mintTo="0x000000000000000000000000000000000000dEaD"
