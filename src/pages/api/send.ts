@@ -1,5 +1,5 @@
-import Subscribed from "@/emails/Subscribed";
 import { resend } from "@/lib/resend";
+import Subscribed from "@/emails/Subscribed";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
