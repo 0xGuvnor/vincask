@@ -28,7 +28,7 @@ export default function Home({
         {/* <Hero /> */}
         <Hero2 heroImage={heroImage} />
         <Testimonials carouselImages={carouselImages} certImages={certImages} />
-        <Team teamImages={teamImages} />
+        {/* <Team teamImages={teamImages} /> */}
       </div>
     </>
   );
