@@ -54,11 +54,11 @@ const Redeem = ({
     abi: vincask.abi,
   };
   const countdownTimer = {
-    year: 2022,
-    month: 11,
-    date: 25,
-    hour: 0,
-    minute: 0,
+    year: 2023,
+    month: 10,
+    date: 9,
+    hour: 23,
+    minute: 48,
   };
   const timeDifference = useCountdownDifference(countdownTimer);
 
@@ -204,15 +204,7 @@ const Redeem = ({
       (async () => {
         const { data: txPassedData, error: txPassedError } = await supabase
           .from("customers")
-          .update({ redeem_tx_passed: true })
-          .eq("message_hash", cachedSigHash)
-          .select();
-      })();
-
-      (async () => {
-        const { data: nftData, error: nftError } = await supabase
-          .from("customers")
-          .update({ selected_nfts: selectedNfts })
+          .update({ redeem_tx_passed: true, selected_nfts: selectedNfts })
           .eq("message_hash", cachedSigHash)
           .select();
       })();

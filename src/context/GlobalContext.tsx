@@ -38,11 +38,11 @@ const GlobalProvider: FC<PropsWithChildren> = ({ children }) => {
   const [show, setShow] = useState(false);
   const [cachedSigHash, setCachedSigHash] = useState("");
   const mintCountdownTimer: CountdownTimer = {
-    year: 2022,
+    year: 2023,
     month: 10,
-    date: 4,
-    hour: 17,
-    minute: 0,
+    date: 9,
+    hour: 23,
+    minute: 50,
   };
 
   const contextValue: IGlobalContext = {
