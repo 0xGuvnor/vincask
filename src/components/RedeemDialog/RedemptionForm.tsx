@@ -47,12 +47,15 @@ const RedemptionForm = ({
   const { setCachedSigHash } = useGlobalContext();
   const datetime = new Date();
   const [cachedMessage, setCachedMessage] = useState("");
+  const [formIsLoading, setFormIsLoading] = useState(false);
   const { data: sigHash, signMessage } = useSignMessage();
   const [redemptionTypeState, setRedemptionTypeState] =
     useState<RedemptionType>("");
 
   const onSubmit: SubmitHandler<IFormInput> = async (formData) => {
     try {
+      setFormIsLoading(true);
+
       // Verification to ensure only the person signing the message is allowed to
       // upload their details to the redemption form DB.
 
@@ -109,6 +112,8 @@ const RedemptionForm = ({
       toast.error((t) => (
         <ToastError t={t} errorMessage="Signature verification failed" />
       ));
+    } finally {
+      setFormIsLoading(false);
     }
   };
 
@@ -234,6 +239,7 @@ const RedemptionForm = ({
         layout="position"
         transition={{ duration: 0.25 }}
         type="button"
+        disabled={formIsLoading}
         onClick={() => {
           if (!sigHash) {
             setCachedMessage(messageToSign(address, datetime));
