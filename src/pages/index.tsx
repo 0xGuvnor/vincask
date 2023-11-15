@@ -28,7 +28,7 @@ export default function Home({
       <div className="flex flex-col">
         {/* <Hero /> */}
         <Hero2 heroImage={heroImage} />
-        <AboutPortEllen carouselImages={carouselImages} />
+        <AboutPortEllen />
         <Testimonials carouselImages={carouselImages} certImages={certImages} />
         {/* <Team teamImages={teamImages} /> */}
       </div>
