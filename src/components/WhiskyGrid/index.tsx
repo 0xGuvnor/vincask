@@ -1,4 +1,3 @@
-import Image from "next/image";
 import GridImage from "./GridImage";
 
 interface Props {

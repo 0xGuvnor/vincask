@@ -25,7 +25,7 @@ const Hero2 = ({ heroImage }: Props) => {
         <section
           className={`${
             timeDifference <= 0 && "md:-mt-10 2xl:-mt-20"
-          } flex max-w-xs flex-col items-center justify-center gap-6 pb-2 pt-8 text-center md:max-w-[27rem] md:basis-2/3 md:items-start md:gap-14 md:py-8 md:text-left lg:max-w-[34.5rem] xl:max-w-[28rem] 2xl:max-w-[35rem]`}
+          } flex max-w-xs flex-col items-center justify-center gap-6 pb-2 pt-8 text-center md:max-w-[27rem] md:basis-2/3 md:items-start md:gap-14 md:py-8 md:text-left lg:max-w-[34.5rem] xl:max-w-[30rem] 2xl:max-w-[35rem]`}
         >
           {timeDifference > 0 && (
             <motion.div
@@ -41,11 +41,15 @@ const Hero2 = ({ heroImage }: Props) => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.75 }}
-            className="font-header text-4xl font-black md:text-5xl lg:text-7xl 2xl:text-8xl"
+            className="font-header text-4xl font-black md:text-5xl lg:text-6xl 2xl:text-8xl"
           >
-            Crafted with{" "}
+            When{" "}
             <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
-              passion & precision
+              Tradition
+            </span>{" "}
+            Meets{" "}
+            <span className="bg-gradient-to-l from-accent to-primary bg-clip-text text-transparent">
+              Innovation
             </span>
           </motion.h1>
           <motion.h2
@@ -54,8 +58,8 @@ const Hero2 = ({ heroImage }: Props) => {
             transition={{ duration: 0.5, delay: 1 }}
             className="text-lg md:text-2xl"
           >
-            Our whisky embodies the essence of <br />
-            dedication and distinction.
+            Discover the excellence of <br />
+            time-honoured distillation.
           </motion.h2>
 
           <CtaButtons />

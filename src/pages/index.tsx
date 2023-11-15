@@ -1,3 +1,4 @@
+import AboutPortEllen from "@/components/AboutPortEllen";
 import Hero from "@/components/Hero";
 import Hero2 from "@/components/Hero 2";
 import MobileOverlay from "@/components/MobileOverlay";
@@ -27,6 +28,7 @@ export default function Home({
       <div className="flex flex-col">
         {/* <Hero /> */}
         <Hero2 heroImage={heroImage} />
+        <AboutPortEllen carouselImages={carouselImages} />
         <Testimonials carouselImages={carouselImages} certImages={certImages} />
         {/* <Team teamImages={teamImages} /> */}
       </div>
