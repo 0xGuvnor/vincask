@@ -53,8 +53,9 @@ const ParallexItem = ({ years, title, description, odd }: Props) => {
   );
 
   return (
-    <div
+    <motion.div
       ref={ref}
+      style={isMobile ? { y: "10%" } : {}}
       className="md:items-centerx md:justify-centerx flex flex-col gap-4 md:flex-row md:gap-3"
     >
       <motion.div
@@ -90,7 +91,7 @@ const ParallexItem = ({ years, title, description, odd }: Props) => {
         <h3 className="text-3xl font-bold">{title}</h3>
         <p>{description}</p>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 export default ParallexItem;
