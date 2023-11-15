@@ -33,6 +33,7 @@ const ParallaxContainer = () => {
         description="Post-closure, the whisky produced by Port Ellen attained mythical status among aficionados. Its distinctive smoky and coastal profile, combined with a limited supply, transformed it into a highly sought-after collectible. Bottles of Port Ellen, especially from the 1970s distillates, became must-haves for serious collectors and investors."
       />
       <ParallexItem
+        years="2024"
         title="Legacy and Rebirth"
         description="As time progressed, Port Ellen's whiskies not only retained but grew in value and acclaim, symbolizing a pinnacle of whisky craftsmanship. The distillery, slated to reopen, is poised to create a new chapter in its illustrious history, blending tradition with contemporary whisky-making."
         odd
