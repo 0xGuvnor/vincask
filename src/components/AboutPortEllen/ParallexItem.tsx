@@ -56,7 +56,7 @@ const ParallexItem = ({ years, title, description, odd }: Props) => {
     <motion.div
       ref={ref}
       style={isMobile ? { y: "10%" } : {}}
-      className="md:items-centerx md:justify-centerx flex flex-col gap-4 md:flex-row md:gap-3"
+      className="flex flex-col gap-4 overflow-x-hidden md:flex-row md:gap-3"
     >
       <motion.div
         style={
