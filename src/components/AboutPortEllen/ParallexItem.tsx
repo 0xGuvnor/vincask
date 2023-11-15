@@ -88,7 +88,7 @@ const ParallexItem = ({ years, title, description, odd }: Props) => {
         }
         className={`${odd && "order-first"} space-y-1 md:w-1/2`}
       >
-        <h3 className="text-3xl font-bold">{title}</h3>
+        <h3 className="text-2xl font-bold md:text-4xl">{title}</h3>
         <p>{description}</p>
       </motion.div>
     </motion.div>
