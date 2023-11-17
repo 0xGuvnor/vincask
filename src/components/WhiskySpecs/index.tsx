@@ -9,6 +9,8 @@ const WhiskySpecs = () => {
           "https://cyvqrxhvvlfwbqcqfzjq.supabase.co/storage/v1/object/public/images/product/whisky_specs.png"
         }
         alt="Whisky Product Specs"
+        quality={100}
+        priority
         fill
         className="object-contain"
       />
