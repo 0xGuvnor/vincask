@@ -9,10 +9,10 @@ interface Props {
 const Testimony = ({ certImages }: Props) => {
   return (
     <motion.section
-      initial={{ opacity: 0, y: 100 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 100, filter: "blur(20px)" }}
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0)" }}
       viewport={{ once: true, amount: 0.6 }}
-      transition={{ type: "spring", duration: 1, bounce: 0.2 }}
+      transition={{ type: "spring", duration: 0.5, bounce: 0.2 }}
       className="flex max-w-4xl flex-1 flex-col gap-10 md:gap-16 md:px-0 2xl:gap-24"
     >
       <h1 className="font-header text-3xl font-black md:px-0 md:text-5xl 2xl:text-6xl">

@@ -1,11 +1,6 @@
 import Newsletter from "./Newsletter";
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaTelegramPlane,
-  FaTiktok,
-  FaTwitter,
-} from "react-icons/fa";
+import { FaInstagram, FaTelegramPlane, FaTiktok } from "react-icons/fa";
+import { FaDiscord, FaXTwitter } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import { supabase } from "@/lib/supabase";
 import Image from "next/image";
@@ -52,9 +47,9 @@ const Footer = () => {
                     target="_blank"
                     className="transition hover:opacity-75"
                   >
-                    <span className="sr-only">Facebook</span>
+                    <span className="sr-only">Discord</span>
 
-                    <FaFacebookF className="h-6 w-6" />
+                    <FaDiscord className="h-6 w-6" />
                   </a>
                 </li>
 
@@ -93,7 +88,7 @@ const Footer = () => {
                   >
                     <span className="sr-only">Twitter</span>
 
-                    <FaTwitter className="h-6 w-6" />
+                    <FaXTwitter className="h-6 w-6" />
                   </a>
                 </li>
 

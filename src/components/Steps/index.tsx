@@ -7,10 +7,11 @@ import Gallery from "./Gallery";
 import Link from "next/link";
 
 interface Props {
-  images: string[];
+  // images: string[];
+  stepsMedia: string[];
 }
 
-const Steps = ({ images }: Props) => {
+const Steps = ({ stepsMedia }: Props) => {
   const [countdownKey, setCountdownKey] = useState(0);
   const [selected, setSelected] = useState(() => {
     const startingSelectedArray = new Array<boolean>(stepsArray.length).fill(
@@ -69,7 +70,7 @@ const Steps = ({ images }: Props) => {
         ))}
       </div>
 
-      <Gallery selected={selected} images={images} />
+      <Gallery selected={selected} images={stepsMedia} />
     </section>
   );
 };

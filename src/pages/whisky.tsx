@@ -3,6 +3,7 @@ import Heading from "@/components/Heading";
 import MobileOverlay from "@/components/MobileOverlay";
 import Steps from "@/components/Steps";
 import WhiskyGrid from "@/components/WhiskyGrid";
+import WhiskySpecs from "@/components/WhiskySpecs";
 import getWhiskyPageProps from "@/utils/helpers/getWhiskyPageProps";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Head from "next/head";
@@ -27,7 +28,8 @@ const Whisky = ({ images }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
         <WhiskyGrid images={images} />
 
-        <Steps images={images} />
+        {/* <Steps images={images} /> */}
+        <WhiskySpecs />
       </Container>
     </>
   );

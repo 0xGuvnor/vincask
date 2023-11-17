@@ -2,9 +2,11 @@ import AboutPortEllen from "@/components/AboutPortEllen";
 import Hero from "@/components/Hero";
 import Hero2 from "@/components/Hero 2";
 import MobileOverlay from "@/components/MobileOverlay";
+import NftConcept from "@/components/NftConcept";
 import Team from "@/components/Team";
 import Testimonials from "@/components/Testimonials";
 import getHomePageProps from "@/utils/helpers/getHomePageProps";
+import getWhiskyPageProps from "@/utils/helpers/getWhiskyPageProps";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Head from "next/head";
 
@@ -13,6 +15,7 @@ export default function Home({
   teamImages,
   carouselImages,
   certImages,
+  stepsMedia,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
@@ -30,6 +33,7 @@ export default function Home({
         <Hero2 heroImage={heroImage} />
         <AboutPortEllen />
         <Testimonials carouselImages={carouselImages} certImages={certImages} />
+        <NftConcept stepsMedia={stepsMedia} />
         {/* <Team teamImages={teamImages} /> */}
       </div>
     </>
@@ -40,12 +44,15 @@ export const getStaticProps: GetStaticProps = () => {
   const { heroImage, teamImages, carouselImages, certImages } =
     getHomePageProps();
 
+  const stepsMedia = getWhiskyPageProps();
+
   return {
     props: {
       heroImage,
       teamImages,
       carouselImages,
       certImages,
+      stepsMedia,
     },
   };
 };
