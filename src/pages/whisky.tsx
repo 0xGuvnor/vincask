@@ -1,3 +1,4 @@
+import Comparison from "@/components/Comparison";
 import Container from "@/components/Container";
 import Heading from "@/components/Heading";
 import MobileOverlay from "@/components/MobileOverlay";
@@ -26,10 +27,13 @@ const Whisky = ({ images }: InferGetStaticPropsType<typeof getStaticProps>) => {
           subtitle="Your journey to whisky excellence starts here."
         />
 
-        <WhiskyGrid images={images} />
+        <div className="space-y-36">
+          <WhiskyGrid images={images} />
+          <Comparison />
 
-        {/* <Steps images={images} /> */}
-        <WhiskySpecs />
+          {/* <Steps images={images} /> */}
+          <WhiskySpecs />
+        </div>
       </Container>
     </>
   );
