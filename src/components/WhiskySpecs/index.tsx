@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Heading from "../Heading";
 
 const WhiskySpecs = () => {
   return (
@@ -12,6 +11,7 @@ const WhiskySpecs = () => {
         quality={100}
         priority
         fill
+        sizes="(max-width: 768px) 90vw, 80vw"
         className="object-contain"
       />
     </section>
