@@ -27,7 +27,7 @@ const Whisky = ({ images }: InferGetStaticPropsType<typeof getStaticProps>) => {
           subtitle="Your journey to whisky excellence starts here."
         />
 
-        <div className="space-y-36">
+        <div className="space-y-32 md:space-y-36">
           <WhiskyGrid images={images} />
           <Comparison />
 
