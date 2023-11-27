@@ -20,7 +20,12 @@ const ParallexItem = ({ years, title, description, odd }: Props) => {
   const y = useTransform(
     scrollYProgress,
     [0, 0.4, 0.8, 1],
-    ["100%", "0%", "0%", "-20%"],
+    ["100%", "0%", "40%", "-20%"],
+  );
+  const mobileY = useTransform(
+    scrollYProgress,
+    [0, 0.4, 0.8],
+    ["10%", "10%", "50%"],
   );
   const x = useTransform(
     scrollYProgress,
@@ -29,7 +34,7 @@ const ParallexItem = ({ years, title, description, odd }: Props) => {
   );
   const opacity = useTransform(scrollYProgress, [0, 0.4, 0.9, 1], [0, 1, 1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.4], [0, 1]);
-  const borderRadius = useTransform(scrollYProgress, [0.1, 0.5], [0, 200]);
+  const borderRadius = useTransform(scrollYProgress, [0.1, 0.5], [0, 500]);
   const yearY = useTransform(
     scrollYProgress,
     [0, 0.4, 0.8, 1],
@@ -38,30 +43,37 @@ const ParallexItem = ({ years, title, description, odd }: Props) => {
   const yearOpacity = useTransform(scrollYProgress, [0.7, 0.8], [1, 0]);
   const descriptionY = useTransform(
     scrollYProgress,
-    [0, 0.4, 0.7, 1],
-    ["-200%", "25%", "25%", "100%"],
+    [0, 0.4, 0.8, 1],
+    ["-200%", "25%", "65%", "150%"],
+  );
+  const mobileDescriptionY = useTransform(
+    scrollYProgress,
+    [0, 0.4, 0.8],
+    ["10%", "10%", "50%"],
   );
   const descriptionX = useTransform(
     scrollYProgress,
-    [0, 0.4, 0.7, 1],
+    [0, 0.4, 0.8, 1],
     ["-200%", "0%", "0%", "100%"],
   );
   const descriptionOpacity = useTransform(
     scrollYProgress,
-    [0, 0.4, 0.7, 0.9],
+    [0, 0.4, 0.8, 0.9],
     [0, 1, 1, 0],
   );
 
   return (
-    <motion.div
-      ref={ref}
-      style={isMobile ? { y: "10%" } : {}}
-      className="flex flex-col gap-4 md:flex-row md:gap-3"
-    >
+    <div ref={ref} className="flex flex-col gap-10 md:flex-row md:gap-3">
       <motion.div
         style={
           isMobile
-            ? { x, opacity, scale, borderRadius }
+            ? {
+                x,
+                y: mobileY,
+                opacity,
+                scale,
+                borderRadius,
+              }
             : { y, opacity, scale, borderRadius }
         }
         className="relative h-[30vh] shrink-0 overflow-hidden md:h-[40vh] md:w-1/2"
@@ -83,7 +95,11 @@ const ParallexItem = ({ years, title, description, odd }: Props) => {
       <motion.div
         style={
           isMobile
-            ? { x: descriptionX, opacity: descriptionOpacity }
+            ? {
+                x: descriptionX,
+                y: mobileDescriptionY,
+                opacity: descriptionOpacity,
+              }
             : { y: descriptionY, opacity: descriptionOpacity }
         }
         className={`${odd && "order-first"} space-y-1 md:w-1/2`}
@@ -91,7 +107,7 @@ const ParallexItem = ({ years, title, description, odd }: Props) => {
         <h3 className="text-2xl font-bold md:text-4xl">{title}</h3>
         <p>{description}</p>
       </motion.div>
-    </motion.div>
+    </div>
   );
 };
 export default ParallexItem;
