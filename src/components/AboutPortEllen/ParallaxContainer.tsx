@@ -2,7 +2,7 @@ import ParallexItem from "./ParallexItem";
 
 const ParallaxContainer = () => {
   return (
-    <section className="flex flex-col gap-10 overflow-x-clip">
+    <section className="flex flex-col gap-10 overflow-x-clip md:gap-64">
       <ParallexItem
         years={"1825"}
         title="Establishment and Early Years"
