@@ -69,7 +69,6 @@ const ParallexItem = ({ years, title, description, odd }: Props) => {
           isMobile
             ? {
                 x,
-                y: mobileY,
                 opacity,
                 scale,
                 borderRadius,
@@ -97,7 +96,6 @@ const ParallexItem = ({ years, title, description, odd }: Props) => {
           isMobile
             ? {
                 x: descriptionX,
-                y: mobileDescriptionY,
                 opacity: descriptionOpacity,
               }
             : { y: descriptionY, opacity: descriptionOpacity }
