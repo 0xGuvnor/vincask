@@ -12,6 +12,7 @@ import axios from "axios";
 import { messageToSign } from "@/constants/messageToSign";
 import { useGlobalContext } from "@/context/GlobalContext";
 import { addressVariants } from "@/utils/motionVariants";
+import RedeemCheckbox from "./RedeemCheckbox";
 
 interface Props {
   setOpen: Dispatch<SetStateAction<boolean>>;
@@ -29,6 +30,8 @@ export interface IFormInput {
   address1: string;
   address2: string;
   postal_code: string;
+  isOver18: boolean;
+  agreedToTandC: boolean;
 }
 
 const RedemptionForm = ({
@@ -41,8 +44,21 @@ const RedemptionForm = ({
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
-  } = useForm<IFormInput>();
+  } = useForm<IFormInput>({
+    defaultValues: {
+      isOver18: false,
+      agreedToTandC: false,
+      address1: "",
+      address2: "",
+      email: "",
+      name: "",
+      phone: "",
+      postal_code: "",
+      redemption_type: "",
+    },
+  });
   const { address } = useAccount();
   const { setCachedSigHash } = useGlobalContext();
   const datetime = new Date();
@@ -228,6 +244,23 @@ const RedemptionForm = ({
           </>
         )}
       </AnimatePresence>
+
+      <div className="flex flex-col gap-x-10 gap-y-4 md:flex-row">
+        <RedeemCheckbox
+          id="isOver18"
+          label="I am over 18 years old*"
+          required
+          errors={errors}
+          control={control}
+        />
+        <RedeemCheckbox
+          id="agreedToTandC"
+          label="I agree to the redemption terms & conditions*"
+          required
+          errors={errors}
+          control={control}
+        />
+      </div>
 
       {/* <motion.input
         layout="position"

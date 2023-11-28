@@ -12,9 +12,9 @@ const NftCollectionButton = ({ name, url }: Props) => {
         href={url}
         rel="noreferrer"
         target="_blank"
-        className="flex cursor-pointer items-center justify-center gap-1 rounded-full bg-secondary px-4 py-2 text-secondary-content transition duration-300 ease-in-out hover:bg-secondary-focus"
+        className="hover:bg-secondary-focus flex cursor-pointer items-center justify-center gap-1 rounded-full bg-secondary px-4 py-2 text-secondary-content transition duration-300 ease-in-out"
       >
-        <span className="md:text-lg">View collection on {name}</span>
+        <span className="xl:text-lg">View collection on {name}</span>
         <HiExternalLink className="h-5 w-5 md:h-6 md:w-6" />
       </a>
     </button>

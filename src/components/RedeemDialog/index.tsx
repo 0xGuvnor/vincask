@@ -83,7 +83,7 @@ const RedeemDialog = ({
                 <motion.div
                   layout
                   transition={{ layout: { duration: 0.25 } }}
-                  className="relative flex max-h-[80vh] w-[90vw] max-w-2xl flex-col gap-10 overflow-y-scroll rounded-lg bg-base-100 p-8"
+                  className="relative flex max-h-[85vh] w-[90vw] max-w-2xl flex-col gap-10 overflow-y-scroll rounded-lg bg-base-100 p-8"
                 >
                   <motion.div layout className="flex flex-col gap-2">
                     <Dialog.Title className="text-2xl font-semibold md:text-4xl">
