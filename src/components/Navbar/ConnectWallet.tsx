@@ -42,7 +42,7 @@ const ConnectWallet = () => {
                   <button
                     onClick={openConnectModal}
                     type="button"
-                    className="flex items-center justify-center gap-1 rounded bg-primary p-1.5 font-semibold text-primary-content transition duration-300 ease-in-out focus:outline-none lg:p-2 lg:hover:bg-primary-focus lg:hover:shadow-2xl"
+                    className="lg:hover:bg-primary-focus flex items-center justify-center gap-1 rounded bg-primary p-1.5 font-semibold text-primary-content transition duration-300 ease-in-out focus:outline-none lg:p-2 lg:hover:shadow-2xl"
                   >
                     <BiWallet className="h-5 w-5 lg:h-6 lg:w-6" />
                     <span className="text-sm lg:text-base">
