@@ -11,7 +11,7 @@ interface Props {
   control: Control<IFormInput, any>;
 }
 
-export default ({ label, id, errors, required, control }: Props) => {
+const RedeemCheckbox = ({ label, id, errors, required, control }: Props) => {
   return (
     <Controller
       name={id}
@@ -43,3 +43,4 @@ export default ({ label, id, errors, required, control }: Props) => {
     />
   );
 };
+export default RedeemCheckbox;
