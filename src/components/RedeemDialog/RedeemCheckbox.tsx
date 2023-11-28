@@ -18,7 +18,7 @@ export default ({ label, id, errors, required, control }: Props) => {
       control={control}
       rules={{ required }}
       render={({ field }) => (
-        <div className="relative flex items-center justify-start gap-1 md:gap-2">
+        <div className="relative flex items-center justify-start gap-1 md:gap-1.5">
           <Checkbox.Root
             id={id}
             checked={field.value as boolean}
@@ -29,7 +29,7 @@ export default ({ label, id, errors, required, control }: Props) => {
               <HiCheck className="h-5 w-5 text-black md:h-6 md:w-6" />
             </Checkbox.Indicator>
           </Checkbox.Root>
-          <label htmlFor={id} className="text-sm md:text-base">
+          <label htmlFor={id} className="select-none text-xs md:text-sm">
             {label}
           </label>
 
