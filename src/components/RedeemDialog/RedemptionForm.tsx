@@ -255,7 +255,7 @@ const RedemptionForm = ({
         />
         <RedeemCheckbox
           id="agreedToTandC"
-          label="I agree to the redemption terms and conditions*"
+          label="I agree to the redemption terms &amp; conditions*"
           required
           errors={errors}
           control={control}
