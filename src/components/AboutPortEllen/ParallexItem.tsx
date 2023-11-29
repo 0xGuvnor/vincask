@@ -15,21 +15,26 @@ const ParallexItem = ({ years, title, description, odd }: Props) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["end end", "start start"],
+    offset: ["start end", "end start"],
   });
   const y = useTransform(
     scrollYProgress,
-    [0, 0.2, 0.8, 1],
-    ["100%", "0%", "30%", "-20%"],
-  );
-  const x = useTransform(
-    scrollYProgress,
-    [0, 0.2, 0.8, 1],
-    ["50%", "0%", "0%", "-50%"],
+    [0.15, 0.3, 0.6, 1],
+    ["185%", "65%", "95%", "0%"],
   );
   const opacity = useTransform(
     scrollYProgress,
-    [0, 0.2, 0.8, 0.9],
+    [0.2, 0.3, 0.6, 0.7],
+    [0, 1, 1, 0],
+  );
+  const x = useTransform(
+    scrollYProgress,
+    [0.2, 0.3, 0.47, 0.55],
+    ["50%", "0%", "0%", "-100%"],
+  );
+  const mobileOpacity = useTransform(
+    scrollYProgress,
+    [0.2, 0.3, 0.47, 0.55],
     [0, 1, 1, 0],
   );
   const scale = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
@@ -42,17 +47,22 @@ const ParallexItem = ({ years, title, description, odd }: Props) => {
   const yearOpacity = useTransform(scrollYProgress, [0.8, 0.82], [1, 0]);
   const descriptionY = useTransform(
     scrollYProgress,
-    [0, 0.2, 0.8, 1],
-    ["-100%", "25%", "55%", "100%"],
+    [0.05, 0.3, 0.6, 1],
+    ["-50%", "25%", "55%", "200%"],
   );
   const descriptionX = useTransform(
     scrollYProgress,
-    [0, 0.2, 0.8, 1],
-    ["-25%", "0%", "0%", "25%"],
+    [0.2, 0.3, 0.47, 0.55],
+    ["-25%", "0%", "0%", "50%"],
   );
   const descriptionOpacity = useTransform(
     scrollYProgress,
-    [0.1, 0.2, 0.8, 0.9],
+    [0.2, 0.3, 0.6, 0.7],
+    [0, 1, 1, 0],
+  );
+  const mobileDescriptionOpacity = useTransform(
+    scrollYProgress,
+    [0.2, 0.3, 0.47, 0.55],
     [0, 1, 1, 0],
   );
 
@@ -60,14 +70,14 @@ const ParallexItem = ({ years, title, description, odd }: Props) => {
     <motion.div
       style={isMobile ? { y: "10%" } : {}}
       ref={ref}
-      className="flex flex-col gap-10 md:flex-row md:gap-3"
+      className="flex h-screen flex-col gap-10 md:flex-row md:gap-3"
     >
       <motion.div
         style={
           isMobile
             ? {
                 x,
-                opacity,
+                opacity: mobileOpacity,
                 scale,
                 borderRadius,
               }
@@ -94,7 +104,7 @@ const ParallexItem = ({ years, title, description, odd }: Props) => {
           isMobile
             ? {
                 x: descriptionX,
-                opacity: descriptionOpacity,
+                opacity: mobileDescriptionOpacity,
               }
             : { y: descriptionY, opacity: descriptionOpacity }
         }
