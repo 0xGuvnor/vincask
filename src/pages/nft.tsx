@@ -55,13 +55,13 @@ const NFT = ({
                   cask #P5X2, upon its maturation.
                 </p>
                 <p>
-                  When you're ready to claim your bottle, the process is
-                  seamless: your VIN NFT will be exchanged — or 'burned' — in a
-                  transaction on the Ethereum blockchain. In its place, you'll
-                  receive a commemorative VinCask X (VIN-X) NFT. This new NFT,
-                  bearing the same metadata, stands as your digital proof of the
-                  successful redemption and adds a unique story to your
-                  collection.
+                  When you&apos;re ready to claim your bottle, the process is
+                  seamless: your VIN NFT will be exchanged — or
+                  &apos;burned&apos; — in a transaction on the Ethereum
+                  blockchain. In its place, you&apos;ll receive a commemorative
+                  VinCask X (VIN-X) NFT. This new NFT, bearing the same
+                  metadata, stands as your digital proof of the successful
+                  redemption and adds a unique story to your collection.
                 </p>
               </div>
 
