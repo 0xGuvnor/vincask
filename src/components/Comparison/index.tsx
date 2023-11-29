@@ -17,7 +17,7 @@ const Comparison = () => {
       >
         {`With Port Ellen poised to reopen in 2024, there will be great fanfare for the distillery in the near future. 
         
-        It will be well beyond 2070 before another similar aged Port Ellen can be created. Even then, these old '70s distillates will be impossible to replicate and will be even more sought after by collectors and connoisseurs alike.`}
+        It will be well beyond 2070 before another similarly aged Port Ellen can be created. Even then, these old '70s distillates will be impossible to replicate and will be even more sought after by collectors and connoisseurs alike.`}
       </motion.p>
 
       <div className="relative col-span-2 flex flex-col justify-center gap-4 text-xs lg:text-sm">
