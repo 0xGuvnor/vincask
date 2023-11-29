@@ -19,46 +19,40 @@ const ParallexItem = ({ years, title, description, odd }: Props) => {
   });
   const y = useTransform(
     scrollYProgress,
-    [0, 0.4, 0.8, 1],
-    ["100%", "0%", "40%", "-20%"],
-  );
-  const mobileY = useTransform(
-    scrollYProgress,
-    [0, 0.4, 0.8],
-    ["10%", "10%", "50%"],
+    [0, 0.2, 0.8, 1],
+    ["100%", "0%", "30%", "-20%"],
   );
   const x = useTransform(
     scrollYProgress,
-    [0, 0.4, 0.8, 1],
+    [0, 0.2, 0.8, 1],
     ["100%", "0%", "0%", "-20%"],
   );
-  const opacity = useTransform(scrollYProgress, [0, 0.4, 0.9, 1], [0, 1, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.4], [0, 1]);
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.2, 0.8, 0.9],
+    [0, 1, 1, 0],
+  );
+  const scale = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
   const borderRadius = useTransform(scrollYProgress, [0.1, 0.5], [0, 500]);
   const yearY = useTransform(
     scrollYProgress,
-    [0, 0.4, 0.8, 1],
+    [0, 0.2, 0.8, 1],
     ["200%", "0%", "0%", "-200%"],
   );
-  const yearOpacity = useTransform(scrollYProgress, [0.7, 0.8], [1, 0]);
+  const yearOpacity = useTransform(scrollYProgress, [0.8, 0.82], [1, 0]);
   const descriptionY = useTransform(
     scrollYProgress,
-    [0, 0.4, 0.8, 1],
-    ["-200%", "25%", "65%", "150%"],
-  );
-  const mobileDescriptionY = useTransform(
-    scrollYProgress,
-    [0, 0.4, 0.8],
-    ["10%", "10%", "50%"],
+    [0, 0.2, 0.8, 1],
+    ["-200%", "25%", "55%", "150%"],
   );
   const descriptionX = useTransform(
     scrollYProgress,
-    [0, 0.4, 0.8, 1],
+    [0, 0.2, 0.8, 1],
     ["-200%", "0%", "0%", "100%"],
   );
   const descriptionOpacity = useTransform(
     scrollYProgress,
-    [0, 0.4, 0.8, 0.9],
+    [0.1, 0.2, 0.8, 0.9],
     [0, 1, 1, 0],
   );
 
