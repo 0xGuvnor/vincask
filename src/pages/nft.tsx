@@ -41,27 +41,55 @@ const NFT = ({
             <div className="md:max-w-3xl">
               <Heading
                 title="Crafting Masterpieces, Unlocking Experiences"
-                subtitle="Mint a Vincask NFT to secure your claim to a bottle of our premium whisky."
+                subtitle="Mint a Vincask NFT to secure your claim to a bottle of Port Ellen whisky."
               />
             </div>
 
             <AuditorBadge logo={auditorLogo} />
 
-            <p className="md:text-lg">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Molestias dolor libero aliquid dolorem sequi, ab veritatis dolores
-              placeat consequatur quo quod quaerat, tempore repellat magnam
-              cupiditate suscipit tenetur qui assumenda obcaecati temporibus
-              veniam iusto. Incidunt id, quidem, omnis consectetur illo natus
-              sed fuga maiores quaerat iste tempore ea exercitationem, non
-              voluptatum. Mollitia possimus esse natus, dolor ad dicta
-              praesentium sapiente atque eum quisquam nihil quis vero, nisi
-              necessitatibus iusto fugiat. Veritatis libero, temporibus impedit
-              culpa sed commodi dolorum doloribus similique, voluptatem sapiente
-              aspernatur vitae id incidunt eligendi quasi consequatur! Cumque,
-              dicta maxime voluptas amet provident molestias ex minima atque
-              quidem!
-            </p>
+            <div className="space-y-6 xl:text-lg">
+              <div className="space-y-3">
+                <p>
+                  Owning a VinCask (VIN) NFT grants you the exclusive right to
+                  redeem it for a bottle of the esteemed Port Ellen whisky from
+                  cask #P5X2, upon its maturation.
+                </p>
+                <p>
+                  When you're ready to claim your bottle, the process is
+                  seamless: your VIN NFT will be exchanged — or 'burned' — in a
+                  transaction on the Ethereum blockchain. In its place, you'll
+                  receive a commemorative VinCask X (VIN-X) NFT. This new NFT,
+                  bearing the same metadata, stands as your digital proof of the
+                  successful redemption and adds a unique story to your
+                  collection.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="font-bold">Key Timelines</h3>
+                <ul className="list-inside list-disc">
+                  <li>Early 2024 - Mint launch</li>
+                  <li>2029 - Redemption opens</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="font-bold">Redemption Details</h3>
+                <p>
+                  Physical redemption will be done via courier delivery or
+                  self-pickup at{" "}
+                  <a
+                    href="https://maps.app.goo.gl/TueY7oxSzjwG7EE37"
+                    rel="noreferrer"
+                    target="_blank"
+                    className="cursor-pointer underline decoration-primary underline-offset-[3px] transition-all duration-300 ease-in-out hover:text-white hover:decoration-2"
+                  >
+                    Grande Vida Singapore
+                  </a>
+                  .
+                </p>
+              </div>
+            </div>
 
             <div className="flex flex-col gap-4 md:flex-row">
               <NftCollectionButton
