@@ -19,7 +19,7 @@ const ParallexItem = ({ years, title, description, odd }: Props) => {
   });
   const y = useTransform(
     scrollYProgress,
-    [0.2, 0.3, 0.6, 1],
+    [0.15, 0.3, 0.6, 1],
     ["185%", "65%", "95%", "0%"],
   );
   const opacity = useTransform(
@@ -37,8 +37,12 @@ const ParallexItem = ({ years, title, description, odd }: Props) => {
     [0.2, 0.3, 0.47, 0.55],
     [0, 1, 1, 0],
   );
-  const scale = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
-  const borderRadius = useTransform(scrollYProgress, [0.1, 0.5], [0, 500]);
+  const scale = useTransform(
+    scrollYProgress,
+    [0.1, 0.3, 0.6, 0.7],
+    [0, 1, 1, 0.5],
+  );
+  const borderRadius = useTransform(scrollYProgress, [0.1, 0.3], [0, 500]);
   const yearY = useTransform(
     scrollYProgress,
     [0, 0.2, 0.8, 1],
