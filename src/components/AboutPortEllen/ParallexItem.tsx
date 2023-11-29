@@ -52,7 +52,7 @@ const ParallexItem = ({ years, title, description, odd }: Props) => {
   );
   const descriptionX = useTransform(
     scrollYProgress,
-    [0.2, 0.3, 0.47, 0.55],
+    [0.15, 0.3, 0.47, 0.55],
     ["-25%", "0%", "0%", "50%"],
   );
   const descriptionOpacity = useTransform(
