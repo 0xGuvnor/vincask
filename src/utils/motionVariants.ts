@@ -39,3 +39,17 @@ export const faqIconVariants: Variants = {
     transition: { type: "spring", duration: 0.5 },
   },
 };
+
+export const collectionStatsVariants: Variants = {
+  hidden: {},
+  visible: { transition: { delayChildren: 2, staggerChildren: 0.25 } },
+};
+
+export const collectionStatVariants: Variants = {
+  hidden: { opacity: 0, y: -50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { ease: "easeInOut", duration: 0.5 },
+  },
+};

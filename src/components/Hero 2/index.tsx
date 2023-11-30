@@ -7,6 +7,7 @@ import Countdown from "../Countdown";
 import { useGlobalContext } from "@/context/GlobalContext";
 import useCountdownDifference from "@/hooks/useCountdownDifference";
 import useIsMounted from "@/hooks/useIsMounted";
+import CollectionStats from "../CollectionStats";
 
 interface Props {
   heroImage: string;
@@ -36,6 +37,8 @@ const Hero2 = ({ heroImage }: Props) => {
               <Countdown {...mintCountdownTimer} title="Mint launching in..." />
             </motion.div>
           )}
+
+          <CollectionStats />
 
           <motion.h1
             initial={{ opacity: 0, y: 50 }}
