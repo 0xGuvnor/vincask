@@ -59,7 +59,7 @@ const CollectionStats = () => {
         <CollectionStat
           label="Total volume"
           value={
-            stats
+            stats?.total
               ? `${Math.floor(stats.total.volume).toLocaleString()} ETH`
               : ""
           }
@@ -68,7 +68,7 @@ const CollectionStats = () => {
         <CollectionStat
           label="Floor price"
           value={
-            stats
+            stats?.total
               ? `${stats.total.floor_price} ${stats.total.floor_price_symbol}`
               : ""
           }
@@ -76,7 +76,9 @@ const CollectionStats = () => {
         />
         <CollectionStat
           label="Owners"
-          value={stats ? `${stats.total.num_owners.toLocaleString()}` : ""}
+          value={
+            stats?.total ? `${stats.total.num_owners.toLocaleString()}` : ""
+          }
           isLoading={isLoading}
         />
       </motion.ul>
