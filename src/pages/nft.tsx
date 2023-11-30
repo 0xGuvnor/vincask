@@ -41,7 +41,7 @@ const NFT = ({
             <div className="md:max-w-3xl">
               <Heading
                 title="Crafting Masterpieces, Unlocking Experiences"
-                subtitle="Mint a Vincask NFT to secure your claim to a bottle of Port Ellen whisky."
+                subtitle="A new era of whisky collection begins with a click."
               />
             </div>
 
@@ -104,6 +104,9 @@ const NFT = ({
 
           <motion.div
             layout="position"
+            initial={{ y: 100, opacity: 0, filter: "blur(20px)" }}
+            animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+            transition={{ duration: 0.5 }}
             className="flex items-center justify-center"
           >
             <MintCard />
