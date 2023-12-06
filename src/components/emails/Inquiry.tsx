@@ -75,7 +75,9 @@ const Inquiry = ({
             <Heading as="h2" className="mt-10">
               Message
             </Heading>
-            <Row>{message}</Row>
+            <Row>
+              <span className="whitespace-pre-line">{message}</span>
+            </Row>
           </Section>
         </Body>
       </Tailwind>
