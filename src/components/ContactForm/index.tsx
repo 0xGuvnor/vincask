@@ -1,6 +1,11 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import ContactFormInput from "../inputs/ContactFormInput";
 import TextArea from "../TextArea";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import ToastError from "../toasts/ToastError";
+import axios from "axios";
+import ToastSuccess from "../toasts/ToastSuccess";
 
 export interface IFormInput {
   firstName: string;
@@ -18,10 +23,29 @@ const ContactForm = () => {
     reset,
     formState: { errors },
   } = useForm<IFormInput>();
+  const [isLoading, setIsLoading] = useState(false);
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    console.log(data);
-    reset();
+  const onSubmit: SubmitHandler<IFormInput> = async (formData) => {
+    try {
+      setIsLoading(true);
+      console.log(formData);
+      await axios.post("/api/contact", formData);
+
+      toast.success((t) => (
+        <ToastSuccess t={t} message="Message successfully sent." />
+      ));
+
+      reset();
+    } catch (error) {
+      toast.error((t) => (
+        <ToastError
+          t={t}
+          errorMessage="Something went wrong. Please try again."
+        />
+      ));
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -82,7 +106,8 @@ const ContactForm = () => {
 
       <button
         type="submit"
-        className="btn self-end rounded bg-primary normal-case text-primary-content hover:bg-primary-focus md:rounded-md md:text-lg"
+        disabled={isLoading}
+        className="btn self-end rounded bg-primary normal-case text-primary-content transition duration-300 ease-in-out hover:bg-primary/80 md:rounded-md md:text-lg"
       >
         Submit
       </button>

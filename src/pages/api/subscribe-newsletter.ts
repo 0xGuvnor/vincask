@@ -9,17 +9,12 @@ export default async function handler(
   try {
     const { email, id } = req.body;
 
-    const { data, error } = await resend.emails.send({
-      from: "VinCask Pte Ltd <onboarding@resend.dev>",
+    const { data } = await resend.emails.send({
+      from: "VinCask Pte Ltd <no-reply@yokeyeong.xyz>",
       to: [email],
-      subject: "Welcome 👋",
+      subject: "Welcome to VinCask 👋",
       react: Subscribed({ email, id }),
     });
-
-    console.log(error);
-    if (error) {
-      res.status(400).json(error);
-    }
 
     res.status(200).json(data);
   } catch (error) {

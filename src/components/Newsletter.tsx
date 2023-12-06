@@ -32,11 +32,11 @@ const Newsletter = () => {
 
       if (data) {
         const id = data[0].id;
-        await axios.post("/api/send", { ...formData, id });
+        await axios.post("/api/subscribe-newsletter", { ...formData, id });
       }
 
       toast.success((t) => (
-        <ToastSuccess t={t} message="Successfully subscribed to newsletter" />
+        <ToastSuccess t={t} message="Successfully subscribed to newsletter." />
       ));
 
       reset();
@@ -75,7 +75,7 @@ const Newsletter = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="btn-sm btn h-[42px] rounded bg-primary px-4 py-2 normal-case text-primary-content transition-colors duration-300 ease-in-out hover:bg-primary-focus md:!h-[46px] md:text-lg"
+              className="hover:bg-primary-focus btn btn-sm h-[42px] rounded bg-primary px-4 py-2 normal-case text-primary-content transition-colors duration-300 ease-in-out md:!h-[46px] md:text-lg"
             >
               Subscribe
             </button>
