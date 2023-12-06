@@ -11,19 +11,19 @@ export default async function handler(
     const { firstName, lastName, contactEmail, company, phoneNumber, message } =
       req.body;
 
-    // await resend.emails.send({
-    //   from: "VinCask Pte Ltd <no-reply@yokeyeong.xyz>",
-    //   to: ["contact@yokeyeong.xyz"],
-    //   subject: `New inquiry from website - [${firstName} ${lastName}]`,
-    //   react: Inquiry({
-    //     firstName,
-    //     lastName,
-    //     contactEmail,
-    //     company,
-    //     phoneNumber,
-    //     message,
-    //   }),
-    // });
+    await resend.emails.send({
+      from: "VinCask Pte Ltd <no-reply@yokeyeong.xyz>",
+      to: ["contact@yokeyeong.xyz"],
+      subject: `New inquiry from website - [${firstName} ${lastName}]`,
+      react: Inquiry({
+        firstName,
+        lastName,
+        contactEmail,
+        company,
+        phoneNumber,
+        message,
+      }),
+    });
 
     const { data, error } = await resend.emails.send({
       from: "VinCask Pte Ltd <no-reply@yokeyeong.xyz>",
