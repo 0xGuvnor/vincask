@@ -25,12 +25,14 @@ export default async function handler(
       }),
     });
 
-    const { data } = await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: "VinCask Pte Ltd <no-reply@yokeyeong.xyz>",
       to: [contactEmail],
       subject: "Thanks for reaching out!",
       react: Contact({ firstName }),
     });
+
+    console.log(error);
 
     res.status(200).json(data);
   } catch (error) {
