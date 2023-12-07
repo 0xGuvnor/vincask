@@ -8,13 +8,21 @@ export default async function handler(
   res: NextApiResponse,
 ) {
   try {
-    const { firstName, contactEmail } = req.body;
+    const { firstName, lastName, contactEmail, company, phoneNumber, message } =
+      req.body;
 
     const { data } = await resend.emails.send({
       from: "VinCask Pte Ltd <no-reply@yokeyeong.xyz>",
-      to: [contactEmail],
-      subject: "Thanks for reaching out!",
-      react: Contact({ firstName }),
+      to: ["contact@yokeyeong.xyz"],
+      subject: `New inquiry from website - [${firstName} ${lastName}]`,
+      react: Inquiry({
+        firstName,
+        lastName,
+        contactEmail,
+        company,
+        phoneNumber,
+        message,
+      }),
     });
 
     res.status(200).json(data);

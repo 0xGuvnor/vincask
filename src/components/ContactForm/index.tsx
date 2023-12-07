@@ -28,7 +28,8 @@ const ContactForm = () => {
   const onSubmit: SubmitHandler<IFormInput> = async (formData) => {
     try {
       setIsLoading(true);
-      console.log(formData);
+
+      await axios.post("/api/inquiry", formData);
       await axios.post("/api/contact", formData);
 
       toast.success((t) => (
