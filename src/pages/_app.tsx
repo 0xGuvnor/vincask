@@ -23,6 +23,7 @@ import Footer from "@/components/Footer";
 import { GlobalProvider } from "@/context/GlobalContext";
 import { Toaster } from "react-hot-toast";
 import { AnimatePresence, LayoutGroup } from "framer-motion";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 // Header font
 const marcellus = Marcellus({
@@ -75,67 +76,71 @@ export default function App({ Component, pageProps }: AppProps) {
   const environment = process.env.NEXT_PUBLIC_ENVIRONMENT;
 
   return (
-    <AnimatePresence mode="wait">
-      <WagmiConfig config={wagmiConfig}>
-        <RainbowKitProvider
-          chains={chains}
-          coolMode
-          theme={darkTheme({
-            accentColor: "#FACA16",
-            accentColorForeground: "black",
-            borderRadius: "small",
-            fontStack: "system",
-            overlayBlur: "small",
-          })}
-        >
-          <GlobalProvider>
-            <LayoutGroup>
-              <main
-                className={`${outfit.className} ${marcellus.variable} ${
-                  spaceMono.variable
-                } ${
-                  environment === "development" && "debug-screens"
-                } flex min-h-screen flex-col justify-between `}
-              >
-                <Toaster
-                  toastOptions={{
-                    success: {
-                      duration: 8000,
-                      style: {
-                        background: "#004225",
-                        color: "#fff",
-                        borderRadius: "10px",
+    <>
+      <AnimatePresence mode="wait">
+        <WagmiConfig config={wagmiConfig}>
+          <RainbowKitProvider
+            chains={chains}
+            coolMode
+            theme={darkTheme({
+              accentColor: "#FACA16",
+              accentColorForeground: "black",
+              borderRadius: "small",
+              fontStack: "system",
+              overlayBlur: "small",
+            })}
+          >
+            <GlobalProvider>
+              <LayoutGroup>
+                <main
+                  className={`${outfit.className} ${marcellus.variable} ${
+                    spaceMono.variable
+                  } ${
+                    environment === "development" && "debug-screens"
+                  } flex min-h-screen flex-col justify-between `}
+                >
+                  <Toaster
+                    toastOptions={{
+                      success: {
+                        duration: 8000,
+                        style: {
+                          background: "#004225",
+                          color: "#fff",
+                          borderRadius: "10px",
+                        },
+                        iconTheme: { primary: "#00FF7F", secondary: "#000000" },
                       },
-                      iconTheme: { primary: "#00FF7F", secondary: "#000000" },
-                    },
-                    error: {
-                      duration: 8000,
-                      style: {
-                        background: "#58111A",
-                        color: "#fff",
-                        borderRadius: "10px",
+                      error: {
+                        duration: 8000,
+                        style: {
+                          background: "#58111A",
+                          color: "#fff",
+                          borderRadius: "10px",
+                        },
                       },
-                    },
-                    loading: {
-                      style: {
-                        background: "#F4C431",
-                        color: "#000000",
-                        borderRadius: "10px",
+                      loading: {
+                        style: {
+                          background: "#F4C431",
+                          color: "#000000",
+                          borderRadius: "10px",
+                        },
+                        icon: (
+                          <span className="loading loading-spinner loading-md"></span>
+                        ),
                       },
-                      icon: (
-                        <span className="loading loading-spinner loading-md"></span>
-                      ),
-                    },
-                  }}
-                />
-                <Navbar />
-                <Component {...pageProps} />
-                <Footer />
-              </main>
-            </LayoutGroup>
-          </GlobalProvider>
-        </RainbowKitProvider>
-      </WagmiConfig>
-    </AnimatePresence>
+                    }}
+                  />
+                  <Navbar />
+                  <Component {...pageProps} />
+                  <Footer />
+                </main>
+              </LayoutGroup>
+            </GlobalProvider>
+          </RainbowKitProvider>
+        </WagmiConfig>
+      </AnimatePresence>
+
+      <SpeedInsights />
+    </>
   );
 }
