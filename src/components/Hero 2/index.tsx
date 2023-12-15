@@ -71,7 +71,7 @@ const Hero2 = ({ heroImage }: Props) => {
         <div
           className={`${
             isMobileOrTablet ? "animate-slide-up" : "animate-slide-right"
-          } relative h-full w-80 shrink md:h-5/6 md:w-96 lg:h-full lg:w-[34.5rem]`}
+          } relative h-full w-80 shrink md:h-5/6 md:w-96 lg:h-[95%] lg:w-[34.5rem]`}
         >
           <Image
             src={heroImage}
