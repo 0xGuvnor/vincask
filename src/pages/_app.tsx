@@ -24,6 +24,7 @@ import { GlobalProvider } from "@/context/GlobalContext";
 import { Toaster } from "react-hot-toast";
 import { AnimatePresence, LayoutGroup } from "framer-motion";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import useAgeVerification from "@/hooks/useAgeVerification";
 
 // Header font
 const marcellus = Marcellus({
@@ -74,6 +75,7 @@ const wagmiConfig = createConfig({
 
 export default function App({ Component, pageProps }: AppProps) {
   const environment = process.env.NEXT_PUBLIC_ENVIRONMENT;
+  const ageVerificationModal = useAgeVerification();
 
   return (
     <>
@@ -131,6 +133,7 @@ export default function App({ Component, pageProps }: AppProps) {
                     }}
                   />
                   <Navbar />
+                  {ageVerificationModal}
                   <Component {...pageProps} />
                   <Footer />
                 </main>
