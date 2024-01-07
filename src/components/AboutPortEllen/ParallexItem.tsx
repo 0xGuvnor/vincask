@@ -20,21 +20,22 @@ const ParallexItem = ({ years, title, description, odd }: Props) => {
   const y = useTransform(
     scrollYProgress,
     [0.15, 0.3, 0.6, 1],
-    ["185%", "65%", "95%", "0%"],
+    // ["185%", "65%", "95%", "0%"],
+    ["50%", "0%", "0%", "0%"],
   );
   const opacity = useTransform(
     scrollYProgress,
-    [0.2, 0.3, 0.6, 0.7],
+    [0.2, 0.3, 0.5, 0.6],
     [0, 1, 1, 0],
   );
   const x = useTransform(
     scrollYProgress,
     [0.2, 0.3, 0.47, 0.55],
-    ["50%", "0%", "0%", "-100%"],
+    ["50%", "0%", "0%", "0%"],
   );
   const mobileOpacity = useTransform(
     scrollYProgress,
-    [0.2, 0.3, 0.47, 0.55],
+    [0.2, 0.3, 0.47, 0.5],
     [0, 1, 1, 0],
   );
   const scale = useTransform(
@@ -52,21 +53,22 @@ const ParallexItem = ({ years, title, description, odd }: Props) => {
   const descriptionY = useTransform(
     scrollYProgress,
     [0.15, 0.3, 0.6, 1],
-    ["-15%", "25%", "55%", "200%"],
+    // ["-15%", "25%", "55%", "200%"],
+    ["-50%", "25%", "25%", "25%"],
   );
   const descriptionX = useTransform(
     scrollYProgress,
     [0.15, 0.3, 0.47, 0.55],
-    ["-25%", "0%", "0%", "50%"],
+    ["-25%", "0%", "0%", "0%"],
   );
   const descriptionOpacity = useTransform(
     scrollYProgress,
-    [0.2, 0.3, 0.6, 0.7],
+    [0.2, 0.3, 0.5, 0.6],
     [0, 1, 1, 0],
   );
   const mobileDescriptionOpacity = useTransform(
     scrollYProgress,
-    [0.2, 0.3, 0.47, 0.55],
+    [0.2, 0.3, 0.47, 0.5],
     [0, 1, 1, 0],
   );
 
@@ -74,7 +76,7 @@ const ParallexItem = ({ years, title, description, odd }: Props) => {
     <motion.div
       style={isMobile ? { y: "10%" } : {}}
       ref={ref}
-      className="flex h-screen flex-col gap-10 md:flex-row md:gap-3"
+      className="flex h-[90vh] flex-col gap-10 md:h-[50vh] md:flex-row md:gap-3"
     >
       <motion.div
         style={
@@ -97,7 +99,7 @@ const ParallexItem = ({ years, title, description, odd }: Props) => {
         />
         <motion.h3
           style={{ y: yearY, opacity: yearOpacity }}
-          className="absolute inset-y-0 left-4 z-10 flex max-w-[10rem] items-center justify-center self-center text-5xl md:text-6xl"
+          className="absolute inset-y-0 left-5 z-10 flex max-w-[11rem] items-center justify-center self-center text-5xl md:text-6xl"
         >
           {years}
         </motion.h3>
