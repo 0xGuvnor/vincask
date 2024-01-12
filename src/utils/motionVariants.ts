@@ -6,7 +6,7 @@ export const mobileMenuItemsVariants: Variants = {
 };
 
 export const mobileMenuItemVariants: Variants = {
-  open: { opacity: 1, x: 0, transition: { duration: 0.2 } },
+  open: { opacity: 1, x: 0, transition: { duration: 0.1 } },
   closed: { opacity: 0, x: -50, transition: { duration: 0.1 } },
 };
 

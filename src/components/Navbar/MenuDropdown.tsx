@@ -25,14 +25,14 @@ const MenuDropdown = () => {
 
   return (
     <motion.div
-      initial={{ scale: 0 }}
+      initial={{ scaleY: 0 }}
       animate={{
-        scale: 1,
+        scaleY: 1,
         originY: "top",
         transition: { type: "tween", duration: 0.2 },
       }}
       exit={{
-        scale: 0,
+        scaleY: 0,
         transition: {
           type: "tween",
           duration: 0.2,
