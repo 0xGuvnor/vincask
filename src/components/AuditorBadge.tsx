@@ -18,10 +18,9 @@ const AuditorBadge = ({ logo }: Props) => {
           <Image
             src={logo}
             alt="Auditor logo"
-            quality={100}
             priority
             fill
-            sizes="(max-width: 768px) 50vw, 20vw"
+            sizes="(max-width: 768px) 40vw, 20vw"
             className="cursor-pointer rounded bg-violet-100 object-contain px-2 py-1 transition duration-300 ease-in-out hover:scale-105"
           />
         </a>
