@@ -35,7 +35,7 @@ const ParallexItem = ({ years, title, description, odd }: Props) => {
   );
   const mobileOpacity = useTransform(
     scrollYProgress,
-    [0.2, 0.3, 0.47, 0.5],
+    [0.2, 0.3, 0.47, 0.6],
     [0, 1, 1, 0],
   );
   const scale = useTransform(
@@ -68,7 +68,7 @@ const ParallexItem = ({ years, title, description, odd }: Props) => {
   );
   const mobileDescriptionOpacity = useTransform(
     scrollYProgress,
-    [0.2, 0.3, 0.47, 0.5],
+    [0.2, 0.3, 0.47, 0.6],
     [0, 1, 1, 0],
   );
 

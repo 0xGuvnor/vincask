@@ -6,7 +6,7 @@ interface Props {
 
 const WhiskyGrid = ({ images }: Props) => {
   return (
-    <section className="grid grid-cols-2 grid-rows-6 gap-3 md:grid-cols-4 md:grid-rows-3 md:gap-6">
+    <section className="grid min-h-[75vh] grid-cols-2 grid-rows-6 gap-3 md:grid-cols-4 md:grid-rows-3 md:gap-4">
       <GridImage image={images[0]} description="Description about the whisky" />
       <GridImage image={images[1]} description="Description about the whisky" />
       <GridImage

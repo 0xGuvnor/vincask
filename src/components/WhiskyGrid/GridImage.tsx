@@ -13,7 +13,7 @@ const GridImage = ({ big, image, description }: Props) => {
   return (
     <div
       className={`${
-        big ? "col-span-2 row-span-2" : "h-40 md:h-52"
+        big ? "col-span-2 row-span-2" : "h-full"
       } group relative overflow-hidden rounded-md lg:rounded-lg`}
     >
       <Image
@@ -28,7 +28,7 @@ const GridImage = ({ big, image, description }: Props) => {
         quality={100}
         fill
         draggable={false}
-        onLoadingComplete={() => setIsLoading(false)}
+        onLoad={() => setIsLoading(false)}
         className={`${
           isLoading ? "scale-125 blur-lg" : "scale-105"
         } object-cover object-center transition-all delay-100 duration-300 ease-in-out group-hover:scale-100 group-hover:blur-md group-hover:brightness-50 group-hover:grayscale`}
