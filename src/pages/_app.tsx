@@ -25,6 +25,7 @@ import { Toaster } from "react-hot-toast";
 import { AnimatePresence, LayoutGroup } from "framer-motion";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import useAgeVerification from "@/hooks/useAgeVerification";
+import { Analytics } from "@vercel/analytics/react";
 
 // Header font
 const marcellus = Marcellus({
@@ -135,6 +136,7 @@ export default function App({ Component, pageProps }: AppProps) {
                   <Navbar />
                   {ageVerificationModal}
                   <Component {...pageProps} />
+                  <Analytics />
                   <Footer />
                 </main>
               </LayoutGroup>
