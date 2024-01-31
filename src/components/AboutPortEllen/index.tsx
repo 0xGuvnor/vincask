@@ -5,7 +5,7 @@ import ParallaxContainer from "./ParallaxContainer";
 const AboutPortEllen = () => {
   return (
     <Container classNames="lg:gap-20">
-      <div className="sticky top-14 z-30 md:top-20">
+      <div className="sticky top-16 z-30 md:top-24">
         <Heading title="Port Ellen" subtitle="A Legacy of Distinction" />
       </div>
 
