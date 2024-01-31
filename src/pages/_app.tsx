@@ -136,7 +136,6 @@ export default function App({ Component, pageProps }: AppProps) {
                   <Navbar />
                   {ageVerificationModal}
                   <Component {...pageProps} />
-                  <Analytics />
                   <Footer />
                 </main>
               </LayoutGroup>
@@ -145,6 +144,7 @@ export default function App({ Component, pageProps }: AppProps) {
         </WagmiConfig>
       </AnimatePresence>
 
+      <Analytics />
       <SpeedInsights />
     </>
   );
