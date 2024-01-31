@@ -19,7 +19,7 @@ const BlurImage = ({ image }: Props) => {
       priority
       sizes="(max-width: 768px) 40vw, 20vw"
       fill
-      onLoadingComplete={() => setIsLoading(false)}
+      onLoad={() => setIsLoading(false)}
       className={`${
         isLoading
           ? "scale-110 blur-lg grayscale"
