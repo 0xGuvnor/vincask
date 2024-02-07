@@ -42,7 +42,7 @@ export const faqIconVariants: Variants = {
 
 export const collectionStatsVariants: Variants = {
   hidden: {},
-  visible: { transition: { delayChildren: 2, staggerChildren: 0.25 } },
+  visible: { transition: { delayChildren: 1.25 } },
 };
 
 export const collectionStatVariants: Variants = {
@@ -50,6 +50,6 @@ export const collectionStatVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { ease: "easeInOut", duration: 0.5 },
+    transition: { ease: "easeInOut", duration: 1 },
   },
 };
