@@ -3,7 +3,7 @@ import { supabase } from "@/lib/supabase";
 const getHomePageProps = () => {
   const {
     data: { publicUrl: heroImage },
-  } = supabase.storage.from("images").getPublicUrl("heroAlt.jpg");
+  } = supabase.storage.from("images").getPublicUrl("hero-whisky.png");
 
   const {
     data: { publicUrl: founder1 },
