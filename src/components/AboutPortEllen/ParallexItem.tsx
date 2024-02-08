@@ -76,7 +76,7 @@ const ParallexItem = ({ years, title, description, odd }: Props) => {
     <motion.div
       style={isMobile ? { y: "10%" } : {}}
       ref={ref}
-      className="flex h-[90vh] flex-col gap-10 md:h-[50vh] md:flex-row md:gap-3"
+      className="flex h-[90vh] flex-col gap-10 md:h-[50vh] md:flex-row"
     >
       <motion.div
         style={
@@ -114,10 +114,12 @@ const ParallexItem = ({ years, title, description, odd }: Props) => {
               }
             : { y: descriptionY, opacity: descriptionOpacity }
         }
-        className={`${odd ? "order-first" : ""} space-y-1 md:w-1/2`}
+        className={`${
+          odd ? "order-first" : ""
+        } space-y-1 md:w-1/2 md:space-y-2`}
       >
         <h3 className="text-2xl font-bold md:text-4xl">{title}</h3>
-        <p>{description}</p>
+        <p className="text-balance md:text-lg">{description}</p>
       </motion.div>
     </motion.div>
   );
