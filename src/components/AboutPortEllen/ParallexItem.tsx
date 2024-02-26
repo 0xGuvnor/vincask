@@ -103,7 +103,7 @@ const ParallexItem = ({ years, title, description, odd, imageSrc }: Props) => {
         {years && (
           <motion.h3
             style={{ y: yearY, opacity: yearOpacity }}
-            className="absolute inset-y-0 left-0 z-10 flex h-full max-w-[9rem] items-center justify-center self-center bg-primary/20 px-2 text-4xl text-black backdrop-blur-sm md:max-w-[10rem] md:px-3 xl:max-w-[12rem] xl:px-4 xl:text-6xl"
+            className="absolute inset-y-0 left-0 z-10 flex max-w-[9rem] items-center justify-center bg-primary/20 px-4 text-justify text-4xl font-bold text-black backdrop-blur-sm md:max-w-[10rem] xl:max-w-[12.5rem] xl:px-5 xl:text-6xl"
           >
             {years}
           </motion.h3>
