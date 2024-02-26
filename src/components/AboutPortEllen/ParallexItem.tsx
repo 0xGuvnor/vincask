@@ -92,7 +92,14 @@ const ParallexItem = ({ years, title, description, odd, imageSrc }: Props) => {
         }
         className="relative h-[30vh] shrink-0 overflow-hidden md:h-[40vh] md:w-1/2"
       >
-        <Image src={imageSrc} alt="" fill className="object-cover" />
+        <Image
+          src={imageSrc}
+          alt="Digital sketch of Port Ellen Distillery's heritage"
+          fill
+          priority
+          sizes="(max-width: 768px) 95vw, 45vw"
+          className="object-cover"
+        />
         {years && (
           <motion.h3
             style={{ y: yearY, opacity: yearOpacity }}
