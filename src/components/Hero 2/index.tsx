@@ -80,9 +80,7 @@ const Hero2 = ({ heroImage }: Props) => {
             priority
             sizes="(max-width: 768px) 40vw, 50vw"
             fill
-            className={`${
-              isMobileOrTablet && "object-bottom"
-            } rounded-tl-[1rem] rounded-tr-[1rem] object-cover md:rounded-br-[1rem] md:rounded-tl-none md:rounded-tr-[1rem]`}
+            className="rounded-tl-[1rem] rounded-tr-[1rem] object-cover md:rounded-br-[1rem] md:rounded-tl-none md:rounded-tr-[1rem]"
           />
           <div className="absolute inset-x-0 bottom-0 z-30 h-28 w-full bg-gradient-to-t from-base-100 md:inset-y-0 md:left-0 md:h-full md:w-64 md:bg-gradient-to-r"></div>
         </div>
