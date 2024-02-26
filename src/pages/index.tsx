@@ -12,10 +12,11 @@ import Head from "next/head";
 
 export default function Home({
   heroImage,
-  teamImages,
+  // teamImages,
   carouselImages,
   certImages,
   stepsMedia,
+  parallexImages,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
@@ -31,7 +32,7 @@ export default function Home({
       <div className="flex flex-col">
         {/* <Hero /> */}
         <Hero2 heroImage={heroImage} />
-        <AboutPortEllen />
+        <AboutPortEllen parallexImages={parallexImages} />
         <Testimonials carouselImages={carouselImages} certImages={certImages} />
         <NftConcept stepsMedia={stepsMedia} />
         {/* <Team teamImages={teamImages} /> */}
@@ -41,7 +42,7 @@ export default function Home({
 }
 
 export const getStaticProps: GetStaticProps = () => {
-  const { heroImage, teamImages, carouselImages, certImages } =
+  const { heroImage, teamImages, carouselImages, certImages, parallexImages } =
     getHomePageProps();
 
   const stepsMedia = getWhiskyPageProps();
@@ -53,6 +54,7 @@ export const getStaticProps: GetStaticProps = () => {
       carouselImages,
       certImages,
       stepsMedia,
+      parallexImages,
     },
   };
 };

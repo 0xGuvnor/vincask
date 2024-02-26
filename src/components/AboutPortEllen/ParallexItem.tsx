@@ -8,9 +8,10 @@ interface Props {
   title: string;
   description: string;
   odd?: boolean;
+  imageSrc: string;
 }
 
-const ParallexItem = ({ years, title, description, odd }: Props) => {
+const ParallexItem = ({ years, title, description, odd, imageSrc }: Props) => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -91,18 +92,15 @@ const ParallexItem = ({ years, title, description, odd }: Props) => {
         }
         className="relative h-[30vh] shrink-0 overflow-hidden md:h-[40vh] md:w-1/2"
       >
-        <Image
-          src="https://cyvqrxhvvlfwbqcqfzjq.supabase.co/storage/v1/object/public/images/product/whisky1.jpg"
-          alt=""
-          fill
-          className="object-cover"
-        />
-        <motion.h3
-          style={{ y: yearY, opacity: yearOpacity }}
-          className="absolute inset-y-0 left-5 z-10 flex max-w-[11rem] items-center justify-center self-center text-5xl md:text-6xl"
-        >
-          {years}
-        </motion.h3>
+        <Image src={imageSrc} alt="" fill className="object-cover" />
+        {years && (
+          <motion.h3
+            style={{ y: yearY, opacity: yearOpacity }}
+            className="absolute inset-y-0 left-0 z-10 flex h-full max-w-[9rem] items-center justify-center self-center bg-primary/20 px-2 text-5xl text-black backdrop-blur-sm md:max-w-[10rem] md:px-3 xl:max-w-[12rem] xl:px-4 xl:text-6xl"
+          >
+            {years}
+          </motion.h3>
+        )}
       </motion.div>
 
       <motion.div
@@ -114,9 +112,7 @@ const ParallexItem = ({ years, title, description, odd }: Props) => {
               }
             : { y: descriptionY, opacity: descriptionOpacity }
         }
-        className={`${
-          odd ? "order-first" : ""
-        } space-y-1 md:w-1/2 md:space-y-2`}
+        className={`${odd && "order-first"} space-y-2 md:w-1/2 md:space-y-4`}
       >
         <h3 className="text-2xl font-bold md:text-4xl">{title}</h3>
         <p className="text-balance md:text-lg">{description}</p>
