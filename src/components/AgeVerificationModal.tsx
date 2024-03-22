@@ -22,8 +22,8 @@ const AgeVerificationModal = ({ onConfirm }: Props) => {
               src={logoUrl}
               alt="VinCask logo"
               priority
-              height={150}
               width={150}
+              height={92.97}
             />
             <div className="h-6"></div>
 
