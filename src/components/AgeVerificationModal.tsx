@@ -14,7 +14,7 @@ const AgeVerificationModal = ({ onConfirm }: Props) => {
   return (
     <Dialog.Root open>
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 z-[100] bg-black/5 backdrop-blur-md" />
+        <Dialog.Overlay className="fixed inset-0 z-[100] bg-black/5 backdrop-blur-xl" />
 
         <Dialog.Content className="fixed left-1/2 top-1/2 z-[110] h-[30rem] w-[18rem] -translate-x-1/2 -translate-y-1/2 rounded-xl bg-[#100C08] text-neutral-content shadow-2xl shadow-neutral/50 md:h-[27rem] md:w-[30rem]">
           <div className="flex h-full flex-col items-center justify-center">
