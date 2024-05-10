@@ -60,7 +60,7 @@ const NFT = ({
                   &apos;burned&apos; — in a transaction on the Ethereum
                   blockchain. In its place, you&apos;ll receive a commemorative
                   VinCask X (VIN-X) NFT. This new NFT, bearing the same
-                  metadata, stands as your digital proof of the successful
+                  attributes, serves as your digital proof of the successful
                   redemption and adds a unique story to your collection.
                 </p>
               </div>

@@ -403,7 +403,7 @@ const MintCard = () => {
                     transition={{ delay: 0.2, duration: 0.5 }}
                     disabled={mintButtonDisabled}
                     onClick={handleMint}
-                    className="btn-sm btn !h-[52px] w-44 rounded border-none bg-primary !text-lg normal-case text-primary-content shadow-lg shadow-primary/20 transition duration-300 ease-in-out md:btn-md hover:bg-primary-focus disabled:ring-1 disabled:ring-primary/25 md:w-60"
+                    className="btn btn-sm !h-[52px] w-44 rounded border-none bg-primary !text-lg normal-case text-primary-content shadow-lg shadow-primary/20 transition duration-300 ease-in-out md:btn-md hover:bg-primary/75 disabled:ring-1 disabled:ring-primary/25 md:w-60"
                   >
                     {isLoading ? (
                       <div className="flex items-end">

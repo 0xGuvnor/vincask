@@ -49,7 +49,7 @@ const spaceMono = Space_Mono({
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
     // mainnet,
-    goerli,
+    // goerli,
     sepolia,
   ],
   [
