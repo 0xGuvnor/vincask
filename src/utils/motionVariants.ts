@@ -42,14 +42,14 @@ export const faqIconVariants: Variants = {
 
 export const collectionStatsVariants: Variants = {
   hidden: {},
-  visible: { transition: { delayChildren: 1.25 } },
+  // visible: { transition: { delayChildren: 1.25 } },
 };
 
 export const collectionStatVariants: Variants = {
   hidden: { opacity: 0, y: -50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { ease: "easeInOut", duration: 1 },
-  },
+  // visible: {
+  //   opacity: 1,
+  //   y: 0,
+  //   transition: { ease: "easeInOut", duration: 1 },
+  // },
 };

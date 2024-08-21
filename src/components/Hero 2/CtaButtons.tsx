@@ -5,9 +5,10 @@ import { motion } from "framer-motion";
 const CtaButtons = () => {
   return (
     <motion.div
+      id="cta"
       initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 1.25 }}
+      // animate={{ opacity: 1, y: 0 }}
+      // transition={{ duration: 0.5, delay: 1.25 }}
       className="flex flex-col items-center justify-center md:flex-row md:gap-16"
     >
       <button type="button" className="focus:outline-none">

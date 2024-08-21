@@ -1,13 +1,14 @@
 import Image from "next/image";
 import CtaButtons from "./CtaButtons";
 import useScroll from "@/hooks/useScroll";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useAnimate } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 import Countdown from "../Countdown";
 import { useGlobalContext } from "@/context/GlobalContext";
 import useCountdownDifference from "@/hooks/useCountdownDifference";
 import useIsMounted from "@/hooks/useIsMounted";
 import CollectionStats from "../CollectionStats";
+import { useEffect, useState } from "react";
 
 interface Props {
   heroImage: string;
@@ -17,11 +18,44 @@ const Hero2 = ({ heroImage }: Props) => {
   const isScrolled = useScroll(25);
   const isMobileOrTablet = useMediaQuery({ maxWidth: 768 });
   const isMounted = useIsMounted();
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [scope, animate] = useAnimate();
   const { mintCountdownTimer } = useGlobalContext();
   const timeDifference = useCountdownDifference(mintCountdownTimer);
 
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
+
+  useEffect(() => {
+    if (imageLoaded) {
+      timeDifference > 0 &&
+        animate(
+          "#timeDiff",
+          { opacity: 1, y: 0 },
+          { duration: 0.5, delay: 0.5 },
+        );
+      animate(
+        "#collectionStat",
+        { opacity: 1, y: 0 },
+        { ease: "easeInOut", duration: 1, delay: 1.25 },
+      );
+      animate("#heading", { opacity: 1, y: 0 }, { duration: 0.5, delay: 0.75 });
+      animate("#subheading", { opacity: 1, y: 0 }, { duration: 0.5, delay: 1 });
+      animate("#cta", { opacity: 1, y: 0 }, { duration: 0.5, delay: 1.25 });
+      animate(
+        "#scrollIndicator",
+        { opacity: 1, y: 0 },
+        { duration: 1, delay: 1.25 },
+      );
+    }
+  }, [imageLoaded, animate, scope]);
+
   return isMounted ? (
-    <div className="relative flex h-screen w-screen items-center justify-center">
+    <motion.div
+      ref={scope}
+      className="relative flex h-screen w-screen items-center justify-center"
+    >
       <main className="flex h-[85vh] flex-col items-center justify-center md:flex-row md:px-8 lg:px-10 xl:gap-6">
         <section
           className={`${
@@ -30,9 +64,10 @@ const Hero2 = ({ heroImage }: Props) => {
         >
           {timeDifference > 0 && (
             <motion.div
+              id="timeDiff"
               initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
+              // animate={{ opacity: 1, y: 0 }}
+              // transition={{ duration: 0.5, delay: 0.5 }}
             >
               <Countdown {...mintCountdownTimer} title="Mint launching in..." />
             </motion.div>
@@ -41,9 +76,10 @@ const Hero2 = ({ heroImage }: Props) => {
           <CollectionStats />
 
           <motion.h1
+            id="heading"
             initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.75 }}
+            // animate={{ opacity: 1, y: 0 }}
+            // transition={{ duration: 0.5, delay: 0.75 }}
             className="font-header text-4xl font-black md:text-5xl lg:text-6xl 2xl:text-8xl"
           >
             When{" "}
@@ -56,9 +92,10 @@ const Hero2 = ({ heroImage }: Props) => {
             </span>
           </motion.h1>
           <motion.h2
+            id="subheading"
             initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1 }}
+            // animate={{ opacity: 1, y: 0 }}
+            // transition={{ duration: 0.5, delay: 1 }}
             className="text-lg md:text-2xl"
           >
             Discover the excellence of <br />
@@ -76,6 +113,7 @@ const Hero2 = ({ heroImage }: Props) => {
           <Image
             src={heroImage}
             alt="Hero image of a glass of whisky"
+            onLoad={handleImageLoad}
             quality={100}
             priority
             sizes="(max-width: 768px) 40vw, 50vw"
@@ -87,9 +125,10 @@ const Hero2 = ({ heroImage }: Props) => {
       </main>
 
       <motion.div
+        id="scrollIndicator"
         initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.25, duration: 1 }}
+        // animate={{ opacity: 1, y: 0 }}
+        // transition={{ delay: 1.25, duration: 1 }}
         className="absolute inset-x-0 bottom-20 z-40 md:bottom-4"
       >
         <AnimatePresence initial={false}>
@@ -106,7 +145,7 @@ const Hero2 = ({ heroImage }: Props) => {
           )}
         </AnimatePresence>
       </motion.div>
-    </div>
+    </motion.div>
   ) : (
     <div className="h-screen w-screen"></div>
   );

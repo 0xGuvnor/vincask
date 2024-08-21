@@ -10,6 +10,7 @@ interface Props {
 const CollectionStat = ({ label, value, isLoading }: Props) => {
   return (
     <motion.li
+      id="collectionStat"
       variants={collectionStatVariants}
       className="flex flex-col items-start justify-center"
     >
