@@ -49,7 +49,7 @@ const Hero2 = ({ heroImage }: Props) => {
         { duration: 1, delay: 1.25 },
       );
     }
-  }, [imageLoaded, animate, scope]);
+  }, [imageLoaded, timeDifference, animate, scope]);
 
   return isMounted ? (
     <motion.div
@@ -63,12 +63,7 @@ const Hero2 = ({ heroImage }: Props) => {
           } flex max-w-xs flex-col items-center justify-center gap-6 pb-2 pt-8 text-center md:max-w-[27rem] md:basis-2/3 md:items-start md:gap-14 md:py-8 md:text-left lg:max-w-[34.5rem] xl:max-w-[31rem] 2xl:max-w-[35rem]`}
         >
           {timeDifference > 0 && (
-            <motion.div
-              id="timeDiff"
-              initial={{ opacity: 0, y: 50 }}
-              // animate={{ opacity: 1, y: 0 }}
-              // transition={{ duration: 0.5, delay: 0.5 }}
-            >
+            <motion.div id="timeDiff" initial={{ opacity: 0, y: 50 }}>
               <Countdown {...mintCountdownTimer} title="Mint launching in..." />
             </motion.div>
           )}
@@ -78,8 +73,6 @@ const Hero2 = ({ heroImage }: Props) => {
           <motion.h1
             id="heading"
             initial={{ opacity: 0, y: 50 }}
-            // animate={{ opacity: 1, y: 0 }}
-            // transition={{ duration: 0.5, delay: 0.75 }}
             className="font-header text-4xl font-black md:text-5xl lg:text-6xl 2xl:text-8xl"
           >
             When{" "}
@@ -94,8 +87,6 @@ const Hero2 = ({ heroImage }: Props) => {
           <motion.h2
             id="subheading"
             initial={{ opacity: 0, y: 50 }}
-            // animate={{ opacity: 1, y: 0 }}
-            // transition={{ duration: 0.5, delay: 1 }}
             className="text-lg md:text-2xl"
           >
             Discover the excellence of <br />
@@ -127,8 +118,6 @@ const Hero2 = ({ heroImage }: Props) => {
       <motion.div
         id="scrollIndicator"
         initial={{ opacity: 0, y: 100 }}
-        // animate={{ opacity: 1, y: 0 }}
-        // transition={{ delay: 1.25, duration: 1 }}
         className="absolute inset-x-0 bottom-20 z-40 md:bottom-4"
       >
         <AnimatePresence initial={false}>

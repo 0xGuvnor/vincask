@@ -53,7 +53,6 @@ const CollectionStats = () => {
       <motion.ul
         variants={collectionStatsVariants}
         initial="hidden"
-        // animate="visible"
         className="flex gap-5 md:gap-10"
       >
         <CollectionStat
