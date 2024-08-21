@@ -49,7 +49,7 @@ const Hero2 = ({ heroImage }: Props) => {
         { duration: 1, delay: 1.25 },
       );
     }
-  }, [imageLoaded, timeDifference, animate, scope]);
+  }, [imageLoaded, animate, scope]);
 
   return isMounted ? (
     <motion.div
