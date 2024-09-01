@@ -36,7 +36,7 @@ const CollectionStats = () => {
       const res = await fetch("/api/collection-stats", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ collection: "degods" }),
+        body: JSON.stringify({ collection: "boredapeyachtclub" }),
       });
       setStats(await res.json());
       setIsLoading(false);
