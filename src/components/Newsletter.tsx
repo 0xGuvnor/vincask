@@ -1,14 +1,14 @@
-import { SubmitHandler, useForm } from "react-hook-form";
-import Container from "./Container";
-import Link from "next/link";
-import NewsletterInput from "./inputs/NewsletterInput";
-import { useMediaQuery } from "react-responsive";
 import useIsMounted from "@/hooks/useIsMounted";
-import ToastError from "./toasts/ToastError";
-import toast from "react-hot-toast";
 import axios from "axios";
-import ToastSuccess from "./toasts/ToastSuccess";
+import Link from "next/link";
 import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import toast, { Toast } from "react-hot-toast";
+import { useMediaQuery } from "react-responsive";
+import Container from "./Container";
+import NewsletterInput from "./inputs/NewsletterInput";
+import ToastError from "./toasts/ToastError";
+import ToastSuccess from "./toasts/ToastSuccess";
 
 export interface INewsletterInput {
   email: string;
@@ -35,13 +35,13 @@ const Newsletter = () => {
         await axios.post("/api/subscribe-newsletter", { ...formData, id });
       }
 
-      toast.success((t) => (
+      toast.success((t: Toast) => (
         <ToastSuccess t={t} message="Successfully subscribed to newsletter." />
       ));
 
       reset();
     } catch (error) {
-      toast.error((t) => (
+      toast.error((t: Toast) => (
         <ToastError
           t={t}
           errorMessage="Something went wrong. Please try again."

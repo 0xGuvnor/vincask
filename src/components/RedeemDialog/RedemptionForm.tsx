@@ -1,18 +1,18 @@
-import { SubmitHandler, useForm } from "react-hook-form";
-import RedeemDialogInput from "./RedeemDialogInput";
-import RedeemDialogSelect from "./RedeemDialogSelect";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { RedemptionType } from "@/types";
-import { AnimatePresence, motion } from "framer-motion";
-import { supabase } from "@/lib/supabase";
-import { useAccount, useSignMessage } from "wagmi";
-import { toast } from "react-hot-toast";
-import ToastError from "../toasts/ToastError";
-import axios from "axios";
 import { messageToSign } from "@/constants/messageToSign";
 import { useGlobalContext } from "@/context/GlobalContext";
+import { supabase } from "@/lib/supabase";
+import { RedemptionType } from "@/types";
 import { addressVariants } from "@/utils/motionVariants";
+import axios from "axios";
+import { AnimatePresence, motion } from "framer-motion";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { Toast, toast } from "react-hot-toast";
+import { useAccount, useSignMessage } from "wagmi";
+import ToastError from "../toasts/ToastError";
 import RedeemCheckbox from "./RedeemCheckbox";
+import RedeemDialogInput from "./RedeemDialogInput";
+import RedeemDialogSelect from "./RedeemDialogSelect";
 
 interface Props {
   setOpen: Dispatch<SetStateAction<boolean>>;
@@ -91,7 +91,7 @@ const RedemptionForm = ({
 
       if (authError) {
         console.error(authError);
-        toast.error((t) => (
+        toast.error((t: Toast) => (
           <ToastError t={t} errorMessage={authError?.message} />
         ));
         return;
@@ -110,7 +110,7 @@ const RedemptionForm = ({
 
       if (insertError) {
         console.error("Error inserting data:", insertError);
-        toast.error((t) => (
+        toast.error((t: Toast) => (
           <ToastError t={t} errorMessage={insertError.message} />
         ));
         return;
@@ -125,7 +125,7 @@ const RedemptionForm = ({
         approve?.();
       }
     } catch (error) {
-      toast.error((t) => (
+      toast.error((t: Toast) => (
         <ToastError t={t} errorMessage="Signature verification failed" />
       ));
     } finally {
@@ -280,7 +280,7 @@ const RedemptionForm = ({
             handleSubmit(onSubmit)();
           }
         }}
-        className="btn-primary btn self-end normal-case"
+        className="btn btn-primary self-end normal-case"
       >
         Submit
       </motion.button>

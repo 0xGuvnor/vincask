@@ -1,4 +1,15 @@
+import { usdc, vincask } from "@/constants/contracts";
+import { useGlobalContext } from "@/context/GlobalContext";
+import useActiveChain from "@/hooks/useActiveChain";
+import useCountdownDifference from "@/hooks/useCountdownDifference";
+import useIsMounted from "@/hooks/useIsMounted";
+import usePublicMintData from "@/hooks/usePublicMintData";
+import { CrossmintPayButton } from "@crossmint/client-sdk-react-ui";
+import { AnimatePresence, motion } from "framer-motion";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { Toast, toast } from "react-hot-toast";
+import { formatUnits, parseUnits } from "viem";
 import {
   useAccount,
   useContractReads,
@@ -6,27 +17,16 @@ import {
   usePrepareContractWrite,
   useWaitForTransaction,
 } from "wagmi";
-import { usdc, vincask } from "@/constants/contracts";
-import { formatUnits, parseUnits } from "viem";
-import useIsMounted from "@/hooks/useIsMounted";
-import { AnimatePresence, motion } from "framer-motion";
-import TabButton from "./TabButton";
-import { toast } from "react-hot-toast";
-import ToastSuccess from "../toasts/ToastSuccess";
+import Countdown from "../Countdown";
 import ToastError from "../toasts/ToastError";
 import ToastLoading from "../toasts/ToastLoading";
-import { CrossmintPayButton } from "@crossmint/client-sdk-react-ui";
+import ToastSuccess from "../toasts/ToastSuccess";
+import AvailableToMint from "./AvailableToMint";
 import Logo from "./Logo";
 import MintedStatus from "./MintedStatus";
-import TotalPrice from "./TotalPrice";
 import QuantitySelection from "./QuantitySelection";
-import useActiveChain from "@/hooks/useActiveChain";
-import usePublicMintData from "@/hooks/usePublicMintData";
-import useCountdownDifference from "@/hooks/useCountdownDifference";
-import Countdown from "../Countdown";
-import { useGlobalContext } from "@/context/GlobalContext";
-import { useRouter } from "next/router";
-import AvailableToMint from "./AvailableToMint";
+import TabButton from "./TabButton";
+import TotalPrice from "./TotalPrice";
 
 const MintCard = () => {
   const isMounted = useIsMounted();
@@ -223,13 +223,15 @@ const MintCard = () => {
     // Error handling Toasts
     if (isMintError) {
       setIsLoading(false);
-      toast.error((t) => <ToastError t={t} errorMessage={mintError?.name} />);
+      toast.error((t: Toast) => (
+        <ToastError t={t} errorMessage={mintError?.name} />
+      ));
       // console.log(mintError);
     }
 
     if (isApproveError) {
       setIsLoading(false);
-      toast.error((t) => (
+      toast.error((t: Toast) => (
         <ToastError t={t} errorMessage={approveError?.name} />
       ));
       // console.log(approveError);
@@ -239,7 +241,7 @@ const MintCard = () => {
   useEffect(() => {
     let approveToast;
     if (approveIsLoading) {
-      approveToast = toast.loading((t) => (
+      approveToast = toast.loading((t: Toast) => (
         <ToastLoading
           t={t}
           message={`Approving Vincask to spend your ${
@@ -261,7 +263,7 @@ const MintCard = () => {
     // when mintIsLoading and mintTxReceipt are updated
     let mintToast;
     if (mintIsLoading) {
-      mintToast = toast.loading((t) => (
+      mintToast = toast.loading((t: Toast) => (
         <ToastLoading
           t={t}
           message={`Minting ${quantity} NFT${quantity > 1 ? "s" : ""}...`}
@@ -272,7 +274,7 @@ const MintCard = () => {
 
     if (mintTxReceipt?.status === "success") {
       toast.dismiss(mintToast);
-      toast.success((t) => (
+      toast.success((t: Toast) => (
         <ToastSuccess
           t={t}
           message={`NFT${quantity > 1 ? "s" : ""} successfully minted`}

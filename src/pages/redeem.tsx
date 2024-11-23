@@ -21,7 +21,7 @@ import { alchemy } from "@/lib/alchemy";
 import { NftData } from "@/types";
 import Link from "next/link";
 import { parseUnits } from "viem";
-import { toast } from "react-hot-toast";
+import { Toast, toast } from "react-hot-toast";
 import ToastError from "@/components/toasts/ToastError";
 import ToastLoading from "@/components/toasts/ToastLoading";
 import ToastSuccess from "@/components/toasts/ToastSuccess";
@@ -43,7 +43,7 @@ const Redeem = ({
   const activeChain = useActiveChain();
   const { address, isConnected } = useAccount();
   const { data: walletClient } = useWalletClient();
-  const expandRef = useRef(null);
+  const expandRef = useRef<HTMLDivElement>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [expand, setExpand] = useState(false);
   const [selectedNfts, setSelectedNfts] = useState<number[]>([]);
@@ -138,14 +138,16 @@ const Redeem = ({
   useEffect(() => {
     if (isApproveError) {
       setIsLoading(false);
-      toast.error((t) => (
+      toast.error((t: Toast) => (
         <ToastError t={t} errorMessage={approveError?.name} />
       ));
     }
 
     if (isRedeemError) {
       setIsLoading(false);
-      toast.error((t) => <ToastError t={t} errorMessage={redeemError?.name} />);
+      toast.error((t: Toast) => (
+        <ToastError t={t} errorMessage={redeemError?.name} />
+      ));
     }
   }, [isApproveError, isRedeemError]);
 
@@ -154,7 +156,7 @@ const Redeem = ({
     if (approveIsLoading) {
       setShowWarning(true);
 
-      approveToast = toast.loading((t) => (
+      approveToast = toast.loading((t: Toast) => (
         <ToastLoading
           t={t}
           message={`Approving Vincask to transfer your NFT${
@@ -176,7 +178,7 @@ const Redeem = ({
   useEffect(() => {
     let redeemToast;
     if (redeemIsLoading) {
-      redeemToast = toast.loading((t) => (
+      redeemToast = toast.loading((t: Toast) => (
         <ToastLoading
           t={t}
           message={`Redeeming ${selectedNfts.length} NFT${
@@ -191,7 +193,7 @@ const Redeem = ({
 
     if (redeemTxReceipt?.status === "success") {
       toast.dismiss(redeemToast);
-      toast.success((t) => (
+      toast.success((t: Toast) => (
         <ToastSuccess
           t={t}
           message={`Successfully redeemed ${selectedNfts.length} NFT${
@@ -216,7 +218,7 @@ const Redeem = ({
   }, [redeemIsLoading, redeemTxReceipt?.status]);
 
   useEffect(() => {
-    const isComponentOnTop = (ref: RefObject<HTMLDivElement>) => {
+    const isComponentOnTop = (ref: RefObject<HTMLDivElement | null>) => {
       if (!ref.current) return false;
 
       const element = ref.current.getBoundingClientRect();
@@ -363,7 +365,7 @@ const Redeem = ({
               <div className="text-center text-lg text-primary md:text-2xl">
                 <Link
                   href="/nft"
-                  className="underline decoration-2 underline-offset-2 transition duration-300 ease-in-out hover:text-primary-focus"
+                  className="hover:text-primary-focus underline decoration-2 underline-offset-2 transition duration-300 ease-in-out"
                 >
                   Mint an NFT
                 </Link>{" "}
