@@ -100,7 +100,7 @@ export default function App({ Component, pageProps }: AppProps) {
                     spaceMono.variable
                   } ${
                     environment === "development" && "debug-screens"
-                  } flex min-h-screen flex-col justify-between `}
+                  } dark flex min-h-screen flex-col justify-between`}
                 >
                   <Toaster
                     toastOptions={{
