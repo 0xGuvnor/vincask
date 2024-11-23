@@ -2,7 +2,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import ContactFormInput from "../inputs/ContactFormInput";
 import TextArea from "../TextArea";
 import { useState } from "react";
-import toast from "react-hot-toast";
+import toast, { Toast } from "react-hot-toast";
 import ToastError from "../toasts/ToastError";
 import axios from "axios";
 import ToastSuccess from "../toasts/ToastSuccess";
@@ -32,13 +32,13 @@ const ContactForm = () => {
       await axios.post("/api/inquiry", formData);
       await axios.post("/api/contact", formData);
 
-      toast.success((t) => (
+      toast.success((t: Toast) => (
         <ToastSuccess t={t} message="Message successfully sent." />
       ));
 
       reset();
     } catch (error) {
-      toast.error((t) => (
+      toast.error((t: Toast) => (
         <ToastError
           t={t}
           errorMessage="Something went wrong. Please try again."

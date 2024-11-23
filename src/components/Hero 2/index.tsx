@@ -1,14 +1,14 @@
-import Image from "next/image";
-import CtaButtons from "./CtaButtons";
-import useScroll from "@/hooks/useScroll";
-import { AnimatePresence, motion, useAnimate } from "framer-motion";
-import { useMediaQuery } from "react-responsive";
-import Countdown from "../Countdown";
 import { useGlobalContext } from "@/context/GlobalContext";
 import useCountdownDifference from "@/hooks/useCountdownDifference";
 import useIsMounted from "@/hooks/useIsMounted";
-import CollectionStats from "../CollectionStats";
+import useScroll from "@/hooks/useScroll";
+import { AnimatePresence, motion, useAnimate } from "framer-motion";
+import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
+import CollectionStats from "../CollectionStats";
+import Countdown from "../Countdown";
+import CtaButtons from "./CtaButtons";
 
 interface Props {
   heroImage: string;

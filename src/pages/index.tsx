@@ -1,9 +1,7 @@
 import AboutPortEllen from "@/components/AboutPortEllen";
-import Hero from "@/components/Hero";
 import Hero2 from "@/components/Hero 2";
 import MobileOverlay from "@/components/MobileOverlay";
 import NftConcept from "@/components/NftConcept";
-import Team from "@/components/Team";
 import Testimonials from "@/components/Testimonials";
 import getHomePageProps from "@/utils/helpers/getHomePageProps";
 import getWhiskyPageProps from "@/utils/helpers/getWhiskyPageProps";
