@@ -279,6 +279,38 @@ const MintCard = () => {
           txHash={mintTxReceipt.transactionHash}
         />
       ));
+
+      // Add POST request to record-sales.ts
+      const recordSale = async () => {
+        try {
+          const response = await fetch("/api/record-sales", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              quantity,
+              unitPrice: readData
+                ? formatUnits(
+                    readData[2].result as bigint,
+                    Number(readData[5].result),
+                  )
+                : 0,
+              paymentMethod: "crypto",
+              transactionHash: mintTxReceipt.transactionHash,
+            }),
+          });
+
+          if (!response.ok) {
+            console.error("Failed to record sale");
+          }
+        } catch (error) {
+          console.error("Error recording sale:", error);
+        }
+      };
+
+      recordSale();
+
       setIsLoading(false);
       setQuantity(1);
     }
